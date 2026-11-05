@@ -1,0 +1,4 @@
+﻿engine,evidence_scope,from,to,as_of,eligible,indexed_confirmed,indexed_unknown,exposed_confirmed,exposure_coverage,impressions,clicks,verdict,evidence_ref
+google,"Search Console URL 검사(저장된 색인 상태)·페이지 색인 보고서 / 검색 실적(웹, 페이지 기준) 노출 1회 이상",,,2026-11-05,162,0,162,0,0/162,,,데이터 대기,docs/search-console-runbook.md#google
+naver,서치어드바이저 URL 검사(수동) · 사이트 진단 총량 / 콘텐츠 노출·클릭 — 클릭 상위 30 URL 만 제공,,,2026-11-05,162,0,162,0,0/162 (상위 30 URL 한정 — 나머지 측정 불가),,,데이터 대기,docs/search-console-runbook.md#naver
+bing,"Webmaster Tools URL Inspection · Site Explorer / Search Performance(Web, Pages) 노출 1회 이상",,,2026-11-05,162,0,162,0,0/162,,,데이터 대기,docs/search-console-runbook.md#bing

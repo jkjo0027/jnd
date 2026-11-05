@@ -1,0 +1,6 @@
+﻿from,to,status,reason,verifiedBy,verifiedAt,active
+http://jndsystem.kr/*,https://jndsystem.kr/*,308,HTTP→HTTPS 정규화(호스트 설정),,,true
+https://www.jndsystem.kr/*,https://jndsystem.kr/*,308,"www→apex 정규화(호스트 설정, www DNS 가 실제 제공될 때)",,,true
+https://제이앤디시스템.com/default/04/01.php,https://jndsystem.kr/cases/,301,기존 시공갤러리 목록 → 시공사례 허브 (운영자 이전 승인·기존 도메인 관리 권한 확보 후),,,false
+https://제이앤디시스템.com/default/02/01.php,https://jndsystem.kr/services/,301,기존 주요업무 → 서비스 허브 (승인 대기),,,false
+https://제이앤디시스템.com/default/01/01.php,https://jndsystem.kr/about/,301,기존 인사말 → 업체 소개 (승인 대기),,,false
