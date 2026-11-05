@@ -1,0 +1,16 @@
+{
+  "_doc": "운영 확인 플래그. 운영자 확인(docs/owner-approvals.md)이 끝난 항목만 true 로 바꾼다. 공개 빌드(CONTENT_GATE=strict)는 이 값을 따른다.",
+  "phonesVerified": false,
+  "smsVerified": false,
+  "reviewsApproved": false,
+  "clientLogosApproved": true,
+  "clientLogosApprovedBy": "운영자 추가요청2 (2026-11-04, 로고 13종 전달·표시 요청)",
+  "brandLogosApproved": true,
+  "brandLogosApprovedBy": "운영자 요청사항13 (취급 브랜드 로고 태양·현대·태성 전달)",
+  "agencyListApproved": false,
+  "faxVerified": false,
+  "emailVerified": false,
+  "privacyRetentionDays": null,
+  "privacyEffectiveDate": null,
+  "contactAttachments": false
+}
