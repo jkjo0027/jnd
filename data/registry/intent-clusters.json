@@ -1,0 +1,83 @@
+{
+ "at": "2026-11-05",
+ "clusters": [
+  "자동문 수리",
+  "자동문 설치",
+  "자동문 고장",
+  "자동문 센서",
+  "자동문 모터",
+  "자동문 컨트롤러",
+  "자동문 문열림·닫힘 문제",
+  "자동문 소음",
+  "자동문 유지보수",
+  "상가·병원·사무실 출입문",
+  "강화도어(미확인 서비스)",
+  "고장 원인·비용·점검 정보",
+  "서울 지역 검색",
+  "경기 지역 검색"
+ ],
+ "keywordCount": 2476,
+ "cannibalizationCandidates": [],
+ "publishedClusterOverlaps": [
+  {
+   "cluster": "자동문 수리|공통",
+   "urls": [
+    "/",
+    "/services/repair/",
+    "/services/sensor/",
+    "/guides/g16/",
+    "/guides/g19/",
+    "/guides/g28/"
+   ]
+  },
+  {
+   "cluster": "자동문 설치|공통",
+   "urls": [
+    "/services/install/",
+    "/guides/g20/",
+    "/guides/g21/",
+    "/guides/g22/",
+    "/guides/g23/",
+    "/guides/g24/",
+    "/guides/g26/",
+    "/guides/g27/"
+   ]
+  },
+  {
+   "cluster": "자동문 고장|공통",
+   "urls": [
+    "/guides/g01/",
+    "/guides/g02/",
+    "/guides/g03/",
+    "/guides/g08/",
+    "/guides/g09/",
+    "/guides/g10/"
+   ]
+  },
+  {
+   "cluster": "자동문 센서|공통",
+   "urls": [
+    "/guides/g04/",
+    "/guides/g15/"
+   ]
+  },
+  {
+   "cluster": "자동문 유지보수|공통",
+   "urls": [
+    "/guides/g07/",
+    "/guides/g11/",
+    "/guides/g12/",
+    "/guides/g13/"
+   ]
+  },
+  {
+   "cluster": "고장 원인·비용·점검 정보|공통",
+   "urls": [
+    "/guides/g17/",
+    "/guides/g18/"
+   ]
+  }
+ ],
+ "remapped": 354,
+ "excludedUnverified": 124
+}

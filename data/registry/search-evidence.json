@@ -1,0 +1,67 @@
+{
+ "_doc": "검색엔진 제출·검증 기록. rows: 엔진별 URL 단위 요청/확인 기록. dashboard: 엔진별 집계(판정: 달성 확인/미달 확인/관측 범위 제한/데이터 대기). 콘솔 권한 수령 전에는 모두 데이터 대기.",
+ "states": [
+  "submitted",
+  "crawled",
+  "indexed",
+  "not_indexed",
+  "unknown",
+  "excluded",
+  "error"
+ ],
+ "rows": [],
+ "dashboard": [
+  {
+   "engine": "google",
+   "as_of": "2026-11-05",
+   "published": 162,
+   "eligible": 162,
+   "indexed_confirmed": 0,
+   "not_indexed_confirmed": 0,
+   "indexed_unknown": 162,
+   "exposed_confirmed": 0,
+   "exposure_coverage": "0/162",
+   "impressions": null,
+   "clicks": null,
+   "verdict": "데이터 대기",
+   "evidence_scope": "Search Console URL 검사(저장된 색인 상태)·페이지 색인 보고서 / 검색 실적(웹, 페이지 기준) 노출 1회 이상",
+   "evidence_ref": "docs/search-console-runbook.md#google",
+   "note": "속성 권한 수령 전 — 데이터 대기"
+  },
+  {
+   "engine": "naver",
+   "as_of": "2026-11-05",
+   "published": 162,
+   "eligible": 162,
+   "indexed_confirmed": 0,
+   "not_indexed_confirmed": 0,
+   "indexed_unknown": 162,
+   "exposed_confirmed": 0,
+   "exposure_coverage": "0/162 (상위 30 URL 한정 — 나머지 측정 불가)",
+   "impressions": null,
+   "clicks": null,
+   "verdict": "데이터 대기",
+   "evidence_scope": "서치어드바이저 URL 검사(수동) · 사이트 진단 총량 / 콘텐츠 노출·클릭 — 클릭 상위 30 URL 만 제공",
+   "evidence_ref": "docs/search-console-runbook.md#naver",
+   "note": "URL 별 실노출은 상위 30 URL 밖이면 측정 불가"
+  },
+  {
+   "engine": "bing",
+   "as_of": "2026-11-05",
+   "published": 162,
+   "eligible": 162,
+   "indexed_confirmed": 0,
+   "not_indexed_confirmed": 0,
+   "indexed_unknown": 162,
+   "exposed_confirmed": 0,
+   "exposure_coverage": "0/162",
+   "impressions": null,
+   "clicks": null,
+   "verdict": "데이터 대기",
+   "evidence_scope": "Webmaster Tools URL Inspection · Site Explorer / Search Performance(Web, Pages) 노출 1회 이상",
+   "evidence_ref": "docs/search-console-runbook.md#bing",
+   "note": "사이트 추가·IndexNow 키 등록 전 — 데이터 대기"
+  }
+ ],
+ "updatedAt": "2026-11-05"
+}

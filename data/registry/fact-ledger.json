@@ -1,0 +1,338 @@
+{
+  "_doc": "서비스·지역 사실 확인 대장. verified=true 는 운영자 회신(reply.pptx) 또는 회사 자체 공개 자료(기존 사이트 시공갤러리)로 확인된 항목만. 미확인 항목은 공개 페이지에 확약으로 쓰지 않는다.",
+  "updatedAt": "2026-11-05",
+  "services": {
+    "repair": {
+      "verified": true,
+      "ref": "PPTX 03 호환 제조사·취급부품, 기존 사이트 주요업무(자동문 수리), 사례 c1~c3",
+      "owner": "운영자 회신 2026-11-02"
+    },
+    "install": {
+      "verified": true,
+      "ref": "PPTX 03·04 6단계·1년 무상 A/S, 기존 사이트 자동문 설치 과정, 사례 c4~c8",
+      "owner": "운영자 회신 2026-11-02"
+    },
+    "sensor": {
+      "verified": true,
+      "ref": "기존 사이트 제품란(안전센서 TC-R·상부센서 TC-500), 사례 c2",
+      "owner": "기존 사이트 추출 2026-10-28"
+    },
+    "motor": {
+      "verified": true,
+      "ref": "기존 사이트 제품란(컨트롤러·모터 SD-2000), 사례 c3",
+      "owner": "기존 사이트 추출 2026-10-28"
+    },
+    "switch": {
+      "verified": true,
+      "ref": "연혁 SD 시리즈 스위치 16종·디자인특허, 사례 c1",
+      "owner": "PPTX 04"
+    },
+    "keypad": {
+      "verified": true,
+      "ref": "기존 사이트 제품란(TC-935R·글로넥스 GM-F1000·데드볼트), 사례 c4",
+      "owner": "기존 사이트 추출"
+    },
+    "glass-door": {
+      "verified": false,
+      "ref": "기존 사이트 배너에 '강화도어' 언급만 존재. 수리 취급 범위·힌지 교체 역량 미확인(엑셀 운영 메모 '실제 취급·시공 역량 확인'). 사례 c8 은 강화도어→자동문 교체(설치)",
+      "owner": null,
+      "action": "운영자 확인 필요 — docs/owner-approvals.md #15",
+      "relatedGuides": [
+        "G29",
+        "G30"
+      ],
+      "note": "관련 가이드 G29·G30(강화도어 끌림·플로어힌지 교체)은 서비스 미확인 상태에서 작업 안내를 담고 있어 함께 보류"
+    }
+  },
+  "serviceArea": {
+    "verified": true,
+    "ref": "PPTX 02 출장 지역 회신(평택·화성·수원·용인·성남·안양·안산·시흥·오산·안성·김포·고양·남양주·서울 + 천안·아산·청주·경기광주·과천·부천·하남·세종·공주·증평·군포·파주·인천·대전), FAQ '서울·경기 수도권과 충청권 직접 출장'",
+    "note": "서울 25개 구·경기 31개 시군 전체를 출장권으로 간주(PPTX '서울' 회신 + 경기도권 당일 회신). 지역별 실제 방문 이력은 미확보"
+  },
+  "claims": {
+    "sameDayGyeonggi": {
+      "verified": true,
+      "ref": "PPTX 03 '경기도권 당일출장 가능, 긴급출장 가능'"
+    },
+    "sameDaySeoul": {
+      "verified": false,
+      "ref": "회신 없음 — 서울 페이지에 당일 확약 미사용"
+    },
+    "warranty1y": {
+      "verified": true,
+      "ref": "PPTX 03 '1년 무상 표기'"
+    },
+    "agencies27": {
+      "verified": false,
+      "ref": "PPTX 04 '본사 제외 27곳' 숫자만, 목록 미확인 → 지역 본문에서 대리점 언급 제거"
+    },
+    "price": {
+      "verified": true,
+      "ref": "PPTX 03 가격 표기 X → '사진 확인 후 안내'만 사용"
+    },
+    "phonesSecondary": {
+      "verified": false,
+      "ref": "수신 테스트 미실시 → 운영 빌드 대표번호만"
+    }
+  },
+  "regionEvidence": {
+    "r08": {
+      "kinds": [
+        "sensor",
+        "repair"
+      ],
+      "refs": [
+        "case c2 금천구 시흥동 안전센서 렌즈 교체(기존 사이트 8-1)"
+      ],
+      "areaVerified": true
+    },
+    "r21": {
+      "kinds": [
+        "motor",
+        "repair"
+      ],
+      "refs": [
+        "case c3 용산 쇼핑몰 주차장 컨트롤러 교체(기존 사이트 8-3)"
+      ],
+      "areaVerified": true
+    },
+    "r48": {
+      "kinds": [
+        "switch",
+        "repair",
+        "gallery"
+      ],
+      "refs": [
+        "case c1 용인 처인구 무선터치 스위치 교체(기존 사이트 8-2)",
+        "기존 갤러리 용인 8-4/8-12/8-30/8-37/8-45/8-46"
+      ],
+      "areaVerified": true
+    },
+    "r56": {
+      "kinds": [
+        "install",
+        "keypad",
+        "gallery"
+      ],
+      "refs": [
+        "case c4 동탄 지식산업센터 설치",
+        "case c8 화성 교회 강화도어→자동문 교체",
+        "기존 갤러리 화성 8-20/8-39, 동탄 8-43"
+      ],
+      "areaVerified": true
+    },
+    "r37": {
+      "kinds": [
+        "install",
+        "gallery"
+      ],
+      "refs": [
+        "case c5 성남 지식산업센터 이중슬라이딩 설치",
+        "기존 갤러리 성남 8-6"
+      ],
+      "areaVerified": true
+    },
+    "r42": {
+      "kinds": [
+        "install",
+        "gallery"
+      ],
+      "refs": [
+        "case c6 안양 상가 편개형 교체",
+        "기존 갤러리 안양 8-40"
+      ],
+      "areaVerified": true
+    },
+    "r30": {
+      "kinds": [
+        "install",
+        "gallery"
+      ],
+      "refs": [
+        "case c7 경기광주 주택상가 신규 설치",
+        "기존 갤러리 광주 8-41"
+      ],
+      "areaVerified": true
+    },
+    "r53": {
+      "kinds": [
+        "gallery",
+        "hq"
+      ],
+      "refs": [
+        "본사 소재지(진위면)",
+        "기존 갤러리 평택 8-5/8-36"
+      ],
+      "areaVerified": true
+    },
+    "r38": {
+      "kinds": [
+        "gallery"
+      ],
+      "refs": [
+        "기존 갤러리 수원 8-10/8-16/8-19/8-27/8-31/8-38"
+      ],
+      "areaVerified": true
+    },
+    "r18": {
+      "kinds": [
+        "gallery"
+      ],
+      "refs": [
+        "기존 갤러리 송파구 8-8"
+      ],
+      "areaVerified": true
+    },
+    "r13": {
+      "kinds": [
+        "gallery"
+      ],
+      "refs": [
+        "기존 갤러리 마포구 8-13"
+      ],
+      "areaVerified": true
+    },
+    "r01": {
+      "kinds": [
+        "gallery"
+      ],
+      "refs": [
+        "기존 갤러리 강남 8-15/8-49"
+      ],
+      "areaVerified": true
+    },
+    "r23": {
+      "kinds": [
+        "gallery"
+      ],
+      "refs": [
+        "기존 갤러리 종로구 8-17"
+      ],
+      "areaVerified": true
+    },
+    "r10": {
+      "kinds": [
+        "gallery"
+      ],
+      "refs": [
+        "기존 갤러리 도봉구 8-22"
+      ],
+      "areaVerified": true
+    },
+    "r22": {
+      "kinds": [
+        "gallery"
+      ],
+      "refs": [
+        "기존 갤러리 은평구 8-23"
+      ],
+      "areaVerified": true
+    },
+    "r33": {
+      "kinds": [
+        "gallery"
+      ],
+      "refs": [
+        "기존 갤러리 김포 8-24/8-33/8-35"
+      ],
+      "areaVerified": true
+    },
+    "r45": {
+      "kinds": [
+        "gallery"
+      ],
+      "refs": [
+        "기존 갤러리 여주 8-25"
+      ],
+      "areaVerified": true
+    },
+    "r41": {
+      "kinds": [
+        "gallery"
+      ],
+      "refs": [
+        "기존 갤러리 안성 8-29"
+      ],
+      "areaVerified": true
+    },
+    "r27": {
+      "kinds": [
+        "gallery"
+      ],
+      "refs": [
+        "기존 갤러리 고양시 8-32"
+      ],
+      "areaVerified": true
+    },
+    "r40": {
+      "kinds": [
+        "gallery"
+      ],
+      "refs": [
+        "기존 갤러리 안산 8-11/8-34"
+      ],
+      "areaVerified": true
+    },
+    "r34": {
+      "kinds": [
+        "gallery"
+      ],
+      "refs": [
+        "기존 갤러리 남양주 8-14/8-21"
+      ],
+      "areaVerified": true
+    },
+    "r51": {
+      "kinds": [
+        "gallery"
+      ],
+      "refs": [
+        "기존 갤러리 이천 8-42"
+      ],
+      "areaVerified": true
+    },
+    "r47": {
+      "kinds": [
+        "gallery"
+      ],
+      "refs": [
+        "기존 갤러리 오산 8-44"
+      ],
+      "areaVerified": true
+    },
+    "r50": {
+      "kinds": [
+        "gallery"
+      ],
+      "refs": [
+        "기존 갤러리 의정부 8-47"
+      ],
+      "areaVerified": true
+    }
+  },
+  "_regionEvidenceNote": "gallery = 기존 사이트 시공갤러리 제목에 지역명이 있는 사진 게시물(본문 없음). 사진·날짜·현장 상세 확인 전이라 '사례'로 본문에 쓰지 않고 지역 출장 이력의 간접 근거로만 분류에 반영. 나머지 지역은 출장권(운영자 회신)만 확인된 상태.",
+  "business": {
+    "verified": true,
+    "ref": "사업자등록증(평택세무서장 2021-03-10 발급) — 운영자 제공 이미지 2026-11-05. 이미지 파일은 저장소·공개 번들에 저장하지 않음",
+    "fields": {
+      "등록번호": "619-64-00198",
+      "구분": "일반과세자",
+      "상호": "제이앤디시스템",
+      "성명": "김동훈 외 1명 (공동사업자 김준오)",
+      "개업연월일": "2018-01-16",
+      "사업장소재지": "경기도 평택시 진위면 진위2산단로 140, 4층 421호 제이앤디시스템(더퍼스트타워 평택)",
+      "업태": "제조업 · 도매 및 소매업 · 서비스업",
+      "종목": "그 외 기타 전기장비 제조업 · 전자상거래업 · 기타 일반 기계 및 장비 수리업 · 자동문설치"
+    },
+    "usedIn": [
+      "src/lib/site.ts INFO",
+      "푸터 사업자 표시(Footer.tsx)",
+      "업체 소개(about)",
+      "LocalBusiness 구조화 데이터(foundingDate·address·taxID)"
+    ],
+    "notVerified": {
+      "fax": "031-375-0118 — 기존 사이트 표기, PPTX 회신과 자릿수 상충(owner-approvals #6) → 푸터 표기만, 구조화 데이터 제외",
+      "email": "post8642@naver.com — 표기용, 문의 수신처와 상충(#7) → 구조화 데이터 제외"
+    }
+  }
+}

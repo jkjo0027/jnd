@@ -1,0 +1,11 @@
+{
+  "_doc": "리디렉션 맵. 기존 공개 이력이 검증된 동등 URL 만 301/308 로 연결한다. 기존 사이트(제이앤디시스템.com) 이전은 운영자 승인·백업·유입 상위 URL 확보 후에만 활성화(active=true). 쇼핑몰(jndmall.co.kr) 경로·DNS 는 전환 대상 아님.",
+  "policy": { "canonicalHost": "https://jndsystem.kr", "normalize": ["http→https", "www.jndsystem.kr→apex", "trailing slash 추가", "추적 파라미터 제거(utm_*, fbclid, gclid)"], "status": 308 },
+  "redirects": [
+    { "from": "http://jndsystem.kr/*", "to": "https://jndsystem.kr/*", "status": 308, "reason": "HTTP→HTTPS 정규화(호스트 설정)", "verifiedBy": null, "verifiedAt": null, "active": true },
+    { "from": "https://www.jndsystem.kr/*", "to": "https://jndsystem.kr/*", "status": 308, "reason": "www→apex 정규화(호스트 설정, www DNS 가 실제 제공될 때)", "verifiedBy": null, "verifiedAt": null, "active": true },
+    { "from": "https://제이앤디시스템.com/default/04/01.php", "to": "https://jndsystem.kr/cases/", "status": 301, "reason": "기존 시공갤러리 목록 → 시공사례 허브 (운영자 이전 승인·기존 도메인 관리 권한 확보 후)", "verifiedBy": null, "verifiedAt": null, "active": false },
+    { "from": "https://제이앤디시스템.com/default/02/01.php", "to": "https://jndsystem.kr/services/", "status": 301, "reason": "기존 주요업무 → 서비스 허브 (승인 대기)", "verifiedBy": null, "verifiedAt": null, "active": false },
+    { "from": "https://제이앤디시스템.com/default/01/01.php", "to": "https://jndsystem.kr/about/", "status": 301, "reason": "기존 인사말 → 업체 소개 (승인 대기)", "verifiedBy": null, "verifiedAt": null, "active": false }
+  ]
+}

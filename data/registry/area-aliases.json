@@ -1,0 +1,2262 @@
+{
+ "source": {
+  "file": "inputs/jndsystem-kr-seo-keyword-plan.xlsx",
+  "sha256": "6d4c8543b9870ef64d33fd835fbd50f75a1e03f5b0e7c42332b2fb5d59136daf",
+  "sheets": [
+   "실행요약",
+   "페이지설계318",
+   "키워드조합",
+   "데이터랩분석",
+   "지역목록"
+  ]
+ },
+ "baseRegions": [
+  {
+   "regionId": "r01",
+   "province": "seoul",
+   "name": "강남구",
+   "label": "서울 강남구",
+   "sheetRow": 5
+  },
+  {
+   "regionId": "r02",
+   "province": "seoul",
+   "name": "강동구",
+   "label": "서울 강동구",
+   "sheetRow": 6
+  },
+  {
+   "regionId": "r03",
+   "province": "seoul",
+   "name": "강북구",
+   "label": "서울 강북구",
+   "sheetRow": 7
+  },
+  {
+   "regionId": "r04",
+   "province": "seoul",
+   "name": "강서구",
+   "label": "서울 강서구",
+   "sheetRow": 8
+  },
+  {
+   "regionId": "r05",
+   "province": "seoul",
+   "name": "관악구",
+   "label": "서울 관악구",
+   "sheetRow": 9
+  },
+  {
+   "regionId": "r06",
+   "province": "seoul",
+   "name": "광진구",
+   "label": "서울 광진구",
+   "sheetRow": 10
+  },
+  {
+   "regionId": "r07",
+   "province": "seoul",
+   "name": "구로구",
+   "label": "서울 구로구",
+   "sheetRow": 11
+  },
+  {
+   "regionId": "r08",
+   "province": "seoul",
+   "name": "금천구",
+   "label": "서울 금천구",
+   "sheetRow": 12
+  },
+  {
+   "regionId": "r09",
+   "province": "seoul",
+   "name": "노원구",
+   "label": "서울 노원구",
+   "sheetRow": 13
+  },
+  {
+   "regionId": "r10",
+   "province": "seoul",
+   "name": "도봉구",
+   "label": "서울 도봉구",
+   "sheetRow": 14
+  },
+  {
+   "regionId": "r11",
+   "province": "seoul",
+   "name": "동대문구",
+   "label": "서울 동대문구",
+   "sheetRow": 15
+  },
+  {
+   "regionId": "r12",
+   "province": "seoul",
+   "name": "동작구",
+   "label": "서울 동작구",
+   "sheetRow": 16
+  },
+  {
+   "regionId": "r13",
+   "province": "seoul",
+   "name": "마포구",
+   "label": "서울 마포구",
+   "sheetRow": 17
+  },
+  {
+   "regionId": "r14",
+   "province": "seoul",
+   "name": "서대문구",
+   "label": "서울 서대문구",
+   "sheetRow": 18
+  },
+  {
+   "regionId": "r15",
+   "province": "seoul",
+   "name": "서초구",
+   "label": "서울 서초구",
+   "sheetRow": 19
+  },
+  {
+   "regionId": "r16",
+   "province": "seoul",
+   "name": "성동구",
+   "label": "서울 성동구",
+   "sheetRow": 20
+  },
+  {
+   "regionId": "r17",
+   "province": "seoul",
+   "name": "성북구",
+   "label": "서울 성북구",
+   "sheetRow": 21
+  },
+  {
+   "regionId": "r18",
+   "province": "seoul",
+   "name": "송파구",
+   "label": "서울 송파구",
+   "sheetRow": 22
+  },
+  {
+   "regionId": "r19",
+   "province": "seoul",
+   "name": "양천구",
+   "label": "서울 양천구",
+   "sheetRow": 23
+  },
+  {
+   "regionId": "r20",
+   "province": "seoul",
+   "name": "영등포구",
+   "label": "서울 영등포구",
+   "sheetRow": 24
+  },
+  {
+   "regionId": "r21",
+   "province": "seoul",
+   "name": "용산구",
+   "label": "서울 용산구",
+   "sheetRow": 25
+  },
+  {
+   "regionId": "r22",
+   "province": "seoul",
+   "name": "은평구",
+   "label": "서울 은평구",
+   "sheetRow": 26
+  },
+  {
+   "regionId": "r23",
+   "province": "seoul",
+   "name": "종로구",
+   "label": "서울 종로구",
+   "sheetRow": 27
+  },
+  {
+   "regionId": "r24",
+   "province": "seoul",
+   "name": "중구",
+   "label": "서울 중구",
+   "sheetRow": 28
+  },
+  {
+   "regionId": "r25",
+   "province": "seoul",
+   "name": "중랑구",
+   "label": "서울 중랑구",
+   "sheetRow": 29
+  },
+  {
+   "regionId": "r26",
+   "province": "gyeonggi",
+   "name": "가평군",
+   "label": "가평",
+   "sheetRow": 30
+  },
+  {
+   "regionId": "r27",
+   "province": "gyeonggi",
+   "name": "고양시",
+   "label": "고양",
+   "sheetRow": 31
+  },
+  {
+   "regionId": "r28",
+   "province": "gyeonggi",
+   "name": "과천시",
+   "label": "과천",
+   "sheetRow": 32
+  },
+  {
+   "regionId": "r29",
+   "province": "gyeonggi",
+   "name": "광명시",
+   "label": "광명",
+   "sheetRow": 33
+  },
+  {
+   "regionId": "r30",
+   "province": "gyeonggi",
+   "name": "광주시",
+   "label": "경기광주",
+   "sheetRow": 34
+  },
+  {
+   "regionId": "r31",
+   "province": "gyeonggi",
+   "name": "구리시",
+   "label": "구리",
+   "sheetRow": 35
+  },
+  {
+   "regionId": "r32",
+   "province": "gyeonggi",
+   "name": "군포시",
+   "label": "군포",
+   "sheetRow": 36
+  },
+  {
+   "regionId": "r33",
+   "province": "gyeonggi",
+   "name": "김포시",
+   "label": "김포",
+   "sheetRow": 37
+  },
+  {
+   "regionId": "r34",
+   "province": "gyeonggi",
+   "name": "남양주시",
+   "label": "남양주",
+   "sheetRow": 38
+  },
+  {
+   "regionId": "r35",
+   "province": "gyeonggi",
+   "name": "동두천시",
+   "label": "동두천",
+   "sheetRow": 39
+  },
+  {
+   "regionId": "r36",
+   "province": "gyeonggi",
+   "name": "부천시",
+   "label": "부천",
+   "sheetRow": 40
+  },
+  {
+   "regionId": "r37",
+   "province": "gyeonggi",
+   "name": "성남시",
+   "label": "성남",
+   "sheetRow": 41
+  },
+  {
+   "regionId": "r38",
+   "province": "gyeonggi",
+   "name": "수원시",
+   "label": "수원",
+   "sheetRow": 42
+  },
+  {
+   "regionId": "r39",
+   "province": "gyeonggi",
+   "name": "시흥시",
+   "label": "시흥",
+   "sheetRow": 43
+  },
+  {
+   "regionId": "r40",
+   "province": "gyeonggi",
+   "name": "안산시",
+   "label": "안산",
+   "sheetRow": 44
+  },
+  {
+   "regionId": "r41",
+   "province": "gyeonggi",
+   "name": "안성시",
+   "label": "안성",
+   "sheetRow": 45
+  },
+  {
+   "regionId": "r42",
+   "province": "gyeonggi",
+   "name": "안양시",
+   "label": "안양",
+   "sheetRow": 46
+  },
+  {
+   "regionId": "r43",
+   "province": "gyeonggi",
+   "name": "양주시",
+   "label": "양주",
+   "sheetRow": 47
+  },
+  {
+   "regionId": "r44",
+   "province": "gyeonggi",
+   "name": "양평군",
+   "label": "양평",
+   "sheetRow": 48
+  },
+  {
+   "regionId": "r45",
+   "province": "gyeonggi",
+   "name": "여주시",
+   "label": "여주",
+   "sheetRow": 49
+  },
+  {
+   "regionId": "r46",
+   "province": "gyeonggi",
+   "name": "연천군",
+   "label": "연천",
+   "sheetRow": 50
+  },
+  {
+   "regionId": "r47",
+   "province": "gyeonggi",
+   "name": "오산시",
+   "label": "오산",
+   "sheetRow": 51
+  },
+  {
+   "regionId": "r48",
+   "province": "gyeonggi",
+   "name": "용인시",
+   "label": "용인",
+   "sheetRow": 52
+  },
+  {
+   "regionId": "r49",
+   "province": "gyeonggi",
+   "name": "의왕시",
+   "label": "의왕",
+   "sheetRow": 53
+  },
+  {
+   "regionId": "r50",
+   "province": "gyeonggi",
+   "name": "의정부시",
+   "label": "의정부",
+   "sheetRow": 54
+  },
+  {
+   "regionId": "r51",
+   "province": "gyeonggi",
+   "name": "이천시",
+   "label": "이천",
+   "sheetRow": 55
+  },
+  {
+   "regionId": "r52",
+   "province": "gyeonggi",
+   "name": "파주시",
+   "label": "파주",
+   "sheetRow": 56
+  },
+  {
+   "regionId": "r53",
+   "province": "gyeonggi",
+   "name": "평택시",
+   "label": "평택",
+   "sheetRow": 57
+  },
+  {
+   "regionId": "r54",
+   "province": "gyeonggi",
+   "name": "포천시",
+   "label": "포천",
+   "sheetRow": 58
+  },
+  {
+   "regionId": "r55",
+   "province": "gyeonggi",
+   "name": "하남시",
+   "label": "하남",
+   "sheetRow": 59
+  },
+  {
+   "regionId": "r56",
+   "province": "gyeonggi",
+   "name": "화성시",
+   "label": "화성",
+   "sheetRow": 60
+  }
+ ],
+ "aliases": [
+  {
+   "alias": "강남구",
+   "aliasKey": "강남구",
+   "label": "서울 강남구",
+   "labelKey": "서울강남구",
+   "regionId": "r01",
+   "province": "seoul",
+   "kind": "base",
+   "sheetRow": 5
+  },
+  {
+   "alias": "서울 강남구",
+   "aliasKey": "서울강남구",
+   "label": "서울 강남구",
+   "labelKey": "서울강남구",
+   "regionId": "r01",
+   "province": "seoul",
+   "kind": "base-label",
+   "sheetRow": 5
+  },
+  {
+   "alias": "강동구",
+   "aliasKey": "강동구",
+   "label": "서울 강동구",
+   "labelKey": "서울강동구",
+   "regionId": "r02",
+   "province": "seoul",
+   "kind": "base",
+   "sheetRow": 6
+  },
+  {
+   "alias": "서울 강동구",
+   "aliasKey": "서울강동구",
+   "label": "서울 강동구",
+   "labelKey": "서울강동구",
+   "regionId": "r02",
+   "province": "seoul",
+   "kind": "base-label",
+   "sheetRow": 6
+  },
+  {
+   "alias": "강북구",
+   "aliasKey": "강북구",
+   "label": "서울 강북구",
+   "labelKey": "서울강북구",
+   "regionId": "r03",
+   "province": "seoul",
+   "kind": "base",
+   "sheetRow": 7
+  },
+  {
+   "alias": "서울 강북구",
+   "aliasKey": "서울강북구",
+   "label": "서울 강북구",
+   "labelKey": "서울강북구",
+   "regionId": "r03",
+   "province": "seoul",
+   "kind": "base-label",
+   "sheetRow": 7
+  },
+  {
+   "alias": "강서구",
+   "aliasKey": "강서구",
+   "label": "서울 강서구",
+   "labelKey": "서울강서구",
+   "regionId": "r04",
+   "province": "seoul",
+   "kind": "base",
+   "sheetRow": 8
+  },
+  {
+   "alias": "서울 강서구",
+   "aliasKey": "서울강서구",
+   "label": "서울 강서구",
+   "labelKey": "서울강서구",
+   "regionId": "r04",
+   "province": "seoul",
+   "kind": "base-label",
+   "sheetRow": 8
+  },
+  {
+   "alias": "관악구",
+   "aliasKey": "관악구",
+   "label": "서울 관악구",
+   "labelKey": "서울관악구",
+   "regionId": "r05",
+   "province": "seoul",
+   "kind": "base",
+   "sheetRow": 9
+  },
+  {
+   "alias": "서울 관악구",
+   "aliasKey": "서울관악구",
+   "label": "서울 관악구",
+   "labelKey": "서울관악구",
+   "regionId": "r05",
+   "province": "seoul",
+   "kind": "base-label",
+   "sheetRow": 9
+  },
+  {
+   "alias": "광진구",
+   "aliasKey": "광진구",
+   "label": "서울 광진구",
+   "labelKey": "서울광진구",
+   "regionId": "r06",
+   "province": "seoul",
+   "kind": "base",
+   "sheetRow": 10
+  },
+  {
+   "alias": "서울 광진구",
+   "aliasKey": "서울광진구",
+   "label": "서울 광진구",
+   "labelKey": "서울광진구",
+   "regionId": "r06",
+   "province": "seoul",
+   "kind": "base-label",
+   "sheetRow": 10
+  },
+  {
+   "alias": "구로구",
+   "aliasKey": "구로구",
+   "label": "서울 구로구",
+   "labelKey": "서울구로구",
+   "regionId": "r07",
+   "province": "seoul",
+   "kind": "base",
+   "sheetRow": 11
+  },
+  {
+   "alias": "서울 구로구",
+   "aliasKey": "서울구로구",
+   "label": "서울 구로구",
+   "labelKey": "서울구로구",
+   "regionId": "r07",
+   "province": "seoul",
+   "kind": "base-label",
+   "sheetRow": 11
+  },
+  {
+   "alias": "금천구",
+   "aliasKey": "금천구",
+   "label": "서울 금천구",
+   "labelKey": "서울금천구",
+   "regionId": "r08",
+   "province": "seoul",
+   "kind": "base",
+   "sheetRow": 12
+  },
+  {
+   "alias": "서울 금천구",
+   "aliasKey": "서울금천구",
+   "label": "서울 금천구",
+   "labelKey": "서울금천구",
+   "regionId": "r08",
+   "province": "seoul",
+   "kind": "base-label",
+   "sheetRow": 12
+  },
+  {
+   "alias": "노원구",
+   "aliasKey": "노원구",
+   "label": "서울 노원구",
+   "labelKey": "서울노원구",
+   "regionId": "r09",
+   "province": "seoul",
+   "kind": "base",
+   "sheetRow": 13
+  },
+  {
+   "alias": "서울 노원구",
+   "aliasKey": "서울노원구",
+   "label": "서울 노원구",
+   "labelKey": "서울노원구",
+   "regionId": "r09",
+   "province": "seoul",
+   "kind": "base-label",
+   "sheetRow": 13
+  },
+  {
+   "alias": "도봉구",
+   "aliasKey": "도봉구",
+   "label": "서울 도봉구",
+   "labelKey": "서울도봉구",
+   "regionId": "r10",
+   "province": "seoul",
+   "kind": "base",
+   "sheetRow": 14
+  },
+  {
+   "alias": "서울 도봉구",
+   "aliasKey": "서울도봉구",
+   "label": "서울 도봉구",
+   "labelKey": "서울도봉구",
+   "regionId": "r10",
+   "province": "seoul",
+   "kind": "base-label",
+   "sheetRow": 14
+  },
+  {
+   "alias": "동대문구",
+   "aliasKey": "동대문구",
+   "label": "서울 동대문구",
+   "labelKey": "서울동대문구",
+   "regionId": "r11",
+   "province": "seoul",
+   "kind": "base",
+   "sheetRow": 15
+  },
+  {
+   "alias": "서울 동대문구",
+   "aliasKey": "서울동대문구",
+   "label": "서울 동대문구",
+   "labelKey": "서울동대문구",
+   "regionId": "r11",
+   "province": "seoul",
+   "kind": "base-label",
+   "sheetRow": 15
+  },
+  {
+   "alias": "동작구",
+   "aliasKey": "동작구",
+   "label": "서울 동작구",
+   "labelKey": "서울동작구",
+   "regionId": "r12",
+   "province": "seoul",
+   "kind": "base",
+   "sheetRow": 16
+  },
+  {
+   "alias": "서울 동작구",
+   "aliasKey": "서울동작구",
+   "label": "서울 동작구",
+   "labelKey": "서울동작구",
+   "regionId": "r12",
+   "province": "seoul",
+   "kind": "base-label",
+   "sheetRow": 16
+  },
+  {
+   "alias": "마포구",
+   "aliasKey": "마포구",
+   "label": "서울 마포구",
+   "labelKey": "서울마포구",
+   "regionId": "r13",
+   "province": "seoul",
+   "kind": "base",
+   "sheetRow": 17
+  },
+  {
+   "alias": "서울 마포구",
+   "aliasKey": "서울마포구",
+   "label": "서울 마포구",
+   "labelKey": "서울마포구",
+   "regionId": "r13",
+   "province": "seoul",
+   "kind": "base-label",
+   "sheetRow": 17
+  },
+  {
+   "alias": "서대문구",
+   "aliasKey": "서대문구",
+   "label": "서울 서대문구",
+   "labelKey": "서울서대문구",
+   "regionId": "r14",
+   "province": "seoul",
+   "kind": "base",
+   "sheetRow": 18
+  },
+  {
+   "alias": "서울 서대문구",
+   "aliasKey": "서울서대문구",
+   "label": "서울 서대문구",
+   "labelKey": "서울서대문구",
+   "regionId": "r14",
+   "province": "seoul",
+   "kind": "base-label",
+   "sheetRow": 18
+  },
+  {
+   "alias": "서초구",
+   "aliasKey": "서초구",
+   "label": "서울 서초구",
+   "labelKey": "서울서초구",
+   "regionId": "r15",
+   "province": "seoul",
+   "kind": "base",
+   "sheetRow": 19
+  },
+  {
+   "alias": "서울 서초구",
+   "aliasKey": "서울서초구",
+   "label": "서울 서초구",
+   "labelKey": "서울서초구",
+   "regionId": "r15",
+   "province": "seoul",
+   "kind": "base-label",
+   "sheetRow": 19
+  },
+  {
+   "alias": "성동구",
+   "aliasKey": "성동구",
+   "label": "서울 성동구",
+   "labelKey": "서울성동구",
+   "regionId": "r16",
+   "province": "seoul",
+   "kind": "base",
+   "sheetRow": 20
+  },
+  {
+   "alias": "서울 성동구",
+   "aliasKey": "서울성동구",
+   "label": "서울 성동구",
+   "labelKey": "서울성동구",
+   "regionId": "r16",
+   "province": "seoul",
+   "kind": "base-label",
+   "sheetRow": 20
+  },
+  {
+   "alias": "성북구",
+   "aliasKey": "성북구",
+   "label": "서울 성북구",
+   "labelKey": "서울성북구",
+   "regionId": "r17",
+   "province": "seoul",
+   "kind": "base",
+   "sheetRow": 21
+  },
+  {
+   "alias": "서울 성북구",
+   "aliasKey": "서울성북구",
+   "label": "서울 성북구",
+   "labelKey": "서울성북구",
+   "regionId": "r17",
+   "province": "seoul",
+   "kind": "base-label",
+   "sheetRow": 21
+  },
+  {
+   "alias": "송파구",
+   "aliasKey": "송파구",
+   "label": "서울 송파구",
+   "labelKey": "서울송파구",
+   "regionId": "r18",
+   "province": "seoul",
+   "kind": "base",
+   "sheetRow": 22
+  },
+  {
+   "alias": "서울 송파구",
+   "aliasKey": "서울송파구",
+   "label": "서울 송파구",
+   "labelKey": "서울송파구",
+   "regionId": "r18",
+   "province": "seoul",
+   "kind": "base-label",
+   "sheetRow": 22
+  },
+  {
+   "alias": "양천구",
+   "aliasKey": "양천구",
+   "label": "서울 양천구",
+   "labelKey": "서울양천구",
+   "regionId": "r19",
+   "province": "seoul",
+   "kind": "base",
+   "sheetRow": 23
+  },
+  {
+   "alias": "서울 양천구",
+   "aliasKey": "서울양천구",
+   "label": "서울 양천구",
+   "labelKey": "서울양천구",
+   "regionId": "r19",
+   "province": "seoul",
+   "kind": "base-label",
+   "sheetRow": 23
+  },
+  {
+   "alias": "영등포구",
+   "aliasKey": "영등포구",
+   "label": "서울 영등포구",
+   "labelKey": "서울영등포구",
+   "regionId": "r20",
+   "province": "seoul",
+   "kind": "base",
+   "sheetRow": 24
+  },
+  {
+   "alias": "서울 영등포구",
+   "aliasKey": "서울영등포구",
+   "label": "서울 영등포구",
+   "labelKey": "서울영등포구",
+   "regionId": "r20",
+   "province": "seoul",
+   "kind": "base-label",
+   "sheetRow": 24
+  },
+  {
+   "alias": "용산구",
+   "aliasKey": "용산구",
+   "label": "서울 용산구",
+   "labelKey": "서울용산구",
+   "regionId": "r21",
+   "province": "seoul",
+   "kind": "base",
+   "sheetRow": 25
+  },
+  {
+   "alias": "서울 용산구",
+   "aliasKey": "서울용산구",
+   "label": "서울 용산구",
+   "labelKey": "서울용산구",
+   "regionId": "r21",
+   "province": "seoul",
+   "kind": "base-label",
+   "sheetRow": 25
+  },
+  {
+   "alias": "은평구",
+   "aliasKey": "은평구",
+   "label": "서울 은평구",
+   "labelKey": "서울은평구",
+   "regionId": "r22",
+   "province": "seoul",
+   "kind": "base",
+   "sheetRow": 26
+  },
+  {
+   "alias": "서울 은평구",
+   "aliasKey": "서울은평구",
+   "label": "서울 은평구",
+   "labelKey": "서울은평구",
+   "regionId": "r22",
+   "province": "seoul",
+   "kind": "base-label",
+   "sheetRow": 26
+  },
+  {
+   "alias": "종로구",
+   "aliasKey": "종로구",
+   "label": "서울 종로구",
+   "labelKey": "서울종로구",
+   "regionId": "r23",
+   "province": "seoul",
+   "kind": "base",
+   "sheetRow": 27
+  },
+  {
+   "alias": "서울 종로구",
+   "aliasKey": "서울종로구",
+   "label": "서울 종로구",
+   "labelKey": "서울종로구",
+   "regionId": "r23",
+   "province": "seoul",
+   "kind": "base-label",
+   "sheetRow": 27
+  },
+  {
+   "alias": "중구",
+   "aliasKey": "중구",
+   "label": "서울 중구",
+   "labelKey": "서울중구",
+   "regionId": "r24",
+   "province": "seoul",
+   "kind": "base",
+   "sheetRow": 28
+  },
+  {
+   "alias": "서울 중구",
+   "aliasKey": "서울중구",
+   "label": "서울 중구",
+   "labelKey": "서울중구",
+   "regionId": "r24",
+   "province": "seoul",
+   "kind": "base-label",
+   "sheetRow": 28
+  },
+  {
+   "alias": "중랑구",
+   "aliasKey": "중랑구",
+   "label": "서울 중랑구",
+   "labelKey": "서울중랑구",
+   "regionId": "r25",
+   "province": "seoul",
+   "kind": "base",
+   "sheetRow": 29
+  },
+  {
+   "alias": "서울 중랑구",
+   "aliasKey": "서울중랑구",
+   "label": "서울 중랑구",
+   "labelKey": "서울중랑구",
+   "regionId": "r25",
+   "province": "seoul",
+   "kind": "base-label",
+   "sheetRow": 29
+  },
+  {
+   "alias": "가평군",
+   "aliasKey": "가평군",
+   "label": "가평",
+   "labelKey": "가평",
+   "regionId": "r26",
+   "province": "gyeonggi",
+   "kind": "base",
+   "sheetRow": 30
+  },
+  {
+   "alias": "가평",
+   "aliasKey": "가평",
+   "label": "가평",
+   "labelKey": "가평",
+   "regionId": "r26",
+   "province": "gyeonggi",
+   "kind": "base-label",
+   "sheetRow": 30
+  },
+  {
+   "alias": "고양시",
+   "aliasKey": "고양시",
+   "label": "고양",
+   "labelKey": "고양",
+   "regionId": "r27",
+   "province": "gyeonggi",
+   "kind": "base",
+   "sheetRow": 31
+  },
+  {
+   "alias": "고양",
+   "aliasKey": "고양",
+   "label": "고양",
+   "labelKey": "고양",
+   "regionId": "r27",
+   "province": "gyeonggi",
+   "kind": "base-label",
+   "sheetRow": 31
+  },
+  {
+   "alias": "과천시",
+   "aliasKey": "과천시",
+   "label": "과천",
+   "labelKey": "과천",
+   "regionId": "r28",
+   "province": "gyeonggi",
+   "kind": "base",
+   "sheetRow": 32
+  },
+  {
+   "alias": "과천",
+   "aliasKey": "과천",
+   "label": "과천",
+   "labelKey": "과천",
+   "regionId": "r28",
+   "province": "gyeonggi",
+   "kind": "base-label",
+   "sheetRow": 32
+  },
+  {
+   "alias": "광명시",
+   "aliasKey": "광명시",
+   "label": "광명",
+   "labelKey": "광명",
+   "regionId": "r29",
+   "province": "gyeonggi",
+   "kind": "base",
+   "sheetRow": 33
+  },
+  {
+   "alias": "광명",
+   "aliasKey": "광명",
+   "label": "광명",
+   "labelKey": "광명",
+   "regionId": "r29",
+   "province": "gyeonggi",
+   "kind": "base-label",
+   "sheetRow": 33
+  },
+  {
+   "alias": "광주시",
+   "aliasKey": "광주시",
+   "label": "경기광주",
+   "labelKey": "경기광주",
+   "regionId": "r30",
+   "province": "gyeonggi",
+   "kind": "base",
+   "sheetRow": 34
+  },
+  {
+   "alias": "경기광주",
+   "aliasKey": "경기광주",
+   "label": "경기광주",
+   "labelKey": "경기광주",
+   "regionId": "r30",
+   "province": "gyeonggi",
+   "kind": "base-label",
+   "sheetRow": 34
+  },
+  {
+   "alias": "구리시",
+   "aliasKey": "구리시",
+   "label": "구리",
+   "labelKey": "구리",
+   "regionId": "r31",
+   "province": "gyeonggi",
+   "kind": "base",
+   "sheetRow": 35
+  },
+  {
+   "alias": "구리",
+   "aliasKey": "구리",
+   "label": "구리",
+   "labelKey": "구리",
+   "regionId": "r31",
+   "province": "gyeonggi",
+   "kind": "base-label",
+   "sheetRow": 35
+  },
+  {
+   "alias": "군포시",
+   "aliasKey": "군포시",
+   "label": "군포",
+   "labelKey": "군포",
+   "regionId": "r32",
+   "province": "gyeonggi",
+   "kind": "base",
+   "sheetRow": 36
+  },
+  {
+   "alias": "군포",
+   "aliasKey": "군포",
+   "label": "군포",
+   "labelKey": "군포",
+   "regionId": "r32",
+   "province": "gyeonggi",
+   "kind": "base-label",
+   "sheetRow": 36
+  },
+  {
+   "alias": "김포시",
+   "aliasKey": "김포시",
+   "label": "김포",
+   "labelKey": "김포",
+   "regionId": "r33",
+   "province": "gyeonggi",
+   "kind": "base",
+   "sheetRow": 37
+  },
+  {
+   "alias": "김포",
+   "aliasKey": "김포",
+   "label": "김포",
+   "labelKey": "김포",
+   "regionId": "r33",
+   "province": "gyeonggi",
+   "kind": "base-label",
+   "sheetRow": 37
+  },
+  {
+   "alias": "남양주시",
+   "aliasKey": "남양주시",
+   "label": "남양주",
+   "labelKey": "남양주",
+   "regionId": "r34",
+   "province": "gyeonggi",
+   "kind": "base",
+   "sheetRow": 38
+  },
+  {
+   "alias": "남양주",
+   "aliasKey": "남양주",
+   "label": "남양주",
+   "labelKey": "남양주",
+   "regionId": "r34",
+   "province": "gyeonggi",
+   "kind": "base-label",
+   "sheetRow": 38
+  },
+  {
+   "alias": "동두천시",
+   "aliasKey": "동두천시",
+   "label": "동두천",
+   "labelKey": "동두천",
+   "regionId": "r35",
+   "province": "gyeonggi",
+   "kind": "base",
+   "sheetRow": 39
+  },
+  {
+   "alias": "동두천",
+   "aliasKey": "동두천",
+   "label": "동두천",
+   "labelKey": "동두천",
+   "regionId": "r35",
+   "province": "gyeonggi",
+   "kind": "base-label",
+   "sheetRow": 39
+  },
+  {
+   "alias": "부천시",
+   "aliasKey": "부천시",
+   "label": "부천",
+   "labelKey": "부천",
+   "regionId": "r36",
+   "province": "gyeonggi",
+   "kind": "base",
+   "sheetRow": 40
+  },
+  {
+   "alias": "부천",
+   "aliasKey": "부천",
+   "label": "부천",
+   "labelKey": "부천",
+   "regionId": "r36",
+   "province": "gyeonggi",
+   "kind": "base-label",
+   "sheetRow": 40
+  },
+  {
+   "alias": "성남시",
+   "aliasKey": "성남시",
+   "label": "성남",
+   "labelKey": "성남",
+   "regionId": "r37",
+   "province": "gyeonggi",
+   "kind": "base",
+   "sheetRow": 41
+  },
+  {
+   "alias": "성남",
+   "aliasKey": "성남",
+   "label": "성남",
+   "labelKey": "성남",
+   "regionId": "r37",
+   "province": "gyeonggi",
+   "kind": "base-label",
+   "sheetRow": 41
+  },
+  {
+   "alias": "수원시",
+   "aliasKey": "수원시",
+   "label": "수원",
+   "labelKey": "수원",
+   "regionId": "r38",
+   "province": "gyeonggi",
+   "kind": "base",
+   "sheetRow": 42
+  },
+  {
+   "alias": "수원",
+   "aliasKey": "수원",
+   "label": "수원",
+   "labelKey": "수원",
+   "regionId": "r38",
+   "province": "gyeonggi",
+   "kind": "base-label",
+   "sheetRow": 42
+  },
+  {
+   "alias": "시흥시",
+   "aliasKey": "시흥시",
+   "label": "시흥",
+   "labelKey": "시흥",
+   "regionId": "r39",
+   "province": "gyeonggi",
+   "kind": "base",
+   "sheetRow": 43
+  },
+  {
+   "alias": "시흥",
+   "aliasKey": "시흥",
+   "label": "시흥",
+   "labelKey": "시흥",
+   "regionId": "r39",
+   "province": "gyeonggi",
+   "kind": "base-label",
+   "sheetRow": 43
+  },
+  {
+   "alias": "안산시",
+   "aliasKey": "안산시",
+   "label": "안산",
+   "labelKey": "안산",
+   "regionId": "r40",
+   "province": "gyeonggi",
+   "kind": "base",
+   "sheetRow": 44
+  },
+  {
+   "alias": "안산",
+   "aliasKey": "안산",
+   "label": "안산",
+   "labelKey": "안산",
+   "regionId": "r40",
+   "province": "gyeonggi",
+   "kind": "base-label",
+   "sheetRow": 44
+  },
+  {
+   "alias": "안성시",
+   "aliasKey": "안성시",
+   "label": "안성",
+   "labelKey": "안성",
+   "regionId": "r41",
+   "province": "gyeonggi",
+   "kind": "base",
+   "sheetRow": 45
+  },
+  {
+   "alias": "안성",
+   "aliasKey": "안성",
+   "label": "안성",
+   "labelKey": "안성",
+   "regionId": "r41",
+   "province": "gyeonggi",
+   "kind": "base-label",
+   "sheetRow": 45
+  },
+  {
+   "alias": "안양시",
+   "aliasKey": "안양시",
+   "label": "안양",
+   "labelKey": "안양",
+   "regionId": "r42",
+   "province": "gyeonggi",
+   "kind": "base",
+   "sheetRow": 46
+  },
+  {
+   "alias": "안양",
+   "aliasKey": "안양",
+   "label": "안양",
+   "labelKey": "안양",
+   "regionId": "r42",
+   "province": "gyeonggi",
+   "kind": "base-label",
+   "sheetRow": 46
+  },
+  {
+   "alias": "양주시",
+   "aliasKey": "양주시",
+   "label": "양주",
+   "labelKey": "양주",
+   "regionId": "r43",
+   "province": "gyeonggi",
+   "kind": "base",
+   "sheetRow": 47
+  },
+  {
+   "alias": "양주",
+   "aliasKey": "양주",
+   "label": "양주",
+   "labelKey": "양주",
+   "regionId": "r43",
+   "province": "gyeonggi",
+   "kind": "base-label",
+   "sheetRow": 47
+  },
+  {
+   "alias": "양평군",
+   "aliasKey": "양평군",
+   "label": "양평",
+   "labelKey": "양평",
+   "regionId": "r44",
+   "province": "gyeonggi",
+   "kind": "base",
+   "sheetRow": 48
+  },
+  {
+   "alias": "양평",
+   "aliasKey": "양평",
+   "label": "양평",
+   "labelKey": "양평",
+   "regionId": "r44",
+   "province": "gyeonggi",
+   "kind": "base-label",
+   "sheetRow": 48
+  },
+  {
+   "alias": "여주시",
+   "aliasKey": "여주시",
+   "label": "여주",
+   "labelKey": "여주",
+   "regionId": "r45",
+   "province": "gyeonggi",
+   "kind": "base",
+   "sheetRow": 49
+  },
+  {
+   "alias": "여주",
+   "aliasKey": "여주",
+   "label": "여주",
+   "labelKey": "여주",
+   "regionId": "r45",
+   "province": "gyeonggi",
+   "kind": "base-label",
+   "sheetRow": 49
+  },
+  {
+   "alias": "연천군",
+   "aliasKey": "연천군",
+   "label": "연천",
+   "labelKey": "연천",
+   "regionId": "r46",
+   "province": "gyeonggi",
+   "kind": "base",
+   "sheetRow": 50
+  },
+  {
+   "alias": "연천",
+   "aliasKey": "연천",
+   "label": "연천",
+   "labelKey": "연천",
+   "regionId": "r46",
+   "province": "gyeonggi",
+   "kind": "base-label",
+   "sheetRow": 50
+  },
+  {
+   "alias": "오산시",
+   "aliasKey": "오산시",
+   "label": "오산",
+   "labelKey": "오산",
+   "regionId": "r47",
+   "province": "gyeonggi",
+   "kind": "base",
+   "sheetRow": 51
+  },
+  {
+   "alias": "오산",
+   "aliasKey": "오산",
+   "label": "오산",
+   "labelKey": "오산",
+   "regionId": "r47",
+   "province": "gyeonggi",
+   "kind": "base-label",
+   "sheetRow": 51
+  },
+  {
+   "alias": "용인시",
+   "aliasKey": "용인시",
+   "label": "용인",
+   "labelKey": "용인",
+   "regionId": "r48",
+   "province": "gyeonggi",
+   "kind": "base",
+   "sheetRow": 52
+  },
+  {
+   "alias": "용인",
+   "aliasKey": "용인",
+   "label": "용인",
+   "labelKey": "용인",
+   "regionId": "r48",
+   "province": "gyeonggi",
+   "kind": "base-label",
+   "sheetRow": 52
+  },
+  {
+   "alias": "의왕시",
+   "aliasKey": "의왕시",
+   "label": "의왕",
+   "labelKey": "의왕",
+   "regionId": "r49",
+   "province": "gyeonggi",
+   "kind": "base",
+   "sheetRow": 53
+  },
+  {
+   "alias": "의왕",
+   "aliasKey": "의왕",
+   "label": "의왕",
+   "labelKey": "의왕",
+   "regionId": "r49",
+   "province": "gyeonggi",
+   "kind": "base-label",
+   "sheetRow": 53
+  },
+  {
+   "alias": "의정부시",
+   "aliasKey": "의정부시",
+   "label": "의정부",
+   "labelKey": "의정부",
+   "regionId": "r50",
+   "province": "gyeonggi",
+   "kind": "base",
+   "sheetRow": 54
+  },
+  {
+   "alias": "의정부",
+   "aliasKey": "의정부",
+   "label": "의정부",
+   "labelKey": "의정부",
+   "regionId": "r50",
+   "province": "gyeonggi",
+   "kind": "base-label",
+   "sheetRow": 54
+  },
+  {
+   "alias": "이천시",
+   "aliasKey": "이천시",
+   "label": "이천",
+   "labelKey": "이천",
+   "regionId": "r51",
+   "province": "gyeonggi",
+   "kind": "base",
+   "sheetRow": 55
+  },
+  {
+   "alias": "이천",
+   "aliasKey": "이천",
+   "label": "이천",
+   "labelKey": "이천",
+   "regionId": "r51",
+   "province": "gyeonggi",
+   "kind": "base-label",
+   "sheetRow": 55
+  },
+  {
+   "alias": "파주시",
+   "aliasKey": "파주시",
+   "label": "파주",
+   "labelKey": "파주",
+   "regionId": "r52",
+   "province": "gyeonggi",
+   "kind": "base",
+   "sheetRow": 56
+  },
+  {
+   "alias": "파주",
+   "aliasKey": "파주",
+   "label": "파주",
+   "labelKey": "파주",
+   "regionId": "r52",
+   "province": "gyeonggi",
+   "kind": "base-label",
+   "sheetRow": 56
+  },
+  {
+   "alias": "평택시",
+   "aliasKey": "평택시",
+   "label": "평택",
+   "labelKey": "평택",
+   "regionId": "r53",
+   "province": "gyeonggi",
+   "kind": "base",
+   "sheetRow": 57
+  },
+  {
+   "alias": "평택",
+   "aliasKey": "평택",
+   "label": "평택",
+   "labelKey": "평택",
+   "regionId": "r53",
+   "province": "gyeonggi",
+   "kind": "base-label",
+   "sheetRow": 57
+  },
+  {
+   "alias": "포천시",
+   "aliasKey": "포천시",
+   "label": "포천",
+   "labelKey": "포천",
+   "regionId": "r54",
+   "province": "gyeonggi",
+   "kind": "base",
+   "sheetRow": 58
+  },
+  {
+   "alias": "포천",
+   "aliasKey": "포천",
+   "label": "포천",
+   "labelKey": "포천",
+   "regionId": "r54",
+   "province": "gyeonggi",
+   "kind": "base-label",
+   "sheetRow": 58
+  },
+  {
+   "alias": "하남시",
+   "aliasKey": "하남시",
+   "label": "하남",
+   "labelKey": "하남",
+   "regionId": "r55",
+   "province": "gyeonggi",
+   "kind": "base",
+   "sheetRow": 59
+  },
+  {
+   "alias": "하남",
+   "aliasKey": "하남",
+   "label": "하남",
+   "labelKey": "하남",
+   "regionId": "r55",
+   "province": "gyeonggi",
+   "kind": "base-label",
+   "sheetRow": 59
+  },
+  {
+   "alias": "화성시",
+   "aliasKey": "화성시",
+   "label": "화성",
+   "labelKey": "화성",
+   "regionId": "r56",
+   "province": "gyeonggi",
+   "kind": "base",
+   "sheetRow": 60
+  },
+  {
+   "alias": "화성",
+   "aliasKey": "화성",
+   "label": "화성",
+   "labelKey": "화성",
+   "regionId": "r56",
+   "province": "gyeonggi",
+   "kind": "base-label",
+   "sheetRow": 60
+  },
+  {
+   "alias": "영통구",
+   "aliasKey": "영통구",
+   "label": "수원 영통구",
+   "labelKey": "수원영통구",
+   "regionId": "r38",
+   "province": "gyeonggi",
+   "kind": "living-area",
+   "parent": "수원시",
+   "sheetRow": 61
+  },
+  {
+   "alias": "장안구",
+   "aliasKey": "장안구",
+   "label": "수원 장안구",
+   "labelKey": "수원장안구",
+   "regionId": "r38",
+   "province": "gyeonggi",
+   "kind": "living-area",
+   "parent": "수원시",
+   "sheetRow": 62
+  },
+  {
+   "alias": "권선구",
+   "aliasKey": "권선구",
+   "label": "수원 권선구",
+   "labelKey": "수원권선구",
+   "regionId": "r38",
+   "province": "gyeonggi",
+   "kind": "living-area",
+   "parent": "수원시",
+   "sheetRow": 63
+  },
+  {
+   "alias": "팔달구",
+   "aliasKey": "팔달구",
+   "label": "수원 팔달구",
+   "labelKey": "수원팔달구",
+   "regionId": "r38",
+   "province": "gyeonggi",
+   "kind": "living-area",
+   "parent": "수원시",
+   "sheetRow": 64
+  },
+  {
+   "alias": "광교",
+   "aliasKey": "광교",
+   "label": "수원 광교",
+   "labelKey": "수원광교",
+   "regionId": "r38",
+   "province": "gyeonggi",
+   "kind": "living-area",
+   "parent": "수원시",
+   "sheetRow": 65
+  },
+  {
+   "alias": "영통",
+   "aliasKey": "영통",
+   "label": "수원 영통",
+   "labelKey": "수원영통",
+   "regionId": "r38",
+   "province": "gyeonggi",
+   "kind": "living-area",
+   "parent": "수원시",
+   "sheetRow": 66
+  },
+  {
+   "alias": "망포",
+   "aliasKey": "망포",
+   "label": "수원 망포",
+   "labelKey": "수원망포",
+   "regionId": "r38",
+   "province": "gyeonggi",
+   "kind": "living-area",
+   "parent": "수원시",
+   "sheetRow": 67
+  },
+  {
+   "alias": "인계동",
+   "aliasKey": "인계동",
+   "label": "수원 인계동",
+   "labelKey": "수원인계동",
+   "regionId": "r38",
+   "province": "gyeonggi",
+   "kind": "living-area",
+   "parent": "수원시",
+   "sheetRow": 68
+  },
+  {
+   "alias": "동탄",
+   "aliasKey": "동탄",
+   "label": "화성 동탄",
+   "labelKey": "화성동탄",
+   "regionId": "r56",
+   "province": "gyeonggi",
+   "kind": "living-area",
+   "parent": "화성시",
+   "sheetRow": 69
+  },
+  {
+   "alias": "병점",
+   "aliasKey": "병점",
+   "label": "화성 병점",
+   "labelKey": "화성병점",
+   "regionId": "r56",
+   "province": "gyeonggi",
+   "kind": "living-area",
+   "parent": "화성시",
+   "sheetRow": 70
+  },
+  {
+   "alias": "봉담",
+   "aliasKey": "봉담",
+   "label": "화성 봉담",
+   "labelKey": "화성봉담",
+   "regionId": "r56",
+   "province": "gyeonggi",
+   "kind": "living-area",
+   "parent": "화성시",
+   "sheetRow": 71
+  },
+  {
+   "alias": "향남",
+   "aliasKey": "향남",
+   "label": "화성 향남",
+   "labelKey": "화성향남",
+   "regionId": "r56",
+   "province": "gyeonggi",
+   "kind": "living-area",
+   "parent": "화성시",
+   "sheetRow": 72
+  },
+  {
+   "alias": "남양",
+   "aliasKey": "남양",
+   "label": "화성 남양",
+   "labelKey": "화성남양",
+   "regionId": "r56",
+   "province": "gyeonggi",
+   "kind": "living-area",
+   "parent": "화성시",
+   "sheetRow": 73
+  },
+  {
+   "alias": "새솔동",
+   "aliasKey": "새솔동",
+   "label": "화성 새솔동",
+   "labelKey": "화성새솔동",
+   "regionId": "r56",
+   "province": "gyeonggi",
+   "kind": "living-area",
+   "parent": "화성시",
+   "sheetRow": 74
+  },
+  {
+   "alias": "송탄",
+   "aliasKey": "송탄",
+   "label": "평택 송탄",
+   "labelKey": "평택송탄",
+   "regionId": "r53",
+   "province": "gyeonggi",
+   "kind": "living-area",
+   "parent": "평택시",
+   "sheetRow": 75
+  },
+  {
+   "alias": "고덕",
+   "aliasKey": "고덕",
+   "label": "평택 고덕",
+   "labelKey": "평택고덕",
+   "regionId": "r53",
+   "province": "gyeonggi",
+   "kind": "living-area",
+   "parent": "평택시",
+   "sheetRow": 76
+  },
+  {
+   "alias": "비전동",
+   "aliasKey": "비전동",
+   "label": "평택 비전동",
+   "labelKey": "평택비전동",
+   "regionId": "r53",
+   "province": "gyeonggi",
+   "kind": "living-area",
+   "parent": "평택시",
+   "sheetRow": 77
+  },
+  {
+   "alias": "안중",
+   "aliasKey": "안중",
+   "label": "평택 안중",
+   "labelKey": "평택안중",
+   "regionId": "r53",
+   "province": "gyeonggi",
+   "kind": "living-area",
+   "parent": "평택시",
+   "sheetRow": 78
+  },
+  {
+   "alias": "청북",
+   "aliasKey": "청북",
+   "label": "평택 청북",
+   "labelKey": "평택청북",
+   "regionId": "r53",
+   "province": "gyeonggi",
+   "kind": "living-area",
+   "parent": "평택시",
+   "sheetRow": 79
+  },
+  {
+   "alias": "팽성",
+   "aliasKey": "팽성",
+   "label": "평택 팽성",
+   "labelKey": "평택팽성",
+   "regionId": "r53",
+   "province": "gyeonggi",
+   "kind": "living-area",
+   "parent": "평택시",
+   "sheetRow": 80
+  },
+  {
+   "alias": "수지구",
+   "aliasKey": "수지구",
+   "label": "용인 수지구",
+   "labelKey": "용인수지구",
+   "regionId": "r48",
+   "province": "gyeonggi",
+   "kind": "living-area",
+   "parent": "용인시",
+   "sheetRow": 81
+  },
+  {
+   "alias": "기흥구",
+   "aliasKey": "기흥구",
+   "label": "용인 기흥구",
+   "labelKey": "용인기흥구",
+   "regionId": "r48",
+   "province": "gyeonggi",
+   "kind": "living-area",
+   "parent": "용인시",
+   "sheetRow": 82
+  },
+  {
+   "alias": "처인구",
+   "aliasKey": "처인구",
+   "label": "용인 처인구",
+   "labelKey": "용인처인구",
+   "regionId": "r48",
+   "province": "gyeonggi",
+   "kind": "living-area",
+   "parent": "용인시",
+   "sheetRow": 83
+  },
+  {
+   "alias": "죽전",
+   "aliasKey": "죽전",
+   "label": "용인 죽전",
+   "labelKey": "용인죽전",
+   "regionId": "r48",
+   "province": "gyeonggi",
+   "kind": "living-area",
+   "parent": "용인시",
+   "sheetRow": 84
+  },
+  {
+   "alias": "동백",
+   "aliasKey": "동백",
+   "label": "용인 동백",
+   "labelKey": "용인동백",
+   "regionId": "r48",
+   "province": "gyeonggi",
+   "kind": "living-area",
+   "parent": "용인시",
+   "sheetRow": 85
+  },
+  {
+   "alias": "보정동",
+   "aliasKey": "보정동",
+   "label": "용인 보정동",
+   "labelKey": "용인보정동",
+   "regionId": "r48",
+   "province": "gyeonggi",
+   "kind": "living-area",
+   "parent": "용인시",
+   "sheetRow": 86
+  },
+  {
+   "alias": "분당구",
+   "aliasKey": "분당구",
+   "label": "성남 분당구",
+   "labelKey": "성남분당구",
+   "regionId": "r37",
+   "province": "gyeonggi",
+   "kind": "living-area",
+   "parent": "성남시",
+   "sheetRow": 87
+  },
+  {
+   "alias": "수정구",
+   "aliasKey": "수정구",
+   "label": "성남 수정구",
+   "labelKey": "성남수정구",
+   "regionId": "r37",
+   "province": "gyeonggi",
+   "kind": "living-area",
+   "parent": "성남시",
+   "sheetRow": 88
+  },
+  {
+   "alias": "중원구",
+   "aliasKey": "중원구",
+   "label": "성남 중원구",
+   "labelKey": "성남중원구",
+   "regionId": "r37",
+   "province": "gyeonggi",
+   "kind": "living-area",
+   "parent": "성남시",
+   "sheetRow": 89
+  },
+  {
+   "alias": "판교",
+   "aliasKey": "판교",
+   "label": "성남 판교",
+   "labelKey": "성남판교",
+   "regionId": "r37",
+   "province": "gyeonggi",
+   "kind": "living-area",
+   "parent": "성남시",
+   "sheetRow": 90
+  },
+  {
+   "alias": "정자동",
+   "aliasKey": "정자동",
+   "label": "성남 정자동",
+   "labelKey": "성남정자동",
+   "regionId": "r37",
+   "province": "gyeonggi",
+   "kind": "living-area",
+   "parent": "성남시",
+   "sheetRow": 91
+  },
+  {
+   "alias": "야탑",
+   "aliasKey": "야탑",
+   "label": "성남 야탑",
+   "labelKey": "성남야탑",
+   "regionId": "r37",
+   "province": "gyeonggi",
+   "kind": "living-area",
+   "parent": "성남시",
+   "sheetRow": 92
+  },
+  {
+   "alias": "덕양구",
+   "aliasKey": "덕양구",
+   "label": "고양 덕양구",
+   "labelKey": "고양덕양구",
+   "regionId": "r27",
+   "province": "gyeonggi",
+   "kind": "living-area",
+   "parent": "고양시",
+   "sheetRow": 93
+  },
+  {
+   "alias": "일산동구",
+   "aliasKey": "일산동구",
+   "label": "고양 일산동구",
+   "labelKey": "고양일산동구",
+   "regionId": "r27",
+   "province": "gyeonggi",
+   "kind": "living-area",
+   "parent": "고양시",
+   "sheetRow": 94
+  },
+  {
+   "alias": "일산서구",
+   "aliasKey": "일산서구",
+   "label": "고양 일산서구",
+   "labelKey": "고양일산서구",
+   "regionId": "r27",
+   "province": "gyeonggi",
+   "kind": "living-area",
+   "parent": "고양시",
+   "sheetRow": 95
+  },
+  {
+   "alias": "화정",
+   "aliasKey": "화정",
+   "label": "고양 화정",
+   "labelKey": "고양화정",
+   "regionId": "r27",
+   "province": "gyeonggi",
+   "kind": "living-area",
+   "parent": "고양시",
+   "sheetRow": 96
+  },
+  {
+   "alias": "삼송",
+   "aliasKey": "삼송",
+   "label": "고양 삼송",
+   "labelKey": "고양삼송",
+   "regionId": "r27",
+   "province": "gyeonggi",
+   "kind": "living-area",
+   "parent": "고양시",
+   "sheetRow": 97
+  },
+  {
+   "alias": "원미구",
+   "aliasKey": "원미구",
+   "label": "부천 원미구",
+   "labelKey": "부천원미구",
+   "regionId": "r36",
+   "province": "gyeonggi",
+   "kind": "living-area",
+   "parent": "부천시",
+   "sheetRow": 98
+  },
+  {
+   "alias": "소사구",
+   "aliasKey": "소사구",
+   "label": "부천 소사구",
+   "labelKey": "부천소사구",
+   "regionId": "r36",
+   "province": "gyeonggi",
+   "kind": "living-area",
+   "parent": "부천시",
+   "sheetRow": 99
+  },
+  {
+   "alias": "오정구",
+   "aliasKey": "오정구",
+   "label": "부천 오정구",
+   "labelKey": "부천오정구",
+   "regionId": "r36",
+   "province": "gyeonggi",
+   "kind": "living-area",
+   "parent": "부천시",
+   "sheetRow": 100
+  },
+  {
+   "alias": "중동",
+   "aliasKey": "중동",
+   "label": "부천 중동",
+   "labelKey": "부천중동",
+   "regionId": "r36",
+   "province": "gyeonggi",
+   "kind": "living-area",
+   "parent": "부천시",
+   "sheetRow": 101
+  },
+  {
+   "alias": "상동",
+   "aliasKey": "상동",
+   "label": "부천 상동",
+   "labelKey": "부천상동",
+   "regionId": "r36",
+   "province": "gyeonggi",
+   "kind": "living-area",
+   "parent": "부천시",
+   "sheetRow": 102
+  },
+  {
+   "alias": "만안구",
+   "aliasKey": "만안구",
+   "label": "안양 만안구",
+   "labelKey": "안양만안구",
+   "regionId": "r42",
+   "province": "gyeonggi",
+   "kind": "living-area",
+   "parent": "안양시",
+   "sheetRow": 103
+  },
+  {
+   "alias": "동안구",
+   "aliasKey": "동안구",
+   "label": "안양 동안구",
+   "labelKey": "안양동안구",
+   "regionId": "r42",
+   "province": "gyeonggi",
+   "kind": "living-area",
+   "parent": "안양시",
+   "sheetRow": 104
+  },
+  {
+   "alias": "평촌",
+   "aliasKey": "평촌",
+   "label": "안양 평촌",
+   "labelKey": "안양평촌",
+   "regionId": "r42",
+   "province": "gyeonggi",
+   "kind": "living-area",
+   "parent": "안양시",
+   "sheetRow": 105
+  },
+  {
+   "alias": "상록구",
+   "aliasKey": "상록구",
+   "label": "안산 상록구",
+   "labelKey": "안산상록구",
+   "regionId": "r40",
+   "province": "gyeonggi",
+   "kind": "living-area",
+   "parent": "안산시",
+   "sheetRow": 106
+  },
+  {
+   "alias": "단원구",
+   "aliasKey": "단원구",
+   "label": "안산 단원구",
+   "labelKey": "안산단원구",
+   "regionId": "r40",
+   "province": "gyeonggi",
+   "kind": "living-area",
+   "parent": "안산시",
+   "sheetRow": 107
+  },
+  {
+   "alias": "고잔동",
+   "aliasKey": "고잔동",
+   "label": "안산 고잔동",
+   "labelKey": "안산고잔동",
+   "regionId": "r40",
+   "province": "gyeonggi",
+   "kind": "living-area",
+   "parent": "안산시",
+   "sheetRow": 108
+  },
+  {
+   "alias": "역삼동",
+   "aliasKey": "역삼동",
+   "label": "강남구 역삼동",
+   "labelKey": "강남구역삼동",
+   "regionId": "r01",
+   "province": "seoul",
+   "kind": "living-area",
+   "parent": "강남구",
+   "sheetRow": 109
+  },
+  {
+   "alias": "삼성동",
+   "aliasKey": "삼성동",
+   "label": "강남구 삼성동",
+   "labelKey": "강남구삼성동",
+   "regionId": "r01",
+   "province": "seoul",
+   "kind": "living-area",
+   "parent": "강남구",
+   "sheetRow": 110
+  },
+  {
+   "alias": "마곡",
+   "aliasKey": "마곡",
+   "label": "강서구 마곡",
+   "labelKey": "강서구마곡",
+   "regionId": "r04",
+   "province": "seoul",
+   "kind": "living-area",
+   "parent": "강서구",
+   "sheetRow": 111
+  },
+  {
+   "alias": "화곡동",
+   "aliasKey": "화곡동",
+   "label": "강서구 화곡동",
+   "labelKey": "강서구화곡동",
+   "regionId": "r04",
+   "province": "seoul",
+   "kind": "living-area",
+   "parent": "강서구",
+   "sheetRow": 112
+  },
+  {
+   "alias": "잠실",
+   "aliasKey": "잠실",
+   "label": "송파구 잠실",
+   "labelKey": "송파구잠실",
+   "regionId": "r18",
+   "province": "seoul",
+   "kind": "living-area",
+   "parent": "송파구",
+   "sheetRow": 113
+  },
+  {
+   "alias": "문정동",
+   "aliasKey": "문정동",
+   "label": "송파구 문정동",
+   "labelKey": "송파구문정동",
+   "regionId": "r18",
+   "province": "seoul",
+   "kind": "living-area",
+   "parent": "송파구",
+   "sheetRow": 114
+  },
+  {
+   "alias": "구래동",
+   "aliasKey": "구래동",
+   "label": "김포 구래동",
+   "labelKey": "김포구래동",
+   "regionId": "r33",
+   "province": "gyeonggi",
+   "kind": "living-area",
+   "parent": "김포시",
+   "sheetRow": 115
+  },
+  {
+   "alias": "장기동",
+   "aliasKey": "장기동",
+   "label": "김포 장기동",
+   "labelKey": "김포장기동",
+   "regionId": "r33",
+   "province": "gyeonggi",
+   "kind": "living-area",
+   "parent": "김포시",
+   "sheetRow": 116
+  },
+  {
+   "alias": "다산",
+   "aliasKey": "다산",
+   "label": "남양주 다산",
+   "labelKey": "남양주다산",
+   "regionId": "r34",
+   "province": "gyeonggi",
+   "kind": "living-area",
+   "parent": "남양주시",
+   "sheetRow": 117
+  },
+  {
+   "alias": "별내",
+   "aliasKey": "별내",
+   "label": "남양주 별내",
+   "labelKey": "남양주별내",
+   "regionId": "r34",
+   "province": "gyeonggi",
+   "kind": "living-area",
+   "parent": "남양주시",
+   "sheetRow": 118
+  },
+  {
+   "alias": "운정",
+   "aliasKey": "운정",
+   "label": "파주 운정",
+   "labelKey": "파주운정",
+   "regionId": "r52",
+   "province": "gyeonggi",
+   "kind": "living-area",
+   "parent": "파주시",
+   "sheetRow": 119
+  },
+  {
+   "alias": "금촌",
+   "aliasKey": "금촌",
+   "label": "파주 금촌",
+   "labelKey": "파주금촌",
+   "regionId": "r52",
+   "province": "gyeonggi",
+   "kind": "living-area",
+   "parent": "파주시",
+   "sheetRow": 120
+  },
+  {
+   "alias": "미사",
+   "aliasKey": "미사",
+   "label": "하남 미사",
+   "labelKey": "하남미사",
+   "regionId": "r55",
+   "province": "gyeonggi",
+   "kind": "living-area",
+   "parent": "하남시",
+   "sheetRow": 121
+  },
+  {
+   "alias": "태전동",
+   "aliasKey": "태전동",
+   "label": "경기광주 태전동",
+   "labelKey": "경기광주태전동",
+   "regionId": "r30",
+   "province": "gyeonggi",
+   "kind": "living-area",
+   "parent": "광주시",
+   "sheetRow": 122
+  },
+  {
+   "alias": "오포",
+   "aliasKey": "오포",
+   "label": "경기광주 오포",
+   "labelKey": "경기광주오포",
+   "regionId": "r30",
+   "province": "gyeonggi",
+   "kind": "living-area",
+   "parent": "광주시",
+   "sheetRow": 123
+  },
+  {
+   "alias": "경기도",
+   "aliasKey": "경기도",
+   "label": "경기",
+   "labelKey": "경기",
+   "regionId": null,
+   "province": "gyeonggi",
+   "kind": "province",
+   "sheetRow": null
+  },
+  {
+   "alias": "경기",
+   "aliasKey": "경기",
+   "label": "경기",
+   "labelKey": "경기",
+   "regionId": null,
+   "province": "gyeonggi",
+   "kind": "province",
+   "sheetRow": null
+  },
+  {
+   "alias": "서울",
+   "aliasKey": "서울",
+   "label": "서울",
+   "labelKey": "서울",
+   "regionId": null,
+   "province": "seoul",
+   "kind": "province",
+   "sheetRow": null
+  },
+  {
+   "alias": "서울특별시",
+   "aliasKey": "서울특별시",
+   "label": "서울",
+   "labelKey": "서울",
+   "regionId": null,
+   "province": "seoul",
+   "kind": "province",
+   "sheetRow": null
+  }
+ ]
+}
