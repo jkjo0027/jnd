@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<title>자동문 모션 영상 (자동문만) | 제이앤디시스템</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<style>html,body{margin:0;height:100%;background:#000}a{color:#000}a:hover{color:#000}</style>
+<script>window.JND_DOORS_ONLY = true;</script>
+<script>window.OM_SCENES = '[{"name":"Sliding","dur":5,"desc":"편개 자동문 — 센서 감지 후 한 장이 열렸다 닫힘"},{"name":"BiParting","dur":5,"desc":"양개 자동문으로 카메라 이동, 가운데서 양옆으로 열림"},{"name":"Swing","dur":5,"desc":"스윙 자동문 — 여닫이가 자동으로 열렸다 닫힘"},{"name":"Lineup","dur":3.5,"desc":"세 종류가 한 화면에 모이고 동시에 열림"}]';</script>
+<script>window.OM_PLAYBACK = '{"mode":"times","count":1}';</script>
+<script>window.TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{"motionEditor":true,"accent":"옐로우"}/*EDITMODE-END*/;</script>
+</helmet>
+<x-import component-from-global-scope="JNDVideoApp" from="./animations-v3.jsx ./tweaks-panel.jsx ./jnd-video.jsx" hint-size="100%,100vh"></x-import>
+</x-dc>
+</body>
+</html>

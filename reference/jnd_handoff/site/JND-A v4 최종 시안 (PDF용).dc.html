@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<title>A안 v4 최종 시안 | 제이앤디시스템</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<script src="./doc-page.js"></script>
+<style>
+doc-page:not(:defined){visibility:hidden}
+*{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+*{animation-delay:-99s!important;animation-duration:.001s!important;animation-iteration-count:1!important;animation-fill-mode:both!important;animation-play-state:running!important;transition-duration:0s!important}
+doc-page [style*="position:sticky"]{position:static!important}
+doc-page [style*="position:fixed"]{display:none!important}
+body{margin:0;font-family:"Pretendard Variable",Pretendard,-apple-system,sans-serif;word-break:keep-all}
+a{color:#000}a:hover{color:#000}
+</style>
+</helmet>
+<doc-page orientation="landscape" margin="0">
+  <dc-import name="JND-A v4" palette="지정 1 · 옐로우 + 블랙" print-mode="{{ true }}" hint-size="100%,1200px"></dc-import>
+</doc-page>
+</x-dc>
+</body>
+</html>

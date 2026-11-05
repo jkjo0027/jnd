@@ -1,0 +1,885 @@
+{
+ "at": "2026-11-05T02:54:55.907Z",
+ "threshold": 0.75,
+ "pairs": [],
+ "identical": [],
+ "top": [
+  {
+   "a": "/guides/g18/",
+   "b": "/guides/g27/",
+   "score": 0.486,
+   "how": "5gram-jaccard"
+  },
+  {
+   "a": "/services/repair/",
+   "b": "/services/switch/",
+   "score": 0.481,
+   "how": "5gram-jaccard"
+  },
+  {
+   "a": "/guides/g05/",
+   "b": "/guides/g14/",
+   "score": 0.474,
+   "how": "5gram-jaccard"
+  },
+  {
+   "a": "/guides/g06/",
+   "b": "/guides/g15/",
+   "score": 0.442,
+   "how": "5gram-jaccard"
+  },
+  {
+   "a": "/guides/g08/",
+   "b": "/guides/g17/",
+   "score": 0.424,
+   "how": "5gram-jaccard"
+  },
+  {
+   "a": "/guides/g04/",
+   "b": "/guides/g13/",
+   "score": 0.404,
+   "how": "5gram-jaccard"
+  },
+  {
+   "a": "/guides/g02/",
+   "b": "/guides/g11/",
+   "score": 0.402,
+   "how": "5gram-jaccard"
+  },
+  {
+   "a": "/guides/g21/",
+   "b": "/guides/g24/",
+   "score": 0.391,
+   "how": "5gram-jaccard"
+  },
+  {
+   "a": "/guides/g03/",
+   "b": "/guides/g12/",
+   "score": 0.39,
+   "how": "5gram-jaccard"
+  },
+  {
+   "a": "/areas/seoul/r07/repair/",
+   "b": "/areas/seoul/r25/repair/",
+   "score": 0.387,
+   "how": "5gram-jaccard"
+  }
+ ],
+ "stats": {
+  "pairs": 13041,
+  "max": 0.486,
+  "mean": 0.112
+ },
+ "docs": [
+  {
+   "path": "/",
+   "chars": 2936,
+   "hash": "e675ebdca55e92df"
+  },
+  {
+   "path": "/services/repair/",
+   "chars": 4367,
+   "hash": "279232d9b72b1ab0"
+  },
+  {
+   "path": "/services/install/",
+   "chars": 3313,
+   "hash": "acfa8ab1f2320c27"
+  },
+  {
+   "path": "/services/sensor/",
+   "chars": 3164,
+   "hash": "1b06720ff1cef180"
+  },
+  {
+   "path": "/services/motor/",
+   "chars": 3242,
+   "hash": "8f296b49203696a4"
+  },
+  {
+   "path": "/areas/seoul/",
+   "chars": 2296,
+   "hash": "5e904c44546dce3b"
+  },
+  {
+   "path": "/areas/gyeonggi/",
+   "chars": 2924,
+   "hash": "ca20440e28c0986e"
+  },
+  {
+   "path": "/areas/seoul/r01/repair/",
+   "chars": 3998,
+   "hash": "a874f7cefc7abd75"
+  },
+  {
+   "path": "/areas/seoul/r01/install/",
+   "chars": 3482,
+   "hash": "b691da53a8c85c9e"
+  },
+  {
+   "path": "/areas/seoul/r02/repair/",
+   "chars": 4058,
+   "hash": "db88aab02f59a7ed"
+  },
+  {
+   "path": "/areas/seoul/r02/install/",
+   "chars": 3502,
+   "hash": "0c453d9735adde6c"
+  },
+  {
+   "path": "/areas/seoul/r03/repair/",
+   "chars": 4021,
+   "hash": "9bd85783fafdae3e"
+  },
+  {
+   "path": "/areas/seoul/r03/install/",
+   "chars": 3445,
+   "hash": "5eab164d2b1c20b5"
+  },
+  {
+   "path": "/areas/seoul/r04/repair/",
+   "chars": 4154,
+   "hash": "e104f58118711c29"
+  },
+  {
+   "path": "/areas/seoul/r04/install/",
+   "chars": 3571,
+   "hash": "2094e78715f3337c"
+  },
+  {
+   "path": "/areas/seoul/r05/repair/",
+   "chars": 3951,
+   "hash": "b43bfea47eaa92e2"
+  },
+  {
+   "path": "/areas/seoul/r05/install/",
+   "chars": 3400,
+   "hash": "6598286cc1aae97f"
+  },
+  {
+   "path": "/areas/seoul/r06/repair/",
+   "chars": 3952,
+   "hash": "aa1cc9864a830287"
+  },
+  {
+   "path": "/areas/seoul/r06/install/",
+   "chars": 3473,
+   "hash": "11c6f24d747af2e8"
+  },
+  {
+   "path": "/areas/seoul/r07/repair/",
+   "chars": 3993,
+   "hash": "80fcbbc38dfb5780"
+  },
+  {
+   "path": "/areas/seoul/r07/install/",
+   "chars": 3382,
+   "hash": "02503d9550ee95c2"
+  },
+  {
+   "path": "/areas/seoul/r08/repair/",
+   "chars": 3954,
+   "hash": "b0ec8437f70aaa09"
+  },
+  {
+   "path": "/areas/seoul/r08/install/",
+   "chars": 3461,
+   "hash": "9b2dd3118ac53556"
+  },
+  {
+   "path": "/areas/seoul/r08/sensor/",
+   "chars": 3052,
+   "hash": "97805fd5c0311f34"
+  },
+  {
+   "path": "/areas/seoul/r09/repair/",
+   "chars": 3962,
+   "hash": "1bdbc10d3222ace1"
+  },
+  {
+   "path": "/areas/seoul/r09/install/",
+   "chars": 3375,
+   "hash": "bf03a396ffd4da90"
+  },
+  {
+   "path": "/areas/seoul/r10/repair/",
+   "chars": 3993,
+   "hash": "eec7e1cabc0e1446"
+  },
+  {
+   "path": "/areas/seoul/r10/install/",
+   "chars": 3342,
+   "hash": "3f7781b25b045c0d"
+  },
+  {
+   "path": "/areas/seoul/r11/repair/",
+   "chars": 4035,
+   "hash": "0e3bf357a976c6a8"
+  },
+  {
+   "path": "/areas/seoul/r11/install/",
+   "chars": 3515,
+   "hash": "20280a23a3cad8c6"
+  },
+  {
+   "path": "/areas/seoul/r12/repair/",
+   "chars": 4017,
+   "hash": "b9758228ae2b380d"
+  },
+  {
+   "path": "/areas/seoul/r12/install/",
+   "chars": 3503,
+   "hash": "206b3770eb6f9da9"
+  },
+  {
+   "path": "/areas/seoul/r13/repair/",
+   "chars": 4019,
+   "hash": "832c14e035f4a5f6"
+  },
+  {
+   "path": "/areas/seoul/r13/install/",
+   "chars": 3386,
+   "hash": "157deb76186953c7"
+  },
+  {
+   "path": "/areas/seoul/r14/repair/",
+   "chars": 4143,
+   "hash": "dec0940a4da1a1f4"
+  },
+  {
+   "path": "/areas/seoul/r14/install/",
+   "chars": 3374,
+   "hash": "1250d718fe570a4f"
+  },
+  {
+   "path": "/areas/seoul/r15/repair/",
+   "chars": 3889,
+   "hash": "62163af81eb46053"
+  },
+  {
+   "path": "/areas/seoul/r15/install/",
+   "chars": 3365,
+   "hash": "e7e96a931c4e8077"
+  },
+  {
+   "path": "/areas/seoul/r16/repair/",
+   "chars": 4027,
+   "hash": "470c2cf8368d9d5d"
+  },
+  {
+   "path": "/areas/seoul/r16/install/",
+   "chars": 3475,
+   "hash": "2ecdf960d0a197bc"
+  },
+  {
+   "path": "/areas/seoul/r17/repair/",
+   "chars": 4008,
+   "hash": "c3abcec65c014d6a"
+  },
+  {
+   "path": "/areas/seoul/r17/install/",
+   "chars": 3322,
+   "hash": "a632364e1f433998"
+  },
+  {
+   "path": "/areas/seoul/r18/repair/",
+   "chars": 4090,
+   "hash": "fa5ee186f1c05cfa"
+  },
+  {
+   "path": "/areas/seoul/r18/install/",
+   "chars": 3577,
+   "hash": "2637dc8e54e3acf9"
+  },
+  {
+   "path": "/areas/seoul/r19/repair/",
+   "chars": 3915,
+   "hash": "2a367b23a40e43f0"
+  },
+  {
+   "path": "/areas/seoul/r19/install/",
+   "chars": 3407,
+   "hash": "ab94c926f396a5c5"
+  },
+  {
+   "path": "/areas/seoul/r20/repair/",
+   "chars": 4040,
+   "hash": "c516746a87f645d8"
+  },
+  {
+   "path": "/areas/seoul/r20/install/",
+   "chars": 3431,
+   "hash": "35e1b8c6ee0ed764"
+  },
+  {
+   "path": "/areas/seoul/r21/repair/",
+   "chars": 3972,
+   "hash": "931b7c95ba28e55a"
+  },
+  {
+   "path": "/areas/seoul/r21/install/",
+   "chars": 3587,
+   "hash": "8bc81f3e1de834b2"
+  },
+  {
+   "path": "/areas/seoul/r21/motor/",
+   "chars": 3141,
+   "hash": "f5d847c9cc787c5d"
+  },
+  {
+   "path": "/areas/seoul/r22/repair/",
+   "chars": 3997,
+   "hash": "896f7faf90208da0"
+  },
+  {
+   "path": "/areas/seoul/r22/install/",
+   "chars": 3350,
+   "hash": "f37535c7f7fe5a0e"
+  },
+  {
+   "path": "/areas/seoul/r23/repair/",
+   "chars": 4043,
+   "hash": "8b049fb703203512"
+  },
+  {
+   "path": "/areas/seoul/r23/install/",
+   "chars": 3511,
+   "hash": "646bcf963c6f41ea"
+  },
+  {
+   "path": "/areas/seoul/r24/repair/",
+   "chars": 3985,
+   "hash": "4601dd94a8a7de4f"
+  },
+  {
+   "path": "/areas/seoul/r24/install/",
+   "chars": 3510,
+   "hash": "21a44626d79a1059"
+  },
+  {
+   "path": "/areas/seoul/r25/repair/",
+   "chars": 3996,
+   "hash": "0341af787194f302"
+  },
+  {
+   "path": "/areas/seoul/r25/install/",
+   "chars": 3454,
+   "hash": "51377c302b8a73a9"
+  },
+  {
+   "path": "/areas/gyeonggi/r26/repair/",
+   "chars": 3973,
+   "hash": "3a91f9f5be1da66c"
+  },
+  {
+   "path": "/areas/gyeonggi/r26/install/",
+   "chars": 3410,
+   "hash": "38e82834016a2e53"
+  },
+  {
+   "path": "/areas/gyeonggi/r27/repair/",
+   "chars": 4052,
+   "hash": "3efe7929370f9be4"
+  },
+  {
+   "path": "/areas/gyeonggi/r27/install/",
+   "chars": 3554,
+   "hash": "dc2c106e1aaf5701"
+  },
+  {
+   "path": "/areas/gyeonggi/r28/repair/",
+   "chars": 4023,
+   "hash": "20185b8499937442"
+  },
+  {
+   "path": "/areas/gyeonggi/r28/install/",
+   "chars": 3341,
+   "hash": "659f51e67433753e"
+  },
+  {
+   "path": "/areas/gyeonggi/r29/repair/",
+   "chars": 3935,
+   "hash": "8d8d5aa6752cd32d"
+  },
+  {
+   "path": "/areas/gyeonggi/r29/install/",
+   "chars": 3356,
+   "hash": "c0350b3779ff6c12"
+  },
+  {
+   "path": "/areas/gyeonggi/r30/repair/",
+   "chars": 4070,
+   "hash": "c9bc57d88f994427"
+  },
+  {
+   "path": "/areas/gyeonggi/r30/install/",
+   "chars": 3413,
+   "hash": "ef0c9f1fd5918754"
+  },
+  {
+   "path": "/areas/gyeonggi/r31/repair/",
+   "chars": 3992,
+   "hash": "760923612907f3f4"
+  },
+  {
+   "path": "/areas/gyeonggi/r31/install/",
+   "chars": 3430,
+   "hash": "e9a681da17d0eff3"
+  },
+  {
+   "path": "/areas/gyeonggi/r32/repair/",
+   "chars": 4020,
+   "hash": "2c27666a6e6dcb2e"
+  },
+  {
+   "path": "/areas/gyeonggi/r32/install/",
+   "chars": 3422,
+   "hash": "c1122a8da3a8e782"
+  },
+  {
+   "path": "/areas/gyeonggi/r33/repair/",
+   "chars": 3961,
+   "hash": "10c4ea465f071c30"
+  },
+  {
+   "path": "/areas/gyeonggi/r33/install/",
+   "chars": 3300,
+   "hash": "734c7dff9098aea6"
+  },
+  {
+   "path": "/areas/gyeonggi/r34/repair/",
+   "chars": 4028,
+   "hash": "db7d258102d8310d"
+  },
+  {
+   "path": "/areas/gyeonggi/r34/install/",
+   "chars": 3449,
+   "hash": "6974fafe59ebc5e3"
+  },
+  {
+   "path": "/areas/gyeonggi/r35/repair/",
+   "chars": 3963,
+   "hash": "2699e9dbdc6a5996"
+  },
+  {
+   "path": "/areas/gyeonggi/r35/install/",
+   "chars": 3346,
+   "hash": "d51052657ce324e5"
+  },
+  {
+   "path": "/areas/gyeonggi/r36/repair/",
+   "chars": 4054,
+   "hash": "0942024c48fbdff8"
+  },
+  {
+   "path": "/areas/gyeonggi/r36/install/",
+   "chars": 3462,
+   "hash": "5fe9bff791e00046"
+  },
+  {
+   "path": "/areas/gyeonggi/r37/repair/",
+   "chars": 4160,
+   "hash": "61aadfa1ff32dd61"
+  },
+  {
+   "path": "/areas/gyeonggi/r37/install/",
+   "chars": 3607,
+   "hash": "31fb9805b4cf27d6"
+  },
+  {
+   "path": "/areas/gyeonggi/r38/repair/",
+   "chars": 4550,
+   "hash": "21caf87fded44154"
+  },
+  {
+   "path": "/areas/gyeonggi/r38/install/",
+   "chars": 3881,
+   "hash": "b260e68a27ddf886"
+  },
+  {
+   "path": "/areas/gyeonggi/r39/repair/",
+   "chars": 3971,
+   "hash": "66023d3ae450ee74"
+  },
+  {
+   "path": "/areas/gyeonggi/r39/install/",
+   "chars": 3345,
+   "hash": "0d7d379a3c09e82d"
+  },
+  {
+   "path": "/areas/gyeonggi/r40/repair/",
+   "chars": 4006,
+   "hash": "9e202d09993753d8"
+  },
+  {
+   "path": "/areas/gyeonggi/r40/install/",
+   "chars": 3432,
+   "hash": "e09ac88026bf168b"
+  },
+  {
+   "path": "/areas/gyeonggi/r41/repair/",
+   "chars": 3983,
+   "hash": "503a0321a9ae148d"
+  },
+  {
+   "path": "/areas/gyeonggi/r41/install/",
+   "chars": 3376,
+   "hash": "8e0b5970a8142cca"
+  },
+  {
+   "path": "/areas/gyeonggi/r42/repair/",
+   "chars": 4103,
+   "hash": "75c2b836fcd384e4"
+  },
+  {
+   "path": "/areas/gyeonggi/r42/install/",
+   "chars": 3407,
+   "hash": "0270638a3caf8b4d"
+  },
+  {
+   "path": "/areas/gyeonggi/r43/repair/",
+   "chars": 3950,
+   "hash": "172c3ecb027d1b24"
+  },
+  {
+   "path": "/areas/gyeonggi/r43/install/",
+   "chars": 3387,
+   "hash": "e1e8184ab10a346d"
+  },
+  {
+   "path": "/areas/gyeonggi/r44/repair/",
+   "chars": 4003,
+   "hash": "bb8d11c0f29eca73"
+  },
+  {
+   "path": "/areas/gyeonggi/r44/install/",
+   "chars": 3359,
+   "hash": "f7976f81f740af33"
+  },
+  {
+   "path": "/areas/gyeonggi/r45/repair/",
+   "chars": 3956,
+   "hash": "9fe70a611e87adf8"
+  },
+  {
+   "path": "/areas/gyeonggi/r45/install/",
+   "chars": 3383,
+   "hash": "489fcb37c471a8d9"
+  },
+  {
+   "path": "/areas/gyeonggi/r46/repair/",
+   "chars": 4045,
+   "hash": "5053ef433d776930"
+  },
+  {
+   "path": "/areas/gyeonggi/r46/install/",
+   "chars": 3380,
+   "hash": "9d3cd8d50b217fb8"
+  },
+  {
+   "path": "/areas/gyeonggi/r47/repair/",
+   "chars": 4003,
+   "hash": "baf010c512ca3c24"
+  },
+  {
+   "path": "/areas/gyeonggi/r47/install/",
+   "chars": 3335,
+   "hash": "a6ac7c607cd70ec3"
+  },
+  {
+   "path": "/areas/gyeonggi/r48/repair/",
+   "chars": 3998,
+   "hash": "3e7d694afd45a1e9"
+  },
+  {
+   "path": "/areas/gyeonggi/r48/install/",
+   "chars": 3581,
+   "hash": "698f88ed0353f95c"
+  },
+  {
+   "path": "/areas/gyeonggi/r49/repair/",
+   "chars": 3890,
+   "hash": "c4787a8348f5fdd6"
+  },
+  {
+   "path": "/areas/gyeonggi/r49/install/",
+   "chars": 3324,
+   "hash": "9c7c8c2812f1eb77"
+  },
+  {
+   "path": "/areas/gyeonggi/r50/repair/",
+   "chars": 4013,
+   "hash": "7f1db4cfd77cbae6"
+  },
+  {
+   "path": "/areas/gyeonggi/r50/install/",
+   "chars": 3377,
+   "hash": "63e5b9a814b195d4"
+  },
+  {
+   "path": "/areas/gyeonggi/r51/repair/",
+   "chars": 3912,
+   "hash": "a7fb15438b0f2628"
+  },
+  {
+   "path": "/areas/gyeonggi/r51/install/",
+   "chars": 3367,
+   "hash": "2fc7c77dc8e4d426"
+  },
+  {
+   "path": "/areas/gyeonggi/r52/repair/",
+   "chars": 3949,
+   "hash": "242386964e81d481"
+  },
+  {
+   "path": "/areas/gyeonggi/r52/install/",
+   "chars": 3453,
+   "hash": "b2fee074bd9733fc"
+  },
+  {
+   "path": "/areas/gyeonggi/r53/repair/",
+   "chars": 4382,
+   "hash": "1b877ba5ac7e9d41"
+  },
+  {
+   "path": "/areas/gyeonggi/r53/install/",
+   "chars": 3765,
+   "hash": "acac10b71da80035"
+  },
+  {
+   "path": "/areas/gyeonggi/r54/repair/",
+   "chars": 4006,
+   "hash": "ecd5489a843bca65"
+  },
+  {
+   "path": "/areas/gyeonggi/r54/install/",
+   "chars": 3409,
+   "hash": "f24e6ea7c3ab8232"
+  },
+  {
+   "path": "/areas/gyeonggi/r55/repair/",
+   "chars": 3952,
+   "hash": "377a20c881695953"
+  },
+  {
+   "path": "/areas/gyeonggi/r55/install/",
+   "chars": 3369,
+   "hash": "f7fc538bd83009c3"
+  },
+  {
+   "path": "/areas/gyeonggi/r56/repair/",
+   "chars": 4470,
+   "hash": "fc094adcf8006d9a"
+  },
+  {
+   "path": "/areas/gyeonggi/r56/install/",
+   "chars": 3880,
+   "hash": "320ad1397730446b"
+  },
+  {
+   "path": "/guides/g01/",
+   "chars": 3761,
+   "hash": "925b70d7798407d0"
+  },
+  {
+   "path": "/guides/g02/",
+   "chars": 3554,
+   "hash": "1457ff3006946a25"
+  },
+  {
+   "path": "/guides/g03/",
+   "chars": 3450,
+   "hash": "80c45b428e51c597"
+  },
+  {
+   "path": "/guides/g04/",
+   "chars": 3435,
+   "hash": "29265dabfee98420"
+  },
+  {
+   "path": "/guides/g05/",
+   "chars": 3364,
+   "hash": "6dd6c6af54bec1c0"
+  },
+  {
+   "path": "/guides/g06/",
+   "chars": 3274,
+   "hash": "81ea39c9e8f00633"
+  },
+  {
+   "path": "/guides/g07/",
+   "chars": 3403,
+   "hash": "bb314c40607aaf5f"
+  },
+  {
+   "path": "/guides/g08/",
+   "chars": 3218,
+   "hash": "e26f822ac3e384fe"
+  },
+  {
+   "path": "/guides/g09/",
+   "chars": 3233,
+   "hash": "1c337183d0e618c7"
+  },
+  {
+   "path": "/guides/g10/",
+   "chars": 3243,
+   "hash": "b6739c5309891e78"
+  },
+  {
+   "path": "/guides/g11/",
+   "chars": 3109,
+   "hash": "bd7c9328bf8551ec"
+  },
+  {
+   "path": "/guides/g12/",
+   "chars": 3024,
+   "hash": "fa3b008d05610875"
+  },
+  {
+   "path": "/guides/g13/",
+   "chars": 3190,
+   "hash": "439cb66c37bb1085"
+  },
+  {
+   "path": "/guides/g14/",
+   "chars": 3456,
+   "hash": "399af8ec0d455318"
+  },
+  {
+   "path": "/guides/g15/",
+   "chars": 3175,
+   "hash": "593b74c50939a68d"
+  },
+  {
+   "path": "/guides/g16/",
+   "chars": 3255,
+   "hash": "ac6e603e395682af"
+  },
+  {
+   "path": "/guides/g17/",
+   "chars": 3322,
+   "hash": "a5418a1e6eee32cf"
+  },
+  {
+   "path": "/guides/g18/",
+   "chars": 3390,
+   "hash": "9e395dad2e47d171"
+  },
+  {
+   "path": "/guides/g19/",
+   "chars": 3275,
+   "hash": "88570aad702aed04"
+  },
+  {
+   "path": "/guides/g20/",
+   "chars": 3285,
+   "hash": "5af6c53807dc2517"
+  },
+  {
+   "path": "/guides/g21/",
+   "chars": 3212,
+   "hash": "1e143cfef7055554"
+  },
+  {
+   "path": "/guides/g22/",
+   "chars": 3178,
+   "hash": "db6f16e8fe70a9f7"
+  },
+  {
+   "path": "/guides/g23/",
+   "chars": 3244,
+   "hash": "3e6626c208129028"
+  },
+  {
+   "path": "/guides/g24/",
+   "chars": 3174,
+   "hash": "26ef531e07572b5e"
+  },
+  {
+   "path": "/guides/g25/",
+   "chars": 3323,
+   "hash": "1e3f5522b13c1995"
+  },
+  {
+   "path": "/guides/g26/",
+   "chars": 3261,
+   "hash": "dffc4df194ee3c2d"
+  },
+  {
+   "path": "/guides/g27/",
+   "chars": 3322,
+   "hash": "e5cd38073c166664"
+  },
+  {
+   "path": "/guides/g28/",
+   "chars": 3162,
+   "hash": "1d819ca05977efd9"
+  },
+  {
+   "path": "/areas/",
+   "chars": 1063,
+   "hash": "36b1fb5e9981b6e8"
+  },
+  {
+   "path": "/guides/",
+   "chars": 1328,
+   "hash": "7e1ad8ac141f17f5"
+  },
+  {
+   "path": "/cases/",
+   "chars": 250,
+   "hash": "07f52c0178ca921d"
+  },
+  {
+   "path": "/services/",
+   "chars": 467,
+   "hash": "b08b6d497fb14f2c"
+  },
+  {
+   "path": "/about/",
+   "chars": 1006,
+   "hash": "0a79924bc8208fef"
+  },
+  {
+   "path": "/faq/",
+   "chars": 884,
+   "hash": "a2b909d2cbb8db68"
+  },
+  {
+   "path": "/contact/",
+   "chars": 315,
+   "hash": "1e6ba02f04b2da21"
+  },
+  {
+   "path": "/privacy/",
+   "chars": 379,
+   "hash": "dd37a698cb6ccf78"
+  },
+  {
+   "path": "/services/switch/",
+   "chars": 3063,
+   "hash": "c3ef2ef62574831c"
+  },
+  {
+   "path": "/services/keypad/",
+   "chars": 2921,
+   "hash": "d6f4e781f43d8298"
+  },
+  {
+   "path": "/cases/c1/",
+   "chars": 282,
+   "hash": "bbee6e8a8b1fd620"
+  },
+  {
+   "path": "/cases/c2/",
+   "chars": 249,
+   "hash": "02e8ece1af737a5f"
+  },
+  {
+   "path": "/cases/c3/",
+   "chars": 264,
+   "hash": "2bdb2642cd69c71d"
+  }
+ ]
+}

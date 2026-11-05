@@ -1,0 +1,1247 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<title>A안 v4 — 지정 컬러·자동문 종류 | 제이앤디시스템</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<link rel="stylesheet" href="https://unpkg.com/lucide-static@0.460.0/font/lucide.css">
+<style>
+:root{--brand-name:"제이앤디시스템";--band-on-bg:#fff;--band-on-fg:#14181E;--band-off-bg:rgba(255,255,255,.14);--blue:#2B66F0;--blue-t:#2B66F0;--on-accent:#fff;--on-dark:#8FB0FF;--blue-600:#1F55D4;--blue-700:#1846B3;--blue-50:#EEF3FE;--blue-100:#DCE6FD;--ink:#14181E;--g700:#363D47;--g600:#555E6B;--g500:#6E7682;--g400:#9DA4AE;--g300:#C9CED5;--line:#E4E7EB;--g100:#F2F4F6;--g50:#F8F9FA;--ok:#0F7B55;--ok-50:#E7F5EF;--warn:#A75A00;--warn-50:#FDF2E3;--err:#D02F3A;--err-50:#FDECEE;--fs-d:clamp(32px,5.2vw,48px);--fs-1:clamp(26px,3.6vw,34px);--fs-2:22px;--fs-3:18px;--fs-b:16px;--fs-s:14px;--fs-c:13px;--r-s:8px;--r-m:14px;--r-l:20px;--r-xl:28px;--ease:cubic-bezier(.2,.8,.2,1);--sh-1:0 1px 2px rgba(16,24,40,.04),0 1px 3px rgba(16,24,40,.06);--sh-2:0 2px 4px -2px rgba(16,24,40,.05),0 8px 20px -4px rgba(16,24,40,.08);--sh-3:0 8px 16px -8px rgba(16,24,40,.10),0 24px 48px -12px rgba(16,24,40,.18);--sh-btn:0 1px 2px rgba(16,24,40,.10),0 6px 16px -6px rgba(43,102,240,.55),inset 0 1px 0 rgba(255,255,255,.14);--sh-btn-h:0 2px 4px rgba(16,24,40,.10),0 12px 24px -8px rgba(43,102,240,.6),inset 0 1px 0 rgba(255,255,255,.14)}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}html{scroll-padding-top:132px}
+body{font-family:"Pretendard Variable",Pretendard,-apple-system,sans-serif;color:var(--ink);background:#fff;-webkit-font-smoothing:antialiased;word-break:keep-all}
+button,input,select,textarea{font-family:inherit;font-size:inherit;color:inherit}
+button{cursor:pointer}
+button:disabled{cursor:not-allowed}
+a{color:var(--blue-t);text-decoration:none}
+a:hover{color:var(--ink);text-decoration:underline}
+:focus-visible{outline:3px solid var(--blue);outline-offset:2px}
+[class^="icon-"]{line-height:1;display:inline-block}
+html{scroll-behavior:smooth}
+button,a,input,select,textarea{transition:background-color .2s var(--ease),color .2s var(--ease),border-color .2s var(--ease),box-shadow .3s var(--ease),transform .3s var(--ease),opacity .2s var(--ease)}
+button:not(:disabled):active,a:active{transform:translateY(0) scale(.97)!important}
+button img,a img{transition:transform .8s var(--ease)}
+button:hover img,a:hover img{transform:scale(1.045)}
+::selection{background:rgba(43,102,240,.18)}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important;scroll-behavior:auto!important}}
+@keyframes rise{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+@keyframes shimmer{0%{background-position:-400px 0}100%{background-position:400px 0}}
+@keyframes spin{to{transform:rotate(360deg)}}
+@keyframes dPen{0%,30%{transform:translateX(94%)}45%,85%{transform:none}100%{transform:translateX(94%)}}
+@keyframes dYL{0%,30%{transform:translateX(-94%)}45%,85%{transform:none}100%{transform:translateX(-94%)}}
+@keyframes dYR{0%,30%{transform:translateX(94%)}45%,85%{transform:none}100%{transform:translateX(94%)}}
+@keyframes dSw{0%,30%{transform:rotateY(-68deg)}45%,85%{transform:none}100%{transform:rotateY(-68deg)}}
+@keyframes dLed{0%,30%{background:#2BD46A;box-shadow:0 0 6px #2BD46A}45%,85%{background:#5B636E;box-shadow:none}100%{background:#2BD46A;box-shadow:0 0 6px #2BD46A}}
+@keyframes toastIn{from{opacity:0;transform:translate(-50%,16px)}to{opacity:1;transform:translate(-50%,0)}}
+</style>
+</helmet>
+<div ref="{{ rootRef }}" style="min-height:100vh;background:#fff">
+
+<sc-if value="{{ showBar }}" hint-placeholder-val="{{ true }}">
+<div style="position:sticky;top:0;z-index:60;background:#0E1116;color:#fff;display:flex;align-items:center;gap:12px;padding:8px clamp(12px,3vw,24px);font-size:13px">
+  <span style="font-weight:700;letter-spacing:-0.01em;white-space:nowrap">A안 v4 · 지정 컬러 반영</span>
+  <span style="opacity:.6;white-space:nowrap">화면 이동</span>
+  <select value="{{ cur }}" onChange="{{ onMenu }}" aria-label="화면 이동" style="flex:1;min-width:0;max-width:320px;height:36px;border-radius:var(--r-m);border:1px solid #333944;background:#1B2029;color:#fff;padding:0 10px;font-size:13px">
+    <optgroup label="사용자 화면"><sc-for list="{{ menuU }}" as="m" hint-placeholder-count="12"><option value="{{ m.k }}">{{ m.l }}</option></sc-for></optgroup>
+    <optgroup label="관리자 화면"><sc-for list="{{ menuA }}" as="m" hint-placeholder-count="9"><option value="{{ m.k }}">{{ m.l }}</option></sc-for></optgroup>
+  </select>
+  <a href="JND-A v2.dc.html" style="color:#9DB8FF;white-space:nowrap">이전 A안</a>
+  <a href="JND-B.dc.html" style="color:#9DB8FF;white-space:nowrap">B안</a>
+</div>
+</sc-if>
+
+<sc-if value="{{ isUser }}" hint-placeholder-val="{{ true }}">
+<header style="position:sticky;top:52px;z-index:50;background:rgba(255,255,255,.78);backdrop-filter:saturate(180%) blur(20px);-webkit-backdrop-filter:saturate(180%) blur(20px);box-shadow:0 1px 0 rgba(16,24,40,.04);border-bottom:1px solid var(--line)">
+  <div style="max-width:1120px;margin:0 auto;padding:0 clamp(20px,4vw,40px);height:64px;display:flex;align-items:center;gap:24px">
+    <button onClick="{{ nav.home }}" style="display:flex;align-items:center;gap:10px;border:0;background:none;padding:0;height:48px;font-size:18px;font-weight:800;letter-spacing:-0.03em;border-radius:var(--r-m)">
+      <svg viewBox="0 0 40 40" width="34" height="34" aria-hidden="true" style="flex:none;display:block"><path fill="var(--ink)" fill-rule="evenodd" d="M14 4h9a15 15 0 0 1 0 30h-9zM20 10v18h3a9 9 0 0 0 0-18z"></path><path fill="var(--blue)" stroke="#fff" stroke-width="3" paint-order="stroke" stroke-linejoin="round" d="M14 13h6v16a9 9 0 0 1-18 0v-1.5h6V29a3 3 0 0 0 6 0z"></path></svg><span style="display:flex;flex-direction:column;align-items:flex-start;line-height:1"><span style="font-size:17px;font-weight:800;letter-spacing:-0.035em;color:var(--ink)">{{ B }}</span><span style="margin-top:4px;white-space:nowrap;font-size:9.5px;font-weight:700;letter-spacing:.22em;color:var(--g500)">J&amp;D SYSTEM</span></span>
+    </button>
+    <sc-if value="{{ desk }}" hint-placeholder-val="{{ false }}">
+      <nav style="display:flex;gap:4px;flex:1">
+        <button onClick="{{ nav.services }}" style="height:48px;padding:0 16px;border:0;background:none;border-radius:var(--r-m);font-size:15px;font-weight:600;color:var(--g700)" style-hover="background:var(--g100)">서비스</button>
+        <button onClick="{{ nav.regions }}" style="height:48px;padding:0 16px;border:0;background:none;border-radius:var(--r-m);font-size:15px;font-weight:600;color:var(--g700)" style-hover="background:var(--g100)">출장 지역</button>
+        <button onClick="{{ nav.cases }}" style="height:48px;padding:0 16px;border:0;background:none;border-radius:var(--r-m);font-size:15px;font-weight:600;color:var(--g700)" style-hover="background:var(--g100)">시공사례</button>
+        <button onClick="{{ nav.faq }}" style="height:48px;padding:0 16px;border:0;background:none;border-radius:var(--r-m);font-size:15px;font-weight:600;color:var(--g700)" style-hover="background:var(--g100)">자주 묻는 질문</button>
+        <button onClick="{{ nav.about }}" style="height:48px;padding:0 16px;border:0;background:none;border-radius:var(--r-m);font-size:15px;font-weight:600;color:var(--g700)" style-hover="background:var(--g100)">업체 소개</button>
+      </nav>
+      <button onClick="{{ nav.contact }}" style="height:48px;padding:0 16px;border:0;background:none;border-radius:var(--r-m);font-size:15px;font-weight:600;color:var(--g700)" style-hover="background:var(--g100)">문의 남기기</button>
+      <a href="{{ telP }}" style="display:flex;align-items:center;gap:8px;height:48px;padding:0 20px;border-radius:var(--r-m);background:var(--blue);color:var(--on-accent);font-weight:700;font-size:15px;text-decoration:none;box-shadow:var(--sh-btn)" style-hover="background:var(--blue-600);color:#fff;text-decoration:none;transform:translateY(-1px);box-shadow:var(--sh-btn-h)"><i class="icon-phone" style="font-size:18px"></i><span style="display:block;height:20px;overflow:hidden"><span style="display:flex;flex-direction:column;transform:translateY({{ tick.y20 }});transition:transform .6s cubic-bezier(.2,.8,.2,1)"><sc-for list="{{ phones }}" as="p" hint-placeholder-count="5"><span style="display:block;height:20px;line-height:20px;font-variant-numeric:tabular-nums;white-space:nowrap">{{ p.n }}</span></sc-for></span></span></a>
+    </sc-if>
+    <sc-if value="{{ mob }}" hint-placeholder-val="{{ true }}">
+      <span style="flex:1"></span>
+      <button onClick="{{ nav.regions }}" aria-label="지역 찾기" style="width:48px;height:48px;border:0;background:none;border-radius:var(--r-m);display:grid;place-items:center" style-active="background:var(--g100)"><i class="icon-map-pin" style="font-size:22px"></i></button>
+      <button onClick="{{ nav.services }}" aria-label="메뉴" style="width:48px;height:48px;border:0;background:none;border-radius:var(--r-m);display:grid;place-items:center" style-active="background:var(--g100)"><i class="icon-menu" style="font-size:22px"></i></button>
+    </sc-if>
+  </div>
+</header>
+
+<sc-if value="{{ s.home }}" hint-placeholder-val="{{ true }}">
+<main data-screen-label="01 메인">
+  <section aria-label="메인" style="position:relative;overflow:hidden;isolation:isolate;background:#0B0E13;color:#fff">
+    <div aria-hidden="true" style="position:absolute;top:40px;left:0;right:0;bottom:0;transform:scale({{ door.zoom }});transition:transform 2.6s cubic-bezier(.2,.8,.2,1)"><x-import component-from-global-scope="JNDDoorLoop" from="./animations-v3.jsx ./jnd-video.jsx" bare="{{ true }}" still="{{ vidStill }}" hint-size="100%,100%" style="position:absolute;inset:0"></x-import></div>
+    <div aria-hidden="true" style="position:absolute;inset:0;background:var(--ink);opacity:.9;-webkit-mask-image:linear-gradient(90deg,#000 0%,rgba(0,0,0,.88) 45%,rgba(0,0,0,.35) 100%);mask-image:linear-gradient(90deg,#000 0%,rgba(0,0,0,.88) 45%,rgba(0,0,0,.35) 100%)"></div>
+    <div aria-hidden="true" style="position:absolute;top:0;left:0;right:0;height:40px;z-index:5;background:linear-gradient(180deg,#434B57 0%,#262B33 100%);border-bottom:2px solid #0B0E13;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:0 clamp(20px,4vw,40px)">
+      <span style="font-size:11px;font-weight:800;letter-spacing:.32em;color:#C3C9D1;white-space:nowrap">SPEED AUTODOOR · SD-2000</span>
+      <span style="display:flex;align-items:center;gap:8px;font-size:11px;font-weight:700;letter-spacing:.24em;color:#9AA3AF"><span style="width:8px;height:8px;border-radius:50%;background:{{ door.led }};box-shadow:0 0 10px {{ door.led }};transition:background-color .4s"></span>SENSOR</span>
+    </div>
+    <sc-if value="{{ showBar }}" hint-placeholder-val="{{ true }}">
+    <div aria-hidden="true" style="position:absolute;top:40px;bottom:0;left:0;width:50%;z-index:4;pointer-events:none;transform:translateX({{ door.l }});transition:transform 1.6s cubic-bezier(.7,0,.2,1);background:linear-gradient(100deg,rgba(196,212,228,.34) 0%,rgba(196,212,228,.16) 38%,rgba(255,255,255,.30) 46%,rgba(196,212,228,.12) 54%,rgba(196,212,228,.22) 100%);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);border-right:8px solid #9AA2AD;box-shadow:inset 0 0 0 6px #7D8590">
+      <div style="position:absolute;left:6px;right:6px;top:52%;height:34px;background:rgba(255,255,255,.88);display:flex;align-items:center;justify-content:center;gap:10px;font-size:12px;font-weight:800;letter-spacing:.32em;color:#14181E"><i class="icon-arrow-left" style="font-size:14px"></i>AUTOMATIC DOOR</div>
+    </div>
+    <div aria-hidden="true" style="position:absolute;top:40px;bottom:0;right:0;width:50%;z-index:4;pointer-events:none;transform:translateX({{ door.r }});transition:transform 1.6s cubic-bezier(.7,0,.2,1);background:linear-gradient(260deg,rgba(196,212,228,.34) 0%,rgba(196,212,228,.16) 38%,rgba(255,255,255,.30) 46%,rgba(196,212,228,.12) 54%,rgba(196,212,228,.22) 100%);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);border-left:8px solid #9AA2AD;box-shadow:inset 0 0 0 6px #7D8590">
+      <div style="position:absolute;left:6px;right:6px;top:52%;height:34px;background:rgba(255,255,255,.88);display:flex;align-items:center;justify-content:center;gap:10px;font-size:12px;font-weight:800;letter-spacing:.32em;color:#14181E"><i class="icon-arrow-right" style="font-size:14px"></i>AUTOMATIC DOOR</div>
+    </div>
+    </sc-if>
+    <div style="position:relative;z-index:2;max-width:1120px;margin:0 auto;padding:calc(40px + clamp(40px,6vw,80px)) clamp(20px,4vw,40px) clamp(48px,7vw,96px);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,440px),1fr));gap:clamp(40px,5vw,72px);align-items:center">
+      <div>
+        <p style="display:flex;align-items:center;gap:10px;margin:0 0 24px;font-size:var(--fs-s);font-weight:700;color:var(--on-dark)"><span style="width:24px;height:2px;background:currentColor"></span>자동문 설치 · 수리 전문기업</p>
+        <h1 style="margin:0 0 24px;font-size:clamp(36px,5.4vw,60px);line-height:1.14;letter-spacing:-0.045em;font-weight:800;text-wrap:balance">자동문의 시작부터 끝까지,<br><span style="color:var(--on-dark)">{{ B }}</span>이 책임집니다</h1>
+        <p style="margin:0 0 12px;font-size:var(--fs-3);font-weight:700;line-height:1.5">자동문을 이해하는 기술력, 믿고 맡길 수 있는 전문가</p>
+        <p style="margin:0 0 32px;font-size:var(--fs-b);line-height:1.75;color:#C3C9D1;max-width:520px;text-wrap:pretty">자체 브랜드 스피드자동문의 오퍼레이터와 컨트롤러, 스위치를 직접 설계·공급합니다. 자동문 설치부터 정확한 고장 원인 진단, 합리적인 수리와 사후관리까지 함께합니다.</p>
+        <div style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;max-width:520px;margin-bottom:28px">
+          <button onClick="{{ nav.services }}" style="display:flex;align-items:center;gap:10px;height:56px;padding:0 16px;border:1px solid rgba(255,255,255,.16);border-radius:var(--r-m);background:rgba(255,255,255,.06);color:#fff;font-size:var(--fs-b);font-weight:700;text-align:left" style-hover="background:rgba(255,255,255,.14)"><i class="icon-square-plus" style="font-size:20px;color:var(--on-dark)"></i>자동문 신규 설치</button>
+          <button onClick="{{ nav.services }}" style="display:flex;align-items:center;gap:10px;height:56px;padding:0 16px;border:1px solid rgba(255,255,255,.16);border-radius:var(--r-m);background:rgba(255,255,255,.06);color:#fff;font-size:var(--fs-b);font-weight:700;text-align:left" style-hover="background:rgba(255,255,255,.14)"><i class="icon-wrench" style="font-size:20px;color:var(--on-dark)"></i>고장 수리</button>
+          <button onClick="{{ nav.services }}" style="display:flex;align-items:center;gap:10px;height:56px;padding:0 16px;border:1px solid rgba(255,255,255,.16);border-radius:var(--r-m);background:rgba(255,255,255,.06);color:#fff;font-size:var(--fs-b);font-weight:700;text-align:left" style-hover="background:rgba(255,255,255,.14)"><i class="icon-radar" style="font-size:20px;color:var(--on-dark)"></i>센서·스위치 교체</button>
+          <button onClick="{{ nav.about }}" style="display:flex;align-items:center;gap:10px;height:56px;padding:0 16px;border:1px solid rgba(255,255,255,.16);border-radius:var(--r-m);background:rgba(255,255,255,.06);color:#fff;font-size:var(--fs-b);font-weight:700;text-align:left" style-hover="background:rgba(255,255,255,.14)"><i class="icon-shield-check" style="font-size:20px;color:var(--on-dark)"></i>1년 무상 A/S</button>
+        </div>
+        <p style="display:flex;align-items:center;gap:8px;margin:0;font-size:var(--fs-s);color:#C3C9D1"><i class="icon-zap" style="font-size:16px;color:var(--on-dark)"></i>경기도권 당일 출장 · 긴급 출장 가능</p>
+      </div>
+      <div style="background:#fff;color:var(--ink);border-radius:var(--r-xl);box-shadow:0 24px 64px -16px rgba(0,0,0,.55);padding:clamp(20px,3vw,28px)">
+        <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:6px"><span style="display:flex;align-items:center;gap:8px;font-size:var(--fs-s);font-weight:800;color:var(--blue-t)"><span style="width:8px;height:8px;border-radius:50%;background:var(--blue)"></span>전화 상담</span><span style="font-size:var(--fs-c);font-weight:600;color:var(--g600)">{{ I.hours }}</span></div>
+        <h2 style="margin:0 0 18px;font-size:var(--fs-2);font-weight:800;letter-spacing:-0.03em;line-height:1.35">자동문 고장·설치,<br>전문 기사가 바로 상담합니다</h2>
+        <div style="display:flex;flex-direction:column;gap:6px">
+          <sc-for list="{{ phones }}" as="p" hint-placeholder-count="5">
+            <a href="{{ p.tel }}" style="display:flex;align-items:center;gap:14px;min-height:60px;padding:0 18px;border-radius:var(--r-m);background:{{ p.bg }};color:{{ p.fg }};text-decoration:none;transition:background-color .6s var(--ease),color .6s var(--ease),transform .3s var(--ease)" style-hover="text-decoration:none;transform:translateX(4px)">
+              <i class="icon-phone-call" style="font-size:20px;color:{{ p.ic }};transition:color .6s"></i>
+              <span style="flex:1;font-size:clamp(22px,2.4vw,27px);font-weight:800;letter-spacing:-0.02em;font-variant-numeric:tabular-nums;white-space:nowrap">{{ p.n }}</span>
+              <span style="display:flex;align-items:center;gap:4px;font-size:13px;font-weight:700;opacity:{{ p.op }};transition:opacity .6s;white-space:nowrap">바로 걸기<i class="icon-arrow-right" style="font-size:14px"></i></span>
+            </a>
+          </sc-for>
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:14px">
+          <a href="sms:010-8804-1555" style="display:flex;align-items:center;justify-content:center;gap:8px;height:52px;border-radius:var(--r-m);background:var(--g100);color:var(--ink);font-size:var(--fs-s);font-weight:700;text-decoration:none" style-hover="background:var(--line);color:var(--ink);text-decoration:none"><i class="icon-message-square" style="font-size:18px"></i>사진으로 견적</a>
+          <button onClick="{{ nav.contact }}" style="height:52px;border:0;border-radius:var(--r-m);background:var(--g100);font-size:var(--fs-s);font-weight:700" style-hover="background:var(--line)">문의 남기기</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section aria-label="시공 대상" style="background:#fff;border-bottom:1px solid var(--line)">
+    <div style="max-width:1120px;margin:0 auto;padding:24px clamp(20px,4vw,40px);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,440px),1fr));gap:16px 48px">
+      <div style="display:flex;flex-wrap:wrap;align-items:center;gap:8px 6px"><span style="margin-right:8px;font-size:var(--fs-c);font-weight:800;color:var(--g700)">시공 현장</span><sc-for list="{{ D.BUILDINGS }}" as="b" hint-placeholder-count="12"><span style="height:32px;padding:0 12px;border-radius:999px;background:var(--g100);display:inline-flex;align-items:center;font-size:var(--fs-c);font-weight:600;color:var(--g700)">{{ b }}</span></sc-for></div>
+      <div style="display:flex;flex-wrap:wrap;align-items:center;gap:8px 6px"><span style="margin-right:8px;font-size:var(--fs-c);font-weight:800;color:var(--g700)">호환 제조사</span><sc-for list="{{ D.BRANDS }}" as="b" hint-placeholder-count="11"><span style="height:32px;padding:0 12px;border-radius:999px;border:1px solid var(--line);display:inline-flex;align-items:center;font-size:var(--fs-c);font-weight:600;color:var(--g700)">{{ b }}</span></sc-for></div>
+    </div>
+  </section>
+
+  <section aria-label="회사 개요" style="border-bottom:1px solid var(--line);background:#fff">
+    <div style="max-width:1120px;margin:0 auto;padding:0 clamp(20px,4vw,40px);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,180px),1fr))">
+      <div style="padding:28px 24px 28px 0;border-right:1px solid var(--line)"><p style="margin:0 0 6px;font-size:var(--fs-c);font-weight:600;color:var(--g600)">설립</p><p style="margin:0;font-size:28px;font-weight:800;letter-spacing:-0.03em;font-variant-numeric:tabular-nums">2018<span style="font-size:var(--fs-b);font-weight:700;margin-left:4px">년</span></p></div>
+      <div style="padding:28px 24px;border-right:1px solid var(--line)"><p style="margin:0 0 6px;font-size:var(--fs-c);font-weight:600;color:var(--g600)">전국 대리점</p><p style="margin:0;font-size:28px;font-weight:800;letter-spacing:-0.03em;font-variant-numeric:tabular-nums">27<span style="font-size:var(--fs-b);font-weight:700;margin-left:4px">곳</span></p></div>
+      <div style="padding:28px 24px;border-right:1px solid var(--line)"><p style="margin:0 0 6px;font-size:var(--fs-c);font-weight:600;color:var(--g600)">SD 시리즈 스위치</p><p style="margin:0;font-size:28px;font-weight:800;letter-spacing:-0.03em;font-variant-numeric:tabular-nums">16<span style="font-size:var(--fs-b);font-weight:700;margin-left:4px">종</span></p></div>
+      <div style="padding:28px 24px;border-right:1px solid var(--line)"><p style="margin:0 0 6px;font-size:var(--fs-c);font-weight:600;color:var(--g600)">설치 후 무상 A/S</p><p style="margin:0;font-size:28px;font-weight:800;letter-spacing:-0.03em;font-variant-numeric:tabular-nums">1<span style="font-size:var(--fs-b);font-weight:700;margin-left:4px">년</span></p></div>
+      <div style="padding:28px 0 28px 24px"><p style="margin:0 0 6px;font-size:var(--fs-c);font-weight:600;color:var(--g600)">자체 브랜드</p><p style="margin:0;font-size:22px;font-weight:800;letter-spacing:-0.03em;line-height:1.3">스피드자동문<span style="display:block;font-size:var(--fs-c);font-weight:600;color:var(--g600);margin-top:4px">상표·디자인특허 등록</span></p></div>
+    </div>
+  </section>
+
+  <section id="diagnose" style="padding:clamp(56px,8vw,104px) 0;background:var(--g50)">
+    <div style="max-width:1120px;margin:0 auto;padding:0 clamp(20px,4vw,40px);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));gap:clamp(40px,5vw,72px);align-items:start">
+      <div>
+        <p style="margin:0 0 12px;font-size:var(--fs-s);font-weight:700;color:var(--blue-t);font-variant-numeric:tabular-nums">01</p>
+        <h2 style="margin:0 0 16px;font-size:var(--fs-1);font-weight:800;letter-spacing:-0.035em;line-height:1.25">증상으로 고장 원인 찾기</h2>
+        <p style="margin:0 0 32px;font-size:var(--fs-b);line-height:1.65;color:var(--g600);max-width:460px;text-wrap:pretty">자동문 고장은 대부분 센서·스위치·컨트롤러 중 한 곳에서 시작돼요. 증상과 지역을 고르면 예상 원인과 조치 방법, 비슷한 시공사례를 바로 보여드려요.</p>
+        <dl style="margin:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr))">
+          <div style="padding:16px 12px 0 0"><dt style="font-size:var(--fs-c);font-weight:600;color:var(--g600);margin-bottom:6px">본사</dt><dd style="margin:0;font-size:var(--fs-b);font-weight:700">경기 평택</dd></div>
+          <div style="padding:16px 12px 0;border-left:1px solid var(--line)"><dt style="font-size:var(--fs-c);font-weight:600;color:var(--g600);margin-bottom:6px">주요 지역</dt><dd style="margin:0;font-size:var(--fs-b);font-weight:700">화성·수원·용인</dd></div>
+          <div style="padding:16px 0 0 12px;border-left:1px solid var(--line)"><dt style="font-size:var(--fs-c);font-weight:600;color:var(--g600);margin-bottom:6px">출장 범위</dt><dd style="margin:0;font-size:var(--fs-b);font-weight:700">수도권·충청권</dd></div>
+        </dl>
+      </div>
+      <div style="border:0;background:#fff;box-shadow:var(--sh-1);border-radius:var(--r-xl);box-shadow:var(--sh-3);overflow:hidden">
+        <div style="display:flex;align-items:center;gap:12px;height:56px;padding:0 20px;border-bottom:1px solid var(--line)">
+          <sc-if value="{{ home.canBack }}" hint-placeholder-val="{{ false }}">
+            <button onClick="{{ home.back }}" aria-label="이전 단계" style="width:40px;height:40px;margin-left:-12px;border:0;background:none;border-radius:var(--r-m);display:grid;place-items:center" style-hover="background:var(--g100)"><i class="icon-arrow-left" style="font-size:20px"></i></button>
+          </sc-if>
+          <span style="font-size:var(--fs-s);font-weight:700;white-space:nowrap">증상 진단</span>
+          <div style="flex:1;height:2px;background:var(--g100)"><div style="height:100%;width:{{ home.progress }};background:var(--blue);transition:width .5s cubic-bezier(.2,.8,.2,1)"></div></div>
+          <span style="font-size:var(--fs-s);font-weight:600;color:var(--g600);font-variant-numeric:tabular-nums">{{ home.stepLabel }}</span>
+        </div>
+        <div style="padding:clamp(20px,3vw,32px)">
+          <sc-if value="{{ home.step0 }}" hint-placeholder-val="{{ true }}">
+            <div style="animation:rise .5s cubic-bezier(.2,.8,.2,1) both">
+              <h2 style="margin:0 0 8px;font-size:var(--fs-1);line-height:1.25;letter-spacing:-0.03em;font-weight:800">문이 어떻게 고장났나요?</h2>
+              <p style="margin:0 0 24px;font-size:var(--fs-b);color:var(--g600)">가장 가까운 증상을 골라 주세요.</p>
+              <div style="display:flex;flex-direction:column;border-top:1px solid var(--line)">
+                <sc-for list="{{ home.symList }}" as="o" hint-placeholder-count="7">
+                  <button onClick="{{ o.pick }}" style="display:flex;align-items:center;gap:14px;min-height:60px;padding:0 8px;border:0;border-bottom:1px solid var(--line);background:#fff;text-align:left;font-size:var(--fs-b);font-weight:600" style-hover="background:var(--blue-50);color:var(--ink)">
+                    <i class="icon-{{ o.icon }}" style="font-size:20px;color:var(--blue-t)"></i><span style="flex:1">{{ o.t }}</span><i class="icon-chevron-right" style="font-size:18px;color:var(--g400)"></i>
+                  </button>
+                </sc-for>
+              </div>
+              <a href="{{ telP }}" style="margin-top:12px;display:flex;align-items:center;gap:6px;min-height:44px;font-size:var(--fs-s);font-weight:600;color:var(--g600);border-radius:var(--r-m)">증상을 잘 모르겠어요 — 바로 전화할게요<i class="icon-arrow-right" style="font-size:14px"></i></a>
+            </div>
+          </sc-if>
+          <sc-if value="{{ home.step1 }}" hint-placeholder-val="{{ false }}">
+            <div style="animation:rise .5s cubic-bezier(.2,.8,.2,1) both">
+              <p style="display:flex;align-items:center;gap:8px;margin:0 0 16px;font-size:var(--fs-s);font-weight:700;color:var(--blue-t)"><i class="icon-{{ home.sym.icon }}" style="font-size:16px"></i>{{ home.sym.t }}</p>
+              <h2 style="margin:0 0 8px;font-size:var(--fs-1);line-height:1.25;letter-spacing:-0.03em;font-weight:800">자동문이 있는 곳은 어디인가요?</h2>
+              <p style="margin:0 0 24px;font-size:var(--fs-b);line-height:1.6;color:var(--g600)">지역을 고르면 출장 가능 여부도 함께 알려드려요.</p>
+              <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:8px">
+                <sc-for list="{{ home.picks }}" as="p" hint-placeholder-count="12">
+                  <button onClick="{{ p.pickIt }}" style="min-height:52px;padding:0 12px;border:1px solid {{ p.bd }};background:{{ p.bg }};color:{{ p.fg }};border-radius:var(--r-m);font-size:var(--fs-s);font-weight:600" style-hover="border-color:var(--blue)">{{ p.l }}</button>
+                </sc-for>
+              </div>
+            </div>
+          </sc-if>
+          <sc-if value="{{ home.step2 }}" hint-placeholder-val="{{ false }}">
+            <div style="animation:rise .5s cubic-bezier(.2,.8,.2,1) both">
+              <p style="margin:0 0 12px;font-size:var(--fs-s);font-weight:700;color:var(--blue-t)">{{ home.pk.l }} · {{ home.sym.t }}</p>
+              <h2 style="margin:0 0 24px;font-size:var(--fs-2);line-height:1.35;letter-spacing:-0.025em;font-weight:800;text-wrap:pretty">{{ home.sym.head }}</h2>
+              <dl style="margin:0 0 20px;border-top:1px solid var(--line)">
+                <div style="padding:16px 0;border-bottom:1px solid var(--line)"><dt style="margin:0 0 6px;font-size:var(--fs-c);font-weight:700;color:var(--g600)">예상 원인</dt><dd style="margin:0;font-size:var(--fs-b);line-height:1.6">{{ home.sym.cause }}</dd></div>
+                <div style="padding:16px 0;border-bottom:1px solid var(--line)"><dt style="margin:0 0 10px;font-size:var(--fs-c);font-weight:700;color:var(--g600)">이렇게 고쳐요 · {{ home.svc.t }}</dt><dd style="margin:0"><ol style="margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:10px">
+                  <sc-for list="{{ home.actSteps }}" as="a" hint-placeholder-count="3"><li style="display:flex;align-items:center;gap:12px;font-size:var(--fs-b);font-weight:600"><span style="width:24px;height:24px;flex:none;border:1px solid var(--blue);color:var(--blue-t);display:grid;place-items:center;font-size:12px;font-weight:700">{{ a.n }}</span>{{ a.t }}</li></sc-for>
+                </ol></dd></div>
+              </dl>
+              <sc-if value="{{ home.hasCase }}" hint-placeholder-val="{{ true }}">
+                <button onClick="{{ home.openCase }}" style="width:100%;display:flex;align-items:center;gap:14px;padding:12px;margin-bottom:12px;border:0;background:#fff;box-shadow:var(--sh-1);border-radius:var(--r-m);text-align:left;box-shadow:var(--sh-1)" style-hover="border-color:var(--blue);transform:translateY(-2px);box-shadow:var(--sh-3)">
+                  <div style="position:relative;overflow:hidden;width:64px;height:48px;flex:none;background:var(--g100);display:grid;place-items:center;font-size:10px;color:var(--g500);font-weight:600;border-radius:var(--r-l)"><img src="{{ home.rcase.img }}" alt="{{ home.rcase.place }} {{ home.rcase.title }}" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block"></div>
+                  <div style="flex:1;min-width:0"><p style="margin:0 0 2px;font-size:var(--fs-c);font-weight:700;color:var(--blue-t)">비슷한 시공사례</p><p style="margin:0;font-size:var(--fs-s);font-weight:700">{{ home.rcase.place }} · {{ home.rcase.title }}</p></div>
+                  <i class="icon-chevron-right" style="font-size:18px;color:var(--g400)"></i>
+                </button>
+              </sc-if>
+              <sc-if value="{{ home.outArea }}" hint-placeholder-val="{{ false }}">
+                <div style="display:flex;gap:10px;padding:12px 16px;margin-bottom:12px;background:var(--warn-50);color:var(--warn);font-size:var(--fs-s);font-weight:600;line-height:1.5"><i class="icon-info" style="font-size:18px;margin-top:1px"></i>지역을 알려주시면 출장 가능 여부를 바로 확인해 드려요.</div>
+              </sc-if>
+              <div style="display:flex;flex-direction:column;gap:8px">
+                <a href="{{ telP }}" style="display:flex;align-items:center;justify-content:center;gap:8px;height:56px;border-radius:var(--r-m);background:var(--blue);color:var(--on-accent);font-size:var(--fs-b);font-weight:700;text-decoration:none;box-shadow:var(--sh-btn)" style-hover="background:var(--blue-600);color:#fff;text-decoration:none;transform:translateY(-1px);box-shadow:var(--sh-btn-h)"><i class="icon-phone" style="font-size:18px"></i>지금 전화로 상담하기</a>
+                <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">
+                  <button onClick="{{ nav.contact }}" style="height:48px;border:1px solid var(--line);border-radius:var(--r-m);background:#fff;font-size:var(--fs-s);font-weight:600;box-shadow:var(--sh-1)" style-hover="border-color:var(--ink);transform:translateY(-2px);box-shadow:var(--sh-3)">문의 남기기</button>
+                  <sc-if value="{{ home.inArea }}" hint-placeholder-val="{{ true }}"><button onClick="{{ home.openRegion }}" style="height:48px;border:1px solid var(--line);border-radius:var(--r-m);background:#fff;font-size:var(--fs-s);font-weight:600;box-shadow:var(--sh-1)" style-hover="border-color:var(--ink);transform:translateY(-2px);box-shadow:var(--sh-3)">{{ home.pk.l }} 안내</button></sc-if>
+                  <sc-if value="{{ home.outArea }}" hint-placeholder-val="{{ false }}"><button onClick="{{ nav.regions }}" style="height:48px;border:1px solid var(--line);border-radius:var(--r-m);background:#fff;font-size:var(--fs-s);font-weight:600;box-shadow:var(--sh-1)" style-hover="border-color:var(--ink);transform:translateY(-2px);box-shadow:var(--sh-3)">출장 지역 보기</button></sc-if>
+                </div>
+                <button onClick="{{ home.restart }}" style="height:44px;border:0;background:none;font-size:var(--fs-s);font-weight:600;color:var(--g600);border-radius:var(--r-m)" style-hover="color:var(--ink)">처음부터 다시 진단하기</button>
+              </div>
+            </div>
+          </sc-if>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="door-types" aria-label="자동문 종류" style="padding:clamp(56px,8vw,104px) 0;border-top:1px solid var(--line)">
+    <div style="max-width:1120px;margin:0 auto;padding:0 clamp(20px,4vw,40px)">
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));gap:16px 48px;align-items:end;padding-bottom:24px"><div><p style="margin:0 0 12px;font-size:var(--fs-s);font-weight:700;color:var(--blue-t)">자동문 종류</p><h2 style="margin:0;font-size:var(--fs-1);font-weight:800;letter-spacing:-0.035em;line-height:1.25">어떤 자동문이든 설치·수리합니다</h2></div><p style="margin:0;font-size:var(--fs-b);line-height:1.65;color:var(--g600);max-width:480px;text-wrap:pretty">출입구 폭과 사용 환경에 맞춰 방식을 고릅니다. 지금 쓰시는 문 그대로 부품만 교체하는 수리도 가능합니다.</p></div>
+      <div style="position:relative;aspect-ratio:16/9;margin-top:16px;border-radius:var(--r-l);overflow:hidden;background:#000;box-shadow:var(--sh-2)"><x-import component-from-global-scope="JNDDoorLoop" from="./animations-v3.jsx ./jnd-video.jsx" fit="contain" still="{{ vidStill }}" hint-size="100%,100%" style="position:absolute;inset:0"></x-import></div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr));gap:16px;margin-top:16px">
+        <article style="display:flex;flex-direction:column;border-radius:var(--r-l);background:#fff;overflow:hidden;border:1px solid var(--line);box-shadow:var(--sh-1)">
+          <div aria-hidden="true" style="aspect-ratio:4/3;background:var(--g50);display:flex;align-items:flex-end;justify-content:center;padding:28px 32px 0;border-bottom:3px solid #C9CED5"><div style="width:100%;max-width:240px"><div aria-hidden="true" style="height:22px;margin:0 -10px;border-radius:4px 4px 0 0;background:linear-gradient(180deg,#434B57 0%,#262B33 100%);display:flex;align-items:center;justify-content:flex-end;gap:6px;padding:0 10px"><span style="width:16px;height:5px;border-radius:3px;background:#14181E"></span><span style="width:6px;height:6px;border-radius:50%;animation:dLed 5s cubic-bezier(.6,0,.25,1) infinite"></span></div><div style="position:relative;aspect-ratio:5/4;border:6px solid #555E6B;border-bottom:0;overflow:hidden;background:linear-gradient(180deg,#F7F2E4 0%,#FFFFFF 70%)"><div style="position:absolute;top:0;bottom:0;left:0;width:50%;z-index:1;background:linear-gradient(115deg,rgba(158,192,220,.78) 0%,rgba(222,234,244,.62) 46%,rgba(176,204,228,.74) 100%);border:4px solid #8A929D;box-sizing:border-box;animation:dPen 5s cubic-bezier(.6,0,.25,1) infinite"><span style="position:absolute;top:38%;right:6px;width:4px;height:26%;border-radius:2px;background:#555E6B"></span></div><div style="position:absolute;top:0;bottom:0;right:0;width:50%;z-index:2;background:linear-gradient(115deg,rgba(140,170,196,.86) 0%,rgba(200,216,230,.8) 50%,rgba(150,180,206,.84) 100%);border:4px solid #6E7682;box-sizing:border-box"></div></div></div></div>
+          <div style="padding:20px 22px 24px"><p style="margin:0 0 8px;font-size:12px;font-weight:800;letter-spacing:.08em;color:var(--blue-t)">TYPE 01</p><h3 style="margin:0 0 8px;font-size:var(--fs-2);font-weight:800;letter-spacing:-0.03em">편개 자동문</h3><p style="margin:0 0 16px;font-size:var(--fs-s);line-height:1.65;color:var(--g600);text-wrap:pretty">문짝 한 장이 한쪽으로 미끄러져 열립니다. 출입구가 좁거나 한쪽 벽에 여유가 있을 때 맞습니다.</p><div style="display:flex;flex-wrap:wrap;gap:6px"><span style="padding:5px 10px;border-radius:999px;background:var(--g100);font-size:12px;font-weight:700;color:var(--g700)">상가</span><span style="padding:5px 10px;border-radius:999px;background:var(--g100);font-size:12px;font-weight:700;color:var(--g700)">사무실</span><span style="padding:5px 10px;border-radius:999px;background:var(--g100);font-size:12px;font-weight:700;color:var(--g700)">아파트 공용현관</span></div></div>
+        </article>
+        <article style="display:flex;flex-direction:column;border-radius:var(--r-l);background:#fff;overflow:hidden;border:1px solid var(--line);box-shadow:var(--sh-1)">
+          <div aria-hidden="true" style="aspect-ratio:4/3;background:var(--g50);display:flex;align-items:flex-end;justify-content:center;padding:28px 32px 0;border-bottom:3px solid #C9CED5"><div style="width:100%;max-width:240px"><div aria-hidden="true" style="height:22px;margin:0 -10px;border-radius:4px 4px 0 0;background:linear-gradient(180deg,#434B57 0%,#262B33 100%);display:flex;align-items:center;justify-content:flex-end;gap:6px;padding:0 10px"><span style="width:16px;height:5px;border-radius:3px;background:#14181E"></span><span style="width:6px;height:6px;border-radius:50%;animation:dLed 5s cubic-bezier(.6,0,.25,1) infinite"></span></div><div style="position:relative;aspect-ratio:5/4;border:6px solid #555E6B;border-bottom:0;overflow:hidden;background:linear-gradient(180deg,#F7F2E4 0%,#FFFFFF 70%)"><div style="position:absolute;top:0;bottom:0;left:0;width:25%;z-index:2;background:linear-gradient(115deg,rgba(140,170,196,.86) 0%,rgba(200,216,230,.8) 50%,rgba(150,180,206,.84) 100%);border:4px solid #6E7682;box-sizing:border-box"></div><div style="position:absolute;top:0;bottom:0;left:25%;width:25%;z-index:1;background:linear-gradient(115deg,rgba(158,192,220,.78) 0%,rgba(222,234,244,.62) 46%,rgba(176,204,228,.74) 100%);border:4px solid #8A929D;box-sizing:border-box;animation:dYL 5s cubic-bezier(.6,0,.25,1) infinite"><span style="position:absolute;top:38%;right:6px;width:4px;height:26%;border-radius:2px;background:#555E6B"></span></div><div style="position:absolute;top:0;bottom:0;left:50%;width:25%;z-index:1;background:linear-gradient(115deg,rgba(158,192,220,.78) 0%,rgba(222,234,244,.62) 46%,rgba(176,204,228,.74) 100%);border:4px solid #8A929D;box-sizing:border-box;animation:dYR 5s cubic-bezier(.6,0,.25,1) infinite"><span style="position:absolute;top:38%;left:6px;width:4px;height:26%;border-radius:2px;background:#555E6B"></span></div><div style="position:absolute;top:0;bottom:0;right:0;width:25%;z-index:2;background:linear-gradient(115deg,rgba(140,170,196,.86) 0%,rgba(200,216,230,.8) 50%,rgba(150,180,206,.84) 100%);border:4px solid #6E7682;box-sizing:border-box"></div></div></div></div>
+          <div style="padding:20px 22px 24px"><p style="margin:0 0 8px;font-size:12px;font-weight:800;letter-spacing:.08em;color:var(--blue-t)">TYPE 02</p><h3 style="margin:0 0 8px;font-size:var(--fs-2);font-weight:800;letter-spacing:-0.03em">양개 자동문</h3><p style="margin:0 0 16px;font-size:var(--fs-s);line-height:1.65;color:var(--g600);text-wrap:pretty">문짝 두 장이 가운데서 양옆으로 갈라지며 열립니다. 출입이 많은 넓은 출입구에 맞습니다.</p><div style="display:flex;flex-wrap:wrap;gap:6px"><span style="padding:5px 10px;border-radius:999px;background:var(--g100);font-size:12px;font-weight:700;color:var(--g700)">병원</span><span style="padding:5px 10px;border-radius:999px;background:var(--g100);font-size:12px;font-weight:700;color:var(--g700)">마트</span><span style="padding:5px 10px;border-radius:999px;background:var(--g100);font-size:12px;font-weight:700;color:var(--g700)">관공서</span></div></div>
+        </article>
+        <article style="display:flex;flex-direction:column;border-radius:var(--r-l);background:#fff;overflow:hidden;border:1px solid var(--line);box-shadow:var(--sh-1)">
+          <div aria-hidden="true" style="aspect-ratio:4/3;background:var(--g50);display:flex;align-items:flex-end;justify-content:center;padding:28px 32px 0;border-bottom:3px solid #C9CED5"><div style="width:100%;max-width:240px"><div aria-hidden="true" style="height:22px;margin:0 -10px;border-radius:4px 4px 0 0;background:linear-gradient(180deg,#434B57 0%,#262B33 100%);display:flex;align-items:center;justify-content:flex-end;gap:6px;padding:0 10px"><span style="width:16px;height:5px;border-radius:3px;background:#14181E"></span><span style="width:6px;height:6px;border-radius:50%;animation:dLed 5s cubic-bezier(.6,0,.25,1) infinite"></span></div><div style="position:relative;aspect-ratio:5/4;border:6px solid #555E6B;border-bottom:0;overflow:hidden;background:linear-gradient(180deg,#F7F2E4 0%,#FFFFFF 70%);perspective:520px;overflow:visible"><div style="position:absolute;inset:0;background:linear-gradient(115deg,rgba(158,192,220,.78) 0%,rgba(222,234,244,.62) 46%,rgba(176,204,228,.74) 100%);border:4px solid #8A929D;box-sizing:border-box;transform-origin:left center;animation:dSw 5s cubic-bezier(.6,0,.25,1) infinite"><span style="position:absolute;top:38%;right:6px;width:4px;height:26%;border-radius:2px;background:#555E6B"></span></div></div></div></div>
+          <div style="padding:20px 22px 24px"><p style="margin:0 0 8px;font-size:12px;font-weight:800;letter-spacing:.08em;color:var(--blue-t)">TYPE 03</p><h3 style="margin:0 0 8px;font-size:var(--fs-2);font-weight:800;letter-spacing:-0.03em">스윙 자동문</h3><p style="margin:0 0 16px;font-size:var(--fs-s);line-height:1.65;color:var(--g600);text-wrap:pretty">여닫이문을 자동으로 밀어 열어 줍니다. 미닫이가 어려운 구조나 무장애 출입구에 씁니다.</p><div style="display:flex;flex-wrap:wrap;gap:6px"><span style="padding:5px 10px;border-radius:999px;background:var(--g100);font-size:12px;font-weight:700;color:var(--g700)">화장실</span><span style="padding:5px 10px;border-radius:999px;background:var(--g100);font-size:12px;font-weight:700;color:var(--g700)">요양시설</span><span style="padding:5px 10px;border-radius:999px;background:var(--g100);font-size:12px;font-weight:700;color:var(--g700)">무장애 출입구</span></div></div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section style="padding:clamp(56px,8vw,104px) 0;background:var(--g50)">
+    <div style="max-width:1120px;margin:0 auto;padding:0 clamp(20px,4vw,40px)">
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));gap:16px 48px;align-items:end;padding-bottom:24px;border-bottom:0">
+        <div><p style="margin:0 0 12px;font-size:var(--fs-s);font-weight:700;color:var(--blue-t);font-variant-numeric:tabular-nums">02</p><h2 style="margin:0;font-size:var(--fs-1);font-weight:800;letter-spacing:-0.035em;line-height:1.25">부품별 수리</h2></div>
+        <p style="margin:0;font-size:var(--fs-b);line-height:1.65;color:var(--g600);max-width:480px;text-wrap:pretty">부품마다 점검 순서와 교체 기준이 달라요. 작업 내용과 관련 시공사례를 확인하세요.</p>
+      </div>
+      <div style="display:grid;grid-template-columns:{{ svcCols }};gap:16px;background:transparent;border:0;margin-top:32px">
+        <sc-for list="{{ svcNum }}" as="v" hint-placeholder-count="8">
+          <button onClick="{{ v.open }}" style="border-radius:var(--r-l);overflow:hidden;box-shadow:var(--sh-1);display:flex;flex-direction:column;align-items:flex-start;gap:12px;padding:0 24px 28px;border:0;background:#fff;text-align:left;min-height:280px;border-radius:var(--r-m)" style-hover="background:var(--blue-50)">
+            <span style="position:relative;display:block;overflow:hidden;width:calc(100% + 48px);margin:0 -24px 12px;aspect-ratio:4/3;background:var(--g100)"><sc-if value="{{ v.hasImg }}" hint-placeholder-val="{{ true }}"><img src="{{ v.img }}" alt="{{ v.t }} 수리 현장" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block"></sc-if><sc-if value="{{ v.noImg }}" hint-placeholder-val="{{ false }}"><span style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;color:var(--g500);font-size:var(--fs-c);font-weight:600"><i class="icon-{{ v.icon }}" style="font-size:40px;color:var(--g400)"></i>현장 사진 준비 중</span></sc-if></span>
+            <span style="display:flex;justify-content:space-between;align-items:center;width:100%"><span style="font-size:var(--fs-s);font-weight:700;color:var(--g500);font-variant-numeric:tabular-nums">{{ v.n }}</span><i class="icon-{{ v.icon }}" style="font-size:24px;color:var(--blue-t)"></i></span>
+            <span style="font-size:var(--fs-3);font-weight:800;letter-spacing:-0.02em">{{ v.t }}</span>
+            <span style="font-size:var(--fs-s);line-height:1.6;color:var(--g600)">{{ v.d }}</span>
+            <span style="display:flex;align-items:center;gap:4px;font-size:var(--fs-c);font-weight:700;color:var(--blue-t)">자세히 보기<i class="icon-arrow-right" style="font-size:14px"></i></span>
+          </button>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <section style="padding:clamp(56px,8vw,104px) 0">
+    <div style="max-width:1120px;margin:0 auto;padding:0 clamp(20px,4vw,40px)">
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));gap:16px 48px;align-items:end;padding-bottom:24px"><div><p style="margin:0 0 12px;font-size:var(--fs-s);font-weight:700;color:var(--blue-t);font-variant-numeric:tabular-nums">03</p><h2 style="margin:0;font-size:var(--fs-1);font-weight:800;letter-spacing:-0.035em;line-height:1.25">실측부터 A/S까지, 6단계</h2></div><p style="margin:0;font-size:var(--fs-b);line-height:1.65;color:var(--g600);max-width:480px;text-wrap:pretty">설치는 현장 실측부터 1년 무상 A/S까지 같은 담당 기사가 책임지고 진행해요.</p></div>
+      <ol style="margin:16px 0 0;padding:0;list-style:none;display:grid;grid-template-columns:{{ stepCols }};gap:12px">
+        <sc-for list="{{ D.STEPS }}" as="st" hint-placeholder-count="6">
+          <li style="position:relative;padding:24px 20px;border-radius:var(--r-l);background:var(--g50)"><p style="display:flex;align-items:center;gap:8px;margin:0 0 20px;font-size:var(--fs-c);font-weight:800;color:var(--blue-t);font-variant-numeric:tabular-nums"><span style="width:28px;height:28px;border-radius:50%;background:var(--blue);color:var(--on-accent);display:grid;place-items:center;font-size:12px">{{ st.n }}</span>STEP</p><h3 style="margin:0 0 10px;font-size:var(--fs-3);font-weight:800;letter-spacing:-0.02em">{{ st.t }}</h3><p style="margin:0;font-size:var(--fs-s);line-height:1.65;color:var(--g600);text-wrap:pretty">{{ st.d }}</p></li>
+        </sc-for>
+      </ol>
+    </div>
+  </section>
+
+  <section style="padding:clamp(56px,8vw,104px) 0;background:var(--g50)">
+    <div style="max-width:1120px;margin:0 auto;padding:0 clamp(20px,4vw,40px)">
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));gap:16px 48px;align-items:end;padding-bottom:24px"><div><p style="margin:0 0 12px;font-size:var(--fs-s);font-weight:700;color:var(--blue-t);font-variant-numeric:tabular-nums">04</p><h2 style="margin:0;font-size:var(--fs-1);font-weight:800;letter-spacing:-0.035em;line-height:1.25">최근 시공사례</h2></div><div style="display:flex;justify-content:flex-end"><button onClick="{{ nav.cases }}" style="display:flex;align-items:center;gap:6px;height:44px;padding:0 16px;border:0;background:#fff;border-radius:var(--r-m);font-size:var(--fs-s);font-weight:700;box-shadow:var(--sh-1)" style-hover="box-shadow:var(--sh-2)">시공사례 전체 보기<i class="icon-arrow-right" style="font-size:14px"></i></button></div></div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));gap:16px;margin-top:16px">
+        <sc-for list="{{ caseCols }}" as="col" hint-placeholder-count="2">
+          <div style="padding:8px 24px 16px;border-radius:var(--r-l);background:#fff;box-shadow:var(--sh-1)">
+            <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;padding:16px 0;border-bottom:2px solid var(--ink)"><h3 style="margin:0;display:flex;align-items:center;gap:10px;font-size:var(--fs-3);font-weight:800"><i class="icon-{{ col.icon }}" style="font-size:20px;color:var(--blue-t)"></i>{{ col.t }}</h3><span style="font-size:var(--fs-c);font-weight:700;color:var(--g600)">{{ col.n }}건</span></div>
+            <sc-for list="{{ col.items }}" as="c" hint-placeholder-count="4">
+              <button onClick="{{ c.open }}" style="width:100%;display:grid;grid-template-columns:104px minmax(0,1fr);gap:16px;align-items:center;padding:14px 0;border:0;border-bottom:1px solid var(--line);background:none;text-align:left" style-hover="background:var(--g50)">
+                <div style="position:relative;overflow:hidden;width:100%;aspect-ratio:4/3;background:var(--g100);border-radius:var(--r-m)"><img src="{{ c.img }}" alt="{{ c.place }} {{ c.title }}" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block"></div>
+                <div style="min-width:0"><p style="margin:0 0 4px;font-size:var(--fs-c);font-weight:700;color:var(--blue-t)">{{ c.place }}</p><h4 style="margin:0 0 4px;font-size:var(--fs-b);font-weight:700;line-height:1.4">{{ c.title }}</h4><p style="margin:0;font-size:var(--fs-c);color:var(--g600)">{{ c.sym }}</p></div>
+              </button>
+            </sc-for>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <section id="reviews" aria-label="베스트 리뷰" style="padding:clamp(56px,8vw,104px) 0;background:#fff">
+    <div style="max-width:1120px;margin:0 auto;padding:0 clamp(20px,4vw,40px)">
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));gap:16px 48px;align-items:end;padding-bottom:24px"><div><p style="margin:0 0 12px;font-size:var(--fs-s);font-weight:700;color:var(--blue-t);font-variant-numeric:tabular-nums">05</p><h2 style="margin:0;font-size:var(--fs-1);font-weight:800;letter-spacing:-0.035em;line-height:1.25">베스트 리뷰</h2></div><p style="margin:0;font-size:var(--fs-b);line-height:1.65;color:var(--g600);max-width:480px;text-wrap:pretty">직접 설치·수리한 현장의 고객 후기를 모았어요.</p></div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,400px),1fr));gap:16px;margin-top:16px">
+        <article style="display:flex;flex-direction:column;border-radius:var(--r-l);background:#fff;overflow:hidden;border:1px solid var(--line);box-shadow:var(--sh-2)">
+          <div style="position:relative;flex:1;min-height:280px;background:var(--g100)"><img src="{{ revTop.img }}" alt="{{ revTop.type }} 시공 현장" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block"><span style="position:absolute;top:0;left:0;width:52px;height:52px;border-bottom-right-radius:var(--r-m);background:var(--blue);color:var(--on-accent);display:grid;place-items:center;font-size:22px;font-weight:800">{{ revTop.rank }}</span></div>
+          <div style="padding:24px 26px 28px;display:flex;flex-direction:column;gap:12px">
+            <div style="display:flex;align-items:center;justify-content:space-between;gap:12px"><span style="display:flex;align-items:baseline;gap:8px;font-size:var(--fs-s);font-weight:800">{{ revTop.name }}<span style="font-size:var(--fs-c);font-weight:600;color:var(--g500);font-variant-numeric:tabular-nums">{{ revTop.date }}</span></span><span aria-label="별점 5점" style="font-size:16px;letter-spacing:2px;color:var(--blue-600)">★★★★★</span></div>
+            <h3 style="margin:0;font-size:var(--fs-2);font-weight:800;letter-spacing:-0.03em;line-height:1.35">{{ revTop.title }}</h3>
+            <p style="margin:0;font-size:var(--fs-b);line-height:1.7;color:var(--g700);text-wrap:pretty">{{ revTop.body }}</p>
+            <span style="align-self:flex-start;padding:6px 12px;border-radius:999px;background:var(--g100);font-size:12px;font-weight:700;color:var(--g700)">{{ revTop.type }}</span>
+          </div>
+        </article>
+        <div style="display:grid;grid-template-columns:{{ revCols }};gap:16px">
+          <sc-for list="{{ revRest }}" as="r" hint-placeholder-count="4">
+            <article style="display:flex;flex-direction:column;border-radius:var(--r-l);background:#fff;overflow:hidden;border:1px solid var(--line);box-shadow:var(--sh-1)">
+              <div style="position:relative;aspect-ratio:16/10;background:var(--g100)"><img src="{{ r.img }}" alt="{{ r.type }} 시공 현장" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block"><span style="position:absolute;top:0;left:0;width:38px;height:38px;border-bottom-right-radius:var(--r-s);background:var(--ink);color:#fff;display:grid;place-items:center;font-size:16px;font-weight:800">{{ r.rank }}</span></div>
+              <div style="padding:16px 18px 20px;display:flex;flex-direction:column;gap:8px;flex:1">
+                <div style="display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:4px 8px"><span style="display:flex;align-items:baseline;gap:6px;font-size:var(--fs-c);font-weight:800;white-space:nowrap">{{ r.name }}<span style="font-size:12px;font-weight:600;color:var(--g500);font-variant-numeric:tabular-nums">{{ r.date }}</span></span><span aria-label="별점 5점" style="font-size:12px;letter-spacing:1px;color:var(--blue-600);white-space:nowrap">★★★★★</span></div>
+                <h3 style="margin:0;font-size:var(--fs-b);font-weight:800;letter-spacing:-0.02em;line-height:1.4">{{ r.title }}</h3>
+                <p style="margin:0;font-size:var(--fs-c);line-height:1.65;color:var(--g600);display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden">{{ r.body }}</p>
+                <span style="margin-top:auto;align-self:flex-start;padding:5px 10px;border-radius:999px;background:var(--g100);font-size:12px;font-weight:700;color:var(--g700)">{{ r.type }}</span>
+              </div>
+            </article>
+          </sc-for>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section style="padding:clamp(56px,8vw,104px) 0;background:var(--ink);color:#fff">
+    <div style="max-width:1120px;margin:0 auto;padding:0 clamp(20px,4vw,40px)">
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));gap:16px 48px;align-items:end;padding-bottom:24px;border-bottom:1px solid #3A414C">
+        <div><p style="margin:0 0 12px;font-size:var(--fs-s);font-weight:700;color:var(--on-dark);font-variant-numeric:tabular-nums">06</p><h2 style="margin:0;font-size:var(--fs-1);font-weight:800;letter-spacing:-0.035em;line-height:1.25">출장 지역</h2></div>
+        <p style="margin:0;font-size:var(--fs-b);line-height:1.65;color:#B4BBC5;max-width:480px;text-wrap:pretty">평택 본사에서 화성·수원·용인을 주로 다니고, 서울·경기 수도권과 충청권까지 출장 가요. 경기도권은 당일·긴급 출장이 가능해요. 지역을 누르면 해당 지역 안내로 이동해요.</p>
+      </div>
+      <div style="columns:3 240px;column-gap:32px;margin-top:40px">
+        <sc-for list="{{ regionCols }}" as="c" hint-placeholder-count="7">
+          <div style="break-inside:avoid;padding-bottom:40px">
+            <button onClick="{{ c.open }}" style="display:flex;align-items:baseline;gap:10px;width:100%;padding:0 0 12px;margin:0 0 12px;border:0;border-bottom:1px solid #3A414C;background:none;color:#fff;text-align:left;font-size:var(--fs-3);font-weight:800" style-hover="color:var(--on-dark)">{{ c.t }}<span style="font-size:var(--fs-c);font-weight:600;color:#9AA3AF">{{ c.tag }}</span></button>
+            <sc-for list="{{ c.gus }}" as="g" hint-placeholder-count="1">
+              <div style="margin-bottom:12px">
+                <button onClick="{{ g.open }}" style="border:0;background:none;padding:4px 0;color:#E6E9ED;font-size:var(--fs-s);font-weight:700;text-align:left" style-hover="color:var(--on-dark);text-decoration:underline">{{ g.t }}</button>
+                <div style="display:flex;flex-wrap:wrap;gap:0 12px">
+                  <sc-for list="{{ g.dongs }}" as="d" hint-placeholder-count="4"><button onClick="{{ d.open }}" style="border:0;background:none;padding:4px 0;color:#9AA3AF;font-size:var(--fs-c)" style-hover="color:#fff;text-decoration:underline">{{ d.t }}</button></sc-for>
+                </div>
+              </div>
+            </sc-for>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <section id="clients" aria-label="대표 실적 현황" style="padding:clamp(56px,8vw,104px) 0;background:#fff">
+    <div style="max-width:1120px;margin:0 auto;padding:0 clamp(20px,4vw,40px)">
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));gap:16px 48px;align-items:end;padding-bottom:24px"><div><p style="margin:0 0 12px;font-size:var(--fs-s);font-weight:700;color:var(--blue-t);font-variant-numeric:tabular-nums">07</p><h2 style="margin:0;font-size:var(--fs-1);font-weight:800;letter-spacing:-0.035em;line-height:1.25">대표 실적 현황</h2></div><p style="margin:0;font-size:var(--fs-b);line-height:1.65;color:var(--g600);max-width:480px;text-wrap:pretty">대기업 매장과 공공기관, 대단지 아파트 현장에서 자동문을 설치하고 관리해 왔어요.</p></div>
+      <ul style="margin:16px 0 0;padding:0;list-style:none;display:flex;flex-wrap:wrap;justify-content:center;gap:12px">
+        <sc-for list="{{ clients }}" as="c" hint-placeholder-count="13">
+          <li style="flex:0 0 {{ clientBasis }};height:104px;padding:14px 18px;border:1px solid var(--line);border-radius:var(--r-m);background:#fff;display:flex;align-items:center;justify-content:center"><img src="{{ c.src }}" alt="{{ c.n }}" title="{{ c.n }}" loading="lazy" style="max-width:100%;max-height:70px;object-fit:contain;display:block;border-radius:4px"></li>
+        </sc-for>
+      </ul>
+    </div>
+  </section>
+
+  <section style="padding:clamp(56px,8vw,104px) 0;background:var(--g50)">
+    <div style="max-width:1120px;margin:0 auto;padding:0 clamp(20px,4vw,40px);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));gap:40px 64px">
+      <div>
+        <p style="margin:0 0 12px;font-size:var(--fs-s);font-weight:700;color:var(--blue-t)">08</p>
+        <h2 style="margin:0 0 16px;font-size:var(--fs-1);font-weight:800;letter-spacing:-0.035em;line-height:1.25">자주 묻는 질문</h2>
+        <p style="margin:0 0 24px;font-size:var(--fs-b);line-height:1.65;color:var(--g600)">출장비, 출장 지역, 수리 가능한 제품을 정리했어요.</p>
+        <button onClick="{{ nav.faq }}" style="display:flex;align-items:center;gap:10px;height:60px;padding:0 28px;border:0;background:var(--blue);color:var(--on-accent);border-radius:var(--r-m);font-size:var(--fs-3);font-weight:800;box-shadow:var(--sh-btn)" style-hover="background:var(--blue-600);transform:translateY(-2px);box-shadow:var(--sh-btn-h)">전체 질문 보기<i class="icon-arrow-right" style="font-size:20px"></i></button>
+      </div>
+      <div style="border-top:0">
+        <sc-for list="{{ faqTop }}" as="f" hint-placeholder-count="4">
+          <article style="padding:24px 0;border-bottom:1px solid var(--line)"><h3 style="margin:0 0 8px;font-size:var(--fs-3);font-weight:700;line-height:1.4">{{ f.q }}</h3><p style="margin:0;font-size:var(--fs-b);line-height:1.7;color:var(--g700)">{{ f.a }}</p></article>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <section style="position:relative;overflow:hidden;background:var(--ink);color:#fff">
+    <sc-if value="{{ photo.about }}" hint-placeholder-val="{{ false }}"><img src="{{ photo.about }}" alt="{{ B }} 자동문 시공 현장" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.42"></sc-if>
+    <div aria-hidden="true" style="position:absolute;inset:0;background:linear-gradient(90deg,rgba(20,24,30,.92) 0%,rgba(20,24,30,.7) 50%,rgba(20,24,30,.25) 100%)"></div>
+    <div style="position:relative;max-width:1120px;margin:0 auto;padding:clamp(72px,11vw,140px) clamp(20px,4vw,40px)">
+      <p style="margin:0 0 20px;font-size:var(--fs-s);font-weight:700;color:var(--on-dark);letter-spacing:.08em">SINCE 2018 · PYEONGTAEK</p>
+      <h2 style="margin:0 0 20px;font-size:clamp(28px,4.4vw,44px);font-weight:800;letter-spacing:-0.04em;line-height:1.25;max-width:640px;text-wrap:balance">자동문을 이해하는 기술력,<br>믿고 맡길 수 있는 전문가</h2>
+      <p style="margin:0 0 32px;font-size:var(--fs-b);line-height:1.7;color:#C3C9D1;max-width:520px;text-wrap:pretty">평택 본사와 전국 27개 대리점이 함께 움직여 출장 대응이 빠르고, 국내 제조사 자동문 대부분을 직접 수리합니다.</p>
+      <button onClick="{{ nav.about }}" style="display:flex;align-items:center;gap:8px;height:52px;padding:0 24px;border:1px solid #fff;background:transparent;color:#fff;border-radius:var(--r-m);font-size:var(--fs-b);font-weight:700" style-hover="background:#fff;color:var(--ink)">회사 소개 보기<i class="icon-arrow-right" style="font-size:16px"></i></button>
+    </div>
+  </section>
+
+  <section style="background:var(--blue);color:var(--on-accent)">
+    <div style="max-width:1120px;margin:0 auto;padding:clamp(48px,7vw,80px) clamp(20px,4vw,40px);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,360px),1fr));gap:32px;align-items:center">
+      <div><h2 style="margin:0 0 12px;font-size:var(--fs-1);font-weight:800;letter-spacing:-0.035em;line-height:1.25">자동문 설치·고장 전화 상담</h2><p style="margin:0 0 20px;font-size:var(--fs-b);line-height:1.6">전문 기사가 직접 상담합니다. 증상과 위치를 말씀해 주시면 필요한 부품을 챙겨 방문해요.</p><p style="margin:0;font-size:var(--fs-s);font-weight:700">{{ I.hours }}</p></div>
+      <div style="display:flex;flex-wrap:wrap;gap:8px">
+        <sc-for list="{{ phonesB }}" as="p" hint-placeholder-count="3">
+          <a href="{{ p.tel }}" style="flex:1 1 180px;display:flex;align-items:center;justify-content:center;gap:10px;height:76px;padding:0 18px;border-radius:var(--r-m);background:{{ p.bg }};color:{{ p.fg }};font-size:var(--fs-2);font-weight:800;font-variant-numeric:tabular-nums;text-decoration:none;white-space:nowrap;transition:background-color .6s var(--ease),color .6s var(--ease),transform .3s var(--ease)" style-hover="text-decoration:none;transform:translateY(-2px)"><i class="icon-phone" style="font-size:20px"></i>{{ p.n }}</a>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+</main>
+</sc-if>
+
+<sc-if value="{{ s.about }}" hint-placeholder-val="{{ false }}">
+<main data-screen-label="02 업체 소개" style="max-width:1120px;margin:0 auto;padding:clamp(40px,6vw,80px) clamp(20px,4vw,40px)">
+  <p style="margin:0 0 16px;font-size:var(--fs-b);font-weight:700;color:var(--blue-t)">업체 소개</p>
+  <h1 style="margin:0 0 24px;font-size:var(--fs-d);line-height:1.22;letter-spacing:-0.035em;font-weight:800;max-width:720px">멈춘 자동문,<br>원인부터 정확하게 봅니다</h1>
+  <p style="margin:0 0 48px;font-size:var(--fs-3);line-height:1.7;color:var(--g600);max-width:680px;text-wrap:pretty">{{ B }}은 2018년 평택에서 시작한 자동문 설치·수리 전문기업입니다. 1인 업체가 대부분인 업계에서, 평택 본사를 중심으로 수도권 전역에 전문 대리점을 두고 있어 출장 대응과 A/S가 빠릅니다.</p>
+  <div style="position:relative;overflow:hidden;width:100%;aspect-ratio:21/9;border-radius:var(--r-l);background:var(--g100);display:grid;place-items:center;color:var(--g500);font-weight:600;margin-bottom:24px"><sc-if value="{{ photo.about }}" hint-placeholder-val="{{ false }}"><img src="{{ photo.about }}" alt="{{ B }} 시공 현장" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block"></sc-if></div>
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr));gap:12px;margin-bottom:64px">
+    <div style="padding:24px;border-radius:var(--r-l);background:var(--g50)"><p style="margin:0 0 8px;font-size:var(--fs-c);font-weight:700;color:var(--g600)">설립</p><p style="margin:0;font-size:var(--fs-2);font-weight:800">2018년 · 평택</p></div>
+    <div style="padding:24px;border-radius:var(--r-l);background:var(--g50)"><p style="margin:0 0 8px;font-size:var(--fs-c);font-weight:700;color:var(--g600)">설치 보증</p><p style="margin:0;font-size:var(--fs-2);font-weight:800">1년 무상 A/S</p></div>
+    <div style="padding:24px;border-radius:var(--r-l);background:var(--g50)"><p style="margin:0 0 8px;font-size:var(--fs-c);font-weight:700;color:var(--g600)">자체 브랜드</p><p style="margin:0;font-size:var(--fs-2);font-weight:800">스피드자동문</p></div>
+  </div>
+  <h2 style="margin:0 0 24px;font-size:var(--fs-2);font-weight:800">설치는 6단계로 진행돼요</h2>
+  <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,300px),1fr));gap:12px;margin-bottom:24px">
+    <sc-for list="{{ D.STEPS }}" as="st" hint-placeholder-count="6">
+      <div style="padding:24px;border-radius:var(--r-l);background:var(--g50)"><p style="margin:0 0 16px;font-size:var(--fs-c);font-weight:700;color:var(--blue-t)">{{ st.n }}</p><p style="margin:0 0 8px;font-size:var(--fs-3);font-weight:700">{{ st.t }}</p><p style="margin:0;font-size:var(--fs-s);line-height:1.6;color:var(--g600)">{{ st.d }}</p></div>
+    </sc-for>
+  </div>
+  <div style="margin-bottom:64px;padding:clamp(24px,4vw,40px);border-radius:var(--r-l);border:1px solid var(--line);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));gap:32px;align-items:start">
+    <div><h2 style="margin:0 0 12px;font-size:var(--fs-2);font-weight:800">견적은 문자로 빠르게</h2><p style="margin:0 0 24px;font-size:var(--fs-b);line-height:1.6;color:var(--g600)">아래 3가지를 보내주시면 사진을 보고 견적을 안내해 드려요.</p><a href="sms:010-8804-1555" style="display:inline-flex;align-items:center;gap:8px;height:56px;padding:0 24px;border-radius:var(--r-m);background:var(--blue);color:var(--on-accent);font-weight:700;text-decoration:none;white-space:nowrap;box-shadow:var(--sh-btn)" style-hover="transform:translateY(-1px);box-shadow:var(--sh-btn-h)"><i class="icon-message-square"></i>010-8804-1555 문자 보내기</a></div>
+    <ol style="margin:0;padding:0;list-style:none;border-top:1px solid var(--line)">
+      <sc-for list="{{ D.QUOTE }}" as="qq" hint-placeholder-count="3"><li style="display:grid;grid-template-columns:32px 1fr;gap:8px;padding:16px 0;border-bottom:1px solid var(--line)"><b style="color:var(--blue-t)">{{ qq.n }}</b><span><b style="display:block;margin-bottom:4px">{{ qq.t }}</b><span style="font-size:var(--fs-s);color:var(--g600)">{{ qq.d }}</span></span></li></sc-for>
+    </ol>
+  </div>
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));gap:48px;margin-bottom:64px">
+    <div>
+      <h2 style="margin:0 0 24px;font-size:var(--fs-2);font-weight:800">연혁</h2>
+      <div style="border-top:0">
+        <sc-for list="{{ D.HIST }}" as="h" hint-placeholder-count="5">
+          <div style="display:grid;grid-template-columns:72px 1fr;gap:16px;padding:16px 0;border-bottom:1px solid var(--line)"><b style="font-size:var(--fs-3);color:var(--blue-t)">{{ h.y }}</b><div style="display:flex;flex-direction:column;gap:8px"><sc-for list="{{ h.items }}" as="it" hint-placeholder-count="2"><p style="margin:0;display:grid;grid-template-columns:28px 1fr;font-size:var(--fs-s);line-height:1.5"><span style="color:var(--g600)">{{ it.m }}</span><span>{{ it.t }}</span></p></sc-for></div></div>
+        </sc-for>
+      </div>
+    </div>
+    <div>
+      <h2 style="margin:0 0 24px;font-size:var(--fs-2);font-weight:800">전국 대리점</h2>
+      <div style="border-top:0">
+        <sc-for list="{{ D.AGENCY }}" as="ag" hint-placeholder-count="7">
+          <div style="display:grid;grid-template-columns:96px 1fr;gap:16px;padding:16px 0;border-bottom:1px solid var(--line);font-size:var(--fs-s);line-height:1.6"><b>{{ ag.r }}</b><span style="color:var(--g700)">{{ ag.l }}</span></div>
+        </sc-for>
+      </div>
+    </div>
+  </div>
+  <h2 style="margin:0 0 24px;font-size:var(--fs-2);font-weight:800">회사 정보</h2>
+  <dl style="margin:0;display:grid;grid-template-columns:120px 1fr;border-top:1px solid var(--line);font-size:var(--fs-b);max-width:720px">
+    <dt style="padding:16px 0;border-bottom:1px solid var(--line);color:var(--g600)">상호</dt><dd style="margin:0;padding:16px 0;border-bottom:1px solid var(--line);font-weight:600">{{ B }} (J&amp;D SYSTEM)</dd>
+    <dt style="padding:16px 0;border-bottom:1px solid var(--line);color:var(--g600)">대표</dt><dd style="margin:0;padding:16px 0;border-bottom:1px solid var(--line);font-weight:600">{{ I.ceo }}</dd>
+    <dt style="padding:16px 0;border-bottom:1px solid var(--line);color:var(--g600)">사업자번호</dt><dd style="margin:0;padding:16px 0;border-bottom:1px solid var(--line);font-weight:600">{{ I.biz }}</dd>
+    <dt style="padding:16px 0;border-bottom:1px solid var(--line);color:var(--g600)">본사</dt><dd style="margin:0;padding:16px 0;border-bottom:1px solid var(--line);font-weight:600">{{ I.addr }}</dd>
+    <dt style="padding:16px 0;border-bottom:1px solid var(--line);color:var(--g600)">상담 시간</dt><dd style="margin:0;padding:16px 0;border-bottom:1px solid var(--line);font-weight:600">{{ I.hours }}</dd>
+    <dt style="padding:16px 0;border-bottom:1px solid var(--line);color:var(--g600)">전화 · 팩스</dt><dd style="margin:0;padding:16px 0;border-bottom:1px solid var(--line);font-weight:600">{{ phoneAll }}<br>팩스 {{ I.fax }}</dd>
+    <dt style="padding:16px 0;border-bottom:1px solid var(--line);color:var(--g600)">이메일</dt><dd style="margin:0;padding:16px 0;border-bottom:1px solid var(--line);font-weight:600">{{ I.email }}</dd>
+  </dl>
+</main>
+</sc-if>
+
+<sc-if value="{{ s.services }}" hint-placeholder-val="{{ false }}">
+<main data-screen-label="03 서비스 목록" style="max-width:1120px;margin:0 auto;padding:clamp(40px,6vw,80px) clamp(20px,4vw,40px)">
+  <h1 style="margin:0 0 16px;font-size:var(--fs-1);letter-spacing:-0.03em;font-weight:800">어떤 부품이 문제인가요?</h1>
+  <p style="margin:0 0 40px;font-size:var(--fs-3);color:var(--g600);line-height:1.6">잘 모르셔도 괜찮아요. <button onClick="{{ nav.home }}" style="border:0;background:none;padding:0;color:var(--blue-t);font-weight:700;font-size:inherit;text-decoration:underline">증상으로 진단하기</button></p>
+  <div style="display:flex;flex-direction:column;gap:12px">
+    <sc-for list="{{ svcCards }}" as="v" hint-placeholder-count="5">
+      <button onClick="{{ v.open }}" style="display:flex;align-items:center;gap:20px;padding:24px;border:0;background:#fff;box-shadow:var(--sh-1);border-radius:var(--r-l);text-align:left;transition:all .15s;box-shadow:var(--sh-1)" style-hover="border-color:var(--blue);background:var(--blue-50);transform:translateY(-2px);box-shadow:var(--sh-3)">
+        <span style="width:56px;height:56px;flex:none;border-radius:var(--r-m);color:var(--blue-t);display:grid;place-items:center"><i class="icon-{{ v.icon }}" style="font-size:26px"></i></span>
+        <span style="flex:1;min-width:0"><span style="display:block;font-size:var(--fs-3);font-weight:700;margin-bottom:4px">{{ v.t }}</span><span style="display:block;font-size:var(--fs-s);line-height:1.5;color:var(--g600)">{{ v.d }}</span></span>
+        <i class="icon-chevron-right" style="font-size:22px;color:var(--g400)"></i>
+      </button>
+    </sc-for>
+  </div>
+</main>
+</sc-if>
+
+<sc-if value="{{ s.serviceDetail }}" hint-placeholder-val="{{ false }}">
+<main data-screen-label="03-1 서비스 상세" style="max-width:760px;margin:0 auto;padding:clamp(24px,5vw,64px) clamp(20px,4vw,40px)">
+  <button onClick="{{ nav.services }}" style="display:flex;align-items:center;gap:4px;height:44px;margin:0 0 24px -4px;border:0;background:none;font-size:var(--fs-s);font-weight:600;color:var(--g600);border-radius:var(--r-m)" style-hover="color:var(--ink)"><i class="icon-chevron-left" style="font-size:18px"></i>서비스 전체</button>
+  <span style="width:64px;height:64px;border-radius:var(--r-m);color:var(--blue-t);display:grid;place-items:center;margin-bottom:24px"><i class="icon-{{ sv.icon }}" style="font-size:30px"></i></span>
+  <h1 style="margin:0 0 16px;font-size:var(--fs-d);letter-spacing:-0.035em;font-weight:800;line-height:1.2">{{ sv.t }} 수리</h1>
+  <p style="margin:0 0 40px;font-size:var(--fs-3);line-height:1.6;color:var(--g600)">{{ sv.d }}</p>
+  <h2 style="margin:0 0 16px;font-size:var(--fs-3);font-weight:800">이런 증상이면 {{ sv.t }}를 확인해요</h2>
+  <div style="display:flex;flex-direction:column;gap:8px;margin-bottom:40px">
+    <sc-for list="{{ svSyms }}" as="y" hint-placeholder-count="2">
+      <div style="padding:20px;border-radius:var(--r-m);background:var(--g50)"><p style="margin:0 0 8px;font-size:var(--fs-b);font-weight:700;display:flex;gap:8px;align-items:center"><i class="icon-{{ y.icon }}" style="color:var(--blue-t);font-size:18px"></i>{{ y.t }}</p><p style="margin:0;font-size:var(--fs-s);line-height:1.6;color:var(--g600)">{{ y.cause }}</p></div>
+    </sc-for>
+  </div>
+  <h2 style="margin:0 0 16px;font-size:var(--fs-3);font-weight:800">작업 내용</h2>
+  <ul style="margin:0 0 40px;padding:0;list-style:none;display:flex;flex-direction:column;border-top:1px solid var(--line)">
+    <sc-for list="{{ sv.items }}" as="it" hint-placeholder-count="3"><li style="display:flex;align-items:center;gap:12px;min-height:56px;border-bottom:1px solid var(--line);font-size:var(--fs-b);font-weight:600"><i class="icon-check" style="color:var(--blue-t);font-size:18px"></i>{{ it }}</li></sc-for>
+  </ul>
+  <div style="padding:24px;border-radius:var(--r-l);background:var(--g50);margin-bottom:40px">
+    <p style="margin:0 0 8px;font-size:var(--fs-s);font-weight:700;color:var(--g600)">비용</p>
+    <p style="margin:0;font-size:var(--fs-b);line-height:1.6">출장비 {{ I.fee }} · 부품비와 작업비는 현장 점검 후 먼저 안내해 드려요.</p>
+  </div>
+  <sc-if value="{{ svHasCases }}" hint-placeholder-val="{{ true }}">
+    <h2 style="margin:0 0 16px;font-size:var(--fs-3);font-weight:800">{{ sv.t }} 시공사례</h2>
+    <div style="display:flex;flex-direction:column;gap:8px">
+      <sc-for list="{{ svCases }}" as="c" hint-placeholder-count="2">
+        <button onClick="{{ c.open }}" style="display:flex;align-items:center;gap:16px;padding:12px;border:0;background:#fff;box-shadow:var(--sh-1);border-radius:var(--r-m);text-align:left;box-shadow:var(--sh-1)" style-hover="border-color:var(--blue);transform:translateY(-2px);box-shadow:var(--sh-3)">
+          <div style="position:relative;overflow:hidden;width:64px;height:64px;flex:none;border-radius:var(--r-m);background:var(--g100);display:grid;place-items:center;font-size:11px;color:var(--g500);font-weight:600"><img src="{{ c.img }}" alt="{{ c.place }} {{ c.title }}" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block"></div>
+          <div style="flex:1"><p style="margin:0 0 4px;font-size:var(--fs-c);font-weight:700;color:var(--blue-t)">{{ c.place }}</p><p style="margin:0;font-size:var(--fs-b);font-weight:700">{{ c.title }}</p></div>
+          <i class="icon-chevron-right" style="color:var(--g400);font-size:20px"></i>
+        </button>
+      </sc-for>
+    </div>
+  </sc-if>
+  <sc-if value="{{ svNoCases }}" hint-placeholder-val="{{ false }}">
+    <p style="margin:0;padding:24px;border-radius:var(--r-m);background:var(--g50);font-size:var(--fs-s);color:var(--g600);text-align:center">아직 등록된 {{ sv.t }} 시공사례가 없어요.</p>
+  </sc-if>
+</main>
+</sc-if>
+
+<sc-if value="{{ s.regions }}" hint-placeholder-val="{{ false }}">
+<main data-screen-label="04 지역 안내" style="max-width:760px;margin:0 auto;padding:clamp(24px,5vw,64px) clamp(20px,4vw,40px)">
+  <nav aria-label="지역 경로" style="display:flex;flex-wrap:wrap;align-items:center;gap:4px;margin-bottom:24px">
+    <sc-for list="{{ browse.crumbs }}" as="c" hint-placeholder-count="1">
+      <button onClick="{{ c.go }}" style="height:36px;padding:0 12px;border:0;border-radius:var(--r-m);background:var(--g100);font-size:var(--fs-s);font-weight:600;color:var(--g700)" style-hover="background:var(--line)">{{ c.t }}</button>
+    </sc-for>
+  </nav>
+  <h1 style="margin:0 0 40px;font-size:var(--fs-1);letter-spacing:-0.03em;font-weight:800;line-height:1.3">{{ browse.title }}</h1>
+  <sc-if value="{{ browse.l0 }}" hint-placeholder-val="{{ true }}">
+    <div style="display:flex;flex-direction:column;gap:32px;animation:rise .4s both">
+      <sc-for list="{{ browse.groups }}" as="g" hint-placeholder-count="3">
+        <div>
+          <p style="margin:0 0 12px;font-size:var(--fs-s);font-weight:700;color:var(--g600)">{{ g.p }}</p>
+          <div style="display:flex;flex-direction:column;border-top:1px solid var(--line)">
+            <sc-for list="{{ g.items }}" as="c" hint-placeholder-count="3">
+              <button onClick="{{ c.open }}" style="display:flex;align-items:center;gap:12px;min-height:64px;padding:0 8px;border:0;border-bottom:1px solid var(--line);background:#fff;text-align:left;font-size:var(--fs-3);font-weight:700" style-hover="background:var(--g50)">
+                <span style="flex:1">{{ c.t }}</span>
+                <span style="font-size:var(--fs-c);font-weight:600;color:var(--g600);padding:4px 10px;border-radius:var(--r-m);background:var(--g100)">{{ c.tag }}</span>
+                <i class="icon-chevron-right" style="font-size:20px;color:var(--g400)"></i>
+              </button>
+            </sc-for>
+          </div>
+        </div>
+      </sc-for>
+    </div>
+  </sc-if>
+  <sc-if value="{{ browse.l1 }}" hint-placeholder-val="{{ false }}">
+    <div style="display:flex;flex-direction:column;gap:8px;animation:rise .4s both">
+      <sc-for list="{{ browse.gus }}" as="g" hint-placeholder-count="3">
+        <button onClick="{{ g.open }}" style="display:flex;align-items:center;gap:16px;padding:20px 24px;border:0;background:#fff;box-shadow:var(--sh-1);border-radius:var(--r-m);text-align:left;box-shadow:var(--sh-1)" style-hover="border-color:var(--blue);background:var(--blue-50);transform:translateY(-2px);box-shadow:var(--sh-3)">
+          <span style="flex:1"><span style="display:block;font-size:var(--fs-3);font-weight:700;margin-bottom:4px">{{ g.t }}</span><span style="display:block;font-size:var(--fs-s);color:var(--g600)">{{ g.preview }} 외</span></span>
+          <i class="icon-chevron-right" style="font-size:20px;color:var(--g400)"></i>
+        </button>
+      </sc-for>
+    </div>
+  </sc-if>
+  <sc-if value="{{ browse.l2 }}" hint-placeholder-val="{{ false }}">
+    <div style="animation:rise .4s both">
+      <button onClick="{{ browse.openAll }}" style="width:100%;display:flex;align-items:center;justify-content:space-between;height:60px;padding:0 24px;border:0;background:var(--blue);color:var(--on-accent);border-radius:var(--r-m);font-size:var(--fs-b);font-weight:700;margin-bottom:24px;box-shadow:var(--sh-btn)" style-hover="background:var(--blue-600);transform:translateY(-1px);box-shadow:var(--sh-btn-h)">{{ browse.allLabel }}<i class="icon-arrow-right" style="font-size:20px"></i></button>
+      <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:8px">
+        <sc-for list="{{ browse.dongs }}" as="d" hint-placeholder-count="6">
+          <button onClick="{{ d.open }}" style="height:56px;border:0;background:#fff;box-shadow:var(--sh-1);border-radius:var(--r-m);font-size:var(--fs-b);font-weight:600;box-shadow:var(--sh-1)" style-hover="border-color:var(--blue);color:var(--blue-t);transform:translateY(-2px);box-shadow:var(--sh-3)">{{ d.t }}</button>
+        </sc-for>
+      </div>
+    </div>
+  </sc-if>
+</main>
+</sc-if>
+
+<sc-if value="{{ s.regionDetail }}" hint-placeholder-val="{{ false }}">
+<main data-screen-label="05 지역 상세">
+  <section style="background:var(--ink);color:#fff">
+    <div style="max-width:1120px;margin:0 auto;padding:clamp(24px,4vw,40px) clamp(20px,4vw,40px) clamp(48px,7vw,80px)">
+      <nav aria-label="현재 위치" style="margin-bottom:clamp(32px,5vw,56px)"><ol style="margin:0;padding:0;list-style:none;display:flex;flex-wrap:wrap;align-items:center;gap:0 8px">
+        <sc-for list="{{ rdCrumbs }}" as="c" hint-placeholder-count="4"><li style="display:flex;align-items:center;gap:8px"><sc-if value="{{ c.sep }}" hint-placeholder-val="{{ true }}"><i class="icon-chevron-right" style="font-size:14px;color:#6E7682"></i></sc-if><button onClick="{{ c.go }}" style="border:0;background:none;padding:8px 0;color:{{ c.fg }};font-size:var(--fs-s);font-weight:600" style-hover="color:#fff;text-decoration:underline">{{ c.t }}</button></li></sc-for>
+      </ol></nav>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,400px),1fr));gap:40px 64px;align-items:end">
+        <div>
+          <p style="display:flex;align-items:center;gap:10px;margin:0 0 20px;font-size:var(--fs-s);font-weight:700;color:var(--on-dark)"><span style="width:24px;height:2px;background:var(--on-dark)"></span><span>{{ rd.cityName }}</span><span style="color:#6E7682">/</span><span>{{ rd.tag }} 출장 지역</span></p>
+          <h1 style="margin:0 0 20px;font-size:clamp(34px,5.4vw,56px);line-height:1.14;letter-spacing:-0.045em;font-weight:800;text-wrap:balance">{{ rd.h1 }}</h1>
+          <p style="margin:0 0 32px;font-size:var(--fs-3);line-height:1.65;color:#C3C9D1;max-width:560px;text-wrap:pretty">{{ rd.sub }}</p>
+          <div style="display:flex;flex-wrap:wrap;gap:8px">
+            <a href="{{ telP }}" style="display:flex;align-items:center;gap:10px;height:60px;padding:0 28px;border-radius:var(--r-m);background:var(--blue);color:var(--on-accent);font-size:var(--fs-3);font-weight:700;text-decoration:none;box-shadow:var(--sh-btn)" style-hover="background:var(--blue-600);color:#fff;text-decoration:none;transform:translateY(-1px);box-shadow:var(--sh-btn-h)"><i class="icon-phone" style="font-size:20px"></i>전화 상담 <span style="display:block;height:24px;overflow:hidden"><span style="display:flex;flex-direction:column;transform:translateY({{ tick.y24 }});transition:transform .6s cubic-bezier(.2,.8,.2,1)"><sc-for list="{{ phones }}" as="p" hint-placeholder-count="5"><span style="display:block;height:24px;line-height:24px;font-variant-numeric:tabular-nums;white-space:nowrap">{{ p.n }}</span></sc-for></span></span></a>
+            <button onClick="{{ nav.contact }}" style="height:60px;padding:0 24px;border:1px solid #fff;background:transparent;color:#fff;border-radius:var(--r-m);font-size:var(--fs-b);font-weight:700;white-space:nowrap" style-hover="background:rgba(255,255,255,.1)">문의 남기기</button>
+          </div>
+        </div>
+        <dl style="margin:0;border-top:1px solid #3A414C;font-size:var(--fs-b)">
+          <div style="display:grid;grid-template-columns:96px 1fr;gap:16px;padding:16px 0;border-bottom:1px solid #3A414C"><dt style="color:#9AA3AF">출장 범위</dt><dd style="margin:0;font-weight:700">{{ rd.guName }} · {{ rd.dongCount }}</dd></div>
+          <div style="display:grid;grid-template-columns:96px 1fr;gap:16px;padding:16px 0;border-bottom:1px solid #3A414C"><dt style="color:#9AA3AF">상담 시간</dt><dd style="margin:0;font-weight:700">{{ I.hours }}</dd></div>
+          <div style="display:grid;grid-template-columns:96px 1fr;gap:16px;padding:16px 0;border-bottom:1px solid #3A414C"><dt style="color:#9AA3AF">출장비</dt><dd style="margin:0;font-weight:700">{{ I.fee }}</dd></div>
+          <div style="display:grid;grid-template-columns:96px 1fr;gap:16px;padding:16px 0;border-bottom:1px solid #3A414C"><dt style="color:#9AA3AF">본사</dt><dd style="margin:0;font-weight:700">경기 평택</dd></div>
+        </dl>
+      </div>
+    </div>
+  </section>
+
+  <div style="max-width:1120px;margin:0 auto;padding:0 clamp(20px,4vw,40px) clamp(64px,8vw,96px);display:grid;grid-template-columns:{{ rdCols }};gap:64px">
+    <sc-if value="{{ desk }}" hint-placeholder-val="{{ false }}">
+      <aside style="position:sticky;top:132px;align-self:start;padding-top:64px">
+        <p style="margin:0 0 12px;font-size:var(--fs-c);font-weight:700;color:var(--g500)">이 페이지에서</p>
+        <nav aria-label="목차"><ol style="margin:0;padding:0;list-style:none;border-left:1px solid var(--line)">
+          <sc-for list="{{ rdToc }}" as="t" hint-placeholder-count="5"><li><button onClick="{{ t.go }}" style="display:block;width:100%;padding:8px 0 8px 16px;margin-left:-1px;border:0;border-left:2px solid transparent;background:none;text-align:left;font-size:var(--fs-s);font-weight:600;color:var(--g700)" style-hover="color:var(--blue-t);border-left-color:var(--blue)">{{ t.t }}</button></li></sc-for>
+        </ol></nav>
+      </aside>
+    </sc-if>
+    <div style="min-width:0">
+      <section id="r-scope" style="padding-top:64px;scroll-margin-top:140px">
+        <div style="display:flex;align-items:baseline;gap:16px;padding-bottom:16px;border-bottom:0;margin-bottom:24px"><span style="font-size:var(--fs-s);font-weight:700;color:var(--blue-t);font-variant-numeric:tabular-nums">01</span><h2 style="margin:0;font-size:var(--fs-2);font-weight:800;letter-spacing:-0.025em">출장 범위</h2></div>
+        <div style="display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:16px">
+          <p style="margin:0;font-size:var(--fs-b);font-weight:700">{{ rd.guName }} · {{ rd.dongCount }}</p>
+          <sc-if value="{{ rd.isDong }}" hint-placeholder-val="{{ false }}"><button onClick="{{ rd.toGu }}" style="min-height:40px;padding:0 14px;border:0;background:#fff;box-shadow:var(--sh-1);border-radius:var(--r-m);font-size:var(--fs-c);font-weight:700;white-space:nowrap;box-shadow:var(--sh-1)" style-hover="border-color:var(--ink);transform:translateY(-2px);box-shadow:var(--sh-3)">{{ rd.guName }} 전체 보기</button></sc-if>
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(120px,1fr));gap:8px">
+          <sc-for list="{{ rd.dongs }}" as="d" hint-placeholder-count="6">
+            <button onClick="{{ d.open }}" style="height:48px;padding:0 12px;border:1px solid {{ d.bd }};background:{{ d.bg }};color:{{ d.fg }};border-radius:var(--r-m);font-size:var(--fs-s);font-weight:600" style-hover="border-color:var(--blue)">{{ d.t }}</button>
+          </sc-for>
+        </div>
+      </section>
+      <section id="r-sym" style="padding-top:64px;scroll-margin-top:140px">
+        <div style="display:flex;align-items:baseline;gap:16px;padding-bottom:16px;border-bottom:0;margin-bottom:24px"><span style="font-size:var(--fs-s);font-weight:700;color:var(--blue-t);font-variant-numeric:tabular-nums">02</span><h2 style="margin:0;font-size:var(--fs-2);font-weight:800;letter-spacing:-0.025em">증상별 안내</h2></div>
+        <div style="display:flex;flex-direction:column">
+          <sc-for list="{{ rd.syms }}" as="y" hint-placeholder-count="6">
+            <div style="border-bottom:1px solid var(--line)">
+              <button onClick="{{ y.toggle }}" aria-expanded="{{ y.open }}" style="width:100%;display:flex;align-items:center;gap:14px;min-height:64px;padding:0 8px;border:0;background:none;text-align:left;font-size:var(--fs-b);font-weight:700;border-radius:var(--r-m)" style-hover="background:var(--g50)">
+                <i class="icon-{{ y.icon }}" style="font-size:20px;color:var(--blue-t)"></i><span style="flex:1">{{ y.t }}</span>
+                <sc-if value="{{ y.open }}" hint-placeholder-val="{{ false }}"><i class="icon-minus" style="font-size:18px;color:var(--g500)"></i></sc-if>
+                <sc-if value="{{ y.closed }}" hint-placeholder-val="{{ true }}"><i class="icon-plus" style="font-size:18px;color:var(--g500)"></i></sc-if>
+              </button>
+              <sc-if value="{{ y.open }}" hint-placeholder-val="{{ false }}">
+                <dl style="margin:0;padding:0 8px 24px 42px;display:grid;gap:12px;animation:rise .3s both">
+                  <div style="display:grid;grid-template-columns:56px 1fr;gap:8px;font-size:var(--fs-s);line-height:1.65"><dt style="font-weight:700;color:var(--g600)">원인</dt><dd style="margin:0">{{ y.cause }}</dd></div>
+                  <div style="display:grid;grid-template-columns:56px 1fr;gap:8px;font-size:var(--fs-s);line-height:1.65"><dt style="font-weight:700;color:var(--g600)">조치</dt><dd style="margin:0">{{ y.act }}</dd></div>
+                  <div style="display:grid;grid-template-columns:56px 1fr;gap:8px;font-size:var(--fs-s);line-height:1.65"><dt style="font-weight:700;color:var(--g600)">서비스</dt><dd style="margin:0;color:var(--blue-t);font-weight:700">{{ y.svcT }}</dd></div>
+                </dl>
+              </sc-if>
+            </div>
+          </sc-for>
+        </div>
+      </section>
+      <section id="r-case" style="padding-top:64px;scroll-margin-top:140px">
+        <div style="display:flex;align-items:baseline;gap:16px;padding-bottom:16px;border-bottom:0;margin-bottom:24px"><span style="font-size:var(--fs-s);font-weight:700;color:var(--blue-t);font-variant-numeric:tabular-nums">03</span><h2 style="margin:0;font-size:var(--fs-2);font-weight:800;letter-spacing:-0.025em">{{ rd.guName }} 시공사례</h2></div>
+        <sc-if value="{{ rd.nearby }}" hint-placeholder-val="{{ false }}"><p style="margin:0 0 16px;font-size:var(--fs-s);color:var(--g600)">아직 이 지역 사례가 없어 가까운 지역 사례를 보여드려요.</p></sc-if>
+        <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,240px),1fr));gap:24px 16px">
+          <sc-for list="{{ rd.cases }}" as="c" hint-placeholder-count="2">
+            <button onClick="{{ c.open }}" style="display:flex;flex-direction:column;gap:12px;padding:0;border:0;background:none;text-align:left" style-hover="opacity:.88">
+              <div style="position:relative;overflow:hidden;width:100%;aspect-ratio:4/3;background:var(--g100);display:grid;place-items:center;font-size:var(--fs-c);color:var(--g500);font-weight:600;border-radius:var(--r-l)"><img src="{{ c.img }}" alt="{{ c.place }} {{ c.title }}" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block"></div>
+              <div><p style="margin:0 0 4px;font-size:var(--fs-c);font-weight:700;color:var(--blue-t)">{{ c.place }}</p><h3 style="margin:0 0 4px;font-size:var(--fs-b);font-weight:700">{{ c.title }}</h3><p style="margin:0;font-size:var(--fs-c);color:var(--g600)">증상 · {{ c.sym }}</p></div>
+            </button>
+          </sc-for>
+        </div>
+      </section>
+      <section id="r-faq" style="padding-top:64px;scroll-margin-top:140px">
+        <div style="display:flex;align-items:baseline;gap:16px;padding-bottom:16px;border-bottom:0;margin-bottom:24px"><span style="font-size:var(--fs-s);font-weight:700;color:var(--blue-t);font-variant-numeric:tabular-nums">04</span><h2 style="margin:0;font-size:var(--fs-2);font-weight:800;letter-spacing:-0.025em">{{ rd.name }} 자주 묻는 질문</h2></div>
+        <div style="display:flex;flex-direction:column">
+          <sc-for list="{{ rd.faq }}" as="f" hint-placeholder-count="4">
+            <article style="padding:0 0 20px;margin-bottom:20px;border-bottom:1px solid var(--line)"><h3 style="margin:0 0 8px;font-size:var(--fs-b);font-weight:700;line-height:1.5">{{ f.q }}</h3><p style="margin:0;font-size:var(--fs-b);line-height:1.7;color:var(--g700)">{{ f.a }}</p></article>
+          </sc-for>
+        </div>
+      </section>
+      <section id="r-near" style="padding-top:64px;scroll-margin-top:140px">
+        <div style="display:flex;align-items:baseline;gap:16px;padding-bottom:16px;border-bottom:0;margin-bottom:24px"><span style="font-size:var(--fs-s);font-weight:700;color:var(--blue-t);font-variant-numeric:tabular-nums">05</span><h2 style="margin:0;font-size:var(--fs-2);font-weight:800;letter-spacing:-0.025em">주변 지역</h2></div>
+        <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,180px),1fr));gap:16px;background:transparent;border:0">
+          <sc-for list="{{ nearList }}" as="n" hint-placeholder-count="6">
+            <button onClick="{{ n.open }}" style="border-radius:var(--r-l);overflow:hidden;box-shadow:var(--sh-1);display:flex;align-items:center;justify-content:space-between;gap:8px;min-height:56px;padding:0 16px;border:0;background:#fff;text-align:left;font-size:var(--fs-s);font-weight:600;border-radius:var(--r-m)" style-hover="background:var(--blue-50);color:var(--ink)">{{ n.t }} 자동문 수리<i class="icon-arrow-up-right" style="font-size:16px;color:var(--g400)"></i></button>
+          </sc-for>
+        </div>
+      </section>
+      <div style="margin-top:64px;padding:clamp(28px,4vw,40px);background:var(--blue);color:var(--on-accent);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr));gap:24px;align-items:center">
+        <div><p style="margin:0 0 8px;font-size:var(--fs-2);font-weight:800;letter-spacing:-0.025em">{{ rd.name }} 출장 상담</p><p style="margin:0;font-size:var(--fs-s);line-height:1.6">증상만 말씀해 주시면 원인을 먼저 짚어드려요.</p></div>
+        <a href="{{ telP }}" style="display:flex;align-items:center;justify-content:center;gap:10px;height:60px;padding:0 24px;border-radius:var(--r-m);background:#fff;color:var(--ink);font-size:var(--fs-3);font-weight:800;text-decoration:none" style-hover="background:var(--blue-50);color:var(--ink);text-decoration:none"><i class="icon-phone" style="font-size:20px;color:var(--blue-t)"></i>{{ P }}</a>
+      </div>
+    </div>
+  </div>
+</main>
+</sc-if>
+
+<sc-if value="{{ s.cases }}" hint-placeholder-val="{{ false }}">
+<main data-screen-label="06 시공사례 목록" style="max-width:1120px;margin:0 auto;padding:clamp(24px,5vw,64px) clamp(20px,4vw,40px)">
+  <h1 style="margin:0 0 32px;font-size:var(--fs-1);letter-spacing:-0.03em;font-weight:800">시공사례</h1>
+  <div style="display:flex;flex-direction:column;gap:12px;margin-bottom:32px">
+    <div style="display:flex;gap:8px;overflow-x:auto;padding-bottom:4px"><span style="flex:none;width:48px;display:flex;align-items:center;font-size:var(--fs-s);font-weight:700;color:var(--g600)">지역</span>
+      <sc-for list="{{ cases.fr }}" as="f" hint-placeholder-count="4"><button onClick="{{ f.pick }}" style="flex:none;height:44px;padding:0 18px;border:1px solid {{ f.bd }};background:{{ f.bg }};color:{{ f.fg }};border-radius:var(--r-m);font-size:var(--fs-s);font-weight:700" style-hover="border-color:var(--blue)">{{ f.t }}</button></sc-for>
+    </div>
+    <div style="display:flex;gap:8px;overflow-x:auto;padding-bottom:4px"><span style="flex:none;width:48px;display:flex;align-items:center;font-size:var(--fs-s);font-weight:700;color:var(--g600)">서비스</span>
+      <sc-for list="{{ cases.fs }}" as="f" hint-placeholder-count="5"><button onClick="{{ f.pick }}" style="flex:none;height:44px;padding:0 18px;border:1px solid {{ f.bd }};background:{{ f.bg }};color:{{ f.fg }};border-radius:var(--r-m);font-size:var(--fs-s);font-weight:700" style-hover="border-color:var(--blue)">{{ f.t }}</button></sc-for>
+    </div>
+  </div>
+  <sc-if value="{{ cases.has }}" hint-placeholder-val="{{ true }}">
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,300px),1fr));gap:24px 16px">
+      <sc-for list="{{ cases.list }}" as="c" hint-placeholder-count="5">
+        <button onClick="{{ c.open }}" style="display:flex;flex-direction:column;gap:16px;padding:0;border:0;background:none;text-align:left;animation:rise .4s both" style-hover="opacity:.85">
+          <div style="position:relative;overflow:hidden;width:100%;aspect-ratio:4/3;border-radius:var(--r-l);background:var(--g100);display:grid;place-items:center;font-size:var(--fs-s);color:var(--g500);font-weight:600"><img src="{{ c.img }}" alt="{{ c.place }} {{ c.title }}" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block"></div>
+          <div style="padding:0 4px"><p style="margin:0 0 4px;font-size:var(--fs-c);font-weight:700;color:var(--blue-t)">{{ c.place }} · {{ c.svcT }}</p><p style="margin:0 0 4px;font-size:var(--fs-3);font-weight:700">{{ c.title }}</p><p style="margin:0;font-size:var(--fs-s);color:var(--g600)">증상 · {{ c.sym }}</p></div>
+        </button>
+      </sc-for>
+    </div>
+  </sc-if>
+  <sc-if value="{{ cases.empty }}" hint-placeholder-val="{{ false }}">
+    <div style="padding:64px 24px;border-radius:var(--r-l);background:var(--g50);text-align:center">
+      <i class="icon-search-x" style="font-size:40px;color:var(--g400)"></i>
+      <p style="margin:16px 0 8px;font-size:var(--fs-3);font-weight:700">조건에 맞는 사례가 아직 없어요</p>
+      <p style="margin:0 0 24px;font-size:var(--fs-s);color:var(--g600)">비슷한 고장이라면 전화로 먼저 물어보셔도 돼요.</p>
+      <button onClick="{{ cases.reset }}" style="height:48px;padding:0 24px;border:0;border-radius:var(--r-m);background:var(--ink);color:#fff;font-weight:700" style-hover="background:var(--g700)">필터 초기화</button>
+    </div>
+  </sc-if>
+</main>
+</sc-if>
+
+<sc-if value="{{ s.caseDetail }}" hint-placeholder-val="{{ false }}">
+<main data-screen-label="06-1 시공사례 상세" style="max-width:760px;margin:0 auto;padding:clamp(24px,5vw,64px) clamp(20px,4vw,40px)">
+  <button onClick="{{ nav.cases }}" style="display:flex;align-items:center;gap:4px;height:44px;margin:0 0 24px -4px;border:0;background:none;font-size:var(--fs-s);font-weight:600;color:var(--g600);border-radius:var(--r-m)" style-hover="color:var(--ink)"><i class="icon-chevron-left" style="font-size:18px"></i>시공사례 전체</button>
+  <p style="margin:0 0 12px;font-size:var(--fs-b);font-weight:700;color:var(--blue-t)">{{ cs.place }} · {{ cs.svcName }}</p>
+  <h1 style="margin:0 0 32px;font-size:var(--fs-1);letter-spacing:-0.03em;font-weight:800;line-height:1.3">{{ cs.title }}</h1>
+  <div style="position:relative;overflow:hidden;width:100%;aspect-ratio:4/3;border-radius:var(--r-l);background:var(--g100);display:grid;place-items:center;color:var(--g500);font-weight:600;margin-bottom:48px"><img src="{{ cs.img }}" alt="{{ cs.place }} {{ cs.title }}" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block"></div>
+  <ol style="margin:0 0 48px;padding:0;list-style:none;display:flex;flex-direction:column">
+    <sc-for list="{{ cs.steps }}" as="t" hint-placeholder-count="4">
+      <li style="display:grid;grid-template-columns:40px 1fr;gap:16px;padding-bottom:32px">
+        <span style="width:40px;height:40px;border-radius:var(--r-m);color:var(--blue-t);display:grid;place-items:center"><i class="icon-{{ t.icon }}" style="font-size:20px"></i></span>
+        <div><p style="margin:8px 0 8px;font-size:var(--fs-s);font-weight:700;color:var(--blue-t)">{{ t.n }} {{ t.k }}</p><p style="margin:0;font-size:var(--fs-3);line-height:1.6;font-weight:500">{{ t.v }}</p></div>
+      </li>
+    </sc-for>
+  </ol>
+  <div style="padding:24px;border-radius:var(--r-l);background:var(--g50);display:flex;flex-direction:column;gap:12px;margin-bottom:48px">
+    <p style="margin:0;font-size:var(--fs-b);font-weight:700">같은 증상으로 고민 중이세요?</p>
+    <a href="{{ telP }}" style="display:flex;align-items:center;justify-content:center;gap:8px;height:56px;border-radius:var(--r-m);background:var(--blue);color:var(--on-accent);font-weight:700;text-decoration:none;box-shadow:var(--sh-btn)" style-hover="background:var(--blue-600);color:#fff;text-decoration:none;transform:translateY(-1px);box-shadow:var(--sh-btn-h)"><i class="icon-phone" style="font-size:20px"></i>전화 상담 <span style="display:block;height:24px;overflow:hidden"><span style="display:flex;flex-direction:column;transform:translateY({{ tick.y24 }});transition:transform .6s cubic-bezier(.2,.8,.2,1)"><sc-for list="{{ phones }}" as="p" hint-placeholder-count="5"><span style="display:block;height:24px;line-height:24px;font-variant-numeric:tabular-nums;white-space:nowrap">{{ p.n }}</span></sc-for></span></span></a>
+    <button onClick="{{ cs.toRegion }}" style="height:48px;border:0;border-radius:var(--r-m);background:#fff;font-weight:600" style-hover="background:var(--line)">{{ cs.place }} 지역 안내 보기</button>
+  </div>
+  <h2 style="margin:0 0 16px;font-size:var(--fs-3);font-weight:800">다른 사례</h2>
+  <div style="display:flex;flex-direction:column;gap:8px">
+    <sc-for list="{{ cs.others }}" as="c" hint-placeholder-count="3">
+      <button onClick="{{ c.open }}" style="display:flex;align-items:center;gap:16px;padding:12px;border:0;background:#fff;box-shadow:var(--sh-1);border-radius:var(--r-m);text-align:left;box-shadow:var(--sh-1)" style-hover="border-color:var(--blue);transform:translateY(-2px);box-shadow:var(--sh-3)">
+        <div style="position:relative;overflow:hidden;width:56px;height:56px;flex:none;border-radius:var(--r-m);background:var(--g100);display:grid;place-items:center;font-size:10px;color:var(--g500);font-weight:600"><img src="{{ c.img }}" alt="{{ c.place }} {{ c.title }}" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block"></div>
+        <div style="flex:1"><p style="margin:0 0 2px;font-size:var(--fs-c);font-weight:700;color:var(--blue-t)">{{ c.place }}</p><p style="margin:0;font-size:var(--fs-b);font-weight:700">{{ c.title }}</p></div>
+      </button>
+    </sc-for>
+  </div>
+</main>
+</sc-if>
+
+<sc-if value="{{ s.faq }}" hint-placeholder-val="{{ false }}">
+<main data-screen-label="07 FAQ" style="max-width:760px;margin:0 auto;padding:clamp(24px,5vw,64px) clamp(20px,4vw,40px)">
+  <h1 style="margin:0 0 40px;font-size:var(--fs-1);letter-spacing:-0.03em;font-weight:800">자주 묻는 질문</h1>
+  <div style="display:flex;flex-direction:column;gap:48px">
+    <sc-for list="{{ faqGroups }}" as="g" hint-placeholder-count="3">
+      <section>
+        <h2 style="margin:0 0 8px;font-size:var(--fs-s);font-weight:700;color:var(--blue-t)">{{ g.cat }}</h2>
+        <div style="display:flex;flex-direction:column;border-top:1px solid var(--line)">
+          <sc-for list="{{ g.items }}" as="f" hint-placeholder-count="3">
+            <article style="padding:24px 0;border-bottom:1px solid var(--line)"><h3 style="margin:0 0 8px;font-size:var(--fs-3);font-weight:700;line-height:1.4">{{ f.q }}</h3><p style="margin:0;font-size:var(--fs-b);line-height:1.7;color:var(--g700)">{{ f.a }}</p></article>
+          </sc-for>
+        </div>
+      </section>
+    </sc-for>
+  </div>
+</main>
+</sc-if>
+
+<sc-if value="{{ s.contact }}" hint-placeholder-val="{{ false }}">
+<main data-screen-label="08 문의하기" style="max-width:640px;margin:0 auto;padding:clamp(24px,5vw,64px) clamp(20px,4vw,40px)">
+  <sc-if value="{{ contact.notSent }}" hint-placeholder-val="{{ true }}">
+    <h1 style="margin:0 0 16px;font-size:var(--fs-1);letter-spacing:-0.03em;font-weight:800;line-height:1.3">급하시면<br>전화가 가장 빨라요</h1>
+    <a href="{{ telP }}" style="display:flex;align-items:center;gap:16px;padding:20px 24px;border-radius:var(--r-l);background:var(--blue);color:var(--on-accent);text-decoration:none;margin:24px 0 48px" style-hover="background:var(--blue-600);color:#fff;text-decoration:none">
+      <span style="width:48px;height:48px;border-radius:var(--r-m);background:rgba(255,255,255,.18);display:grid;place-items:center"><i class="icon-phone" style="font-size:22px"></i></span>
+      <span style="flex:1"><span style="display:block;font-size:var(--fs-3);font-weight:800">{{ P }}</span><span style="display:block;font-size:var(--fs-s);opacity:.85">{{ I.hours }}</span></span><i class="icon-chevron-right" style="font-size:22px"></i>
+    </a>
+    <h2 style="margin:0 0 24px;font-size:var(--fs-2);font-weight:800">문의 남기기</h2>
+    <form onSubmit="{{ contact.submit }}" style="display:flex;flex-direction:column;gap:24px">
+      <label style="display:flex;flex-direction:column;gap:8px"><span style="font-size:var(--fs-s);font-weight:700">이름 <span style="color:var(--err)">*</span></span>
+        <input onChange="{{ contact.on.name }}" placeholder="홍길동" style="height:56px;padding:0 16px;border:1px solid transparent;background-color:var(--g100);border-radius:var(--r-m);font-size:var(--fs-b);outline:none" style-focus="border-color:var(--blue)">
+        <sc-if value="{{ contact.nameErr }}" hint-placeholder-val="{{ false }}"><span style="font-size:var(--fs-c);color:var(--err);font-weight:600">이름을 입력해 주세요</span></sc-if>
+      </label>
+      <label style="display:flex;flex-direction:column;gap:8px"><span style="font-size:var(--fs-s);font-weight:700">연락처 <span style="color:var(--err)">*</span></span>
+        <input onChange="{{ contact.on.phone }}" type="tel" inputmode="numeric" placeholder="010-0000-0000" style="height:56px;padding:0 16px;border:1px solid transparent;background-color:var(--g100);border-radius:var(--r-m);font-size:var(--fs-b);outline:none" style-focus="border-color:var(--blue)">
+        <sc-if value="{{ contact.phoneErr }}" hint-placeholder-val="{{ false }}"><span style="font-size:var(--fs-c);color:var(--err);font-weight:600">연락받으실 번호를 입력해 주세요</span></sc-if>
+      </label>
+      <label style="display:flex;flex-direction:column;gap:8px"><span style="font-size:var(--fs-s);font-weight:700">설치 위치</span>
+        <input onChange="{{ contact.on.area }}" placeholder="예: 용인시 처인구 김량장동 ○○상가" style="height:56px;padding:0 16px;border:1px solid transparent;background-color:var(--g100);border-radius:var(--r-m);font-size:var(--fs-b);outline:none" style-focus="border-color:var(--blue)">
+      </label>
+      <label style="display:flex;flex-direction:column;gap:8px"><span style="font-size:var(--fs-s);font-weight:700">증상</span>
+        <select onChange="{{ contact.on.sym }}" style="height:56px;padding:0 16px;border:1px solid transparent;background-color:var(--g100);border-radius:var(--r-m);font-size:var(--fs-b);background:#fff;outline:none" style-focus="border-color:var(--blue)">
+          <option value="">선택해 주세요</option><sc-for list="{{ contact.symOpts }}" as="o" hint-placeholder-count="7"><option value="{{ o }}">{{ o }}</option></sc-for>
+        </select>
+      </label>
+      <div style="display:flex;flex-direction:column;gap:8px"><span style="font-size:var(--fs-s);font-weight:700">건물 종류</span>
+        <div style="display:flex;flex-wrap:wrap;gap:6px"><sc-for list="{{ bldOpts }}" as="b" hint-placeholder-count="12"><button type="button" onClick="{{ b.pick }}" aria-pressed="{{ b.on }}" style="height:44px;padding:0 14px;border:1px solid {{ b.bd }};border-radius:var(--r-m);background:{{ b.bg }};color:{{ b.fg }};font-size:var(--fs-s);font-weight:600" style-hover="border-color:var(--blue)">{{ b.t }}</button></sc-for></div>
+      </div>
+      <label style="display:flex;flex-direction:column;gap:8px"><span style="font-size:var(--fs-s);font-weight:700">내용</span>
+        <textarea onChange="{{ contact.on.msg }}" rows="4" placeholder="언제부터 어떻게 고장났는지 알려주세요" style="padding:16px;border:1px solid transparent;background-color:var(--g100);border-radius:var(--r-m);font-size:var(--fs-b);line-height:1.6;resize:vertical;outline:none" style-focus="border-color:var(--blue)"></textarea>
+      </label>
+      <div style="display:flex;align-items:center;gap:12px;min-height:56px;padding:0 16px;border:1px dashed var(--g300);border-radius:var(--r-m);color:var(--g600);font-size:var(--fs-s);font-weight:600"><i class="icon-camera" style="font-size:20px"></i>고장 부위 사진 첨부 (선택)</div>
+      <div style="padding:16px;border-radius:var(--r-m);background:var(--g50)">
+        <button type="button" onClick="{{ contact.toggleAgree }}" role="checkbox" aria-checked="{{ contact.agree }}" style="display:flex;align-items:center;gap:12px;width:100%;min-height:48px;border:0;background:none;padding:0;text-align:left;font-size:var(--fs-b);font-weight:700;border-radius:var(--r-m)">
+          <sc-if value="{{ contact.agree }}" hint-placeholder-val="{{ false }}"><span style="width:24px;height:24px;flex:none;border-radius:var(--r-m);background:var(--blue);color:var(--on-accent);display:grid;place-items:center"><i class="icon-check" style="font-size:16px"></i></span></sc-if>
+          <sc-if value="{{ contact.agreeOff }}" hint-placeholder-val="{{ true }}"><span style="width:24px;height:24px;flex:none;border-radius:var(--r-m);border:2px solid var(--g300);background:#fff"></span></sc-if>
+          <sc-if value="{{ contact.agreeErr }}" hint-placeholder-val="{{ false }}"><span style="width:24px;height:24px;flex:none;border-radius:var(--r-m);border:2px solid var(--err);background:#fff"></span></sc-if>
+          <span style="flex:1">[필수] 개인정보 수집·이용에 동의해요</span>
+        </button>
+        <p style="margin:8px 0 0 36px;font-size:var(--fs-c);line-height:1.6;color:var(--g600)">이름·연락처·설치 위치를 상담 목적으로 수집하며, 상담 완료 후 [보유기간] 뒤 파기해요. <button type="button" onClick="{{ nav.privacy }}" style="border:0;background:none;padding:0;color:var(--blue-t);font-size:inherit;font-weight:700;text-decoration:underline">전문 보기</button></p>
+      </div>
+      <sc-if value="{{ contact.canSubmit }}" hint-placeholder-val="{{ false }}">
+        <button type="submit" style="height:60px;border:0;border-radius:var(--r-m);background:var(--blue);color:var(--on-accent);font-size:var(--fs-3);font-weight:700;box-shadow:var(--sh-btn)" style-hover="background:var(--blue-600);transform:translateY(-1px);box-shadow:var(--sh-btn-h)" style-active="background:var(--blue-700)">문의 보내기</button>
+      </sc-if>
+      <sc-if value="{{ contact.cannot }}" hint-placeholder-val="{{ true }}">
+        <button type="submit" aria-disabled="true" style="height:60px;border:0;border-radius:var(--r-m);background:var(--g100);color:var(--g500);font-size:var(--fs-3);font-weight:700;cursor:not-allowed">문의 보내기</button>
+        <p style="margin:-12px 0 0;text-align:center;font-size:var(--fs-c);color:var(--g600)">이름·연락처 입력과 개인정보 동의가 필요해요</p>
+      </sc-if>
+    </form>
+  </sc-if>
+  <sc-if value="{{ contact.sent }}" hint-placeholder-val="{{ false }}">
+    <div style="padding:48px 0;text-align:center;animation:rise .5s both">
+      <span style="width:72px;height:72px;border-radius:var(--r-m);background:var(--blue);color:var(--on-accent);display:inline-grid;place-items:center;margin-bottom:24px"><i class="icon-check" style="font-size:36px"></i></span>
+      <h1 style="margin:0 0 12px;font-size:var(--fs-1);font-weight:800;letter-spacing:-0.03em">문의를 받았어요</h1>
+      <p style="margin:0 0 40px;font-size:var(--fs-b);line-height:1.6;color:var(--g600)">남겨주신 번호로 연락드릴게요.<br>급하시면 지금 바로 전화 주세요.</p>
+      <div style="display:flex;flex-direction:column;gap:8px">
+        <a href="{{ telP }}" style="display:flex;align-items:center;justify-content:center;gap:8px;height:56px;border-radius:var(--r-m);background:var(--blue);color:var(--on-accent);font-weight:700;text-decoration:none;box-shadow:var(--sh-btn)" style-hover="background:var(--blue-600);color:#fff;text-decoration:none;transform:translateY(-1px);box-shadow:var(--sh-btn-h)"><i class="icon-phone" style="font-size:20px"></i>{{ P }}</a>
+        <button onClick="{{ nav.home }}" style="height:52px;border:0;border-radius:var(--r-m);background:var(--g100);font-weight:600" style-hover="background:var(--line)">메인으로</button>
+        <button onClick="{{ contact.reset }}" style="height:48px;border:0;background:none;font-size:var(--fs-s);color:var(--g600);font-weight:600;border-radius:var(--r-m)">새 문의 작성</button>
+      </div>
+    </div>
+  </sc-if>
+</main>
+</sc-if>
+
+<sc-if value="{{ s.privacy }}" hint-placeholder-val="{{ false }}">
+<main data-screen-label="09 개인정보처리방침" style="max-width:760px;margin:0 auto;padding:clamp(24px,5vw,64px) clamp(20px,4vw,40px);font-size:var(--fs-b);line-height:1.8;color:var(--g700)">
+  <h1 style="margin:0 0 8px;font-size:var(--fs-1);font-weight:800;color:var(--ink);letter-spacing:-0.03em">개인정보처리방침</h1>
+  <p style="margin:0 0 40px;font-size:var(--fs-s);color:var(--g600)">시행일 [시행일]</p>
+  <p style="margin:0 0 32px">{{ B }}(이하 "회사")는 문의 상담을 위해 필요한 최소한의 개인정보만 수집하며, 「개인정보 보호법」을 지킵니다.</p>
+  <h2 style="margin:0 0 8px;font-size:var(--fs-3);color:var(--ink)">1. 수집 항목</h2><p style="margin:0 0 32px">필수: 이름, 연락처 / 선택: 설치 위치, 증상, 문의 내용, 첨부 사진</p>
+  <h2 style="margin:0 0 8px;font-size:var(--fs-3);color:var(--ink)">2. 수집·이용 목적</h2><p style="margin:0 0 32px">자동문 수리·설치 상담, 방문 일정 안내, 견적 안내</p>
+  <h2 style="margin:0 0 8px;font-size:var(--fs-3);color:var(--ink)">3. 보유·이용 기간</h2><p style="margin:0 0 32px">상담 완료 후 [보유기간]. 관계 법령에 따라 보존이 필요한 경우 해당 기간 동안 보관합니다.</p>
+  <h2 style="margin:0 0 8px;font-size:var(--fs-3);color:var(--ink)">4. 제3자 제공</h2><p style="margin:0 0 32px">회사는 이용자의 동의 없이 개인정보를 제3자에게 제공하지 않습니다.</p>
+  <h2 style="margin:0 0 8px;font-size:var(--fs-3);color:var(--ink)">5. 파기 절차·방법</h2><p style="margin:0 0 32px">보유 기간이 지난 개인정보는 지체 없이 복구할 수 없는 방법으로 파기합니다.</p>
+  <h2 style="margin:0 0 8px;font-size:var(--fs-3);color:var(--ink)">6. 이용자의 권리</h2><p style="margin:0 0 32px">이용자는 언제든 개인정보 열람·정정·삭제·처리정지를 요청할 수 있습니다.</p>
+  <h2 style="margin:0 0 8px;font-size:var(--fs-3);color:var(--ink)">7. 개인정보 보호책임자</h2><p style="margin:0">성명 {{ I.privacy }} · 연락처 {{ mainTel }} · 이메일 {{ I.email }}</p>
+</main>
+</sc-if>
+
+<sc-if value="{{ s.notfound }}" hint-placeholder-val="{{ false }}">
+<main data-screen-label="09-1 404" style="max-width:560px;margin:0 auto;padding:clamp(64px,12vw,120px) clamp(20px,4vw,40px);text-align:center">
+  <p style="margin:0 0 16px;font-size:var(--fs-b);font-weight:800;color:var(--blue-t)">404</p>
+  <h1 style="margin:0 0 16px;font-size:var(--fs-1);font-weight:800;letter-spacing:-0.03em;line-height:1.3">찾으시는 페이지가<br>없어요</h1>
+  <p style="margin:0 0 40px;font-size:var(--fs-b);line-height:1.6;color:var(--g600)">주소가 바뀌었거나 삭제된 페이지예요.<br>자동문 고장이라면 증상부터 알려주세요.</p>
+  <div style="display:flex;flex-direction:column;gap:8px">
+    <button onClick="{{ nav.home }}" style="height:56px;border:0;border-radius:var(--r-m);background:var(--blue);color:var(--on-accent);font-weight:700;font-size:var(--fs-b);box-shadow:var(--sh-btn)" style-hover="background:var(--blue-600);transform:translateY(-1px);box-shadow:var(--sh-btn-h)">증상으로 진단하기</button>
+    <button onClick="{{ nav.regions }}" style="height:52px;border:0;border-radius:var(--r-m);background:var(--g100);font-weight:600" style-hover="background:var(--line)">우리 지역 찾기</button>
+  </div>
+</main>
+</sc-if>
+
+<footer style="background:var(--ink);color:#C3C9D1">
+  <div style="max-width:1120px;margin:0 auto;padding:clamp(48px,6vw,72px) clamp(20px,4vw,40px) 40px;display:grid;grid-template-columns:{{ footCols }};gap:40px 32px">
+    <div>
+      <div style="display:flex;align-items:center;gap:10px;margin:0 0 16px"><svg viewBox="0 0 40 40" width="36" height="36" aria-hidden="true" style="flex:none;display:block"><path fill="#fff" fill-rule="evenodd" d="M14 4h9a15 15 0 0 1 0 30h-9zM20 10v18h3a9 9 0 0 0 0-18z"></path><path fill="var(--on-dark)" stroke="#14181E" stroke-width="3" paint-order="stroke" stroke-linejoin="round" d="M14 13h6v16a9 9 0 0 1-18 0v-1.5h6V29a3 3 0 0 0 6 0z"></path></svg><span style="display:flex;flex-direction:column;align-items:flex-start;line-height:1"><span style="font-size:17px;font-weight:800;letter-spacing:-0.035em;color:#fff">{{ B }}</span><span style="margin-top:4px;white-space:nowrap;font-size:9.5px;font-weight:700;letter-spacing:.22em;color:#9AA3AF">J&amp;D SYSTEM</span></span></div>
+      <p style="margin:0 0 16px;font-size:var(--fs-c);line-height:1.8;color:#9AA3AF">경기 평택 본사 · 자동문 수리·설치<br>상담 {{ I.hours }}</p>
+      <a href="{{ telP }}" style="font-size:var(--fs-3);font-weight:800;color:#fff">{{ P }}</a>
+    </div>
+    <div><p style="margin:0 0 12px;font-size:var(--fs-c);font-weight:700;color:#fff">서비스</p><sc-for list="{{ svcFoot }}" as="v" hint-placeholder-count="8"><button onClick="{{ v.open }}" style="display:block;border:0;background:none;padding:6px 0;font-size:var(--fs-s);color:#9AA3AF;text-align:left" style-hover="color:#fff;text-decoration:underline">{{ v.ft }}</button></sc-for></div>
+    <div><p style="margin:0 0 12px;font-size:var(--fs-c);font-weight:700;color:#fff">안내</p>
+      <button onClick="{{ nav.about }}" style="display:block;border:0;background:none;padding:6px 0;font-size:var(--fs-s);color:#9AA3AF;text-align:left" style-hover="color:#fff;text-decoration:underline">업체 소개</button>
+      <button onClick="{{ nav.cases }}" style="display:block;border:0;background:none;padding:6px 0;font-size:var(--fs-s);color:#9AA3AF;text-align:left" style-hover="color:#fff;text-decoration:underline">시공사례</button>
+      <button onClick="{{ nav.faq }}" style="display:block;border:0;background:none;padding:6px 0;font-size:var(--fs-s);color:#9AA3AF;text-align:left" style-hover="color:#fff;text-decoration:underline">자주 묻는 질문</button>
+      <button onClick="{{ nav.contact }}" style="display:block;border:0;background:none;padding:6px 0;font-size:var(--fs-s);color:#9AA3AF;text-align:left" style-hover="color:#fff;text-decoration:underline">문의 남기기</button>
+    </div>
+    <div><p style="margin:0 0 12px;font-size:var(--fs-c);font-weight:700;color:#fff">취급 브랜드</p>
+      <div style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:6px">
+        <sc-for list="{{ brandLogos }}" as="b" hint-placeholder-count="11"><span style="height:52px;border-radius:6px;overflow:hidden;background:{{ b.bg }};display:flex;align-items:center;justify-content:center;color:#000;font-size:14px;font-weight:800;letter-spacing:-0.02em"><sc-if value="{{ b.hasSrc }}" hint-placeholder-val="{{ false }}"><img src="{{ b.src }}" alt="{{ b.n }}" loading="lazy" style="width:100%;height:100%;object-fit:contain;display:block"></sc-if><sc-if value="{{ b.txt }}" hint-placeholder-val="{{ true }}">{{ b.n }}</sc-if></span></sc-for>
+        <span style="height:52px;border-radius:6px;border:1px dashed #3A414C;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:600;color:#9AA3AF">외 국내 제조사</span>
+      </div>
+    </div>
+  </div>
+  <div style="max-width:1120px;margin:0 auto;padding:24px clamp(20px,4vw,40px) 32px;border-top:1px solid #2A3039;display:flex;flex-wrap:wrap;justify-content:space-between;gap:16px;font-size:var(--fs-c);line-height:1.8;color:#9AA3AF">
+    <p style="margin:0;color:#9AA3AF"><span style="color:#C3C9D1;font-weight:700">상호</span> {{ B }} <span aria-hidden="true" style="opacity:.4;margin:0 8px">|</span><span style="color:#C3C9D1;font-weight:700">대표</span> {{ I.ceo }} <span aria-hidden="true" style="opacity:.4;margin:0 8px">|</span><span style="color:#C3C9D1;font-weight:700">사업자등록번호</span> {{ I.biz }} <span aria-hidden="true" style="opacity:.4;margin:0 8px">|</span><span style="color:#C3C9D1;font-weight:700">개업일</span> {{ I.open }}<br><span style="color:#C3C9D1;font-weight:700">주소</span> {{ I.addr }}<br><span style="color:#C3C9D1;font-weight:700">대표전화</span> {{ mainTel }} <span aria-hidden="true" style="opacity:.4;margin:0 8px">|</span><span style="color:#C3C9D1;font-weight:700">상담전화</span> {{ phoneAll }} <span aria-hidden="true" style="opacity:.4;margin:0 8px">|</span><span style="color:#C3C9D1;font-weight:700">팩스</span> {{ I.fax }} <span aria-hidden="true" style="opacity:.4;margin:0 8px">|</span><span style="color:#C3C9D1;font-weight:700">이메일</span> {{ I.email }}<br><span style="opacity:.7">© 2018–2026 {{ B }}. All rights reserved.</span></p>
+    <div style="display:flex;gap:16px;align-items:flex-start">
+      <button onClick="{{ nav.privacy }}" style="border:0;background:none;padding:0;min-height:32px;font-size:var(--fs-c);font-weight:700;color:#fff;border-radius:var(--r-m)" style-hover="text-decoration:underline">개인정보처리방침</button>
+      <button onClick="{{ nav.login }}" style="border:0;background:none;padding:0;min-height:32px;font-size:var(--fs-c);color:#9AA3AF;border-radius:var(--r-m)" style-hover="color:#fff">관리자</button>
+    </div>
+  </div>
+  <sc-if value="{{ callBar }}" hint-placeholder-val="{{ true }}"><div style="height:88px"></div></sc-if>
+</footer>
+
+<sc-if value="{{ callBar }}" hint-placeholder-val="{{ true }}">
+  <div style="position:fixed;left:0;right:0;bottom:0;z-index:55;padding:10px 12px calc(10px + env(safe-area-inset-bottom));background:rgba(255,255,255,.82);backdrop-filter:saturate(180%) blur(20px);-webkit-backdrop-filter:saturate(180%) blur(20px);box-shadow:0 -8px 24px -12px rgba(16,24,40,.14);display:flex;gap:8px">
+    <button onClick="{{ nav.contact }}" aria-label="문의 남기기" style="width:60px;height:60px;flex:none;border:0;border-radius:14px;background:var(--g100);display:grid;place-items:center" style-active="background:var(--line)"><i class="icon-message-square" style="font-size:22px"></i></button>
+    <a href="{{ telP }}" style="flex:1;height:60px;display:flex;align-items:center;justify-content:center;gap:8px;border-radius:14px;background:var(--blue);color:var(--on-accent);font-size:var(--fs-3);font-weight:700;text-decoration:none;box-shadow:var(--sh-btn)" style-hover="transform:translateY(-1px);box-shadow:var(--sh-btn-h)" style-active="background:var(--blue-700);color:#fff"><i class="icon-phone" style="font-size:20px"></i>전화 상담 <span style="display:block;height:24px;overflow:hidden"><span style="display:flex;flex-direction:column;transform:translateY({{ tick.y24 }});transition:transform .6s cubic-bezier(.2,.8,.2,1)"><sc-for list="{{ phones }}" as="p" hint-placeholder-count="5"><span style="display:block;height:24px;line-height:24px;font-variant-numeric:tabular-nums;white-space:nowrap">{{ p.n }}</span></sc-for></span></span></a>
+  </div>
+</sc-if>
+</sc-if>
+
+<sc-if value="{{ isLogin }}" hint-placeholder-val="{{ false }}">
+<main data-screen-label="11 로그인" style="min-height:calc(100vh - 52px);display:grid;place-items:center;padding:40px 20px;background:var(--g50)">
+  <form onSubmit="{{ login.submit }}" style="width:100%;max-width:400px;display:flex;flex-direction:column;gap:16px;animation:rise .5s both">
+    <span style="margin-bottom:8px"><svg viewBox="0 0 40 40" width="56" height="56" aria-hidden="true" style="flex:none;display:block"><path fill="var(--ink)" fill-rule="evenodd" d="M14 4h9a15 15 0 0 1 0 30h-9zM20 10v18h3a9 9 0 0 0 0-18z"></path><path fill="var(--blue)" stroke="#F8F9FA" stroke-width="3" paint-order="stroke" stroke-linejoin="round" d="M14 13h6v16a9 9 0 0 1-18 0v-1.5h6V29a3 3 0 0 0 6 0z"></path></svg></span>
+    <h1 style="margin:0 0 24px;font-size:var(--fs-1);font-weight:800;letter-spacing:-0.03em;line-height:1.3">{{ B }}<br>관리자 로그인</h1>
+    <input onChange="{{ login.onId }}" placeholder="아이디" autocomplete="username" style="height:56px;padding:0 16px;border:1px solid transparent;background-color:var(--g100);border-radius:var(--r-m);font-size:var(--fs-b);background:#fff;outline:none" style-focus="border-color:var(--blue)">
+    <input onChange="{{ login.onPw }}" type="password" placeholder="비밀번호" autocomplete="current-password" style="height:56px;padding:0 16px;border:1px solid transparent;background-color:var(--g100);border-radius:var(--r-m);font-size:var(--fs-b);background:#fff;outline:none" style-focus="border-color:var(--blue)">
+    <sc-if value="{{ login.err }}" hint-placeholder-val="{{ false }}"><p role="alert" style="margin:0;display:flex;gap:8px;align-items:center;padding:12px 16px;border-radius:var(--r-m);background:var(--err-50);color:var(--err);font-size:var(--fs-s);font-weight:600"><i class="icon-circle-alert" style="font-size:18px"></i>아이디와 비밀번호를 확인해 주세요</p></sc-if>
+    <button type="submit" style="height:56px;border:0;border-radius:var(--r-m);background:var(--blue);color:var(--on-accent);font-size:var(--fs-b);font-weight:700;margin-top:8px;box-shadow:var(--sh-btn)" style-hover="background:var(--blue-600);transform:translateY(-1px);box-shadow:var(--sh-btn-h)" style-active="background:var(--blue-700)">로그인</button>
+    <button type="button" onClick="{{ login.demo }}" style="height:48px;border:0;background:none;font-size:var(--fs-s);color:var(--g600);font-weight:600;border-radius:var(--r-m)" style-hover="color:var(--ink)">데모 계정으로 둘러보기</button>
+  </form>
+</main>
+</sc-if>
+
+<sc-if value="{{ isAdmin }}" hint-placeholder-val="{{ false }}">
+<div style="display:flex;min-height:calc(100vh - 52px);background:var(--g50)">
+  <sc-if value="{{ desk }}" hint-placeholder-val="{{ false }}">
+    <aside style="width:248px;flex:none;background:#fff;border-right:1px solid var(--line);padding:24px 16px;display:flex;flex-direction:column;gap:4px;position:sticky;top:52px;height:calc(100vh - 52px)">
+      <p style="margin:0 0 24px 12px;font-size:var(--fs-b);font-weight:800">{{ B }} <span style="color:var(--g500);font-weight:600;font-size:var(--fs-c)">관리자</span></p>
+      <sc-for list="{{ adminNav }}" as="n" hint-placeholder-count="6">
+        <button onClick="{{ n.go }}" style="display:flex;align-items:center;gap:12px;height:48px;padding:0 12px;border:0;border-radius:var(--r-m);background:{{ n.nbg }};color:{{ n.nfg }};font-size:var(--fs-s);font-weight:700;text-align:left" style-hover="background:var(--g100)">
+          <i class="icon-{{ n.icon }}" style="font-size:20px"></i><span style="flex:1">{{ n.t }}</span>
+          <sc-if value="{{ n.hasBadge }}" hint-placeholder-val="{{ false }}"><span style="min-width:22px;height:22px;padding:0 6px;border-radius:var(--r-m);background:var(--err);color:#fff;font-size:12px;display:grid;place-items:center">{{ n.badge }}</span></sc-if>
+        </button>
+      </sc-for>
+      <span style="flex:1"></span>
+      <button onClick="{{ nav.login }}" style="display:flex;align-items:center;gap:12px;height:48px;padding:0 12px;border:0;border-radius:var(--r-m);background:none;color:var(--g600);font-size:var(--fs-s);font-weight:600" style-hover="background:var(--g100)"><i class="icon-log-out" style="font-size:20px"></i>로그아웃</button>
+    </aside>
+  </sc-if>
+  <div style="flex:1;min-width:0">
+    <sc-if value="{{ mob }}" hint-placeholder-val="{{ true }}">
+      <div style="background:#fff;border-bottom:1px solid var(--line);display:flex;gap:4px;overflow-x:auto;padding:8px 12px;position:sticky;top:52px;z-index:20">
+        <sc-for list="{{ adminNav }}" as="n" hint-placeholder-count="6">
+          <button onClick="{{ n.go }}" style="flex:none;display:flex;align-items:center;gap:6px;height:44px;padding:0 14px;border:0;border-radius:var(--r-m);background:{{ n.nbg }};color:{{ n.nfg }};font-size:var(--fs-s);font-weight:700"><i class="icon-{{ n.icon }}" style="font-size:18px"></i>{{ n.t }}</button>
+        </sc-for>
+      </div>
+    </sc-if>
+    <div style="max-width:1040px;margin:0 auto;padding:clamp(24px,4vw,48px) clamp(16px,3vw,40px) 64px">
+
+<sc-if value="{{ s.dash }}" hint-placeholder-val="{{ false }}">
+<section data-screen-label="12 대시보드">
+  <div style="display:flex;align-items:flex-end;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-bottom:32px">
+    <div><p style="margin:0 0 8px;font-size:var(--fs-s);color:var(--g600);font-weight:600">10월 28일 수요일</p><h1 style="margin:0;font-size:var(--fs-1);font-weight:800;letter-spacing:-0.03em">오늘 할 일이 3개 있어요</h1></div>
+    <button onClick="{{ nav.newRegion }}" style="display:flex;align-items:center;gap:8px;height:52px;padding:0 20px;border:0;border-radius:var(--r-m);background:var(--blue);color:var(--on-accent);font-weight:700;box-shadow:var(--sh-btn)" style-hover="background:var(--blue-600);transform:translateY(-1px);box-shadow:var(--sh-btn-h)"><i class="icon-plus" style="font-size:20px"></i>새 지역 페이지</button>
+  </div>
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr));gap:12px;margin-bottom:24px">
+    <sc-for list="{{ dash.stats }}" as="t" hint-placeholder-count="4">
+      <button onClick="{{ t.to }}" style="display:flex;flex-direction:column;align-items:flex-start;gap:8px;padding:24px;border:0;border-radius:var(--r-l);background:#fff;text-align:left" style-hover="outline:1px solid var(--ink);outline-offset:-1px">
+        <span style="display:flex;align-items:center;gap:8px;font-size:var(--fs-s);font-weight:700;color:var(--g600)"><i class="icon-{{ t.icon }}" style="font-size:18px;color:var(--blue-t)"></i>{{ t.k }}</span>
+        <span style="font-size:36px;font-weight:800;letter-spacing:-0.03em;font-variant-numeric:tabular-nums">{{ t.v }}</span>
+        <span style="font-size:var(--fs-c);color:var(--g600)">{{ t.sub }}</span>
+      </button>
+    </sc-for>
+  </div>
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,400px),1fr));gap:12px">
+    <div style="padding:24px;border-radius:var(--r-l);background:#fff">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px"><h2 style="margin:0;font-size:var(--fs-3);font-weight:800">새 문의</h2><button onClick="{{ nav.inquiries }}" style="height:40px;border:0;background:none;color:var(--g600);font-size:var(--fs-s);font-weight:600;border-radius:var(--r-m)" style-hover="color:var(--blue-t)">전체</button></div>
+      <sc-for list="{{ dash.inq }}" as="x" hint-placeholder-count="3">
+        <button onClick="{{ x.open }}" style="width:100%;display:flex;align-items:center;gap:12px;min-height:64px;padding:8px 0;border:0;border-top:1px solid var(--line);background:none;text-align:left;border-radius:var(--r-m)" style-hover="background:var(--g50)">
+          <span style="flex:1;min-width:0"><span style="display:block;font-weight:700;font-size:var(--fs-s)">{{ x.r }} · {{ x.sym }}</span><span style="display:block;font-size:var(--fs-c);color:var(--g600)">{{ x.n }} · {{ x.t }}</span></span>
+          <span style="padding:4px 10px;border-radius:var(--r-m);background:{{ x.bbg }};color:{{ x.bfg }};font-size:12px;font-weight:700">{{ x.st }}</span>
+        </button>
+      </sc-for>
+    </div>
+    <div style="padding:24px;border-radius:var(--r-l);background:#fff">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px"><h2 style="margin:0;font-size:var(--fs-3);font-weight:800">최근 발행</h2><button onClick="{{ nav.pages }}" style="height:40px;border:0;background:none;color:var(--g600);font-size:var(--fs-s);font-weight:600;border-radius:var(--r-m)" style-hover="color:var(--blue-t)">전체</button></div>
+      <sc-for list="{{ dash.recent }}" as="p" hint-placeholder-count="4">
+        <button onClick="{{ p.open }}" style="width:100%;display:flex;align-items:center;gap:12px;min-height:56px;border:0;border-top:1px solid var(--line);background:none;text-align:left;border-radius:var(--r-m)" style-hover="background:var(--g50)">
+          <span style="flex:1;font-weight:600;font-size:var(--fs-s)">{{ p.t }}</span><span style="font-size:var(--fs-c);color:var(--g600);font-variant-numeric:tabular-nums">{{ p.d }}</span>
+        </button>
+      </sc-for>
+    </div>
+    <div style="padding:24px;border-radius:var(--r-l);background:#fff">
+      <h2 style="margin:0 0 16px;font-size:var(--fs-3);font-weight:800">검색 등록 상태</h2>
+      <div style="display:flex;height:12px;border-radius:var(--r-m);overflow:hidden;gap:2px;margin-bottom:16px"><span style="width:91%;background:var(--blue)"></span><span style="width:6%;background:var(--g300)"></span><span style="width:3%;background:var(--err)"></span></div>
+      <sc-for list="{{ dash.index }}" as="i" hint-placeholder-count="3"><div style="display:flex;justify-content:space-between;min-height:36px;align-items:center;font-size:var(--fs-s)"><span style="color:var(--g700)">{{ i.k }}</span><span style="font-weight:700;font-variant-numeric:tabular-nums">{{ i.v }}</span></div></sc-for>
+    </div>
+  </div>
+</section>
+</sc-if>
+
+<sc-if value="{{ s.pages }}" hint-placeholder-val="{{ false }}">
+<section data-screen-label="13 지역 페이지 목록">
+  <div style="display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-bottom:24px">
+    <h1 style="margin:0;font-size:var(--fs-1);font-weight:800;letter-spacing:-0.03em">지역 페이지</h1>
+    <button onClick="{{ nav.newRegion }}" style="display:flex;align-items:center;gap:8px;height:48px;padding:0 18px;border:0;border-radius:var(--r-m);background:var(--blue);color:var(--on-accent);font-weight:700;box-shadow:var(--sh-btn)" style-hover="background:var(--blue-600);transform:translateY(-1px);box-shadow:var(--sh-btn-h)"><i class="icon-plus" style="font-size:18px"></i>새 지역</button>
+  </div>
+  <div style="position:relative;margin-bottom:16px">
+    <i class="icon-search" style="position:absolute;left:16px;top:18px;font-size:20px;color:var(--g500)"></i>
+    <input value="{{ pages.q }}" onChange="{{ pages.onQ }}" placeholder="지역명·제목으로 검색 (예: 처인구)" style="width:100%;height:56px;padding:0 16px 0 48px;border:1px solid transparent;background-color:var(--g100);border-radius:var(--r-m);font-size:var(--fs-b);background:#fff;outline:none" style-focus="border-color:var(--blue)">
+  </div>
+  <div style="display:flex;gap:8px;overflow-x:auto;margin-bottom:24px">
+    <sc-for list="{{ pages.pf }}" as="f" hint-placeholder-count="4"><button onClick="{{ f.pick }}" style="flex:none;height:44px;padding:0 16px;border:1px solid {{ f.bd }};background:{{ f.bg }};color:{{ f.fg }};border-radius:var(--r-m);font-size:var(--fs-s);font-weight:700" style-hover="border-color:var(--blue)">{{ f.t }} {{ f.n }}</button></sc-for>
+  </div>
+  <sc-if value="{{ pages.loading }}" hint-placeholder-val="{{ false }}">
+    <div style="display:flex;flex-direction:column;gap:8px" aria-busy="true">
+      <sc-for list="{{ pages.skel }}" as="k" hint-placeholder-count="4"><div style="height:80px;border-radius:var(--r-m);background:linear-gradient(90deg,#fff 0%,var(--g100) 50%,#fff 100%);background-size:800px 100%;animation:shimmer 1.2s linear infinite"></div></sc-for>
+    </div>
+  </sc-if>
+  <sc-if value="{{ pages.ready }}" hint-placeholder-val="{{ true }}">
+    <div style="display:flex;flex-direction:column;gap:8px">
+      <sc-for list="{{ pages.rows }}" as="p" hint-placeholder-count="6">
+        <button onClick="{{ p.open }}" style="display:flex;align-items:center;gap:16px;min-height:80px;padding:16px 20px;border:0;border-radius:var(--r-m);background:#fff;text-align:left" style-hover="outline:1px solid var(--ink);outline-offset:-1px">
+          <span style="flex:1;min-width:0"><span style="display:block;font-size:var(--fs-b);font-weight:700;margin-bottom:4px">{{ p.t }}</span><span style="display:block;font-size:var(--fs-c);color:var(--g600)">{{ p.path }} · {{ p.d }}</span></span>
+          <span style="flex:none;padding:6px 12px;border-radius:var(--r-m);background:{{ p.bbg }};color:{{ p.bfg }};font-size:12px;font-weight:700">{{ p.st }}</span>
+          <i class="icon-chevron-right" style="font-size:20px;color:var(--g400)"></i>
+        </button>
+      </sc-for>
+    </div>
+  </sc-if>
+  <sc-if value="{{ pages.empty }}" hint-placeholder-val="{{ false }}">
+    <div style="padding:64px 24px;border-radius:var(--r-l);background:#fff;text-align:center">
+      <i class="icon-file-search" style="font-size:40px;color:var(--g400)"></i>
+      <p style="margin:16px 0 8px;font-size:var(--fs-3);font-weight:700">'{{ pages.q }}' 페이지가 없어요</p>
+      <p style="margin:0 0 24px;font-size:var(--fs-s);color:var(--g600)">검색어를 바꾸거나 새 지역을 추가해 보세요.</p>
+      <div style="display:flex;gap:8px;justify-content:center;flex-wrap:wrap"><button onClick="{{ pages.reset }}" style="height:48px;padding:0 20px;border:0;border-radius:var(--r-m);background:var(--g100);font-weight:700" style-hover="background:var(--line)">검색 초기화</button><button onClick="{{ nav.newRegion }}" style="height:48px;padding:0 20px;border:0;border-radius:var(--r-m);background:var(--blue);color:var(--on-accent);font-weight:700;box-shadow:var(--sh-btn)" style-hover="background:var(--blue-600);transform:translateY(-1px);box-shadow:var(--sh-btn-h)">새 지역 추가</button></div>
+    </div>
+  </sc-if>
+</section>
+</sc-if>
+
+<sc-if value="{{ s.editor }}" hint-placeholder-val="{{ false }}"><dc-import name="JND-A-Editor" ed="{{ editor }}" nav="{{ nav }}" hint-size="100%,640px"></dc-import></sc-if>
+<sc-if value="{{ s.caseEditor }}" hint-placeholder-val="{{ false }}"><dc-import name="JND-A-Editor" ed="{{ editor }}" nav="{{ nav }}" hint-size="100%,640px"></dc-import></sc-if>
+
+<sc-if value="{{ s.newRegion }}" hint-placeholder-val="{{ false }}">
+<section data-screen-label="15 새 지역 추가" style="max-width:640px">
+  <button onClick="{{ nav.pages }}" style="display:flex;align-items:center;gap:4px;height:44px;margin:0 0 16px -4px;border:0;background:none;font-size:var(--fs-s);font-weight:600;color:var(--g600);border-radius:var(--r-m)" style-hover="color:var(--ink)"><i class="icon-chevron-left" style="font-size:18px"></i>지역 페이지</button>
+  <h1 style="margin:0 0 8px;font-size:var(--fs-1);font-weight:800;letter-spacing:-0.03em">새 지역 추가</h1>
+  <p style="margin:0 0 32px;font-size:var(--fs-b);color:var(--g600)">구와 동을 입력하면 페이지가 임시저장 상태로 한 번에 만들어져요.</p>
+  <div style="display:flex;flex-direction:column;gap:24px;padding:24px;border-radius:var(--r-l);background:#fff">
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:12px">
+      <label style="display:flex;flex-direction:column;gap:8px"><span style="font-size:var(--fs-s);font-weight:700">시·도</span><select value="{{ newRegion.p }}" onChange="{{ newRegion.onP }}" style="height:52px;padding:0 12px;border:1px solid transparent;background-color:var(--g100);border-radius:var(--r-m);background:#fff;font-size:var(--fs-b);outline:none" style-focus="border-color:var(--blue)"><option>경기</option><option>서울</option><option>인천</option></select></label>
+      <label style="display:flex;flex-direction:column;gap:8px"><span style="font-size:var(--fs-s);font-weight:700">시·군</span><input value="{{ newRegion.city }}" onChange="{{ newRegion.onCity }}" style="height:52px;padding:0 12px;border:1px solid transparent;background-color:var(--g100);border-radius:var(--r-m);font-size:var(--fs-b);outline:none" style-focus="border-color:var(--blue)"></label>
+      <label style="display:flex;flex-direction:column;gap:8px"><span style="font-size:var(--fs-s);font-weight:700">구</span><input value="{{ newRegion.gu }}" onChange="{{ newRegion.onGu }}" style="height:52px;padding:0 12px;border:1px solid transparent;background-color:var(--g100);border-radius:var(--r-m);font-size:var(--fs-b);outline:none" style-focus="border-color:var(--blue)"></label>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:8px"><span style="font-size:var(--fs-s);font-weight:700">읍·면·동</span>
+      <div style="display:flex;gap:8px"><input value="{{ newRegion.inp }}" onChange="{{ newRegion.onInp }}" onKeyDown="{{ newRegion.onKey }}" placeholder="동 이름 입력 후 Enter" style="flex:1;min-width:0;height:52px;padding:0 12px;border:1px solid transparent;background-color:var(--g100);border-radius:var(--r-m);font-size:var(--fs-b);outline:none" style-focus="border-color:var(--blue)"><button onClick="{{ newRegion.add }}" style="height:52px;padding:0 20px;border:0;border-radius:var(--r-m);background:var(--ink);color:#fff;font-weight:700" style-hover="background:var(--g700)">추가</button></div>
+      <div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:8px"><sc-for list="{{ newRegion.dongChips }}" as="d" hint-placeholder-count="3"><span style="display:inline-flex;align-items:center;gap:4px;height:40px;padding:0 4px 0 14px;border-radius:var(--r-m);background:var(--blue-50);color:var(--ink);font-size:var(--fs-s);font-weight:700">{{ d.t }}<button onClick="{{ d.rm }}" aria-label="삭제" style="width:32px;height:32px;border:0;background:none;border-radius:var(--r-m);color:inherit;display:grid;place-items:center" style-hover="background:var(--blue-100)"><i class="icon-x" style="font-size:16px"></i></button></span></sc-for></div>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:8px"><span style="font-size:var(--fs-s);font-weight:700">페이지 구성</span>
+      <sc-for list="{{ newRegion.tpls }}" as="t" hint-placeholder-count="3"><button onClick="{{ t.pick }}" style="min-height:52px;padding:0 16px;border:1px solid {{ t.bd }};background:#fff;border-radius:var(--r-m);text-align:left;font-size:var(--fs-s);font-weight:600;display:flex;align-items:center;gap:12px" style-hover="border-color:var(--blue)"><span style="width:20px;height:20px;border-radius:var(--r-m);border:2px solid {{ t.bd }};background:{{ t.bg }};flex:none"></span>{{ t.t }}</button></sc-for>
+    </div>
+  </div>
+  <div style="margin-top:16px;padding:24px;border-radius:var(--r-l);background:#fff">
+    <p style="margin:0 0 12px;font-size:var(--fs-s);font-weight:700;color:var(--g600)">만들어질 페이지 {{ newRegion.count }}개</p>
+    <sc-for list="{{ newRegion.preview }}" as="p" hint-placeholder-count="4"><p style="margin:0;padding:10px 0;border-top:1px solid var(--line);font-size:var(--fs-s);font-weight:600;display:flex;gap:8px;align-items:center"><i class="icon-file-plus" style="color:var(--blue-t);font-size:16px"></i>{{ p }}</p></sc-for>
+  </div>
+  <button onClick="{{ newRegion.create }}" style="margin-top:24px;width:100%;height:60px;border:0;border-radius:var(--r-m);background:var(--blue);color:var(--on-accent);font-size:var(--fs-3);font-weight:700;box-shadow:var(--sh-btn)" style-hover="background:var(--blue-600);transform:translateY(-1px);box-shadow:var(--sh-btn-h)" style-active="background:var(--blue-700)">페이지 {{ newRegion.count }}개 만들기</button>
+</section>
+</sc-if>
+
+<sc-if value="{{ s.adminCases }}" hint-placeholder-val="{{ false }}">
+<section data-screen-label="16 시공사례 목록">
+  <div style="display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-bottom:24px">
+    <h1 style="margin:0;font-size:var(--fs-1);font-weight:800;letter-spacing:-0.03em">시공사례</h1>
+    <button onClick="{{ nav.caseEditor }}" style="display:flex;align-items:center;gap:8px;height:48px;padding:0 18px;border:0;border-radius:var(--r-m);background:var(--blue);color:var(--on-accent);font-weight:700;box-shadow:var(--sh-btn)" style-hover="background:var(--blue-600);transform:translateY(-1px);box-shadow:var(--sh-btn-h)"><i class="icon-plus" style="font-size:18px"></i>사례 작성</button>
+  </div>
+  <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,300px),1fr));gap:12px">
+    <sc-for list="{{ adminCases }}" as="c" hint-placeholder-count="5">
+      <button onClick="{{ c.open }}" style="display:flex;flex-direction:column;gap:12px;padding:12px;border:0;border-radius:var(--r-l);background:#fff;text-align:left" style-hover="outline:1px solid var(--ink);outline-offset:-1px">
+        <div style="position:relative;overflow:hidden;width:100%;aspect-ratio:16/9;border-radius:var(--r-m);background:var(--g100);display:grid;place-items:center;font-size:var(--fs-c);color:var(--g500);font-weight:600"><img src="{{ c.img }}" alt="{{ c.place }} {{ c.title }}" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block"></div>
+        <div style="padding:0 8px 8px;width:100%"><div style="display:flex;justify-content:space-between;gap:8px;margin-bottom:4px"><span style="font-size:var(--fs-c);font-weight:700;color:var(--blue-t)">{{ c.place }}</span><span style="padding:2px 10px;border-radius:var(--r-m);background:{{ c.bbg }};color:{{ c.bfg }};font-size:12px;font-weight:700">{{ c.st }}</span></div><p style="margin:0 0 4px;font-size:var(--fs-b);font-weight:700">{{ c.title }}</p><p style="margin:0;font-size:var(--fs-c);color:var(--g600)">{{ c.svcT }} · {{ c.d }}</p></div>
+      </button>
+    </sc-for>
+  </div>
+</section>
+</sc-if>
+
+<sc-if value="{{ s.inquiries }}" hint-placeholder-val="{{ false }}">
+<section data-screen-label="17 문의 내역">
+  <h1 style="margin:0 0 24px;font-size:var(--fs-1);font-weight:800;letter-spacing:-0.03em">문의 내역 <span style="color:var(--blue-t)">{{ newCount }}</span></h1>
+  <div style="display:flex;flex-direction:column;gap:8px">
+    <sc-for list="{{ inq }}" as="x" hint-placeholder-count="5">
+      <div style="border-radius:var(--r-m);background:#fff;overflow:hidden">
+        <button onClick="{{ x.toggle }}" style="width:100%;display:flex;align-items:center;gap:12px;min-height:72px;padding:12px 20px;border:0;background:none;text-align:left;border-radius:var(--r-m)" style-hover="background:var(--g50)">
+          <sc-if value="{{ x.isNew }}" hint-placeholder-val="{{ true }}"><span style="width:8px;height:8px;border-radius:4px;background:var(--err);flex:none"></span></sc-if>
+          <span style="flex:1;min-width:0"><span style="display:block;font-weight:700">{{ x.r }} · {{ x.sym }}</span><span style="display:block;font-size:var(--fs-c);color:var(--g600)">{{ x.n }} · {{ x.ph }} · {{ x.t }}</span></span>
+          <span style="padding:4px 10px;border-radius:var(--r-m);background:{{ x.bbg }};color:{{ x.bfg }};font-size:12px;font-weight:700;flex:none">{{ x.st }}</span>
+        </button>
+        <sc-if value="{{ x.open }}" hint-placeholder-val="{{ false }}">
+          <div style="padding:0 20px 20px;animation:rise .3s both">
+            <p style="margin:0 0 16px;padding:16px;border-radius:var(--r-m);background:var(--g50);font-size:var(--fs-b);line-height:1.6">{{ x.msg }}</p>
+            <div style="display:flex;gap:8px;flex-wrap:wrap"><a href="tel:010" style="display:flex;align-items:center;gap:8px;height:48px;padding:0 20px;border-radius:var(--r-m);background:var(--blue);color:var(--on-accent);font-weight:700;text-decoration:none;box-shadow:var(--sh-btn)" style-hover="background:var(--blue-600);color:#fff;text-decoration:none;transform:translateY(-1px);box-shadow:var(--sh-btn-h)"><i class="icon-phone" style="font-size:18px"></i>전화 걸기</a>
+            <sc-if value="{{ x.isNew }}" hint-placeholder-val="{{ true }}"><button onClick="{{ x.done }}" style="height:48px;padding:0 20px;border:0;border-radius:var(--r-m);background:var(--g100);font-weight:700" style-hover="background:var(--line)">연락 완료로 변경</button></sc-if></div>
+          </div>
+        </sc-if>
+      </div>
+    </sc-for>
+  </div>
+</section>
+</sc-if>
+
+<sc-if value="{{ s.states }}" hint-placeholder-val="{{ false }}">
+<section data-screen-label="18 상태 화면">
+  <h1 style="margin:0 0 8px;font-size:var(--fs-1);font-weight:800;letter-spacing:-0.03em">상태 화면</h1>
+  <p style="margin:0 0 32px;color:var(--g600)">빈 상태 · 로딩 · 저장 완료 · 오류, 그리고 컨트롤 상태</p>
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:12px;margin-bottom:32px">
+    <div style="padding:40px 24px;border-radius:var(--r-l);background:#fff;text-align:center"><p style="margin:0 0 24px;font-size:var(--fs-c);font-weight:700;color:var(--g500);text-align:left">빈 상태</p><i class="icon-inbox" style="font-size:40px;color:var(--g400)"></i><p style="margin:16px 0 8px;font-weight:700;font-size:var(--fs-3)">아직 문의가 없어요</p><p style="margin:0 0 24px;font-size:var(--fs-s);color:var(--g600)">새 문의가 오면 여기에 바로 보여요.</p><button onClick="{{ nav.dash }}" style="height:48px;padding:0 20px;border:0;border-radius:var(--r-m);background:var(--g100);font-weight:700" style-hover="background:var(--line)">대시보드로</button></div>
+    <div style="padding:40px 24px;border-radius:var(--r-l);background:#fff;text-align:center"><p style="margin:0 0 24px;font-size:var(--fs-c);font-weight:700;color:var(--g500);text-align:left">로딩</p><span style="display:inline-block;width:160px;height:3px;background:linear-gradient(90deg,var(--blue) 0 35%,var(--blue-100) 35% 100%);background-size:200% 100%;animation:shimmer 1s linear infinite"></span><p style="margin:16px 0 16px;font-weight:700;font-size:var(--fs-3)">불러오는 중이에요</p><div style="display:flex;flex-direction:column;gap:8px"><div style="height:16px;border-radius:var(--r-m);background:linear-gradient(90deg,var(--g100),var(--line),var(--g100));background-size:800px 100%;animation:shimmer 1.2s linear infinite"></div><div style="height:16px;width:70%;border-radius:var(--r-m);background:linear-gradient(90deg,var(--g100),var(--line),var(--g100));background-size:800px 100%;animation:shimmer 1.2s linear infinite"></div></div></div>
+    <div style="padding:40px 24px;border-radius:var(--r-l);background:#fff;text-align:center"><p style="margin:0 0 24px;font-size:var(--fs-c);font-weight:700;color:var(--g500);text-align:left">저장 완료</p><span style="width:56px;height:56px;border-radius:var(--r-m);background:var(--ok-50);color:var(--ok);display:inline-grid;place-items:center"><i class="icon-check" style="font-size:28px"></i></span><p style="margin:16px 0 8px;font-weight:700;font-size:var(--fs-3)">발행했어요</p><p style="margin:0 0 24px;font-size:var(--fs-s);color:var(--g600)">검색 등록 요청도 함께 보냈어요.</p><div style="display:inline-flex;align-items:center;gap:8px;height:48px;padding:0 20px;border-radius:var(--r-m);background:var(--ink);color:#fff;font-size:var(--fs-s);font-weight:600"><i class="icon-circle-check" style="font-size:18px;color:#7DD3A8"></i>임시저장했어요</div></div>
+    <div style="padding:40px 24px;border-radius:var(--r-l);background:#fff;text-align:center"><p style="margin:0 0 24px;font-size:var(--fs-c);font-weight:700;color:var(--g500);text-align:left">오류</p><span style="width:56px;height:56px;border-radius:var(--r-m);background:var(--err-50);color:var(--err);display:inline-grid;place-items:center"><i class="icon-triangle-alert" style="font-size:28px"></i></span><p style="margin:16px 0 8px;font-weight:700;font-size:var(--fs-3)">저장하지 못했어요</p><p style="margin:0 0 24px;font-size:var(--fs-s);color:var(--g600)">인터넷 연결을 확인하고 다시 시도해 주세요.<br>작성한 내용은 그대로 남아 있어요.</p><button style="height:48px;padding:0 20px;border:0;border-radius:var(--r-m);background:var(--blue);color:var(--on-accent);font-weight:700;box-shadow:var(--sh-btn)" style-hover="background:var(--blue-600);transform:translateY(-1px);box-shadow:var(--sh-btn-h)">다시 시도</button></div>
+  </div>
+  <div style="padding:24px;border-radius:var(--r-l);background:#fff">
+    <p style="margin:0 0 16px;font-size:var(--fs-c);font-weight:700;color:var(--g500)">버튼 상태 — 기본 / 호버 / 누름 / 포커스 / 비활성</p>
+    <div style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:24px">
+      <button style="height:52px;padding:0 20px;border:0;border-radius:var(--r-m);background:var(--blue);color:var(--on-accent);font-weight:700;box-shadow:var(--sh-btn)" style-hover="transform:translateY(-1px);box-shadow:var(--sh-btn-h)">기본</button>
+      <button style="height:52px;padding:0 20px;border:0;border-radius:var(--r-m);background:var(--blue-600);color:#fff;font-weight:700">호버</button>
+      <button style="height:52px;padding:0 20px;border:0;border-radius:var(--r-m);background:var(--blue-700);color:#fff;font-weight:700">누름</button>
+      <button style="height:52px;padding:0 20px;border:0;border-radius:var(--r-m);background:var(--blue);color:var(--on-accent);font-weight:700;outline:3px solid var(--blue);outline-offset:2px;box-shadow:var(--sh-btn)" style-hover="transform:translateY(-1px);box-shadow:var(--sh-btn-h)">포커스</button>
+      <button disabled="{{ true }}" style="height:52px;padding:0 20px;border:0;border-radius:var(--r-m);background:var(--g100);color:var(--g500);font-weight:700">비활성</button>
+    </div>
+    <p style="margin:0 0 16px;font-size:var(--fs-c);font-weight:700;color:var(--g500)">입력 상태 — 기본 / 포커스 / 오류 / 비활성</p>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:8px">
+      <input placeholder="기본" style="height:52px;padding:0 16px;border:1px solid transparent;background-color:var(--g100);border-radius:var(--r-m);font-size:var(--fs-b)">
+      <input value="포커스" readonly="{{ true }}" style="height:52px;padding:0 16px;border:1px solid var(--blue);border-radius:var(--r-m);font-size:var(--fs-b);outline:none">
+      <input value="오류" readonly="{{ true }}" style="height:52px;padding:0 16px;border:1px solid var(--err);border-radius:var(--r-m);font-size:var(--fs-b);outline:none">
+      <input value="비활성" disabled="{{ true }}" style="height:52px;padding:0 16px;border:1px solid transparent;background-color:var(--g100);background:var(--g100);color:var(--g500);border-radius:var(--r-m);font-size:var(--fs-b)">
+    </div>
+  </div>
+</section>
+</sc-if>
+
+    </div>
+  </div>
+</div>
+</sc-if>
+
+<sc-if value="{{ hasToast }}" hint-placeholder-val="{{ false }}">
+  <div role="status" style="position:fixed;left:50%;bottom:104px;transform:translateX(-50%);z-index:80;display:flex;align-items:center;gap:8px;height:52px;padding:0 24px;border-radius:var(--r-m);background:var(--ink);color:#fff;font-size:var(--fs-s);font-weight:600;white-space:nowrap;animation:toastIn .3s both"><i class="icon-circle-check" style="font-size:18px;color:#7DD3A8"></i>{{ toast }}</div>
+</sc-if>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;palette&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;지정 1 · 옐로우 + 블랙&quot;,&quot;지정 2 · 오렌지 + 블랙&quot;,&quot;블루 1 · 시그널 블루&quot;,&quot;블루 2 · 딥 네이비&quot;,&quot;블루 3 · 오션 블루&quot;,&quot;오렌지 1 · 세이프티 오렌지&quot;,&quot;오렌지 2 · 테라코타&quot;,&quot;오렌지 3 · 네이비 + 오렌지&quot;,&quot;그린 1 · 에메랄드&quot;,&quot;그린 2 · 포레스트&quot;,&quot;그린 3 · 틸&quot;],&quot;default&quot;:&quot;지정 1 · 옐로우 + 블랙&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;브랜드 컬러&quot;},&quot;rotateSec&quot;:{&quot;editor&quot;:&quot;range&quot;,&quot;min&quot;:1.5,&quot;max&quot;:6,&quot;step&quot;:0.5,&quot;unit&quot;:&quot;초&quot;,&quot;default&quot;:2.5,&quot;tsType&quot;:&quot;number&quot;,&quot;section&quot;:&quot;전화번호 노출&quot;},&quot;doorIntro&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;메인 이미지&quot;}}">
+class Component extends DCLogic {
+  rootRef = React.createRef();
+  state = { w: this.props && this.props.printMode ? 1280 : (typeof window !== 'undefined' ? window.innerWidth : 390), D: null, tick: 0, doorOpen: false };
+  PAL = {
+    '지정 1 · 옐로우 + 블랙': { '--blue': '#FED91B', '--blue-600': '#F2CB00', '--blue-700': '#DDB800', '--blue-50': '#FFF9DC', '--blue-100': '#FFF0A6', '--on-dark': '#FED91B', '--ink': '#000000', '--blue-t': '#F07600', '--on-accent': '#000000', '--band-on-bg': '#000000', '--band-on-fg': '#FED91B', '--band-off-bg': 'rgba(255,255,255,.45)', rgb: '254,217,27' },
+    '지정 2 · 오렌지 + 블랙': { '--blue': '#F07600', '--blue-600': '#DB6A00', '--blue-700': '#C25E00', '--blue-50': '#FFF2E5', '--blue-100': '#FFE0C2', '--on-dark': '#FED91B', '--ink': '#000000', '--blue-t': '#F07600', '--on-accent': '#000000', '--band-on-bg': '#000000', '--band-on-fg': '#FED91B', '--band-off-bg': 'rgba(255,255,255,.3)', rgb: '240,118,0' },
+    '블루 1 · 시그널 블루': { '--blue': '#2B66F0', '--blue-600': '#1F55D4', '--blue-700': '#1846B3', '--blue-50': '#EEF3FE', '--blue-100': '#DCE6FD', '--on-dark': '#8FB0FF', '--ink': '#14181E', rgb: '43,102,240' },
+    '블루 2 · 딥 네이비': { '--blue': '#1D3F9E', '--blue-600': '#183585', '--blue-700': '#132B6C', '--blue-50': '#ECF0FA', '--blue-100': '#D5DEF3', '--on-dark': '#9DB4F5', '--ink': '#0E1A2B', rgb: '29,63,158' },
+    '블루 3 · 오션 블루': { '--blue': '#0A72B0', '--blue-600': '#085F94', '--blue-700': '#064D78', '--blue-50': '#E7F3FA', '--blue-100': '#CBE5F4', '--on-dark': '#7CC8EE', '--ink': '#12202B', rgb: '10,114,176' },
+    '오렌지 1 · 세이프티 오렌지': { '--blue': '#DD520C', '--blue-600': '#C3470A', '--blue-700': '#A13A07', '--blue-50': '#FDF0E8', '--blue-100': '#FADCCB', '--on-dark': '#FFAE78', '--ink': '#14181E', rgb: '221,82,12' },
+    '오렌지 2 · 테라코타': { '--blue': '#B8430A', '--blue-600': '#9E3908', '--blue-700': '#822F06', '--blue-50': '#FAEEE7', '--blue-100': '#F2D8CA', '--on-dark': '#F5A27A', '--ink': '#1E1714', rgb: '184,67,10' },
+    '오렌지 3 · 네이비 + 오렌지': { '--blue': '#CF5A12', '--blue-600': '#B44E0F', '--blue-700': '#943F0C', '--blue-50': '#FCF0E8', '--blue-100': '#F7DBC8', '--on-dark': '#FFB27F', '--ink': '#0E1A2B', rgb: '207,90,18' },
+    '그린 1 · 에메랄드': { '--blue': '#0E7A5C', '--blue-600': '#0B6A50', '--blue-700': '#085742', '--blue-50': '#E7F4EF', '--blue-100': '#CBE9DD', '--on-dark': '#7FD9B4', '--ink': '#14181E', rgb: '14,122,92' },
+    '그린 2 · 포레스트': { '--blue': '#1F6B3A', '--blue-600': '#1A5C32', '--blue-700': '#154B29', '--blue-50': '#EAF3ED', '--blue-100': '#D0E6D7', '--on-dark': '#8FD5A6', '--ink': '#131A15', rgb: '31,107,58' },
+    '그린 3 · 틸': { '--blue': '#0F766E', '--blue-600': '#0C655E', '--blue-700': '#0A534D', '--blue-50': '#E6F4F2', '--blue-100': '#C9E8E4', '--on-dark': '#6FD6CB', '--ink': '#0F1E26', rgb: '15,118,110' }
+  };  applyPalette() {
+    const al = { '블루': '블루 1 · 시그널 블루', '오렌지': '오렌지 1 · 세이프티 오렌지', '그린': '그린 1 · 에메랄드' };
+    const p = this.PAL[this.props.palette] || this.PAL[al[this.props.palette]] || this.PAL['지정 1 · 옐로우 + 블랙'];
+    if (this._pal === p && this.rootRef.current === this._palEl) return; this._pal = p; this._palEl = this.rootRef.current;
+    if (!this.rootRef.current) { this._pal = null; return; }
+    const r = this.rootRef.current.style;
+    r.setProperty('--blue-t', p['--blue']); r.setProperty('--on-accent', '#fff'); r.setProperty('--band-on-bg', '#fff'); r.setProperty('--band-on-fg', 'var(--ink)'); r.setProperty('--band-off-bg', 'rgba(255,255,255,.14)');
+    Object.keys(p).forEach((k) => { if (k.startsWith('--')) r.setProperty(k, p[k]); });
+    r.setProperty('--sh-btn', '0 1px 2px rgba(16,24,40,.10),0 6px 16px -6px rgba(' + p.rgb + ',.55),inset 0 1px 0 rgba(255,255,255,.14)');
+    r.setProperty('--sh-btn-h', '0 2px 4px rgba(16,24,40,.10),0 12px 24px -8px rgba(' + p.rgb + ',.6),inset 0 1px 0 rgba(255,255,255,.14)');
+  }
+  runTick() { clearTimeout(this._tk); this._tk = setTimeout(() => { this.setState((s) => ({ tick: s.tick + 1 })); this.runTick(); }, Math.max(1.2, Number(this.props.rotateSec) || 2.5) * 1000); }
+  componentDidMount() {
+    this.onR = () => { if (!this.props.printMode) this.setState({ w: window.innerWidth }); };
+    window.addEventListener('resize', this.onR);
+    this.applyPalette(); if (!this.props.printMode) this.runTick();
+    const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (this.props.doorIntro === false || this.props.printMode || reduce) this.setState({ doorOpen: true }); else this._dt = setTimeout(() => this.setState({ doorOpen: true }), 700);
+    Promise.all([import('./jnd-data.js'), import('./jnd-core.js')]).then(([d, c]) => {
+      this.core = c;
+      this.setState({ ...c.initState(), D: d.default });
+    });
+  }
+  componentDidUpdate() { this.reveal(); this.applyPalette(); }
+  reveal() {
+    if (this.props.printMode) return;
+    if (typeof IntersectionObserver === 'undefined' || matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    this.seen = this.seen || new WeakSet();
+    this.io = this.io || new IntersectionObserver((es) => es.forEach((e) => { if (!e.isIntersecting) return; this.io.unobserve(e.target); e.target.animate([{ opacity: 0, transform: 'translateY(28px)' }, { opacity: 1, transform: 'none' }], { duration: 800, easing: 'cubic-bezier(.2,.8,.2,1)', fill: 'backwards' }); }), { rootMargin: '0px 0px -8% 0px', threshold: 0.08 });
+    document.querySelectorAll('main > section, main > div, main > article').forEach((el) => { if (this.seen.has(el)) return; this.seen.add(el); const r = el.getBoundingClientRect(); if (r.top < innerHeight * 0.9) return; this.io.observe(el); });
+  }
+  componentWillUnmount() { clearTimeout(this._tk); clearTimeout(this._dt); window.removeEventListener('resize', this.onR); if (this.io) this.io.disconnect(); }
+  renderVals() {
+    const door = this.state.doorOpen ? { l: '-102%', r: '102%', led: '#3DDC84', zoom: '1' } : { l: '0%', r: '0%', led: '#FF5A4F', zoom: '1.06' };
+    if (!this.core || !this.state.D) return { photo: {}, s: { home: true }, isUser: true, mob: true, home: { step0: true }, door, tick: {}, heroBg: 'none', rootRef: this.rootRef, showBar: !this.props.printMode };
+    const T = {
+      on: { bg: 'var(--blue)', fg: 'var(--on-accent)', bd: 'var(--blue)' },
+      off: { bg: '#fff', fg: 'var(--ink)', bd: 'var(--line)' },
+      badge: { '발행': { bbg: 'var(--ok-50)', bfg: 'var(--ok)' }, '비공개': { bbg: 'var(--g100)', bfg: 'var(--g600)' }, '임시저장': { bbg: 'var(--warn-50)', bfg: 'var(--warn)' }, '새 문의': { bbg: 'var(--err-50)', bfg: 'var(--err)' } },
+      stepOn: { sbg: 'var(--blue)', sfg: 'var(--on-accent)' }, stepDone: { sbg: 'var(--blue-100)', sfg: 'var(--ink)' }, stepOff: { sbg: 'var(--g100)', sfg: 'var(--g500)' },
+      navOn: { nbg: 'var(--blue-50)', nfg: 'var(--ink)' }, navOff: { nbg: 'transparent', nfg: 'var(--g700)' },
+      row: { rbg: '#fff' }, selRow: { rbg: 'var(--blue-50)' }
+    };
+    const v = this.core.build(this, T);
+    v.photo = this.state.D.PHOTO || {};
+    const D = this.state.D, S = this.state;
+    const go = (screen, x) => () => { this.setState({ screen, ...(x || {}) }); try { window.scrollTo(0, 0); } catch (e) {} };
+    const short = (c) => c.replace(/(특별시|광역시|시)$/, '');
+    const reg = (c, g, d) => go('regionDetail', { rc: c, rg: g, rdg: d || null, symOpen: 0 });
+    v.regionCols = D.CITIES.map((c) => ({ t: c.c, tag: c.tag, open: reg(c.c, c.gus[0].g), gus: c.gus.map((g) => ({ t: g.g === '전체' ? short(c.c) + ' 전체' : g.g, open: reg(c.c, g.g), dongs: g.d.slice(0, 6).map((d) => ({ t: d, open: reg(c.c, g.g, d) })) })) }));
+    v.symRows = D.SYMS.map((o, i) => ({ ...o, n: String(i + 1).padStart(2, '0'), svcT: D.SVCS.find((x) => x.id === o.svc).t, pick: () => { this.setState({ screen: 'home', sym: o.id, step: 1 }); try { window.scrollTo({ top: 0, behavior: 'smooth' }); } catch (e) {} } }));
+    v.svcNum = v.svcCards.map((c, i) => ({ ...c, n: String(i + 1).padStart(2, '0'), hasImg: !!c.img, noImg: !c.img }));
+    v.svcFoot = v.svcCards.map((c) => ({ ...c, ft: c.f || c.t + ' 수리' }));
+    const W = S.w;
+    v.svcCols = W >= 1024 ? 'repeat(4,minmax(0,1fr))' : W >= 560 ? 'repeat(2,minmax(0,1fr))' : 'minmax(0,1fr)';
+    v.stepCols = W >= 1100 ? 'repeat(6,minmax(0,1fr))' : W >= 640 ? 'repeat(3,minmax(0,1fr))' : 'repeat(2,minmax(0,1fr))';
+    v.revCols = W >= 560 ? 'repeat(2,minmax(0,1fr))' : 'minmax(0,1fr)';
+    v.clientBasis = W >= 1100 ? 'calc((100% - 72px) / 7)' : W >= 700 ? 'calc((100% - 48px) / 5)' : 'calc((100% - 12px) / 2)';
+    v.footCols = v.desk ? '1.3fr 1fr .8fr 1.5fr' : 'repeat(auto-fit,minmax(min(100%,180px),1fr))';
+    const BL = { '태양': ['logos/brand-sun.png', '#fff'], '현대': ['logos/brand-hyundai.png', '#25374a'], '태성': ['logos/brand-taesung.png', '#9c9ea6'] };
+    const bOrder = ['태양', '현대', '태성'].concat(D.BRANDS.filter((n) => !BL[n]));
+    v.brandLogos = bOrder.map((n) => ({ n, src: BL[n] ? BL[n][0] : '', hasSrc: !!BL[n], txt: !BL[n], bg: BL[n] ? BL[n][1] : '#fff' }));
+    v.clients = [['삼성전자', 'samsung'], ['LG전자', 'lg'], ['용산 아이파크몰', 'iparkmall'], ['스타벅스', 'starbucks'], ['SPC', 'spc'], ['한국도로교통공단', 'koroad'], ['코레일', 'korail'], ['이마트', 'emart'], ['테슬라 서비스센터', 'tesla'], ['현대 힐스테이트', 'hillstate'], ['래미안', 'raemian'], ['아이파크', 'ipark'], ['자이', 'xi']].map(([n, f]) => ({ n, src: 'logos/' + f + '.png' }));
+    const rPool = [...new Set(D.CASES.filter((c) => c.kind === 'install').concat(D.CASES.filter((c) => c.kind !== 'install')).map((c) => c.img))];
+    const REV = [
+      ['***카페', '2026-10-21', '설치부터 마무리까지 만족스러웠어요!', '매장 출입문을 자동문으로 교체하려고 알아보다가 문의드렸습니다. 상담할 때부터 친절하게 설명해 주셨고, 현장에 오셔서 설치할 위치와 필요한 부분도 꼼꼼하게 확인해 주셨어요. 설치도 깔끔하게 잘해 주셨고 문이 열리고 닫히는 속도까지 세심하게 조절해 주셨습니다. 생각했던 것보다 훨씬 만족스럽네요. 감사합니다!', '설치 전 상담 및 시공 만족'],
+      ['***베이커리', '2026-10-14', '빠른 방문과 깔끔한 시공 감사합니다.', '가게 오픈을 앞두고 자동문 설치가 필요해서 연락드렸는데 일정도 잘 맞춰주시고 빠르게 진행해 주셨습니다. 작업하시는 동안에도 주변 정리를 깔끔하게 해주셔서 좋았어요. 설치 후 작동 방법과 주의사항도 자세히 알려주셨고 여러 번 테스트까지 해주셨습니다. 덕분에 오픈 준비 잘 마무리했습니다.', '빠른 일정 및 매장 설치'],
+      ['***빌딩', '2026-10-08', '오래된 자동문 교체하길 잘했네요.', '기존 자동문이 오래되어서 작동도 불안정하고 소음도 심했는데 이번에 새 제품으로 교체했습니다. 처음에는 수리만 할까 고민했지만 현장 확인 후 자세하게 설명해 주셔서 교체를 결정했어요. 설치하고 나니 문 움직임도 부드럽고 소음도 줄어들어 만족스럽습니다.', '노후 자동문 교체'],
+      ['***관리단', '2026-09-29', '꼼꼼하게 설치해 주셔서 좋았습니다.', '건물 출입구에 자동문을 새로 설치하게 되어 여러 업체를 알아보다가 상담 후 진행했습니다. 현장 상황에 맞게 설치 방향과 작동 방식도 안내해 주셨고, 센서 위치도 적절하게 잡아주셨어요. 실제 출입 상황을 확인하면서 작동 테스트를 해주셔서 안심이 됐습니다.', '건물 출입구 신규 설치'],
+      ['***상사', '2026-09-17', '다음에도 자동문 작업은 여기서 할 것 같아요.', '자동문 설치가 처음이라 모르는 부분이 많았는데 문의할 때마다 친절하게 알려주셔서 좋았습니다. 제품 선택부터 설치 과정까지 어렵지 않게 설명해 주셨고, 작업도 생각보다 빠르게 끝났습니다. 주변에 자동문 설치가 필요한 분이 있다면 추천하고 싶습니다.', '서비스 만족 및 재이용 의사']
+    ].map(([name, date, title, body, type], i) => ({ rank: i + 1, name, date, title, body, type, img: rPool[i % rPool.length] }));
+    v.revTop = REV[0]; v.revRest = REV.slice(1);
+    v.caseLead = v.cases.all[0]; v.caseRest = v.cases.all.slice(1);
+    v.faqTop = D.FAQ.slice(0, 4);
+    v.door = door; v.rootRef = this.rootRef; v.showBar = !this.props.printMode;
+    v.heroBg = v.photo.about ? 'url("' + v.photo.about + '")' : 'none';
+    v.vidStill = this.props.printMode ? 17.2 : null;
+    if (!this._order && this.props.printMode) this._order = D.PHONES.slice();
+    if (!this._order) { const a = D.PHONES.slice(); for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } this._order = a; }
+    const cnt = 3;
+    const list = this._order.slice(0, cnt), k = S.tick % list.length;
+    v.phones = list.map((n, i) => ({ n, tel: 'tel:' + n, on: i === k, bg: i === k ? 'var(--blue)' : 'var(--g50)', fg: i === k ? 'var(--on-accent)' : 'var(--ink)', ic: i === k ? 'var(--on-accent)' : 'var(--blue-t)', op: i === k ? 1 : 0 }));
+    v.phonesB = list.map((n, i) => ({ n, tel: 'tel:' + n, bg: i === k ? 'var(--band-on-bg)' : 'var(--band-off-bg)', fg: i === k ? 'var(--band-on-fg)' : 'var(--on-accent)' }));
+    v.P = list[k]; v.telP = 'tel:' + list[k]; v.mainTel = D.PHONE; v.phoneAll = D.PHONES.join(' · ');
+    v.tick = { y20: (-k * 20) + 'px', y24: (-k * 24) + 'px' };
+    // 지역 SEO 페이지: 페이지마다 3개 번호 중 하나를 고정 배정 (지역명 해시 → 같은 페이지는 항상 같은 번호)
+    if (S.screen === 'regionDetail' && v.rd && v.rd.name) {
+      const hsh = Array.from(v.rd.name).reduce((a, c) => (a * 31 + c.charCodeAt(0)) >>> 0, 7);
+      const pin = D.PHONES[hsh % D.PHONES.length];
+      v.P = pin; v.telP = 'tel:' + pin;
+    }
+    const inst = v.cases.all.filter((c) => c.kind === 'install'), rep = v.cases.all.filter((c) => c.kind === 'repair');
+    v.caseCols = [{ t: '자동문 설치', icon: 'square-plus', n: inst.length, items: inst.slice(0, 7) }, { t: '자동문 수리', icon: 'wrench', n: rep.length, items: rep.slice(0, 7) }];
+    v.bldOpts = D.BUILDINGS.map((t) => { const on = S.form.bld === t; return { t, on, pick: () => this.setState({ form: { ...S.form, bld: on ? '' : t } }), bg: on ? 'var(--blue)' : '#fff', fg: on ? 'var(--on-accent)' : 'var(--ink)', bd: on ? 'var(--blue)' : 'var(--line)' }; });
+    const rc = D.CITIES.find((c) => c.c === S.rc) || D.CITIES[3];
+    const crumbs = [{ t: '홈', go: go('home', { step: 0 }) }, { t: '출장 지역', go: go('regions', { bc: null, bg: null }) }, { t: rc.c, go: reg(rc.c, rc.gus[0].g) }];
+    if (S.rg && S.rg !== '전체') crumbs.push({ t: S.rg, go: reg(rc.c, S.rg) });
+    if (S.rdg) crumbs.push({ t: S.rdg, go: () => {} });
+    v.rdCrumbs = crumbs.map((c, i) => ({ ...c, sep: i > 0, fg: i === crumbs.length - 1 ? '#fff' : '#9AA3AF' }));
+    const jump = (id) => () => { const el = document.getElementById(id); if (el) window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY - 132, behavior: 'smooth' }); };
+    v.rdToc = [['r-scope', '출장 범위'], ['r-sym', '증상별 안내'], ['r-case', '시공사례'], ['r-faq', '자주 묻는 질문'], ['r-near', '주변 지역']].map(([id, t]) => ({ t, go: jump(id) }));
+    v.nearList = rc.gus.filter((g) => g.g !== S.rg && g.g !== '전체').map((g) => ({ t: short(rc.c) + ' ' + g.g, open: reg(rc.c, g.g) })).concat(D.CITIES.filter((c) => c.c !== rc.c).map((c) => ({ t: short(c.c), open: reg(c.c, c.gus[0].g) })));
+    v.rd = { ...v.rd, syms: v.rd.syms.map((y) => ({ ...y, act: Array.isArray(y.act) ? y.act.join(' → ') : y.act })) };
+    v.rdCols = v.desk ? '180px minmax(0,1fr)' : 'minmax(0,1fr)';
+    return v;
+  }
+}
+</script>
+</body>
+</html>

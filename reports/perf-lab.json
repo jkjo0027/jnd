@@ -1,0 +1,151 @@
+{
+ "at": "2026-11-05T01:46:52.491Z",
+ "base": "http://127.0.0.1:3000",
+ "note": "lab(로컬 Chromium, 네트워크 스로틀 없음). field 지표(CrUX·콘솔 Core Web Vitals) 아님",
+ "rows": [
+  {
+   "device": "mobile-390",
+   "path": "/",
+   "lcp": 268,
+   "cls": 0,
+   "domContentLoaded": 327,
+   "ttfb": 13,
+   "htmlBytes": 129556,
+   "requests": 47,
+   "transferBytes": 1855511,
+   "wallMs": 1908
+  },
+  {
+   "device": "mobile-390",
+   "path": "/services/repair/",
+   "lcp": 108,
+   "cls": 0,
+   "domContentLoaded": 41,
+   "ttfb": 8,
+   "htmlBytes": 77392,
+   "requests": 45,
+   "transferBytes": 1108424,
+   "wallMs": 1491
+  },
+  {
+   "device": "mobile-390",
+   "path": "/guides/g01/",
+   "lcp": 68,
+   "cls": 0,
+   "domContentLoaded": 62,
+   "ttfb": 6,
+   "htmlBytes": 72662,
+   "requests": 46,
+   "transferBytes": 1020460,
+   "wallMs": 1464
+  },
+  {
+   "device": "mobile-390",
+   "path": "/areas/gyeonggi/r53/repair/",
+   "lcp": 92,
+   "cls": 0,
+   "domContentLoaded": 35,
+   "ttfb": 7,
+   "htmlBytes": 90025,
+   "requests": 46,
+   "transferBytes": 1041728,
+   "wallMs": 1450
+  },
+  {
+   "device": "mobile-390",
+   "path": "/areas/seoul/r01/install/",
+   "lcp": 64,
+   "cls": 0,
+   "domContentLoaded": 64,
+   "ttfb": 6,
+   "htmlBytes": 82533,
+   "requests": 46,
+   "transferBytes": 1017947,
+   "wallMs": 1445
+  },
+  {
+   "device": "mobile-390",
+   "path": "/contact/",
+   "lcp": 48,
+   "cls": 0,
+   "domContentLoaded": 41,
+   "ttfb": 5,
+   "htmlBytes": 34151,
+   "requests": 46,
+   "transferBytes": 956672,
+   "wallMs": 1419
+  },
+  {
+   "device": "desktop-1366",
+   "path": "/",
+   "lcp": 336,
+   "cls": 0.0089,
+   "domContentLoaded": 350,
+   "ttfb": 6,
+   "htmlBytes": 129616,
+   "requests": 58,
+   "transferBytes": 2350035,
+   "wallMs": 1975
+  },
+  {
+   "device": "desktop-1366",
+   "path": "/services/repair/",
+   "lcp": 160,
+   "cls": 0,
+   "domContentLoaded": 77,
+   "ttfb": 8,
+   "htmlBytes": 77453,
+   "requests": 55,
+   "transferBytes": 1197992,
+   "wallMs": 1516
+  },
+  {
+   "device": "desktop-1366",
+   "path": "/guides/g01/",
+   "lcp": 80,
+   "cls": 0,
+   "domContentLoaded": 66,
+   "ttfb": 6,
+   "htmlBytes": 72723,
+   "requests": 56,
+   "transferBytes": 1133931,
+   "wallMs": 1491
+  },
+  {
+   "device": "desktop-1366",
+   "path": "/areas/gyeonggi/r53/repair/",
+   "lcp": 80,
+   "cls": 0,
+   "domContentLoaded": 72,
+   "ttfb": 6,
+   "htmlBytes": 90086,
+   "requests": 58,
+   "transferBytes": 1155199,
+   "wallMs": 1475
+  },
+  {
+   "device": "desktop-1366",
+   "path": "/areas/seoul/r01/install/",
+   "lcp": 92,
+   "cls": 0,
+   "domContentLoaded": 38,
+   "ttfb": 6,
+   "htmlBytes": 82594,
+   "requests": 55,
+   "transferBytes": 1131418,
+   "wallMs": 1471
+  },
+  {
+   "device": "desktop-1366",
+   "path": "/contact/",
+   "lcp": 104,
+   "cls": 0,
+   "domContentLoaded": 40,
+   "ttfb": 4,
+   "htmlBytes": 34273,
+   "requests": 56,
+   "transferBytes": 1084897,
+   "wallMs": 1480
+  }
+ ]
+}

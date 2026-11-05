@@ -1,0 +1,274 @@
+{
+ "at": "2026-11-05T02:54:39.768Z",
+ "base": "http://127.0.0.1:3000",
+ "pageId": "cs-20261105-54f20686",
+ "path": "/cases/cs-20261105-54f20686/",
+ "pass": 44,
+ "fail": 0,
+ "results": [
+  {
+   "k": "운영자(admin)·작성자(editor) 로그인",
+   "ok": true,
+   "detail": "",
+   "at": 0.3
+  },
+  {
+   "k": "초안 생성",
+   "ok": true,
+   "detail": "/cases/cs-20261105-54f20686/",
+   "at": 0.3
+  },
+  {
+   "k": "한글 파일명 업로드 \"수원 현장 (전).jpg\"",
+   "ok": true,
+   "detail": "[480,960,1400]",
+   "at": 0.7
+  },
+  {
+   "k": "영문 대문자 확장자 \"Door Repair 01.PNG\"",
+   "ok": true,
+   "detail": "[480,960,1024]",
+   "at": 0.7
+  },
+  {
+   "k": "혼합·특수문자 \"동탄-Sensor #2.webp\"",
+   "ok": true,
+   "detail": "800x1066",
+   "at": 0.7
+  },
+  {
+   "k": "작은 사진(300px) 업스케일 없이 처리",
+   "ok": true,
+   "detail": "[300]",
+   "at": 0.7
+  },
+  {
+   "k": "같은 파일명 재업로드 → 덮어쓰지 않고 새 ID",
+   "ok": true,
+   "detail": "d3b018cc7eba / e86fd21412b3",
+   "at": 0.9
+  },
+  {
+   "k": "조합형(NFD) 파일명 → NFC 로 표시",
+   "ok": true,
+   "detail": "",
+   "at": 1
+  },
+  {
+   "k": "확장자 위장 파일 거부",
+   "ok": true,
+   "detail": "지원하지 않는 형식이에요. JPEG · PNG · WebP 만 올릴 수 있어요(확장자가 아니라 실제 파일 내용으로 판정해요).",
+   "at": 1.1
+  },
+  {
+   "k": "HEIC 안내 후 거부",
+   "ok": true,
+   "detail": "HEIC/AVIF 는 아직 받지 않아요. 휴대폰 설정에서 \"호환성 우선(JPEG)\"으로 바꾸거나 JPEG 로 변환해 올려 주세요.",
+   "at": 1.1
+  },
+  {
+   "k": "자동저장(PUT) + 검증 통과",
+   "ok": true,
+   "detail": "[]",
+   "at": 1.1
+  },
+  {
+   "k": "버전 충돌 저장 거부(409)",
+   "ok": true,
+   "detail": "",
+   "at": 1.1
+  },
+  {
+   "k": "필수 누락 글은 발행 조건 실패 목록 제공",
+   "ok": true,
+   "detail": "7건",
+   "at": 1.1
+  },
+  {
+   "k": "작성자(editor) 공개 시도 403",
+   "ok": true,
+   "detail": "승인·공개 권한(admin)이 필요해요. 검수 요청으로 넘겨 주세요.",
+   "at": 1.1
+  },
+  {
+   "k": "검수 요청 → 상태 review",
+   "ok": true,
+   "detail": "",
+   "at": 1.1
+  },
+  {
+   "k": "공개 전 주소는 404",
+   "ok": true,
+   "detail": "",
+   "at": 1.2
+  },
+  {
+   "k": "운영자 승인·공개 요청 접수(발행 중)",
+   "ok": true,
+   "detail": "",
+   "at": 1.2
+  },
+  {
+   "k": "공개 후 자가 검사 통과(응답 이후 실행)",
+   "ok": true,
+   "detail": "[]",
+   "at": 2.2
+  },
+  {
+   "k": "오래된 버전으로 중복 발행 거부(409)",
+   "ok": true,
+   "detail": "",
+   "at": 2.3
+  },
+  {
+   "k": "새 URL 200",
+   "ok": true,
+   "detail": "",
+   "at": 2.3
+  },
+  {
+   "k": "초기 HTML title",
+   "ok": true,
+   "detail": "영통 상가 출입문이 닫히다 다시 열릴 때 안전센서 교체 | 제이앤디시스템",
+   "at": 2.3
+  },
+  {
+   "k": "self-canonical",
+   "ok": true,
+   "detail": "",
+   "at": 2.3
+  },
+  {
+   "k": "초기 HTML 본문(JS 없이) + 소제목·목록",
+   "ok": true,
+   "detail": "",
+   "at": 2.3
+  },
+  {
+   "k": "사진 alt·width/height·srcset",
+   "ok": true,
+   "detail": "<img src=\"/uploads/d3b018cc7eba-1400.webp\" srcSet=\"/uploads/d3b018cc7eba-480.webp 480w, /uploads/d3b018cc7eba-960.webp 960w, /uploads/d3b018cc7eba-1400.webp 140",
+   "at": 2.3
+  },
+  {
+   "k": "공개 이미지 200 (수원 현장 (전).jpg)",
+   "ok": true,
+   "detail": "",
+   "at": 2.3
+  },
+  {
+   "k": "공개 이미지 200 (Door Repair 01.PNG)",
+   "ok": true,
+   "detail": "",
+   "at": 2.3
+  },
+  {
+   "k": "공개 이미지 200 (동탄-Sensor #2.webp)",
+   "ok": true,
+   "detail": "",
+   "at": 2.3
+  },
+  {
+   "k": "원본 파일은 공개 경로로 안 나감",
+   "ok": true,
+   "detail": "",
+   "at": 2.3
+  },
+  {
+   "k": "허브 HTML 링크",
+   "ok": true,
+   "detail": "",
+   "at": 2.3
+  },
+  {
+   "k": "사이트맵 포함",
+   "ok": true,
+   "detail": "",
+   "at": 2.3
+  },
+  {
+   "k": "공개까지 5분 이내",
+   "ok": true,
+   "detail": "1.1s",
+   "at": 2.3
+  },
+  {
+   "k": "관리자·미리보기 경로는 공개 링크·XML 에 없음",
+   "ok": true,
+   "detail": "",
+   "at": 2.3
+  },
+  {
+   "k": "제목 수정 후 URL 유지",
+   "ok": true,
+   "detail": "",
+   "at": 2.3
+  },
+  {
+   "k": "재발행 후 새 제목 반영",
+   "ok": true,
+   "detail": "",
+   "at": 3.3
+  },
+  {
+   "k": "이력 버전 2개 이상",
+   "ok": true,
+   "detail": "5",
+   "at": 3.4
+  },
+  {
+   "k": "이력 복원",
+   "ok": true,
+   "detail": "영통 상가 출입문이 닫히다 다시 열릴 때 안전센서 교체",
+   "at": 3.4
+  },
+  {
+   "k": "비공개 → 404",
+   "ok": true,
+   "detail": "",
+   "at": 4.4
+  },
+  {
+   "k": "비공개 → 사이트맵 제외",
+   "ok": true,
+   "detail": "",
+   "at": 4.4
+  },
+  {
+   "k": "비공개 → 허브 링크 제거",
+   "ok": true,
+   "detail": "",
+   "at": 4.4
+  },
+  {
+   "k": "비공개 확인 항목 전부 통과",
+   "ok": true,
+   "detail": "",
+   "at": 4.4
+  },
+  {
+   "k": "인증 없는 미리보기 접근 → 로그인으로",
+   "ok": true,
+   "detail": "",
+   "at": 4.4
+  },
+  {
+   "k": "인증 없는 API 호출 401",
+   "ok": true,
+   "detail": "",
+   "at": 4.4
+  },
+  {
+   "k": "재발행 → 200·검사 통과",
+   "ok": true,
+   "detail": "",
+   "at": 5.5
+  },
+  {
+   "k": "목록 API 에 상태 표시",
+   "ok": true,
+   "detail": "",
+   "at": 5.5
+  }
+ ]
+}

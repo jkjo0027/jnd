@@ -1,0 +1,438 @@
+{
+ "at": "2026-11-05T02:55:27.355Z",
+ "base": "http://127.0.0.1:3000",
+ "sample": 21,
+ "issues": [],
+ "rows": [
+  {
+   "w": 390,
+   "path": "/",
+   "sw": 390,
+   "cw": 390,
+   "vp": "width=device-width, initial-scale=1",
+   "small": 1,
+   "over": [
+    "DIV.hero-video",
+    "DIV.door-loop",
+    "DIV"
+   ],
+   "minFont": 12
+  },
+  {
+   "w": 390,
+   "path": "/services/",
+   "sw": 390,
+   "cw": 390,
+   "vp": "width=device-width, initial-scale=1",
+   "small": 3,
+   "over": [],
+   "minFont": 14
+  },
+  {
+   "w": 390,
+   "path": "/services/repair/",
+   "sw": 390,
+   "cw": 390,
+   "vp": "width=device-width, initial-scale=1",
+   "small": 2,
+   "over": [],
+   "minFont": 14
+  },
+  {
+   "w": 390,
+   "path": "/guides/",
+   "sw": 390,
+   "cw": 390,
+   "vp": "width=device-width, initial-scale=1",
+   "small": 2,
+   "over": [],
+   "minFont": 14
+  },
+  {
+   "w": 390,
+   "path": "/guides/g01/",
+   "sw": 390,
+   "cw": 390,
+   "vp": "width=device-width, initial-scale=1",
+   "small": 5,
+   "over": [],
+   "minFont": 14
+  },
+  {
+   "w": 390,
+   "path": "/areas/",
+   "sw": 390,
+   "cw": 390,
+   "vp": "width=device-width, initial-scale=1",
+   "small": 2,
+   "over": [],
+   "minFont": 14
+  },
+  {
+   "w": 390,
+   "path": "/areas/seoul/",
+   "sw": 390,
+   "cw": 390,
+   "vp": "width=device-width, initial-scale=1",
+   "small": 27,
+   "over": [],
+   "minFont": 13
+  },
+  {
+   "w": 390,
+   "path": "/areas/gyeonggi/r53/repair/",
+   "sw": 390,
+   "cw": 390,
+   "vp": "width=device-width, initial-scale=1",
+   "small": 3,
+   "over": [],
+   "minFont": 13
+  },
+  {
+   "w": 390,
+   "path": "/areas/seoul/r01/repair/",
+   "sw": 390,
+   "cw": 390,
+   "vp": "width=device-width, initial-scale=1",
+   "small": 3,
+   "over": [],
+   "minFont": 13
+  },
+  {
+   "w": 390,
+   "path": "/contact/",
+   "sw": 390,
+   "cw": 390,
+   "vp": "width=device-width, initial-scale=1",
+   "small": 3,
+   "over": [],
+   "minFont": 13
+  },
+  {
+   "w": 390,
+   "path": "/faq/",
+   "sw": 390,
+   "cw": 390,
+   "vp": "width=device-width, initial-scale=1",
+   "small": 2,
+   "over": [],
+   "minFont": 14
+  },
+  {
+   "w": 390,
+   "path": "/about/",
+   "sw": 390,
+   "cw": 390,
+   "vp": "width=device-width, initial-scale=1",
+   "small": 2,
+   "over": [],
+   "minFont": 13
+  },
+  {
+   "w": 390,
+   "path": "/cases/",
+   "sw": 390,
+   "cw": 390,
+   "vp": "width=device-width, initial-scale=1",
+   "small": 2,
+   "over": [],
+   "minFont": 14
+  },
+  {
+   "w": 390,
+   "path": "/areas/seoul/r07/install/",
+   "sw": 390,
+   "cw": 390,
+   "vp": "width=device-width, initial-scale=1",
+   "small": 3,
+   "over": [],
+   "minFont": 13
+  },
+  {
+   "w": 390,
+   "path": "/areas/seoul/r17/repair/",
+   "sw": 390,
+   "cw": 390,
+   "vp": "width=device-width, initial-scale=1",
+   "small": 3,
+   "over": [],
+   "minFont": 13
+  },
+  {
+   "w": 390,
+   "path": "/areas/gyeonggi/r26/install/",
+   "sw": 390,
+   "cw": 390,
+   "vp": "width=device-width, initial-scale=1",
+   "small": 3,
+   "over": [],
+   "minFont": 13
+  },
+  {
+   "w": 390,
+   "path": "/areas/gyeonggi/r36/install/",
+   "sw": 390,
+   "cw": 390,
+   "vp": "width=device-width, initial-scale=1",
+   "small": 3,
+   "over": [],
+   "minFont": 13
+  },
+  {
+   "w": 390,
+   "path": "/areas/gyeonggi/r46/install/",
+   "sw": 390,
+   "cw": 390,
+   "vp": "width=device-width, initial-scale=1",
+   "small": 3,
+   "over": [],
+   "minFont": 13
+  },
+  {
+   "w": 390,
+   "path": "/areas/gyeonggi/r56/install/",
+   "sw": 390,
+   "cw": 390,
+   "vp": "width=device-width, initial-scale=1",
+   "small": 3,
+   "over": [],
+   "minFont": 13
+  },
+  {
+   "w": 390,
+   "path": "/guides/g20/",
+   "sw": 390,
+   "cw": 390,
+   "vp": "width=device-width, initial-scale=1",
+   "small": 6,
+   "over": [],
+   "minFont": 14
+  },
+  {
+   "w": 390,
+   "path": "/cases/c2/",
+   "sw": 390,
+   "cw": 390,
+   "vp": "width=device-width, initial-scale=1",
+   "small": 2,
+   "over": [],
+   "minFont": 14
+  },
+  {
+   "w": 320,
+   "path": "/",
+   "sw": 320,
+   "cw": 320,
+   "vp": "width=device-width, initial-scale=1",
+   "small": 1,
+   "over": [
+    "DIV.hero-video",
+    "DIV.door-loop",
+    "DIV"
+   ],
+   "minFont": 12
+  },
+  {
+   "w": 320,
+   "path": "/services/",
+   "sw": 320,
+   "cw": 320,
+   "vp": "width=device-width, initial-scale=1",
+   "small": 2,
+   "over": [],
+   "minFont": 14
+  },
+  {
+   "w": 320,
+   "path": "/services/repair/",
+   "sw": 320,
+   "cw": 320,
+   "vp": "width=device-width, initial-scale=1",
+   "small": 2,
+   "over": [],
+   "minFont": 14
+  },
+  {
+   "w": 320,
+   "path": "/guides/",
+   "sw": 320,
+   "cw": 320,
+   "vp": "width=device-width, initial-scale=1",
+   "small": 2,
+   "over": [],
+   "minFont": 14
+  },
+  {
+   "w": 320,
+   "path": "/guides/g01/",
+   "sw": 320,
+   "cw": 320,
+   "vp": "width=device-width, initial-scale=1",
+   "small": 5,
+   "over": [],
+   "minFont": 14
+  },
+  {
+   "w": 320,
+   "path": "/areas/",
+   "sw": 320,
+   "cw": 320,
+   "vp": "width=device-width, initial-scale=1",
+   "small": 2,
+   "over": [],
+   "minFont": 14
+  },
+  {
+   "w": 320,
+   "path": "/areas/seoul/",
+   "sw": 320,
+   "cw": 320,
+   "vp": "width=device-width, initial-scale=1",
+   "small": 27,
+   "over": [],
+   "minFont": 13
+  },
+  {
+   "w": 320,
+   "path": "/areas/gyeonggi/r53/repair/",
+   "sw": 320,
+   "cw": 320,
+   "vp": "width=device-width, initial-scale=1",
+   "small": 2,
+   "over": [],
+   "minFont": 13
+  },
+  {
+   "w": 320,
+   "path": "/areas/seoul/r01/repair/",
+   "sw": 320,
+   "cw": 320,
+   "vp": "width=device-width, initial-scale=1",
+   "small": 2,
+   "over": [],
+   "minFont": 13
+  },
+  {
+   "w": 320,
+   "path": "/contact/",
+   "sw": 320,
+   "cw": 320,
+   "vp": "width=device-width, initial-scale=1",
+   "small": 3,
+   "over": [],
+   "minFont": 13
+  },
+  {
+   "w": 320,
+   "path": "/faq/",
+   "sw": 320,
+   "cw": 320,
+   "vp": "width=device-width, initial-scale=1",
+   "small": 2,
+   "over": [],
+   "minFont": 14
+  },
+  {
+   "w": 320,
+   "path": "/about/",
+   "sw": 320,
+   "cw": 320,
+   "vp": "width=device-width, initial-scale=1",
+   "small": 2,
+   "over": [],
+   "minFont": 13
+  },
+  {
+   "w": 320,
+   "path": "/cases/",
+   "sw": 320,
+   "cw": 320,
+   "vp": "width=device-width, initial-scale=1",
+   "small": 2,
+   "over": [
+    "BUTTON.f"
+   ],
+   "minFont": 14
+  },
+  {
+   "w": 320,
+   "path": "/areas/seoul/r07/install/",
+   "sw": 320,
+   "cw": 320,
+   "vp": "width=device-width, initial-scale=1",
+   "small": 2,
+   "over": [],
+   "minFont": 13
+  },
+  {
+   "w": 320,
+   "path": "/areas/seoul/r17/repair/",
+   "sw": 320,
+   "cw": 320,
+   "vp": "width=device-width, initial-scale=1",
+   "small": 2,
+   "over": [],
+   "minFont": 13
+  },
+  {
+   "w": 320,
+   "path": "/areas/gyeonggi/r26/install/",
+   "sw": 320,
+   "cw": 320,
+   "vp": "width=device-width, initial-scale=1",
+   "small": 2,
+   "over": [],
+   "minFont": 13
+  },
+  {
+   "w": 320,
+   "path": "/areas/gyeonggi/r36/install/",
+   "sw": 320,
+   "cw": 320,
+   "vp": "width=device-width, initial-scale=1",
+   "small": 2,
+   "over": [],
+   "minFont": 13
+  },
+  {
+   "w": 320,
+   "path": "/areas/gyeonggi/r46/install/",
+   "sw": 320,
+   "cw": 320,
+   "vp": "width=device-width, initial-scale=1",
+   "small": 2,
+   "over": [],
+   "minFont": 13
+  },
+  {
+   "w": 320,
+   "path": "/areas/gyeonggi/r56/install/",
+   "sw": 320,
+   "cw": 320,
+   "vp": "width=device-width, initial-scale=1",
+   "small": 2,
+   "over": [],
+   "minFont": 13
+  },
+  {
+   "w": 320,
+   "path": "/guides/g20/",
+   "sw": 320,
+   "cw": 320,
+   "vp": "width=device-width, initial-scale=1",
+   "small": 6,
+   "over": [],
+   "minFont": 14
+  },
+  {
+   "w": 320,
+   "path": "/cases/c2/",
+   "sw": 320,
+   "cw": 320,
+   "vp": "width=device-width, initial-scale=1",
+   "small": 2,
+   "over": [],
+   "minFont": 14
+  }
+ ]
+}

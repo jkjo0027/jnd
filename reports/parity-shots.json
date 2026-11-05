@@ -1,0 +1,134 @@
+{
+ "at": "2026-11-04T09:17:41.286Z",
+ "freeze": "const st = document.createElement('style'); st.textContent = '*,*::before,*::after{animation-play-state:paused!important;transition:none!important;caret-color:transparent!important}'; document.head.appendChild(st);",
+ "results": [
+  {
+   "page": "home",
+   "size": "1440x900",
+   "refHeight": 11630,
+   "implHeight": 12062,
+   "ref": "reports/parity/home-1440x900-ref.png",
+   "impl": "reports/parity/home-1440x900-impl.png"
+  },
+  {
+   "page": "services",
+   "size": "1440x900",
+   "refHeight": 1897,
+   "implHeight": 2145,
+   "ref": "reports/parity/services-1440x900-ref.png",
+   "impl": "reports/parity/services-1440x900-impl.png"
+  },
+  {
+   "page": "cases",
+   "size": "1440x900",
+   "refHeight": 2069,
+   "implHeight": 2246,
+   "ref": "reports/parity/cases-1440x900-ref.png",
+   "impl": "reports/parity/cases-1440x900-impl.png"
+  },
+  {
+   "page": "contact",
+   "size": "1440x900",
+   "refHeight": 2165,
+   "implHeight": 2360,
+   "ref": "reports/parity/contact-1440x900-ref.png",
+   "impl": "reports/parity/contact-1440x900-impl.png"
+  },
+  {
+   "page": "home",
+   "size": "390x844",
+   "refHeight": 23302,
+   "implHeight": 23774,
+   "ref": "reports/parity/home-390x844-ref.png",
+   "impl": "reports/parity/home-390x844-impl.png"
+  },
+  {
+   "page": "services",
+   "size": "390x844",
+   "refHeight": 2832,
+   "implHeight": 3446,
+   "ref": "reports/parity/services-390x844-ref.png",
+   "impl": "reports/parity/services-390x844-impl.png"
+  },
+  {
+   "page": "cases",
+   "size": "390x844",
+   "refHeight": 4675,
+   "implHeight": 4989,
+   "ref": "reports/parity/cases-390x844-ref.png",
+   "impl": "reports/parity/cases-390x844-impl.png"
+  },
+  {
+   "page": "contact",
+   "size": "390x844",
+   "refHeight": 2991,
+   "implHeight": 3193,
+   "ref": "reports/parity/contact-390x844-ref.png",
+   "impl": "reports/parity/contact-390x844-impl.png"
+  },
+  {
+   "page": "home",
+   "size": "1024x768",
+   "refHeight": 11323,
+   "implHeight": 11755,
+   "ref": "reports/parity/home-1024x768-ref.png",
+   "impl": "reports/parity/home-1024x768-impl.png"
+  },
+  {
+   "page": "services",
+   "size": "1024x768",
+   "refHeight": 1850,
+   "implHeight": 2098,
+   "ref": "reports/parity/services-1024x768-ref.png",
+   "impl": "reports/parity/services-1024x768-impl.png"
+  },
+  {
+   "page": "cases",
+   "size": "1024x768",
+   "refHeight": 1960,
+   "implHeight": 2126,
+   "ref": "reports/parity/cases-1024x768-ref.png",
+   "impl": "reports/parity/cases-1024x768-impl.png"
+  },
+  {
+   "page": "contact",
+   "size": "1024x768",
+   "refHeight": 2129,
+   "implHeight": 2324,
+   "ref": "reports/parity/contact-1024x768-ref.png",
+   "impl": "reports/parity/contact-1024x768-impl.png"
+  },
+  {
+   "page": "home",
+   "size": "768x1024",
+   "refHeight": 15507,
+   "implHeight": 15945,
+   "ref": "reports/parity/home-768x1024-ref.png",
+   "impl": "reports/parity/home-768x1024-impl.png"
+  },
+  {
+   "page": "services",
+   "size": "768x1024",
+   "refHeight": 2249,
+   "implHeight": 2497,
+   "ref": "reports/parity/services-768x1024-ref.png",
+   "impl": "reports/parity/services-768x1024-impl.png"
+  },
+  {
+   "page": "cases",
+   "size": "768x1024",
+   "refHeight": 2817,
+   "implHeight": 3005,
+   "ref": "reports/parity/cases-768x1024-ref.png",
+   "impl": "reports/parity/cases-768x1024-impl.png"
+  },
+  {
+   "page": "contact",
+   "size": "768x1024",
+   "refHeight": 2524,
+   "implHeight": 2719,
+   "ref": "reports/parity/contact-768x1024-ref.png",
+   "impl": "reports/parity/contact-768x1024-impl.png"
+  }
+ ]
+}
