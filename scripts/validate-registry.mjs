@@ -2,7 +2,8 @@
 // 빌드 전 레지스트리 검증. 실패 시 exit 1 → 빌드 중단.
 import fs from 'node:fs';
 import path from 'node:path';
-const ROOT = path.resolve(path.dirname(new URL(import.meta.url).pathname), '..');
+import { fileURLToPath } from 'node:url';
+const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const R = (f) => JSON.parse(fs.readFileSync(path.join(ROOT, 'data/registry', f), 'utf8'));
 const errs = [];
 const err = (m) => errs.push(m);

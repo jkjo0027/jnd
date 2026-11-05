@@ -29,6 +29,11 @@ export default function Guides() {
           <p style={{ margin: '0 0 8px' }}><b>가이드를 읽는 법.</b> 각 가이드는 질문에 먼저 답하고, 가능한 원인을 부품별로 나눈 뒤, 이용자가 눈으로 안전하게 확인할 수 있는 항목과 여기서 멈춰야 하는 기준, 그리고 전문가가 계측·교체로 처리하는 진단을 구분해요.</p>
           <p style={{ margin: 0 }}>원인이 같은 증상은 하나의 가이드로 묶었고, 실제 수리 사례가 있는 경우 사례 기록으로 연결해요. 가이드만으로 해결되지 않으면 증상과 설치 제조사를 알려주시고 전화로 상담하세요.</p>
         </section>
+        <section style={{ margin: '0 0 32px', padding: 24, border: '1px solid var(--g200)', borderRadius: 'var(--r-l)' }}>
+          <h2 style={{ margin: '0 0 12px', fontSize: 'var(--fs-3)' }}>설치 준비부터 유지관리까지</h2>
+          <p>현장 사진 준비, 스위치·센서 관찰, 출입통제 인계, 견적 확인과 이용자 동선을 질문별로 찾아보세요.</p>
+          <Link href="/handbook/" className="btn btn-g100">설치·관리 실무 안내 보기 →</Link>
+        </section>
         {pub.length ? (
           <div className="guides-list">
             {pub.map((g) => <Link key={g.id} href={g.path} className="guide-card"><p className="t">{g.h1}</p><p className="d">{g.question}</p><span className="more">가이드 보기<Icon name="arrow-right" size={14} /></span></Link>)}
