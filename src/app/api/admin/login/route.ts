@@ -11,8 +11,10 @@ export async function POST(req: NextRequest) {
   const id = String(fd.get('id') || '').slice(0, 64), pw = String(fd.get('pw') || '').slice(0, 200), next = String(fd.get('next') || '/admin/');
   const u = login(id, pw);
   audit({ who: id || '?', action: u ? 'login.ok' : 'login.fail', ip });
-  if (!u) return NextResponse.redirect(new URL('/admin/login/?err=1', req.url), 303);
-  const res = NextResponse.redirect(new URL(next.startsWith('/admin') || next.startsWith('/preview') ? next : '/admin/', req.url), 303);
+  // Netlify may expose its internal deploy hostname in req.url.
+  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || req.url;
+  if (!u) return NextResponse.redirect(new URL('/admin/login/?err=1', siteUrl), 303);
+  const res = NextResponse.redirect(new URL(next.startsWith('/admin') || next.startsWith('/preview') ? next : '/admin/', siteUrl), 303);
   res.cookies.set(cookieName, sessionToken(u), { httpOnly: true, sameSite: 'lax', secure: process.env.NODE_ENV === 'production', path: '/', maxAge: 12 * 3600 });
   return res;
 }
