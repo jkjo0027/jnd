@@ -11,6 +11,11 @@ export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: { default: `자동문 설치·수리 전문 | ${BRAND}`, template: `%s | ${BRAND}` },
   applicationName: BRAND,
+  icons: {
+    icon: { url: `${SITE_URL}/favicon-96x96.png`, type: 'image/png', sizes: '96x96' },
+    shortcut: { url: `${SITE_URL}/favicon.ico`, type: 'image/x-icon' },
+    apple: { url: `${SITE_URL}/apple-touch-icon.png`, type: 'image/png', sizes: '180x180' },
+  },
   robots: { index: true, follow: true },
   verification: {
     google: process.env.GOOGLE_SITE_VERIFICATION || undefined,
