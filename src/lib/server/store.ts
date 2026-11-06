@@ -42,6 +42,12 @@ export function update(id: string, patch: Partial<Inquiry>) {
 /** 감사 로그 (관리자 행위) */
 export function audit(entry: { at?: string; who: string; action: string; target?: string; detail?: string; ip?: string }) {
   const line = JSON.stringify({ at: new Date().toISOString(), ...entry });
+  // Netlify Functions run in AWS Lambda with a read-only application directory.
+  // Keep the audit event in the platform's function logs instead of failing login.
+  if (process.env.AWS_LAMBDA_FUNCTION_NAME || process.env.NETLIFY === 'true') {
+    console.info('[admin-audit]', line);
+    return;
+  }
   fs.mkdirSync(VAR, { recursive: true });
   fs.appendFileSync(path.join(VAR, 'audit.log'), line + '\n', { mode: 0o600 });
 }
