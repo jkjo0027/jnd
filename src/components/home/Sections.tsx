@@ -104,12 +104,12 @@ export function Reviews({ reviews }: { reviews: ReviewImage[] }) {
   </div></section>;
 }
 const short = (c: string) => c.replace(/(특별시|광역시|시)$/, '');
-export function Areas() {
+export function Areas({ number = '06' }: { number?: string }) {
   return (
     <section className="sec areas-sec" aria-label="출장 지역">
       <div className="wrap">
         <div className="sec-head">
-          <div><p className="sec-num">06</p><h2 className="sec-h2">출장 지역</h2></div>
+          <div><p className="sec-num">{number}</p><h2 className="sec-h2">출장 지역</h2></div>
           <p className="sec-lede">평택 본사에서 화성·수원·용인을 주로 다니고, 서울·경기 수도권과 충청권까지 출장 가요. 경기도권은 당일·긴급 출장이 가능해요. 지역을 누르면 해당 지역 안내로 이동해요.</p>
         </div>
         <div className="areas-cols">
@@ -136,13 +136,13 @@ export function Areas() {
     </section>
   );
 }
-export function Clients({ clients }: { clients: typeof CLIENTS }) {
+export function Clients({ clients, number = '07' }: { clients: typeof CLIENTS; number?: string }) {
   if (!clients.length) return null;
   return (
     <section id="clients" aria-label="대표실적 현황" className="sec">
       <div className="wrap">
         <div className="sec-head">
-          <div><p className="sec-num">07</p><h2 className="sec-h2">대표실적 현황</h2></div>
+          <div><p className="sec-num">{number}</p><h2 className="sec-h2">대표실적 현황</h2></div>
           <p className="sec-lede">대기업 매장과 공공기관, 대단지 아파트 현장에서 자동문을 설치하고 관리해 왔어요.</p>
         </div>
         <ul className="clients">{clients.map((c) => <li key={c.n}>{c.f ? <img src={`/logos/${c.f.includes('.') ? c.f : c.f + '.png'}`} alt={c.n} title={c.n} loading="lazy" /> : <span className="client-name">{c.n}</span>}</li>)}</ul>
@@ -150,12 +150,12 @@ export function Clients({ clients }: { clients: typeof CLIENTS }) {
     </section>
   );
 }
-export function FaqTop() {
+export function FaqTop({ number = '08' }: { number?: string }) {
   return (
     <section className="sec sec-g50 faq-sec" aria-label="자주 묻는 질문">
       <div className="wrap">
         <div>
-          <p className="sec-num">08</p>
+          <p className="sec-num">{number}</p>
           <h2 className="t">자주 묻는 질문</h2>
           <p className="lede">출장비, 출장 지역, 수리 가능한 제품을 정리했어요.</p>
           <Link href="/faq/" className="btn btn-primary all">전체 질문 보기<Icon name="arrow-right" /></Link>

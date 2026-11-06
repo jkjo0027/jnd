@@ -20,6 +20,9 @@ export const metadata: Metadata = pageMeta({
 
 export default function Home() {
   const cases = publicCases();
+  const clients = publicClients();
+  const areaNumber = REVIEW_IMAGES.length >= 4 ? 6 : 5;
+  const sectionNumber = (n: number) => String(n).padStart(2, '0');
   const regionHref = Object.fromEntries(CITIES.map((c) => [c.c, cityLink(c).href]));
   return (
     <PublicShell>
@@ -33,9 +36,9 @@ export default function Home() {
         <Steps />
         <CasesSection cases={cases} />
         <Reviews reviews={REVIEW_IMAGES} />
-        <Areas />
-        <Clients clients={publicClients()} />
-        <FaqTop />
+        <Areas number={sectionNumber(areaNumber)} />
+        <Clients clients={clients} number={sectionNumber(areaNumber + 1)} />
+        <FaqTop number={sectionNumber(areaNumber + (clients.length ? 2 : 1))} />
         <AboutBand />
         <PhoneBand />
       </main></HomePhonesProvider>
