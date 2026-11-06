@@ -2,6 +2,7 @@ import 'server-only';
 import fs from 'node:fs';
 import path from 'node:path';
 import crypto from 'node:crypto';
+import { readJSON, updateJSON } from './persistence';
 
 /**
  * 문의 접수 백업 기록. CONTACT_STORE=file(기본) 은 var/inquiries.jsonl(비공개 경로, git 제외) 에 append.
@@ -39,30 +40,18 @@ export function update(id: string, patch: Partial<Inquiry>) {
   fs.mkdirSync(VAR, { recursive: true });
   fs.writeFileSync(FILE, all.map((x) => JSON.stringify(x)).join('\n') + (all.length ? '\n' : ''), { mode: 0o600 });
 }
-/** 감사 로그 (관리자 행위) */
-export function audit(entry: { at?: string; who: string; action: string; target?: string; detail?: string; ip?: string }) {
-  const line = JSON.stringify({ at: new Date().toISOString(), ...entry });
-  // Netlify Functions run in AWS Lambda with a read-only application directory.
-  // Keep the audit event in the platform's function logs instead of failing login.
-  if (process.env.AWS_LAMBDA_FUNCTION_NAME || process.env.NETLIFY === 'true') {
-    console.info('[admin-audit]', line);
-    return;
-  }
-  fs.mkdirSync(VAR, { recursive: true });
-  fs.appendFileSync(path.join(VAR, 'audit.log'), line + '\n', { mode: 0o600 });
+/** 관리자 기록과 대장 초안은 재배포와 무관하게 보존한다. */
+type AuditEntry = { at?: string; who: string; action: string; target?: string; detail?: string; ip?: string };
+export async function audit(entry: AuditEntry) {
+  const value = { at: new Date().toISOString(), ...entry };
+  await updateJSON('audit-v1.json', () => [] as AuditEntry[], (all) => { all.push(value); });
 }
-export function readAudit(n = 200) {
-  const p = path.join(VAR, 'audit.log');
-  if (!fs.existsSync(p)) return [];
-  return fs.readFileSync(p, 'utf8').split('\n').filter(Boolean).slice(-n).map((l) => JSON.parse(l));
+export async function readAudit(n = 200) {
+  return (await readJSON('audit-v1.json', () => [] as AuditEntry[])).data.slice(-n);
 }
-/** 초안(지역 일괄 생성·사례 편집)은 검수 대기 초안으로만 저장 — 공개 빌드에 영향 없음 */
-export function readDrafts(): Record<string, unknown>[] {
-  const p = path.join(VAR, 'drafts.jsonl');
-  if (!fs.existsSync(p)) return [];
-  return fs.readFileSync(p, 'utf8').split('\n').filter(Boolean).map((l) => JSON.parse(l));
+export async function readDrafts(): Promise<Record<string, unknown>[]> {
+  return (await readJSON('registry-drafts-v1.json', () => [] as Record<string, unknown>[])).data;
 }
-export function appendDraft(d: Record<string, unknown>) {
-  fs.mkdirSync(VAR, { recursive: true });
-  fs.appendFileSync(path.join(VAR, 'drafts.jsonl'), JSON.stringify(d) + '\n', { mode: 0o600 });
+export async function appendDraft(d: Record<string, unknown>) {
+  await updateJSON('registry-drafts-v1.json', () => [] as Record<string, unknown>[], (all) => { all.push(d); });
 }

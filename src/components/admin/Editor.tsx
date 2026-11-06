@@ -252,6 +252,7 @@ export default function Editor({ initial, validation: v0, snapshots: s0, canEdit
               {live && <button type="button" className="btn btn-g100" disabled={!!busy} onClick={() => act('recheck')}>검색 발견 준비 재검사</button>}
               {p.lastPublishedVersion === null && !locked && <button type="button" className="lnk danger" disabled={!!busy} onClick={() => { if (confirm('이 초안을 삭제할까요? 다른 글에서 쓰지 않는 사진도 함께 지워요.')) act('delete'); }}>초안 삭제</button>}
             </div>
+            <p className="ed-hint">저장은 편집본을 보관합니다. 방문자에게 수정 내용을 보이려면 승인하고 공개 또는 수정 내용 다시 공개를 눌러 주세요.</p>
             {!canPublish && <p className="ed-hint">공개는 승인 권한자가 해요. 검수 요청을 보내면 목록에 표시돼요.</p>}
           </section>
           {p.check && (

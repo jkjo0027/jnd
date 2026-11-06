@@ -1,18 +1,15 @@
 import 'server-only';
-import fs from 'node:fs';
-import path from 'node:path';
+import { readJSON, updateJSON, readBytes, writeBytes, persistentCloud } from './persistence';
 import crypto from 'node:crypto';
 import sharp from 'sharp';
 
 /**
- * 사진 업로드 처리. 원본은 var/uploads/orig (비공개, 0600), 공개용 WebP 는 var/uploads/web/{id}-{w}.webp 로 만들어 /uploads/ 라우트가 제공한다.
+ * 사진 업로드 처리. 원본과 WebP는 사이트 전용 영구 저장소에 보존하고 /uploads/ 라우트는 공개 글의 사진만 제공한다.
  * - 원래 파일명(한글·영문·공백·괄호 등 UTF-8)은 표시용으로만 저장하고 저장 키는 고유 ID + 확인된 확장자다. 같은 이름을 올려도 덮어쓰지 않는다.
  * - 실제 형식은 매직 바이트로 판정(JPEG/PNG/WebP). HEIC 등은 안내 후 거부. EXIF 회전 반영 후 메타데이터(위치정보 포함) 제거.
  */
 export type Upload = { id: string; name: string; ext: 'jpg' | 'png' | 'webp'; mime: string; bytes: number; w: number; h: number; sizes: number[]; by: string; at: string };
-const ROOT = path.join(process.cwd(), 'var', 'uploads');
-const ORIG = path.join(ROOT, 'orig'), WEB = path.join(ROOT, 'web'), INDEX = path.join(ROOT, 'index.jsonl');
-export const MAX_MB = Number(process.env.UPLOAD_MAX_MB || 15);
+export const MAX_MB = Math.min(Number(process.env.UPLOAD_MAX_MB || 15), persistentCloud() ? 4 : 15);
 export const MAX_PIXELS = Number(process.env.UPLOAD_MAX_PIXELS || 40_000_000);
 export const WIDTHS = [480, 960, 1600];
 export const ALLOWED = 'JPEG · PNG · WebP';
@@ -40,8 +37,7 @@ export async function processUpload(file: { name: string; bytes: Buffer }, by: s
   if (!w0 || !h0) return { error: '이미지 크기를 읽을 수 없어요.' };
   if (w0 * h0 > MAX_PIXELS) return { error: `해상도가 너무 커요(${w0}×${h0}). ${Math.round(MAX_PIXELS / 1e6)}MP 이하로 줄여 주세요.` };
   const id = crypto.randomBytes(6).toString('hex');
-  fs.mkdirSync(ORIG, { recursive: true }); fs.mkdirSync(WEB, { recursive: true });
-  fs.writeFileSync(path.join(ORIG, `${id}.${s.ext}`), file.bytes, { mode: 0o600 });
+  const variants: { key: string; bytes: Buffer }[] = [];
   // 회전이 반영된 실제 치수(EXIF orientation 5~8 이면 가로·세로가 바뀐다)
   const rotated = (meta.orientation || 1) >= 5 ? { w: h0, h: w0 } : { w: w0, h: h0 };
   const sizes = WIDTHS.filter((w) => w < rotated.w); if (!sizes.length || rotated.w <= WIDTHS[WIDTHS.length - 1]) sizes.push(Math.min(rotated.w, WIDTHS[WIDTHS.length - 1]));
@@ -49,31 +45,29 @@ export async function processUpload(file: { name: string; bytes: Buffer }, by: s
   let outH = rotated.h;
   for (const w of uniq) {
     img = sharp(file.bytes, { failOn: 'error', limitInputPixels: MAX_PIXELS }).rotate();
-    const info = await img.resize({ width: w, withoutEnlargement: true }).webp({ quality: 82 }).toFile(path.join(WEB, `${id}-${w}.webp`));
-    if (w === uniq[uniq.length - 1]) outH = info.height;
+    const result = await img.resize({ width: w, withoutEnlargement: true }).webp({ quality: 82 }).toBuffer({ resolveWithObject: true });
+    variants.push({ key: `uploads/web/${id}-${w}.webp`, bytes: result.data });
+    if (w === uniq[uniq.length - 1]) outH = result.info.height;
   }
   const largest = uniq[uniq.length - 1];
   const up: Upload = { id, name: safeName(file.name), ext: s.ext, mime: s.mime, bytes: file.bytes.length, w: largest, h: outH, sizes: uniq, by, at: new Date().toISOString() };
-  fs.appendFileSync(INDEX, JSON.stringify(up) + '\n', { mode: 0o600 });
+  await writeBytes(`uploads/orig/${id}.${s.ext}`, file.bytes);
+  await Promise.all(variants.map((v) => writeBytes(v.key, v.bytes)));
+  await updateJSON('uploads/index.json', () => ({} as Record<string, Upload>), (all) => { all[id] = up; });
   return { upload: up };
 }
-export function readUploads(): Upload[] {
-  if (!fs.existsSync(INDEX)) return [];
-  return fs.readFileSync(INDEX, 'utf8').split('\n').filter(Boolean).map((l) => JSON.parse(l) as Upload);
+export async function readUploads(): Promise<Upload[]> {
+  return Object.values((await readJSON('uploads/index.json', () => ({} as Record<string, Upload>))).data);
 }
-/** 공개 파일 경로(이름 검증 후). 없으면 null */
-export function webFile(name: string): string | null {
-  if (!/^[a-f0-9]{12}-\d{2,4}\.webp$/.test(name)) return null;
-  const p = path.join(WEB, name);
-  return fs.existsSync(p) ? p : null;
+/** The route checks whether the file belongs to a published page or an authorized preview. */
+export async function webFile(name: string): Promise<Buffer | null> {
+  if (!/^[a-f0-9]{12}-\d{1,4}\.webp$/.test(name)) return null;
+  return readBytes('uploads/web/' + name);
 }
-/** 삭제된 초안에서만 쓰던 사진 정리(공개 글이 쓰는 사진은 보존) */
-export function removeUploads(ids: string[]) {
-  for (const id of ids) {
-    if (!/^[a-f0-9]{12}$/.test(id)) continue;
-    for (const f of fs.existsSync(WEB) ? fs.readdirSync(WEB) : []) if (f.startsWith(id + '-')) fs.rmSync(path.join(WEB, f), { force: true });
-    for (const f of fs.existsSync(ORIG) ? fs.readdirSync(ORIG) : []) if (f.startsWith(id + '.')) fs.rmSync(path.join(ORIG, f), { force: true });
-  }
+export async function removeUploads(ids: string[]) {
+  // Preserve originals and variants for historical snapshots and recovery.
+  // Unreferenced images are no longer accessible through the public route.
+  void ids;
 }
 export const srcset = (ph: { id: string; sizes: number[] }) => ph.sizes.map((w) => `/uploads/${ph.id}-${w}.webp ${w}w`).join(', ');
 export const srcOf = (ph: { id: string; sizes: number[] }, prefer = 960) => `/uploads/${ph.id}-${ph.sizes.reduce((a, b) => (Math.abs(b - prefer) < Math.abs(a - prefer) ? b : a), ph.sizes[0])}.webp`;
