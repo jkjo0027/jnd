@@ -3,6 +3,7 @@ import Icon from '@/components/Icon';
 import { BRAND, INFO } from '@/lib/site';
 import { BUILDINGS, BRANDS, CITIES, CLIENTS, FAQ, PHOTO, STEPS, SVCS, type Case } from '@/content/site-data';
 import type { ReviewImage } from '@/content/review-images';
+import ReviewCards from './ReviewCards';
 import { cityLink, guLink } from '@/lib/links';
 
 export function Targets() {
@@ -98,9 +99,9 @@ export function CasesSection({ cases }: { cases: Case[] }) {
 }
 export function Reviews({ reviews }: { reviews: ReviewImage[] }) {
   if (reviews.length < 4) return null;
-  return <section id="reviews" aria-label="베스트 리뷰" className="sec"><div className="wrap">
-    <div className="sec-head"><div><p className="sec-num">05</p><h2 className="sec-h2">베스트 리뷰</h2></div></div>
-    <div className="review-images">{reviews.slice(0, 5).map(r => <figure key={r.id}><img src={r.src} alt={r.alt} width={r.width} height={r.height} loading="lazy" /></figure>)}</div>
+  return <section id="reviews" aria-label="베스트 리뷰" className="sec review-section"><div className="wrap">
+    <div className="review-heading"><p className="review-eyebrow">BEST REVIEW</p><h2 className="sec-h2">고객의 이야기를 만나보세요</h2><p>설치부터 마무리까지, 고객님이 전해주신 후기입니다.</p></div>
+    <ReviewCards reviews={reviews} />
   </div></section>;
 }
 const short = (c: string) => c.replace(/(특별시|광역시|시)$/, '');
