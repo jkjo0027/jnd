@@ -3,10 +3,16 @@ import fs from 'node:fs/promises';
 import path from 'node:path';
 import crypto from 'node:crypto';
 import { getStore } from '@netlify/blobs';
+import { fetch as nodeFetch } from 'undici';
 
 /** Site-scoped storage survives deploys. Credentials come from Netlify's runtime. */
 export const persistentCloud = () => process.env.JND_STORAGE === 'netlify-blobs' || !!process.env.AWS_LAMBDA_FUNCTION_NAME;
-const store = () => getStore({ name: 'jnd-cms-v1', consistency: 'strong' });
+// Bypass Next's patched fetch/cache, which itself uses Blobs on Netlify.
+const blobFetch: typeof fetch = (input, init) => nodeFetch(input as string, {
+  ...init,
+  signal: AbortSignal.timeout(10_000),
+} as Parameters<typeof nodeFetch>[1]) as unknown as Promise<Response>;
+const store = () => getStore({ name: 'jnd-cms-v1', consistency: 'strong', fetch: blobFetch });
 const root = () => process.env.JND_DATA_DIR || path.join(process.cwd(), 'var', 'cms');
 const file = (key: string) => {
   if (!/^[a-zA-Z0-9_./-]+$/.test(key) || key.includes('..') || key.startsWith('/')) throw new Error('Invalid storage key');
