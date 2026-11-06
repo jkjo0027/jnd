@@ -1,3 +1,40 @@
 export type ReviewImage = { id: string; src: string; alt: string; width: number; height: number };
-// Add 4–5 authentic, publication-approved review captures. Reference mockups are not customer reviews.
-export const REVIEW_IMAGES: ReviewImage[] = [];
+// Static cards use the five review texts supplied for publication on 2026-11-06.
+// No invented authors, dates, ratings or unrelated project photos.
+export const REVIEW_IMAGES: ReviewImage[] = [
+  {
+    "id": "review-1",
+    "src": "/reviews/review-1.svg",
+    "alt": "설치부터 마무리까지 만족스러웠어요! 매장 출입문을 자동문으로 교체하려고 알아보다가 문의드렸습니다. 상담할 때부터 친절하게 설명해 주셨고, 현장에 오셔서 설치할 위치와 필요한 부분도 꼼꼼하게 확인해 주셨어요. 설치도 깔끔하게 잘해 주셨고 문이 열리고 닫히는 속도까지 세심하게 조절해 주셨습니다. 생각했던 것보다 훨씬 만족스럽네요. 감사합니다! 후기 유형: 설치 전 상담 및 시공 만족",
+    "width": 480,
+    "height": 724
+  },
+  {
+    "id": "review-2",
+    "src": "/reviews/review-2.svg",
+    "alt": "빠른 방문과 깔끔한 시공 감사합니다. 가게 오픈을 앞두고 자동문 설치가 필요해서 연락드렸는데 일정도 잘 맞춰주시고 빠르게 진행해 주셨습니다. 작업하시는 동안에도 주변 정리를 깔끔하게 해주셔서 좋았어요. 설치 후 작동 방법과 주의사항도 자세히 알려주셨고 여러 번 테스트까지 해주셨습니다. 덕분에 오픈 준비 잘 마무리했습니다. 후기 유형: 빠른 일정 및 매장 설치",
+    "width": 480,
+    "height": 724
+  },
+  {
+    "id": "review-3",
+    "src": "/reviews/review-3.svg",
+    "alt": "오래된 자동문 교체하길 잘했네요. 기존 자동문이 오래되어서 작동도 불안정하고 소음도 심했는데 이번에 새 제품으로 교체했습니다. 처음에는 수리만 할까 고민했지만 현장 확인 후 자세하게 설명해 주셔서 교체를 결정했어요. 설치하고 나니 문 움직임도 부드럽고 소음도 줄어들어 만족스럽습니다. 처음부터 마무리까지 책임감 있게 작업해 주셔서 믿음이 갔습니다. 후기 유형: 노후 자동문 교체",
+    "width": 480,
+    "height": 724
+  },
+  {
+    "id": "review-4",
+    "src": "/reviews/review-4.svg",
+    "alt": "꼼꼼하게 설치해 주셔서 좋았습니다. 건물 출입구에 자동문을 새로 설치하게 되어 여러 업체를 알아보다가 상담 후 진행했습니다. 현장 상황에 맞게 설치 방향과 작동 방식도 안내해 주셨고, 센서 위치도 적절하게 잡아주셨어요. 설치가 끝난 후에도 실제로 사람이 출입하는 상황을 확인하면서 작동 테스트를 해주셔서 안심이 됐습니다. 전체적으로 깔끔하게 잘 설치해 주셨습니다. 후기 유형: 건물 출입구 신규 설치",
+    "width": 480,
+    "height": 724
+  },
+  {
+    "id": "review-5",
+    "src": "/reviews/review-5.svg",
+    "alt": "다음에도 자동문 관련 작업은 여기서 할 것 같아요. 자동문 설치가 처음이라 모르는 부분이 많았는데 문의할 때마다 친절하게 알려주셔서 좋았습니다. 제품 선택부터 설치 과정까지 어렵지 않게 설명해 주셨고, 작업도 생각보다 빠르게 끝났습니다. 설치 후 문이 정상적으로 작동하는지 여러 차례 확인해 주시고 사용하면서 알아두면 좋은 부분도 알려주셨어요. 주변에 자동문 설치가 필요한 분이 있다면 추천하고 싶습니다. 후기 유형: 전반적인 서비스 및 재이용 의사",
+    "width": 480,
+    "height": 724
+  }
+];

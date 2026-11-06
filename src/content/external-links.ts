@@ -56,6 +56,34 @@ export const EXTERNAL_LINKS = [
     "href": "https://blog.naver.com/post8642"
   },
   {
+    "id": "BL04",
+    "channel": "naver_blog",
+    "channel_label": "네이버 블로그",
+    "display_name": "제이앤디시스템(화성점)",
+    "href": "https://blog.naver.com/post8644"
+  },
+  {
+    "id": "BL05",
+    "channel": "naver_blog",
+    "channel_label": "네이버 블로그",
+    "display_name": "준비된오늘",
+    "href": "https://blog.naver.com/jojn_today"
+  },
+  {
+    "id": "BL06",
+    "channel": "naver_blog",
+    "channel_label": "네이버 블로그",
+    "display_name": "스피드자동문",
+    "href": "https://blog.naver.com/daon_114"
+  },
+  {
+    "id": "BL07",
+    "channel": "naver_blog",
+    "channel_label": "네이버 블로그",
+    "display_name": "자동문마스터",
+    "href": "https://blog.naver.com/autodoormaster"
+  },
+  {
     "id": "DG01",
     "channel": "daangn",
     "channel_label": "당근",
