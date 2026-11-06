@@ -1,7 +1,8 @@
 import Link from 'next/link';
 import Icon from '@/components/Icon';
 import { BRAND, INFO } from '@/lib/site';
-import { BUILDINGS, BRANDS, CITIES, CLIENTS, FAQ, PHOTO, STEPS, SVCS, type Case, type Review } from '@/content/site-data';
+import { BUILDINGS, BRANDS, CITIES, CLIENTS, FAQ, PHOTO, STEPS, SVCS, type Case } from '@/content/site-data';
+import type { ReviewImage } from '@/content/review-images';
 import { cityLink, guLink } from '@/lib/links';
 
 export function Targets() {
@@ -38,7 +39,7 @@ export function ServicesGrid() {
         <div className="svc-grid">
           {SVCS.map((v, i) => (
             <Link key={v.id} href={v.route} className="svc-card">
-              <span className="ph">{v.img ? <img src={v.img} alt={`${v.t} 수리 현장`} loading="lazy" width={800} height={600} className="img-cover" /> : <span className="noimg"><Icon name={v.icon} />현장 사진 준비 중</span>}</span>
+              <span className="ph">{v.img ? <img src={v.img} alt={`${v.t} 수리 현장`} loading="lazy" width={800} height={600} className="img-cover" /> : <span className="noimg" aria-hidden="true"><Icon name={v.icon} /></span>}</span>
               <span className="row"><span className="n">{String(i + 1).padStart(2, '0')}</span><Icon name={v.icon} /></span>
               <span className="t">{v.t}</span>
               <span className="d">{v.d}</span>
@@ -95,42 +96,12 @@ export function CasesSection({ cases }: { cases: Case[] }) {
     </section>
   );
 }
-const Ph = ({ r }: { r: Review }) => (r.img ? <img src={r.img} alt={`${r.type} 시공 현장`} loading="lazy" width={800} height={600} className="img-cover" /> : <span className="rev-noimg">{r.type}</span>);
-export function Reviews({ reviews }: { reviews: Review[] }) {
-  if (!reviews.length) return null;
-  const [top, ...rest] = reviews;
-  return (
-    <section id="reviews" aria-label="베스트 리뷰" className="sec">
-      <div className="wrap">
-        <div className="sec-head">
-          <div><p className="sec-num">05</p><h2 className="sec-h2">베스트 리뷰</h2></div>
-          <p className="sec-lede">직접 설치·수리한 현장의 고객 후기를 모았어요.</p>
-        </div>
-        <div className="rev-grid">
-          <article className="rev-top">
-            <div className="ph"><Ph r={top} /><span className="rank">{top.rank}</span></div>
-            <div className="tx">
-              <div className="rev-meta"><span className="n">{top.name}<small>{top.date}</small></span><span aria-label="별점 5점" className="stars">★★★★★</span></div>
-              <h3>{top.title}</h3><p>{top.body}</p><span className="rev-type">{top.type}</span>
-            </div>
-          </article>
-          {rest.length > 0 && (
-            <div className="rev-rest">
-              {rest.map((r) => (
-                <article key={r.rank} className="rev-card">
-                  <div className="ph"><Ph r={r} /><span className="rank">{r.rank}</span></div>
-                  <div className="tx">
-                    <div className="rev-meta"><span className="n">{r.name}<small>{r.date}</small></span><span aria-label="별점 5점" className="stars">★★★★★</span></div>
-                    <h3>{r.title}</h3><p>{r.body}</p><span className="rev-type">{r.type}</span>
-                  </div>
-                </article>
-              ))}
-            </div>
-          )}
-        </div>
-      </div>
-    </section>
-  );
+export function Reviews({ reviews }: { reviews: ReviewImage[] }) {
+  if (reviews.length < 4) return null;
+  return <section id="reviews" aria-label="베스트 리뷰" className="sec"><div className="wrap">
+    <div className="sec-head"><div><p className="sec-num">05</p><h2 className="sec-h2">베스트 리뷰</h2></div></div>
+    <div className="review-images">{reviews.slice(0, 5).map(r => <figure key={r.id}><img src={r.src} alt={r.alt} width={r.width} height={r.height} loading="lazy" /></figure>)}</div>
+  </div></section>;
 }
 const short = (c: string) => c.replace(/(특별시|광역시|시)$/, '');
 export function Areas() {
@@ -168,13 +139,13 @@ export function Areas() {
 export function Clients({ clients }: { clients: typeof CLIENTS }) {
   if (!clients.length) return null;
   return (
-    <section id="clients" aria-label="대표 실적 현황" className="sec">
+    <section id="clients" aria-label="대표실적 현황" className="sec">
       <div className="wrap">
         <div className="sec-head">
-          <div><p className="sec-num">07</p><h2 className="sec-h2">대표 실적 현황</h2></div>
+          <div><p className="sec-num">07</p><h2 className="sec-h2">대표실적 현황</h2></div>
           <p className="sec-lede">대기업 매장과 공공기관, 대단지 아파트 현장에서 자동문을 설치하고 관리해 왔어요.</p>
         </div>
-        <ul className="clients">{clients.map((c) => <li key={c.f}><img src={`/logos/${c.f}.png`} alt={c.n} title={c.n} loading="lazy" /></li>)}</ul>
+        <ul className="clients">{clients.map((c) => <li key={c.n}>{c.f ? <img src={`/logos/${c.f.includes('.') ? c.f : c.f + '.png'}`} alt={c.n} title={c.n} loading="lazy" /> : <span className="client-name">{c.n}</span>}</li>)}</ul>
       </div>
     </section>
   );

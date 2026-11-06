@@ -3,9 +3,11 @@ import PublicShell from '@/components/PublicShell';
 import Hero from '@/components/home/Hero';
 import Diagnose from '@/components/home/Diagnose';
 import DoorTypes from '@/components/home/DoorTypes';
+import HomePhonesProvider from '@/components/home/HomePhonesProvider';
+import { REVIEW_IMAGES } from '@/content/review-images';
 import PhoneBand from '@/components/home/PhoneBand';
 import { Targets, Overview, ServicesGrid, Steps, CasesSection, Reviews, Areas, Clients, FaqTop, AboutBand } from '@/components/home/Sections';
-import { publicCases, publicReviews, publicClients, smsPhone } from '@/lib/gate';
+import { publicCases, publicClients, smsPhone } from '@/lib/gate';
 import { pageMeta, orgJsonLd, websiteJsonLd, JsonLd } from '@/lib/seo';
 import { CITIES } from '@/content/site-data';
 import { cityLink } from '@/lib/links';
@@ -21,7 +23,7 @@ export default function Home() {
   const regionHref = Object.fromEntries(CITIES.map((c) => [c.c, cityLink(c).href]));
   return (
     <PublicShell>
-      <main>
+      <HomePhonesProvider><main>
         <Hero smsPhone={smsPhone()} />
         <Targets />
         <Overview />
@@ -30,13 +32,13 @@ export default function Home() {
         <ServicesGrid />
         <Steps />
         <CasesSection cases={cases} />
-        <Reviews reviews={publicReviews()} />
+        <Reviews reviews={REVIEW_IMAGES} />
         <Areas />
         <Clients clients={publicClients()} />
         <FaqTop />
         <AboutBand />
         <PhoneBand />
-      </main>
+      </main></HomePhonesProvider>
       <JsonLd data={[orgJsonLd(), websiteJsonLd()]} />
     </PublicShell>
   );

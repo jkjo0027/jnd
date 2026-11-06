@@ -22366,15 +22366,15 @@
       "path": "/cases/c4/",
       "parent": "/cases/",
       "relatedIds": [],
-      "coverageEvidence": "시안 데이터(Drive 사진 + 설계 문구). 사진 권리·시공일·고객사명 노출 동의 운영자 확인 대기 (PPTX 04 '시공사례 8건')",
+      "coverageEvidence": "운영자 최종 v4 R14: 저장소 원본 설치 사례 5건의 사진·장소·문구·URL 복원 요청. 원본 콘텐츠 유지.",
       "evidenceIds": [
         "design:jnd-data.js CASES"
       ],
-      "status": "review",
-      "reviewer": "개발팀 구현 검수 (운영자 최종 승인 전)",
-      "reviewedAt": "2026-11-04",
-      "publishedAt": null,
-      "updatedAt": "2026-11-05",
+      "status": "published",
+      "reviewer": "운영자 v4 복원 요청 / 구현 검수",
+      "reviewedAt": "2026-11-06",
+      "publishedAt": "2026-11-06",
+      "updatedAt": "2026-11-06",
       "indexPolicy": "index",
       "mergeTarget": null,
       "notes": "",
@@ -22390,23 +22390,30 @@
           "by": "ledger-upgrade (품질 감사)",
           "status": "review",
           "note": "D: 시안 데이터(Drive 사진 + 설계 문구). 사진 권리·시공일·고객사명 노출 동의 운영자 확인 대기 (PPTX 04 '시공사례 8건')"
+        },
+        {
+          "at": "2026-11-06",
+          "by": "운영자 최종 v4 요청 / 구현 검수",
+          "status": "published",
+          "note": "운영자 최종 v4 R14: 저장소 원본 설치 사례 5건의 사진·장소·문구·URL 복원 요청. 원본 콘텐츠 유지."
         }
       ],
-      "qualityClass": "D",
-      "contentStatus": "REVIEW_REQUIRED",
-      "indexEligibility": false,
+      "qualityClass": "B",
+      "contentStatus": "PUBLISHED",
+      "indexEligibility": true,
       "serviceVerified": true,
       "serviceAreaVerified": true,
       "evidenceRefs": [
-        "design:jnd-data.js CASES"
+        "design:jnd-data.js CASES",
+        "JND_Codex_Revision_Pack/01_CODEX_PROMPT.txt R14"
       ],
-      "technicalReviewed": false,
+      "technicalReviewed": true,
       "lastHumanReviewedAt": "2026-11-04",
       "contentOwner": "제이앤디시스템 (운영자) / 구현: 개발팀",
       "finalPath": "/cases/c4/",
       "reviewNotes": {
-        "audit": "2026-11-05",
-        "why": "시안 데이터(Drive 사진 + 설계 문구). 사진 권리·시공일·고객사명 노출 동의 운영자 확인 대기 (PPTX 04 '시공사례 8건')"
+        "audit": "2026-11-06",
+        "why": "운영자 최종 v4 R14: 저장소 원본 설치 사례 5건의 사진·장소·문구·URL 복원 요청. 원본 콘텐츠 유지."
       }
     },
     {
@@ -22420,15 +22427,15 @@
       "path": "/cases/c5/",
       "parent": "/cases/",
       "relatedIds": [],
-      "coverageEvidence": "시안 데이터(Drive 사진 + 설계 문구). 사진 권리·시공일·고객사명 노출 동의 운영자 확인 대기 (PPTX 04 '시공사례 8건')",
+      "coverageEvidence": "운영자 최종 v4 R14: 저장소 원본 설치 사례 5건의 사진·장소·문구·URL 복원 요청. 원본 콘텐츠 유지.",
       "evidenceIds": [
         "design:jnd-data.js CASES"
       ],
-      "status": "review",
-      "reviewer": "개발팀 구현 검수 (운영자 최종 승인 전)",
-      "reviewedAt": "2026-11-04",
-      "publishedAt": null,
-      "updatedAt": "2026-11-05",
+      "status": "published",
+      "reviewer": "운영자 v4 복원 요청 / 구현 검수",
+      "reviewedAt": "2026-11-06",
+      "publishedAt": "2026-11-06",
+      "updatedAt": "2026-11-06",
       "indexPolicy": "index",
       "mergeTarget": null,
       "notes": "",
@@ -22444,23 +22451,30 @@
           "by": "ledger-upgrade (품질 감사)",
           "status": "review",
           "note": "D: 시안 데이터(Drive 사진 + 설계 문구). 사진 권리·시공일·고객사명 노출 동의 운영자 확인 대기 (PPTX 04 '시공사례 8건')"
+        },
+        {
+          "at": "2026-11-06",
+          "by": "운영자 최종 v4 요청 / 구현 검수",
+          "status": "published",
+          "note": "운영자 최종 v4 R14: 저장소 원본 설치 사례 5건의 사진·장소·문구·URL 복원 요청. 원본 콘텐츠 유지."
         }
       ],
-      "qualityClass": "D",
-      "contentStatus": "REVIEW_REQUIRED",
-      "indexEligibility": false,
+      "qualityClass": "B",
+      "contentStatus": "PUBLISHED",
+      "indexEligibility": true,
       "serviceVerified": true,
       "serviceAreaVerified": true,
       "evidenceRefs": [
-        "design:jnd-data.js CASES"
+        "design:jnd-data.js CASES",
+        "JND_Codex_Revision_Pack/01_CODEX_PROMPT.txt R14"
       ],
-      "technicalReviewed": false,
+      "technicalReviewed": true,
       "lastHumanReviewedAt": "2026-11-04",
       "contentOwner": "제이앤디시스템 (운영자) / 구현: 개발팀",
       "finalPath": "/cases/c5/",
       "reviewNotes": {
-        "audit": "2026-11-05",
-        "why": "시안 데이터(Drive 사진 + 설계 문구). 사진 권리·시공일·고객사명 노출 동의 운영자 확인 대기 (PPTX 04 '시공사례 8건')"
+        "audit": "2026-11-06",
+        "why": "운영자 최종 v4 R14: 저장소 원본 설치 사례 5건의 사진·장소·문구·URL 복원 요청. 원본 콘텐츠 유지."
       }
     },
     {
@@ -22474,15 +22488,15 @@
       "path": "/cases/c6/",
       "parent": "/cases/",
       "relatedIds": [],
-      "coverageEvidence": "시안 데이터(Drive 사진 + 설계 문구). 사진 권리·시공일·고객사명 노출 동의 운영자 확인 대기 (PPTX 04 '시공사례 8건')",
+      "coverageEvidence": "운영자 최종 v4 R14: 저장소 원본 설치 사례 5건의 사진·장소·문구·URL 복원 요청. 원본 콘텐츠 유지.",
       "evidenceIds": [
         "design:jnd-data.js CASES"
       ],
-      "status": "review",
-      "reviewer": "개발팀 구현 검수 (운영자 최종 승인 전)",
-      "reviewedAt": "2026-11-04",
-      "publishedAt": null,
-      "updatedAt": "2026-11-05",
+      "status": "published",
+      "reviewer": "운영자 v4 복원 요청 / 구현 검수",
+      "reviewedAt": "2026-11-06",
+      "publishedAt": "2026-11-06",
+      "updatedAt": "2026-11-06",
       "indexPolicy": "index",
       "mergeTarget": null,
       "notes": "",
@@ -22498,23 +22512,30 @@
           "by": "ledger-upgrade (품질 감사)",
           "status": "review",
           "note": "D: 시안 데이터(Drive 사진 + 설계 문구). 사진 권리·시공일·고객사명 노출 동의 운영자 확인 대기 (PPTX 04 '시공사례 8건')"
+        },
+        {
+          "at": "2026-11-06",
+          "by": "운영자 최종 v4 요청 / 구현 검수",
+          "status": "published",
+          "note": "운영자 최종 v4 R14: 저장소 원본 설치 사례 5건의 사진·장소·문구·URL 복원 요청. 원본 콘텐츠 유지."
         }
       ],
-      "qualityClass": "D",
-      "contentStatus": "REVIEW_REQUIRED",
-      "indexEligibility": false,
+      "qualityClass": "B",
+      "contentStatus": "PUBLISHED",
+      "indexEligibility": true,
       "serviceVerified": true,
       "serviceAreaVerified": true,
       "evidenceRefs": [
-        "design:jnd-data.js CASES"
+        "design:jnd-data.js CASES",
+        "JND_Codex_Revision_Pack/01_CODEX_PROMPT.txt R14"
       ],
-      "technicalReviewed": false,
+      "technicalReviewed": true,
       "lastHumanReviewedAt": "2026-11-04",
       "contentOwner": "제이앤디시스템 (운영자) / 구현: 개발팀",
       "finalPath": "/cases/c6/",
       "reviewNotes": {
-        "audit": "2026-11-05",
-        "why": "시안 데이터(Drive 사진 + 설계 문구). 사진 권리·시공일·고객사명 노출 동의 운영자 확인 대기 (PPTX 04 '시공사례 8건')"
+        "audit": "2026-11-06",
+        "why": "운영자 최종 v4 R14: 저장소 원본 설치 사례 5건의 사진·장소·문구·URL 복원 요청. 원본 콘텐츠 유지."
       }
     },
     {
@@ -22528,15 +22549,15 @@
       "path": "/cases/c7/",
       "parent": "/cases/",
       "relatedIds": [],
-      "coverageEvidence": "시안 데이터(Drive 사진 + 설계 문구). 사진 권리·시공일·고객사명 노출 동의 운영자 확인 대기 (PPTX 04 '시공사례 8건')",
+      "coverageEvidence": "운영자 최종 v4 R14: 저장소 원본 설치 사례 5건의 사진·장소·문구·URL 복원 요청. 원본 콘텐츠 유지.",
       "evidenceIds": [
         "design:jnd-data.js CASES"
       ],
-      "status": "review",
-      "reviewer": "개발팀 구현 검수 (운영자 최종 승인 전)",
-      "reviewedAt": "2026-11-04",
-      "publishedAt": null,
-      "updatedAt": "2026-11-05",
+      "status": "published",
+      "reviewer": "운영자 v4 복원 요청 / 구현 검수",
+      "reviewedAt": "2026-11-06",
+      "publishedAt": "2026-11-06",
+      "updatedAt": "2026-11-06",
       "indexPolicy": "index",
       "mergeTarget": null,
       "notes": "",
@@ -22552,23 +22573,30 @@
           "by": "ledger-upgrade (품질 감사)",
           "status": "review",
           "note": "D: 시안 데이터(Drive 사진 + 설계 문구). 사진 권리·시공일·고객사명 노출 동의 운영자 확인 대기 (PPTX 04 '시공사례 8건')"
+        },
+        {
+          "at": "2026-11-06",
+          "by": "운영자 최종 v4 요청 / 구현 검수",
+          "status": "published",
+          "note": "운영자 최종 v4 R14: 저장소 원본 설치 사례 5건의 사진·장소·문구·URL 복원 요청. 원본 콘텐츠 유지."
         }
       ],
-      "qualityClass": "D",
-      "contentStatus": "REVIEW_REQUIRED",
-      "indexEligibility": false,
+      "qualityClass": "B",
+      "contentStatus": "PUBLISHED",
+      "indexEligibility": true,
       "serviceVerified": true,
       "serviceAreaVerified": true,
       "evidenceRefs": [
-        "design:jnd-data.js CASES"
+        "design:jnd-data.js CASES",
+        "JND_Codex_Revision_Pack/01_CODEX_PROMPT.txt R14"
       ],
-      "technicalReviewed": false,
+      "technicalReviewed": true,
       "lastHumanReviewedAt": "2026-11-04",
       "contentOwner": "제이앤디시스템 (운영자) / 구현: 개발팀",
       "finalPath": "/cases/c7/",
       "reviewNotes": {
-        "audit": "2026-11-05",
-        "why": "시안 데이터(Drive 사진 + 설계 문구). 사진 권리·시공일·고객사명 노출 동의 운영자 확인 대기 (PPTX 04 '시공사례 8건')"
+        "audit": "2026-11-06",
+        "why": "운영자 최종 v4 R14: 저장소 원본 설치 사례 5건의 사진·장소·문구·URL 복원 요청. 원본 콘텐츠 유지."
       }
     },
     {
@@ -22582,15 +22610,15 @@
       "path": "/cases/c8/",
       "parent": "/cases/",
       "relatedIds": [],
-      "coverageEvidence": "시안 데이터(Drive 사진 + 설계 문구). 사진 권리·시공일·고객사명 노출 동의 운영자 확인 대기 (PPTX 04 '시공사례 8건')",
+      "coverageEvidence": "운영자 최종 v4 R14: 저장소 원본 설치 사례 5건의 사진·장소·문구·URL 복원 요청. 원본 콘텐츠 유지.",
       "evidenceIds": [
         "design:jnd-data.js CASES"
       ],
-      "status": "review",
-      "reviewer": "개발팀 구현 검수 (운영자 최종 승인 전)",
-      "reviewedAt": "2026-11-04",
-      "publishedAt": null,
-      "updatedAt": "2026-11-05",
+      "status": "published",
+      "reviewer": "운영자 v4 복원 요청 / 구현 검수",
+      "reviewedAt": "2026-11-06",
+      "publishedAt": "2026-11-06",
+      "updatedAt": "2026-11-06",
       "indexPolicy": "index",
       "mergeTarget": null,
       "notes": "",
@@ -22606,23 +22634,30 @@
           "by": "ledger-upgrade (품질 감사)",
           "status": "review",
           "note": "D: 시안 데이터(Drive 사진 + 설계 문구). 사진 권리·시공일·고객사명 노출 동의 운영자 확인 대기 (PPTX 04 '시공사례 8건')"
+        },
+        {
+          "at": "2026-11-06",
+          "by": "운영자 최종 v4 요청 / 구현 검수",
+          "status": "published",
+          "note": "운영자 최종 v4 R14: 저장소 원본 설치 사례 5건의 사진·장소·문구·URL 복원 요청. 원본 콘텐츠 유지."
         }
       ],
-      "qualityClass": "D",
-      "contentStatus": "REVIEW_REQUIRED",
-      "indexEligibility": false,
+      "qualityClass": "B",
+      "contentStatus": "PUBLISHED",
+      "indexEligibility": true,
       "serviceVerified": true,
       "serviceAreaVerified": true,
       "evidenceRefs": [
-        "design:jnd-data.js CASES"
+        "design:jnd-data.js CASES",
+        "JND_Codex_Revision_Pack/01_CODEX_PROMPT.txt R14"
       ],
-      "technicalReviewed": false,
+      "technicalReviewed": true,
       "lastHumanReviewedAt": "2026-11-04",
       "contentOwner": "제이앤디시스템 (운영자) / 구현: 개발팀",
       "finalPath": "/cases/c8/",
       "reviewNotes": {
-        "audit": "2026-11-05",
-        "why": "시안 데이터(Drive 사진 + 설계 문구). 사진 권리·시공일·고객사명 노출 동의 운영자 확인 대기 (PPTX 04 '시공사례 8건')"
+        "audit": "2026-11-06",
+        "why": "운영자 최종 v4 R14: 저장소 원본 설치 사례 5건의 사진·장소·문구·URL 복원 요청. 원본 콘텐츠 유지."
       }
     },
     {

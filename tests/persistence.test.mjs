@@ -28,7 +28,7 @@ function fixture() {
     function load(filename) {
       if (cache.has(filename)) return cache.get(filename).exports;
       if (filename.endsWith('.json')) return JSON.parse(fs.readFileSync(filename, 'utf8'));
-      const module = { exports: {} }; cache.set(filename, module);
+      const loadedModule = { exports: {} }; cache.set(filename, loadedModule);
       const code = ts.transpileModule(fs.readFileSync(filename, 'utf8'), { compilerOptions: { module: ts.ModuleKind.CommonJS, esModuleInterop: true, target: ts.ScriptTarget.ES2022, jsx: ts.JsxEmit.ReactJSX } }).outputText;
       function request(name) {
         if (name === 'server-only') return {};
@@ -40,8 +40,8 @@ function fixture() {
         }
         return nativeRequire(name);
       }
-      vm.runInNewContext(code, { module, exports: module.exports, require: request, Buffer, URL, console, structuredClone, setTimeout, process: { env: { AWS_LAMBDA_FUNCTION_NAME: 'jnd-test' }, cwd: () => root } }, { filename });
-      return module.exports;
+      vm.runInNewContext(code, { module: loadedModule, exports: loadedModule.exports, require: request, Buffer, URL, console, structuredClone, setTimeout, process: { env: { AWS_LAMBDA_FUNCTION_NAME: 'jnd-test' }, cwd: () => root } }, { filename });
+      return loadedModule.exports;
     }
     return { content: load(path.join(root, 'src/lib/server/content.ts')), uploads: load(path.join(root, 'src/lib/server/uploads.ts')), audit: load(path.join(root, 'src/lib/server/store.ts')) };
   }

@@ -27,7 +27,8 @@ test('300개 이상 공개 경로를 제공하며 기존 보류 서비스·중�
   const published = ledger.filter(r => r.contentStatus === 'PUBLISHED' && r.indexEligibility && r.indexPolicy === 'index');
   assert.ok(published.length >= 300);
   assert.equal(published.filter(r => r.pageId.startsWith('HB-')).length, 141);
-  assert.equal(published.filter(r => !r.pageId.startsWith('HB-')).length, 162);
+  assert.equal(published.filter(r => !r.pageId.startsWith('HB-')).length, 167);
+  for (let n = 4; n <= 8; n++) assert.ok(published.some(r => r.pageId === `CASE-c${n}`));
   assert.equal(new Set(published.map(r => r.path)).size, published.length);
   assert.equal(ledger.filter(r => r.contentStatus === 'HOLD' && r.qualityClass === 'C').length, 110);
   assert.equal(facts.services['glass-door'].verified, false);

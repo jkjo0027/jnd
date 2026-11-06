@@ -159,9 +159,9 @@
 .svc-card .more i{font-size:14px}
 
 /* ── 03 6단계 ───────────────────────────────────────────────────── */
-.steps{margin:16px 0 0;padding:0;list-style:none;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
-@media (min-width:640px){.steps{grid-template-columns:repeat(3,minmax(0,1fr))}}
-@media (min-width:1100px){.steps{grid-template-columns:repeat(6,minmax(0,1fr))}}
+.steps{margin:16px 0 0;padding:0;list-style:none;display:grid;grid-template-columns:minmax(0,1fr);gap:12px}
+@media (min-width:640px){.steps{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (min-width:1024px){.steps{grid-template-columns:repeat(3,minmax(0,1fr))}}
 .steps li{position:relative;padding:24px 20px;border-radius:var(--r-l);background:var(--g50)}
 .steps .k{display:flex;align-items:center;gap:8px;margin:0 0 20px;font-size:var(--fs-c);font-weight:800;color:var(--blue-t);font-variant-numeric:tabular-nums}
 .steps .k i{width:28px;height:28px;border-radius:50%;background:var(--blue);color:var(--on-accent);display:grid;place-items:center;font-size:12px;font-style:normal}
@@ -269,3 +269,25 @@ a.gu-h:hover{color:var(--on-dark);text-decoration:underline}
 .band-tel.on{background:var(--band-on-bg);color:var(--band-on-fg)}
 .band-tel.on:hover{color:var(--band-on-fg)}
 .band-tel i{font-size:20px}
+
+/* v4: simultaneous main-only phone list. Fixed dimensions prevent shuffle layout shifts. */
+.hero-card{min-height:510px;display:flex;flex-direction:column;justify-content:space-between}
+.phone-list{display:grid;gap:12px}
+.phone-row{min-height:88px;padding:0 16px;gap:12px;background:var(--blue);color:#111}
+.phone-row i.ic,.phone-row.on i.ic{font-size:30px;color:#111}
+.phone-row .n{font-size:clamp(24px,2.2vw,30px);font-weight:900}
+.phone-row .go{opacity:1;color:#111;font-size:12px}
+.svc-card .t{white-space:pre-line}
+.svc-card .ph .noimg i{font-size:72px;color:var(--blue-t)}
+.case-cols{grid-template-columns:minmax(0,1fr);align-items:start}
+@media(min-width:1024px){.case-cols{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.band .wrap{grid-template-columns:minmax(0,1fr);gap:24px}
+.band-phones{display:grid;grid-template-columns:minmax(0,1fr);gap:12px}
+@media(min-width:768px){.band-phones{grid-template-columns:repeat(3,minmax(0,1fr))}}
+.band-tel{font-size:clamp(22px,2.8vw,32px)}
+.review-images{display:grid;grid-template-columns:minmax(0,1fr);gap:20px}
+.review-images figure{margin:0;border:1px solid var(--line);border-radius:var(--r-m);overflow:hidden;background:#fff}
+.review-images img{display:block;width:100%;height:auto;object-fit:contain}
+@media(min-width:768px){.review-images{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.client-name{font-size:22px;font-weight:800;color:var(--ink)}
+@media(max-width:399px){.hero-card{padding:18px;min-height:490px}.phone-row{padding:0 10px;gap:8px}.phone-row .n{font-size:24px}.phone-row i.ic{font-size:24px}.phone-row .go{font-size:10px;gap:2px}}

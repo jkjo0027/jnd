@@ -141,3 +141,13 @@ button:hover img,a:hover img{transform:scale(1.045)}
 
 /* ── 토스트 ───────────────────────────────────────────────────────── */
 .toast{position:fixed;left:50%;bottom:104px;transform:translateX(-50%);z-index:80;display:flex;align-items:center;gap:8px;height:52px;padding:0 24px;border-radius:var(--r-m);background:var(--ink);color:#fff;font-size:var(--fs-s);font-weight:600;white-space:nowrap;animation:toastIn .3s both}
+
+.brand-cell{height:auto;min-height:44px;padding:9px 5px;text-align:center;line-height:1.4;overflow-wrap:anywhere}
+.footer-channels{max-width:1120px;margin:0 auto;padding:28px clamp(20px,4vw,40px) 40px;border-top:1px solid #39404a}
+.footer-channels h2{font-size:20px;margin:0 0 24px;color:#fff}
+.channel-groups{display:grid;grid-template-columns:minmax(0,1fr);gap:28px}
+.channel-groups h3{font-size:16px;color:#fff;margin:0 0 12px}
+.channel-groups ul{list-style:none;padding:0;margin:0;display:grid;gap:8px}
+.channel-groups a{display:inline-block;padding:6px 0;color:#e3e7ed;font-size:15px;line-height:1.5;overflow-wrap:anywhere}
+.channel-groups a:hover{color:#fff;text-decoration:underline}
+@media(min-width:768px){.channel-groups{grid-template-columns:repeat(3,minmax(0,1fr))}}

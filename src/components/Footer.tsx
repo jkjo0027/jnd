@@ -2,14 +2,13 @@ import Link from 'next/link';
 import LogoMark from './Logo';
 import TelLink from './TelLink';
 import { BRAND, BRAND_EN, INFO, MAIN_PHONE } from '@/lib/site';
-import { SVCS, BRANDS, BRAND_LOGOS } from '@/content/site-data';
-import { consultPhones, brandLogosEnabled } from '@/lib/gate';
+import { SVCS, BRANDS } from '@/content/site-data';
+import { consultPhones } from '@/lib/gate';
+import { EXTERNAL_LINKS } from '@/content/external-links';
 import { MobileBarSpace } from './MobileBar';
 
 export default function Footer() {
   const phones = consultPhones();
-  const order = ['태양', '현대', '태성'].concat(BRANDS.filter((n) => !BRAND_LOGOS[n]));
-  const logosOn = brandLogosEnabled();
   return (
     <footer className="site-footer">
       <div className="footer-grid">
@@ -33,14 +32,18 @@ export default function Footer() {
         <div>
           <p className="footer-h">취급 브랜드</p>
           <div className="brand-grid">
-            {order.map((n) => {
-              const l = logosOn ? BRAND_LOGOS[n] : undefined;
-              return <span key={n} className="brand-cell" style={{ background: l ? l[1] : '#fff' }}>{l ? <img src={l[0]} alt={n} loading="lazy" /> : n}</span>;
-            })}
+            {BRANDS.map(n => <span key={n} className="brand-cell">{n.endsWith('자동문') ? n : n + '자동문'}</span>)}
             <span className="brand-more">외 국내 제조사</span>
           </div>
         </div>
       </div>
+      <section className="footer-channels" aria-label="관련 채널">
+        <h2>관련 채널</h2>
+        <div className="channel-groups">{(['naver_place', 'naver_blog', 'daangn'] as const).map(channel => {
+          const links = EXTERNAL_LINKS.filter(e => e.channel === channel);
+          return <div key={channel}><h3>{links[0].channel_label}</h3><ul>{links.map(e => <li key={e.id}><a href={e.href} target="_blank" rel="noopener noreferrer" aria-label={`${e.display_name} ${e.channel_label} (새 창)`}>{e.display_name}<span aria-hidden="true"> ↗</span></a></li>)}</ul></div>;
+        })}</div>
+      </section>
       <div className="footer-legal">
         <p>
           <b>상호</b> {BRAND} <span aria-hidden="true" className="sep">|</span><b>대표</b> {INFO.ceo} <span aria-hidden="true" className="sep">|</span><b>사업자등록번호</b> {INFO.biz} <span aria-hidden="true" className="sep">|</span><b>개업일</b> {INFO.open}<br />

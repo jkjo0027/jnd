@@ -1,10 +1,10 @@
 'use client';
 import Icon from '@/components/Icon';
-import { usePhones } from '@/components/PhoneProvider';
+import { useHomePhones } from './HomePhonesProvider';
 import { INFO } from '@/lib/site';
 
 export default function PhoneBand() {
-  const { list, k, holdProps } = usePhones();
+  const list = useHomePhones();
   return (
     <section className="band" aria-label="전화 상담">
       <div className="wrap">
@@ -14,7 +14,7 @@ export default function PhoneBand() {
           <p className="h">{INFO.hours}</p>
         </div>
         <div className="band-phones">
-          {list.map((n, i) => <a key={n} href={'tel:' + n} className={`band-tel${i === k ? ' on' : ''}`} {...holdProps}><Icon name="phone" />{n}</a>)}
+          {list.map((n) => <a key={n} href={'tel:' + n} className="band-tel on"><Icon name="phone" />{n}</a>)}
         </div>
       </div>
     </section>

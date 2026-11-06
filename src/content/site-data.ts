@@ -67,12 +67,12 @@ export type Svc = { id: string; img: string | null; t: string; f?: string; icon:
 export const SVCS: Svc[] = [
   { id: 'sensor', img: '/photos/photo-11.jpg', t: '자동문 센서', icon: 'radar', d: '사람을 감지하는 감지센서와 끼임을 막는 안전센서를 점검·교체해요.', items: ['감지 범위 조정', '센서 렌즈 청소·교체', '안전센서 교체'], route: '/services/sensor/' },
   { id: 'switch', img: '/photos/photo-12.jpg', t: '자동문 스위치', icon: 'toggle-right', d: '무선터치·유선 스위치의 신호 불량을 찾아 교체하고 연동해요.', items: ['무선터치 스위치 교체', '유선 스위치 배선 점검', '수신기 연동 설정'], route: '/services/switch/' },
-  { id: 'motor', img: '/photos/photo-13.jpg', t: '컨트롤러·모터', f: '컨트롤러·모터 수리', icon: 'cpu', d: '문 전체를 제어하는 컨트롤러와 구동 모터의 이상을 진단하고 교체해요.', items: ['오작동 진단', '설정 초기화', '컨트롤러·모터 교체'], route: '/services/motor/' },
+  { id: 'motor', img: '/photos/photo-13.jpg', t: '컨트롤러, 모터', f: '컨트롤러, 모터 수리', icon: 'cpu', d: '문 전체를 제어하는 컨트롤러와 구동 모터의 이상을 진단하고 교체해요.', items: ['오작동 진단', '설정 초기화', '컨트롤러·모터 교체'], route: '/services/motor/' },
   { id: 'keypad', img: '/photos/photo-14.jpg', t: '번호키·출입통제', icon: 'keyboard', d: '번호키 입력 불량, 출입통제 장치 연동 문제를 해결해요.', items: ['번호키 교체', '비밀번호 재설정', '출입통제 연동'], route: '/services/keypad/' },
   { id: 'install', img: '/photos/photo-15.jpg', t: '설치·교체', icon: 'wrench', d: '노후 자동문 교체와 신규 설치, 롤러·벨트 등 구동부 정비까지.', items: ['자동문 신규 설치', '노후 장비 교체', '롤러·벨트 정비'], route: '/services/install/' },
-  { id: 'battery', img: '/photos/photo-16.jpg', t: '비상배터리 설치', f: '비상배터리·소방 연동', icon: 'battery-charging', d: '정전 때도 문이 열리도록 비상배터리를 설치하고 소방 설비와 연동해요.', items: ['비상배터리 설치', '소방배터리 연동', '정전 시 자동 개방 설정'], route: '/services/#battery', photoNote: '임시 사진(시공 사례 사진 재사용) — 실제 현장 사진 수령 후 교체' },
-  { id: 'machine', img: '/photos/photo-01.jpg', t: '자동문 기계 설치·교체', f: '자동문 기계 설치·교체', icon: 'settings', d: '오퍼레이터·레일·행거 등 자동문 구동 기계를 새로 설치하거나 교체해요.', items: ['오퍼레이터 설치·교체', '레일·행거롤러 교체', '벨트·풀리 교체'], route: '/services/install/#machine', photoNote: '임시 사진(제품 사진) — 실제 현장 사진 수령 후 교체' },
-  { id: 'accessible', img: '/photos/photo-02.jpg', t: '장애인 스위치 설치·교체', f: '장애인 스위치 설치·교체', icon: 'accessibility', d: '누르기 쉬운 대형 장애인 스위치를 설치하고 기존 자동문과 연동해요.', items: ['장애인 스위치 설치', '노후 스위치 교체', '자동문 연동 설정'], route: '/services/#accessible', photoNote: '임시 사진(제품 사진) — 실제 현장 사진 수령 후 교체' },
+  { id: 'battery', img: null, t: '비상배터리 설치\n소방배터리 연동', f: '비상배터리·소방 연동', icon: 'battery-charging', d: '정전 때도 문이 열리도록 비상배터리를 설치하고 소방 설비와 연동해요.', items: ['비상배터리 설치', '소방배터리 연동', '정전 시 자동 개방 설정'], route: '/services/#battery' },
+  { id: 'machine', img: null, t: '자동문 기계 설치·교체', f: '자동문 기계 설치·교체', icon: 'settings', d: '오퍼레이터·레일·행거 등 자동문 구동 기계를 새로 설치하거나 교체해요.', items: ['오퍼레이터 설치·교체', '레일·행거롤러 교체', '벨트·풀리 교체'], route: '/services/install/#machine' },
+  { id: 'accessible', img: null, t: '장애인 스위치 설치·교체', f: '장애인 스위치 설치·교체', icon: 'accessibility', d: '누르기 쉬운 대형 장애인 스위치를 설치하고 기존 자동문과 연동해요.', items: ['장애인 스위치 설치', '노후 스위치 교체', '자동문 연동 설정'], route: '/services/#accessible' },
 ];
 
 export type Case = {
@@ -163,9 +163,9 @@ export const REVIEWS: Review[] = [
 /** 시안의 순환 사진(설치 사례 사진 → 후기 순서대로 배정). 실제 후기 사진이 아니므로 preview 게이트에서만 사용 */
 export const REVIEW_PREVIEW_IMGS = ['/photos/photo-14.jpg', '/photos/photo-17.jpg', '/photos/photo-16.jpg', '/photos/photo-18.jpg', '/photos/photo-19.jpg'];
 
-/** 대표 실적 로고 13개 (추가요청2). 힐스테이트 로고는 '힐스테이트'로만 표기 — 더현대 로고 미수령 */
+/** v4 명시 대상 13개. 더현대·한국도로교통공단·코레일·래미안은 공식 원본 사용. */
 export const CLIENTS: { n: string; f: string }[] = [
-  ['삼성전자', 'samsung'], ['LG전자', 'lg'], ['용산 아이파크몰', 'iparkmall'], ['스타벅스', 'starbucks'], ['SPC', 'spc'], ['한국도로교통공단', 'koroad'], ['코레일', 'korail'], ['이마트', 'emart'], ['테슬라 서비스센터', 'tesla'], ['힐스테이트', 'hillstate'], ['래미안', 'raemian'], ['아이파크', 'ipark'], ['자이', 'xi'],
+  ['삼성전자', 'samsung-official.svg'], ['LG전자', 'lg'], ['용산아이파크몰', 'iparkmall'], ['스타벅스', 'starbucks-official.png'], ['SPC', 'spc'], ['한국도로교통공단', 'koroad'], ['코레일', 'korail-official.jpg'], ['이마트', 'emart'], ['테슬라 서비스센터', 'tesla-original.svg'], ['더현대', 'thehyundai-official.jpg'], ['래미안', 'raemian-official.svg'], ['아이파크', 'ipark'], ['자이', 'xi'],
 ].map(([n, f]) => ({ n, f }));
 
 /** 푸터 취급 브랜드 — 로고 3개(태양·현대·태성) + 텍스트 8개 */

@@ -4,13 +4,13 @@ import { useEffect, useState } from 'react';
 import DoorLoop from '@/components/DoorLoop';
 import Icon from '@/components/Icon';
 import { MotionToggle, useMotion } from '@/components/MotionContext';
-import { usePhones } from '@/components/PhoneProvider';
+import { useHomePhones } from './HomePhonesProvider';
 import { BRAND, DOOR_INTRO_MS, INFO } from '@/lib/site';
 import { SLOGAN } from '@/content/site-data';
 
 export default function Hero({ smsPhone }: { smsPhone: string | null }) {
   const [open, setOpen] = useState(false);
-  const { list, k, holdProps } = usePhones();
+  const list = useHomePhones();
   const { paused } = useMotion();
   useEffect(() => {
     const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -44,8 +44,8 @@ export default function Hero({ smsPhone }: { smsPhone: string | null }) {
           <div className="top"><span className="k"><i />전화 상담</span><span className="h">{INFO.hours}</span></div>
           <h2>자동문 고장·설치,<br />전문 기사가 바로 상담합니다</h2>
           <div className="phone-list">
-            {list.map((n, i) => (
-              <a key={n} href={'tel:' + n} className={`phone-row${i === k ? ' on' : ''}`} {...holdProps}>
+            {list.map((n) => (
+              <a key={n} href={'tel:' + n} className="phone-row on">
                 <Icon name="phone-call" className="ic" />
                 <span className="n">{n}</span>
                 <span className="go">바로 걸기<Icon name="arrow-right" size={14} /></span>
