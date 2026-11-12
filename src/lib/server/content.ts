@@ -1,6 +1,7 @@
 import 'server-only';
 import { readJSON, updateJSON, StorageConflict } from './persistence';
 import crypto from 'node:crypto';
+import { cache } from 'react';
 import { parseBody, bodyText, FIELDS, TYPE_HUB, type PageType } from '@/lib/content-body';
 import { ledger, publicRecords, recordByPath, baseRegions, isPublic } from '@/lib/registry';
 import { SERVICES } from '@/content/services';
@@ -37,7 +38,9 @@ const changeContent = <R,>(change: (data: ContentState) => R) => updateJSON(CONT
 const facts = factsJson as { services: Record<string, { verified: boolean }> };
 export const listPages = async (): Promise<AuthoredPage[]> => Object.values((await readContent()).pages).sort((a, b) => b.updatedAt.localeCompare(a.updatedAt));
 export const getPage = async (id: string): Promise<AuthoredPage | null> => (await readContent()).pages[id] || null;
-export const livePages = async (): Promise<AuthoredPage[]> => Object.values((await readContent()).published);
+// Share one published snapshot across metadata, body and related links in an RSC request.
+// React clears this memoization between requests; admin handlers still read storage directly.
+export const livePages = cache(async (): Promise<AuthoredPage[]> => Object.values((await readContent()).published));
 export const liveByPath = async (p: string): Promise<AuthoredPage | null> => (await livePages()).find((x) => x.path === p) || null;
 export const liveByType = async (t: PageType) => (await livePages()).filter((x) => x.type === t);
 
