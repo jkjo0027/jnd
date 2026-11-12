@@ -21,4 +21,12 @@
 .handbook-contact { padding: 24px; background: var(--g50); border-radius: var(--r-l); margin-top: 28px; }
 .handbook-contact h3 { margin-top: 0; }
 .handbook-contact .btn { margin: 6px 10px 6px 0; }
+.handbook-comparison { width: 100%; border-collapse: separate; border-spacing: 0; border: 1px solid var(--g200); border-radius: var(--r-m); overflow: hidden; table-layout: fixed; font-size: var(--fs-b); }
+.handbook-comparison caption { text-align: left; font-size: var(--fs-s); color: var(--g600); padding-bottom: 12px; }
+.handbook-comparison th, .handbook-comparison td { padding: 18px 20px; text-align: left; vertical-align: top; overflow-wrap: anywhere; }
+.handbook-comparison thead th { background: var(--g50); color: var(--ink); }
+.handbook-comparison th:first-child { width: 34%; }
+.handbook-comparison tbody th { font-weight: 600; color: var(--ink); }
+.handbook-comparison tbody tr > * { border-top: 1px solid var(--g200); }
+@media (max-width: 640px) { .handbook-comparison th, .handbook-comparison td { padding: 14px 12px; } }
 @media (max-width: 640px) { .handbook-grid { grid-template-columns: 1fr; } .handbook-card, .handbook-note, .handbook-contact { padding: 18px; } }

@@ -10,7 +10,7 @@
   "agencyListApproved": false,
   "faxVerified": false,
   "emailVerified": false,
-  "privacyRetentionDays": null,
-  "privacyEffectiveDate": null,
+  "privacyRetentionDays": 30,
+  "privacyEffectiveDate": "2026-11-12",
   "contactAttachments": false
 }

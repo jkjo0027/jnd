@@ -3,12 +3,13 @@
 // 사용: node scripts/dup-check.mjs --base http://127.0.0.1:3000 [--paths /a/,/b/] [--threshold 0.75]
 import fs from 'node:fs';
 import path from 'node:path';
+import { fileURLToPath } from 'node:url';
 import crypto from 'node:crypto';
 const args = process.argv.slice(2); const opt = {};
 for (let i = 0; i < args.length; i++) if (args[i].startsWith('--')) opt[args[i].slice(2)] = args[++i];
 const BASE = (opt.base || 'http://127.0.0.1:3000').replace(/\/$/, '');
 const TH = Number(opt.threshold || 0.75);
-const ROOT = path.resolve(path.dirname(new URL(import.meta.url).pathname), '..');
+const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const aliases = JSON.parse(fs.readFileSync(path.join(ROOT, 'data/registry/area-aliases.json'), 'utf8'));
 const regionWords = [...new Set(aliases.aliases.map((a) => a.alias).concat(aliases.baseRegions.map((b) => b.name)).concat(['서울특별시', '경기도', '평택시', '수원시', '화성시', '용인시']))].sort((a, b) => b.length - a.length);
 const ledger = JSON.parse(fs.readFileSync(path.join(ROOT, 'data/registry/publication-ledger.json'), 'utf8')).records;

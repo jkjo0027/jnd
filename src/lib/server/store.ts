@@ -2,12 +2,11 @@ import 'server-only';
 import fs from 'node:fs';
 import path from 'node:path';
 import crypto from 'node:crypto';
-import { readJSON, updateJSON } from './persistence';
+import { persistentCloud, readJSON, updateJSON } from './persistence';
 
 /**
- * 문의 접수 백업 기록. CONTACT_STORE=file(기본) 은 var/inquiries.jsonl(비공개 경로, git 제외) 에 append.
- * 관리자 화면에는 문의 내역을 두지 않는다 — 접수는 알림 채널(CONTACT_NOTIFY_WEBHOOK/EMAIL)로 전달하고 이 파일은 접수 ID·중복 방지·장애 시 복구용이다.
- * 서버리스(쓰기 불가) 환경에서는 운영자가 DB/외부 저장소 어댑터를 설정해야 한다 (docs/release-and-rollback.md).
+ * 문의 백업과 중복 방지: 운영에서는 사이트 전용 Netlify Blobs, 로컬에서는 비공개 파일.
+ * 기존 로컬 JSONL은 처음 저장할 때 읽어 이전 기록을 보존한다. 문의 내역은 공개하지 않는다.
  */
 export type Inquiry = {
   id: string; at: string; name: string; phone: string; area: string; sym: string; bld: string; msg: string; agree: true; source: string; ip: string; ua: string;
@@ -16,29 +15,48 @@ export type Inquiry = {
 const VAR = path.join(process.cwd(), 'var');
 const FILE = path.join(VAR, 'inquiries.jsonl');
 const mem: Inquiry[] = [];
-const fileStore = () => (process.env.CONTACT_STORE || 'file') === 'file';
+const memoryStore = () => process.env.CONTACT_STORE === 'memory' && !persistentCloud();
+const INQUIRIES = 'inquiries-v1.json';
+const initialInquiries = (): Inquiry[] => !persistentCloud() && fs.existsSync(FILE)
+  ? fs.readFileSync(FILE, 'utf8').split('\n').filter(Boolean).map((line) => JSON.parse(line) as Inquiry) : [];
+async function changeInquiries<T>(change: (all: Inquiry[]) => T): Promise<T> {
+  if (memoryStore()) return change(mem);
+  return updateJSON(INQUIRIES, initialInquiries, change);
+}
 
 export const newId = () => {
   const d = new Date();
   const ymd = d.toISOString().slice(0, 10).replace(/-/g, '');
   return `JND-${ymd}-${crypto.randomBytes(3).toString('hex').toUpperCase()}`;
 };
-export function readAll(): Inquiry[] {
-  if (!fileStore()) return mem.slice();
-  if (!fs.existsSync(FILE)) return [];
-  return fs.readFileSync(FILE, 'utf8').split('\n').filter(Boolean).map((l) => JSON.parse(l) as Inquiry);
+export async function readAll(): Promise<Inquiry[]> {
+  if (memoryStore()) return mem.slice();
+  return (await readJSON(INQUIRIES, initialInquiries)).data;
 }
-export function findByIdem(idem: string) { return readAll().find((x) => x.idem === idem) || null; }
-export function append(x: Inquiry) {
-  if (!fileStore()) { mem.push(x); return; }
-  fs.mkdirSync(VAR, { recursive: true });
-  fs.appendFileSync(FILE, JSON.stringify(x) + '\n', { mode: 0o600 });
+export async function findByIdem(idem: string) { return (await readAll()).find((x) => x.idem === idem) || null; }
+export async function append(x: Inquiry) {
+  return changeInquiries((all) => {
+    const existing = all.find((entry) => entry.idem === x.idem);
+    if (existing) return { inquiry: existing, created: false };
+    all.push(x); return { inquiry: x, created: true };
+  });
 }
-export function update(id: string, patch: Partial<Inquiry>) {
-  const all = readAll().map((x) => (x.id === id ? { ...x, ...patch } : x));
-  if (!fileStore()) { mem.splice(0, mem.length, ...all); return; }
-  fs.mkdirSync(VAR, { recursive: true });
-  fs.writeFileSync(FILE, all.map((x) => JSON.stringify(x)).join('\n') + (all.length ? '\n' : ''), { mode: 0o600 });
+export async function update(id: string, patch: Partial<Inquiry>) {
+  await changeInquiries((all) => {
+    const i = all.findIndex((entry) => entry.id === id);
+    if (i < 0) throw new Error('Inquiry not found');
+    all[i] = { ...all[i], ...patch };
+  });
+}
+/** Atomic delivery lease: concurrent requests share one submission and one active sender. */
+export async function claimNotification(id: string) {
+  return changeInquiries((all) => {
+    const entry = all.find((x) => x.id === id);
+    if (!entry) throw new Error('Inquiry not found');
+    if (entry.notify.status === 'sent' || entry.notify.status === 'retry' && Date.now() - Date.parse(entry.notify.lastAt || '') < 30_000) return { inquiry: entry, claimed: false };
+    entry.notify = { status: 'retry', attempts: entry.notify.attempts + 1, lastAt: new Date().toISOString() };
+    return { inquiry: entry, claimed: true };
+  });
 }
 /** 관리자 기록과 대장 초안은 재배포와 무관하게 보존한다. */
 type AuditEntry = { at?: string; who: string; action: string; target?: string; detail?: string; ip?: string };

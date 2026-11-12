@@ -16,18 +16,19 @@ export default function Header() {
   useEffect(() => {
     if (!menu) return;
     const onKey = (e: KeyboardEvent) => { if (e.key === 'Escape') setMenu(false); };
+    const previousOverflow = document.body.style.overflow;
     document.addEventListener('keydown', onKey); document.body.style.overflow = 'hidden';
-    return () => { document.removeEventListener('keydown', onKey); document.body.style.overflow = ''; };
+    return () => { document.removeEventListener('keydown', onKey); document.body.style.overflow = previousOverflow; };
   }, [menu]);
   return (
     <header className="site-header">
       <div className="bar">
         <Link href="/" className="logo" aria-label={`${BRAND} 홈`}>
-          <LogoMark size={34} />
+          <LogoMark size={44} />
           <span className="t"><b>{BRAND}</b><small>{BRAND_EN}</small></span>
         </Link>
         <nav aria-label="주 메뉴">{NAV.map(([h, t]) => <Link key={h} href={h} className="nav-btn">{t}</Link>)}</nav>
-        <Link href="/contact/" className="nav-btn header-contact">문의 남기기</Link>
+        <Link href="/contact/#inquiry" className="nav-btn header-contact">문의 남기기</Link>
         <a href={tel} className="header-tel header-contact" {...holdProps}><Icon name="phone" size={18} /><RollingPhone /></a>
         <div className="header-mob">
           <span className="sp" />
@@ -40,7 +41,7 @@ export default function Header() {
           <nav id="mobile-menu" className="panel" aria-label="모바일 메뉴" onClick={(e) => e.stopPropagation()}>
             <button type="button" className="close" aria-label="메뉴 닫기" onClick={() => setMenu(false)} autoFocus><Icon name="x" size={22} /></button>
             {NAV.map(([h, t]) => <Link key={h} href={h} onClick={() => setMenu(false)}>{t}</Link>)}
-            <Link href="/contact/" onClick={() => setMenu(false)}>문의 남기기</Link>
+            <Link href="/contact/#inquiry" onClick={() => setMenu(false)}>문의 남기기</Link>
             <Link href="/guides/" onClick={() => setMenu(false)}>증상 가이드</Link>
           </nav>
         </div>

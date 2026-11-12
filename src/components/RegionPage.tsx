@@ -33,7 +33,7 @@ export default function RegionPageView({ g, draft = false }: { g: GeneratedPage;
     .map((r) => ({ t: r.short, href: regionPath(g.province, r.rid, g.service) })).filter((x) => isPublicPath(x.href)).slice(0, 8);
   const dongs = city ? city.gus.flatMap((x) => x.d) : g.region.dongs;
   const faqLd = { '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: (g.sections.find((s) => s.id === 's-faq')?.faq || []).map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })) };
-  const serviceLd = { '@context': 'https://schema.org', '@type': 'Service', name: g.h1, serviceType: g.label, areaServed: { '@type': 'AdministrativeArea', name: `${provName} ${g.region.name}` }, provider: { '@id': abs('/#org') }, url: abs(g.path), telephone: '+82-' + pinned };
+  const serviceLd = { '@context': 'https://schema.org', '@type': 'Service', name: g.h1, serviceType: g.label, areaServed: { '@type': 'AdministrativeArea', name: `${provName} ${g.region.name}` }, provider: { '@id': abs('/#org') }, url: abs(g.path), availableChannel: { '@type': 'ServiceChannel', serviceUrl: abs('/contact/'), servicePhone: { '@type': 'ContactPoint', telephone: '+82-' + pinned, availableLanguage: ['ko'] } } };
   return (
     <PublicShell pinned={pinned}>
       {draft && <div className="draft-banner"><span>검수 대기 초안 · 공개 전</span><span>{g.pageId}</span><span>상담번호 고정 배정: {pinned}</span></div>}
@@ -48,7 +48,7 @@ export default function RegionPageView({ g, draft = false }: { g: GeneratedPage;
                 <p className="lede">{hand?.lead || g.lead}</p>
                 <div className="acts">
                   <a href={'tel:' + pinned} className="btn btn-primary"><Icon name="phone" />전화 상담 {pinned}</a>
-                  <Link href="/contact/" className="btn ghost">문의 남기기</Link>
+                  <Link href="/contact/#inquiry" className="btn ghost">문의 남기기</Link>
                 </div>
               </div>
               <dl>

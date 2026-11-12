@@ -6,7 +6,7 @@ import AreaBrowser from '@/components/AreaBrowser';
 import Icon from '@/components/Icon';
 import { pageMeta } from '@/lib/seo';
 import { CITIES } from '@/content/site-data';
-import { cityLink, guLink, publicRegionPages } from '@/lib/links';
+import { cityLink, cityAnchor, guLink, publicRegionPages } from '@/lib/links';
 import { regionById } from '@/lib/registry';
 
 export const metadata: Metadata = pageMeta({
@@ -35,6 +35,10 @@ export default function Areas() {
           </>
         )}
         <AreaBrowser hrefs={hrefs} />
+        <div className="local-area-notes">{CITIES.filter(c => !c.regionId).map(c => <section key={c.c} id={cityAnchor(c.c)}>
+          <h2>{c.c} 자동문 출장 안내</h2><p>{c.c}의 {c.gus.flatMap(g => g.d).join(' · ')} 등 지역에서 자동문 설치·수리 상담을 접수합니다. 현장 위치와 증상에 따라 방문 가능 일정과 작업 범위를 상담해 주세요.</p>
+          <Link href="/services/repair/">자동문 수리 안내</Link> · <Link href="/services/install/">자동문 설치 안내</Link> · <Link href="/contact/#inquiry">{c.c} 문의 남기기</Link>
+        </section>)}</div>
         <p className="sr-only">{CITIES.filter((c) => c.regionId).map((c) => regionById(c.regionId!)?.label).join(', ')}</p>
       </main>
     </PublicShell>

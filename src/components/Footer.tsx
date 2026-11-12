@@ -2,7 +2,7 @@ import Link from 'next/link';
 import LogoMark from './Logo';
 import TelLink from './TelLink';
 import { BRAND, BRAND_EN, INFO, MAIN_PHONE } from '@/lib/site';
-import { SVCS, BRANDS } from '@/content/site-data';
+import { SVCS, FOOTER_BRANDS } from '@/content/site-data';
 import { consultPhones } from '@/lib/gate';
 import { EXTERNAL_LINKS } from '@/content/external-links';
 import { MobileBarSpace } from './MobileBar';
@@ -13,7 +13,7 @@ export default function Footer() {
     <footer className="site-footer">
       <div className="footer-grid">
         <div>
-          <Link href="/" className="footer-brand" aria-label={`${BRAND} 홈`}><LogoMark size={36} dark /><span className="t"><b>{BRAND}</b><small>{BRAND_EN}</small></span></Link>
+          <Link href="/" className="footer-brand" aria-label={`${BRAND} 홈`}><LogoMark size={50} dark /><span className="t"><b>{BRAND}</b><small>{BRAND_EN}</small></span></Link>
           <p className="footer-sub">경기 평택 본사 · 자동문 수리·설치<br />상담 {INFO.hours}</p>
           <TelLink className="footer-tel" label="number" />
         </div>
@@ -27,12 +27,12 @@ export default function Footer() {
           <Link href="/cases/" className="footer-link">시공사례</Link>
           <Link href="/guides/" className="footer-link">증상 가이드</Link>
           <Link href="/faq/" className="footer-link">자주 묻는 질문</Link>
-          <Link href="/contact/" className="footer-link">문의 남기기</Link>
+          <Link href="/contact/#inquiry" className="footer-link">문의 남기기</Link>
         </div>
         <div>
           <p className="footer-h">취급 브랜드</p>
           <div className="brand-grid">
-            {BRANDS.map(n => <span key={n} className="brand-cell">{n.endsWith('자동문') ? n : n + '자동문'}</span>)}
+            {FOOTER_BRANDS.map(n => <span key={n} className="brand-cell">{n}</span>)}
             <span className="brand-more">외 국내 제조사</span>
           </div>
         </div>

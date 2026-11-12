@@ -16,7 +16,8 @@ export function regionLink(province: 'seoul' | 'gyeonggi' | null, rid: string | 
   }
   return { href: '/areas/', published: false };
 }
-export const cityLink = (c: City) => regionLink(PROVINCE_SLUG[c.p], c.regionId);
+export const cityAnchor = (name: string) => 'city-' + name;
+export const cityLink = (c: City) => c.regionId ? regionLink(PROVINCE_SLUG[c.p], c.regionId) : { href: `/areas/#${cityAnchor(c.c)}`, published: false };
 export const guLink = (c: City, g: string) => (c.p === '서울' && SEOUL_GU_RID[g] ? regionLink('seoul', SEOUL_GU_RID[g]) : cityLink(c));
 export const cityByName = (n: string) => CITIES.find((c) => c.c === n);
 /** 공개된 지역 페이지 목록(허브·사이트맵용) */

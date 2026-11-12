@@ -151,3 +151,18 @@ button:hover img,a:hover img{transform:scale(1.045)}
 .channel-groups a{display:inline-block;padding:6px 0;color:#e3e7ed;font-size:15px;line-height:1.5;overflow-wrap:anywhere}
 .channel-groups a:hover{color:#fff;text-decoration:underline}
 @media(min-width:768px){.channel-groups{grid-template-columns:repeat(3,minmax(0,1fr))}}
+
+/* Revision 3: visible logo enlargement and sticky-header anchor clearance. */
+html{scroll-padding-top:var(--nav-offset,96px)}
+.site-header .bar{height:80px;gap:18px}
+.logo{height:60px;gap:9px;flex-shrink:0}
+.logo .t b{font-size:21px}.logo .t small{font-size:11px}
+.footer-brand{gap:12px}.footer-brand .t b{font-size:24px}.footer-brand .t small{font-size:12px}
+.brand-cell{padding:10px 8px;word-break:keep-all;overflow-wrap:anywhere;font-size:13px;min-height:54px}
+.overview .v.brand .own-switch{display:block;font-size:15px;line-height:1.45;margin-top:12px;font-weight:800}
+.about .photo{aspect-ratio:3/2;height:auto}.about-front-photo{width:100%;height:auto;display:block}
+.local-area-notes{display:grid;gap:20px;margin-top:40px}.local-area-notes section{padding:24px;background:#f7f8fa;border-radius:16px}
+@media(min-width:1024px) and (max-width:1199px){.site-header .bar{gap:10px;padding-inline:20px}.nav-btn{padding-inline:9px}.logo .t b{font-size:19px}.header-tel{padding-inline:12px}}
+@media(max-width:599px){.site-header .bar{height:72px;gap:8px;padding-inline:16px}.logo .t b{font-size:20px}.logo .t small{font-size:10px}.logo svg{width:40px;height:40px}.header-mob{gap:0}.header-mob .sp{display:none}.footer-brand .t b{font-size:24px}}
+html{overflow-anchor:none}
+

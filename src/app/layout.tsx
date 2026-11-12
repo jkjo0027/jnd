@@ -5,6 +5,7 @@ import './globals.css';
 import './home.css';
 import './pages.css';
 import { SITE_URL, BRAND } from '@/lib/site';
+import NavigationScroll from '@/components/NavigationScroll';
 import { MotionProvider } from '@/components/MotionContext';
 
 export const metadata: Metadata = {
@@ -29,7 +30,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="ko">
       <body>
-        <MotionProvider>{children}</MotionProvider>
+        <MotionProvider><NavigationScroll />{children}</MotionProvider>
       </body>
     </html>
   );

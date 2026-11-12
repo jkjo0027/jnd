@@ -22,9 +22,9 @@ export function Overview() {
       <div className="wrap">
         <div className="cell"><p className="k">설립</p><p className="v">2018<small>년</small></p></div>
         <div className="cell"><p className="k">전국 대리점</p><p className="v">{INFO.agencies}<small>곳</small></p></div>
-        <div className="cell"><p className="k">SD 시리즈 스위치</p><p className="v">16<small>종</small></p></div>
+        <div className="cell"><p className="k">SD시리즈 스위치</p><p className="v">16<small>종</small></p></div>
         <div className="cell"><p className="k">설치 후 무상 A/S</p><p className="v">1<small>년</small></p></div>
-        <div className="cell"><p className="k">자체 브랜드</p><p className="v brand">스피드자동문<small>상표·디자인특허 등록</small></p></div>
+        <div className="cell"><p className="k">자체 브랜드</p><p className="v brand">스피드자동문<small>상표·디자인특허 등록</small><span className="own-switch">SD시리즈 자동문 스위치</span></p></div>
       </div>
     </section>
   );

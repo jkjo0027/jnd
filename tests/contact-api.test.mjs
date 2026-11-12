@@ -15,11 +15,11 @@ test('문의 API: 검증·중복 방지·접수 ID', { skip: !up && '서버 미�
 });
 test('관리자: 인증 없는 접근 차단 (페이지 리디렉션, API 401, noindex)', { skip: !up && '서버 미기동' }, async () => {
   const p = await fetch(BASE + '/admin/', { redirect: 'manual' }); assert.ok([302, 307, 308].includes(p.status)); assert.match(p.headers.get('location') || '', /\/admin\/login/);
-  const a = await fetch(BASE + '/api/admin/inquiries/'); assert.equal(a.status, 401);
+  const a = await fetch(BASE + '/api/admin/content/'); assert.equal(a.status, 401);
   const d = await fetch(BASE + '/api/admin/drafts/', { method: 'POST' }); assert.equal(d.status, 401);
   const pv = await fetch(BASE + '/admin/preview/areas/gyeonggi/r38/repair/', { redirect: 'manual' }); assert.ok([302, 307, 308].includes(pv.status));
   const l = await fetch(BASE + '/admin/login/'); assert.match(l.headers.get('x-robots-tag') || '', /noindex/);
 });
 test('미지 경로·초안 경로는 404', { skip: !up && '서버 미기동' }, async () => {
-  for (const p of ['/areas/gyeonggi/r99/repair/', '/guides/g99/', '/cases/c4/', '/regions/', '/areas/seoul/r01/']) { const r = await fetch(BASE + p); assert.equal(r.status, 404, p); }
+  for (const p of ['/areas/gyeonggi/r99/repair/', '/guides/g99/', '/cases/nonexistent/', '/regions/', '/areas/seoul/r01/']) { const r = await fetch(BASE + p); assert.equal(r.status, 404, p); }
 });

@@ -16,7 +16,7 @@ import { INFO } from '@/lib/site';
 import { TAG_PARAS, SAFETY, GLOSSARY } from '@/content/gen/blocks-common';
 import { SERVICE_BLOCKS, REGIONS, type ServiceId } from '@/content/gen/compose';
 import { regionPath } from '@/lib/links';
-import { JsonLd } from '@/lib/seo';
+import { JsonLd, serviceJsonLd } from '@/lib/seo';
 import AuthoredPageView from '@/components/AuthoredPage';
 import { liveByPath } from '@/lib/server/content';
 export const dynamicParams = true;
@@ -126,10 +126,10 @@ export default async function ServiceDetail({ params }: {
         <div className="cta-box">
           <p className="q">{card ? card.t : s.h1} 문제로 고민 중이세요?</p>
           <TelLink className="btn btn-primary"><Icon name="phone" size={20}/>전화 상담 <RollingPhone h={24}/></TelLink>
-          <Link href="/contact/" className="btn btn-g100">문의 남기기</Link>
+          <Link href="/contact/#inquiry" className="btn btn-g100">문의 남기기</Link>
         </div>
       </main>
-      <JsonLd data={faqLd}/>
+      <JsonLd data={[serviceJsonLd(s), faqLd]}/>
     </PublicShell>);
 }
 

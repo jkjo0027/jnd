@@ -4,9 +4,10 @@
 // 사용: node scripts/content-audit.mjs --base http://127.0.0.1:3000
 import fs from 'node:fs';
 import path from 'node:path';
+import { fileURLToPath } from 'node:url';
 const args = process.argv.slice(2); const opt = {}; for (let i = 0; i < args.length; i++) if (args[i].startsWith('--')) opt[args[i].slice(2)] = args[++i];
 const BASE = (opt.base || 'http://127.0.0.1:3000').replace(/\/$/, '');
-const ROOT = path.resolve(path.dirname(new URL(import.meta.url).pathname), '..');
+const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const R = (f) => JSON.parse(fs.readFileSync(path.join(ROOT, 'data/registry', f), 'utf8'));
 const ledger = R('publication-ledger.json').records, aliases = R('area-aliases.json'), facts = R('fact-ledger.json');
 const regionWords = [...new Set(aliases.aliases.map((a) => a.alias).concat(aliases.baseRegions.map((b) => b.name)).concat(aliases.baseRegions.map((b) => b.name.replace(/(시|구|군)$/, ''))).concat(['서울특별시', '경기도', '서울', '경기']))].filter((w) => w.length >= 2).sort((a, b) => b.length - a.length);
@@ -37,7 +38,8 @@ const rows = docs.map((d) => {
   const templateRatio10 = d.keys.length ? +(tpl10 / d.keys.length).toFixed(3) : 0;
   const templateRatio = d.keys.length ? +(tpl / d.keys.length).toFixed(3) : 0;
   const uniqueRatio = d.keys.length ? +(uniq / d.keys.length).toFixed(3) : 0;
-  const flags = CLAIMS.filter(([re]) => re.test(d.body)).map(([, n]) => n);
+  const claimScan = d.body.replace(/무조건 (?:보장|가능|해결|수리|교체)하지 않[^.]*\./g, '');
+  const flags = CLAIMS.filter(([re]) => re.test(claimScan)).map(([, n]) => n);
   const claimTxt = d.body.split(/(?<=[.?!])\s/).filter((s) => !/\?$/.test(s.trim())).join(' ').replace(/경기도권은 당일[^.]*\./g, '');
   if (d.r.path.startsWith('/areas/seoul/r') && /당일 (출장|방문|수리|교체)/.test(claimTxt)) flags.push('서울 당일 확약');
   const rid = (d.r.pageId.match(/^(R\d\d)/) || [])[1]?.toLowerCase();

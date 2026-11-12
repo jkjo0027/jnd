@@ -97,7 +97,7 @@ export default async function AuthoredPageView({ p, draft = false }: {
         <div className="cta-box">
           <p className="q">{p.type === 'case' ? '같은 증상으로 고민 중이세요?' : '증상을 말씀해 주시면 원인을 먼저 짚어드려요.'}</p>
           {pinned ? <a href={'tel:' + pinned} className="btn btn-primary"><Icon name="phone" size={20}/>전화 상담 {pinned}</a> : <TelLink className="btn btn-primary"><Icon name="phone" size={20}/>전화 상담 <RollingPhone h={24}/></TelLink>}
-          <Link href="/contact/" className="btn btn-outline">문의 남기기</Link>
+          <Link href="/contact/#inquiry" className="btn btn-outline">문의 남기기</Link>
           <Link href={p.hub} className="btn btn-outline">{HUB_NAME[p.hub] || '목록'} 더 보기</Link>
         </div>
         {FIELDS[p.type].length > 0 && null}

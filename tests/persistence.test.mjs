@@ -98,6 +98,27 @@ test('audit and registry drafts persist; an unavailable store never looks empty 
   await assert.rejects(r.content.createPage('guide', 'owner'), /storage offline/);
 });
 
+test('inquiries survive runtime replacement, deduplicate competing submissions and retry failed delivery once', async () => {
+  const f = fixture(), a = f.runtime().audit, b = f.runtime().audit;
+  const inquiry = { id: 'JND-20261112-AAAAAA', at: new Date().toISOString(), name: '검증용', phone: '010-0000-0000', area: '', sym: '', bld: '', msg: '', agree: true, source: '/contact/', ip: '', ua: '', mode: 'live', notify: { status: 'skipped', attempts: 0 }, status: 'new', idem: 'shared-inquiry-key' };
+  const saved = await Promise.all([a.append(inquiry), b.append({ ...inquiry, id: 'JND-20261112-BBBBBB' })]);
+  assert.equal(saved.filter(x => x.created).length, 1);
+  assert.equal(saved[0].inquiry.id, saved[1].inquiry.id);
+  assert.equal((await f.runtime().audit.readAll()).length, 1);
+  const id = saved[0].inquiry.id;
+  const leases = await Promise.all([a.claimNotification(id), b.claimNotification(id)]);
+  assert.equal(leases.filter(x => x.claimed).length, 1);
+  await a.update(id, { notify: { status: 'failed', attempts: 1, lastAt: new Date().toISOString() } });
+  const retry = await f.runtime().audit.claimNotification(id);
+  assert.equal(retry.claimed, true); assert.equal(retry.inquiry.notify.attempts, 2);
+  await b.update(id, { notify: { status: 'sent', attempts: 2, lastAt: new Date().toISOString() } });
+  assert.equal((await f.runtime().audit.findByIdem(inquiry.idem)).notify.status, 'sent');
+  assert.equal((await a.claimNotification(id)).claimed, false);
+  f.offline(true);
+  await assert.rejects(a.readAll(), /storage offline/);
+  await assert.rejects(a.append({ ...inquiry, idem: 'another-key' }), /storage offline/);
+});
+
 test('originals, resized WebP and names survive runtime replacement; invalid images are rejected', async () => {
   const f = fixture(), u = f.runtime().uploads, sharp = nativeRequire('sharp');
   const png = await sharp({ create: { width: 640, height: 360, channels: 3, background: '#164aab' } }).png().toBuffer();

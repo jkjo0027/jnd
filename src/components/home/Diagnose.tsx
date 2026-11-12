@@ -82,7 +82,7 @@ export default function Diagnose({ cases, regionHref }: { cases: Case[]; regionH
                 <div className="diag-actions">
                   <a href={tel} className="btn btn-primary" {...holdProps}><Icon name="phone" size={18} />지금 전화로 상담하기</a>
                   <div className="two">
-                    <Link href="/contact/" className="btn btn-outline">문의 남기기</Link>
+                    <Link href="/contact/#inquiry" className="btn btn-outline">문의 남기기</Link>
                     {pk.c ? <Link href={regionHref[pk.c] || '/areas/'} className="btn btn-outline">{pk.l} 안내</Link> : <Link href="/areas/" className="btn btn-outline">출장 지역 보기</Link>}
                   </div>
                   <Link href={svc.route} className="btn btn-outline" style={{ height: 48 }}>{svc.t} 서비스 자세히</Link>

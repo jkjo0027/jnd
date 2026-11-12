@@ -20,7 +20,7 @@
 .about .k{margin:0 0 16px;font-size:var(--fs-b);font-weight:700;color:var(--blue-t)}
 .about h1{margin:0 0 24px;font-size:var(--fs-d);line-height:1.22;letter-spacing:-0.035em;font-weight:800;max-width:720px}
 .about .lede{margin:0 0 48px;font-size:var(--fs-3);line-height:1.7;color:var(--g600);max-width:680px;text-wrap:pretty}
-.about .photo{position:relative;overflow:hidden;width:100%;aspect-ratio:21/9;border-radius:var(--r-l);background:var(--g100);margin-bottom:24px}
+.about .photo{position:relative;overflow:hidden;width:100%;aspect-ratio:3/2;border-radius:var(--r-l);background:var(--g100);margin-bottom:24px}
 .about .facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr));gap:12px;margin-bottom:64px}
 .about .fact{padding:24px;border-radius:var(--r-l);background:var(--g50)}
 .about .fact .k2{margin:0 0 8px;font-size:var(--fs-c);font-weight:700;color:var(--g600)}

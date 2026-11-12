@@ -4,7 +4,7 @@ import Breadcrumb from '@/components/Breadcrumb';
 import Icon from '@/components/Icon';
 import { pageMeta, orgJsonLd, JsonLd } from '@/lib/seo';
 import { BRAND, INFO } from '@/lib/site';
-import { AGENCY, HIST, PHOTO, QUOTE, STEPS } from '@/content/site-data';
+import { AGENCY, HIST, QUOTE, STEPS } from '@/content/site-data';
 import { consultPhones, smsPhone } from '@/lib/gate';
 import { ops } from '@/lib/registry';
 
@@ -23,7 +23,7 @@ export default function About() {
         <p className="k">업체 소개</p>
         <h1>멈춘 자동문,<br />원인부터 정확하게 봅니다</h1>
         <p className="lede">{BRAND}은 2018년 평택에서 시작한 자동문 설치·수리 전문기업입니다. 1인 업체가 대부분인 업계에서, 평택 본사를 중심으로 수도권 전역에 전문 대리점을 두고 있어 출장 대응과 A/S가 빠릅니다.</p>
-        <div className="photo"><img src={PHOTO.about} alt={`${BRAND} 시공 현장`} loading="lazy" width={800} height={600} className="img-cover" /></div>
+        <div className="photo"><img src="/photos/about-front-1280.webp" srcSet="/photos/about-front-640.webp 640w, /photos/about-front-1280.webp 1280w, /photos/about-front-1600.webp 1600w" sizes="(max-width: 768px) 100vw, 1040px" alt="푸른색 유리 출입구의 정면 자동문과 상부 감지 센서" width={1600} height={1067} className="about-front-photo" /></div>
         <div className="facts">
           <div className="fact"><p className="k2">설립</p><p className="v">2018년 · 평택</p></div>
           <div className="fact"><p className="k2">설치 보증</p><p className="v">1년 무상 A/S</p></div>
@@ -35,7 +35,7 @@ export default function About() {
           <div>
             <h2>견적은 문자로 빠르게</h2>
             <p className="d">아래 3가지를 보내주시면 사진을 보고 견적을 안내해 드려요.</p>
-            {sms ? <a href={'sms:' + sms} className="btn btn-primary"><Icon name="message-square" />{sms} 문자 보내기</a> : <a href="/contact/#photo" className="btn btn-primary"><Icon name="message-square" />문의 폼으로 사진 보내기</a>}
+            {sms ? <a href={'sms:' + sms} className="btn btn-primary"><Icon name="message-square" />{sms} 문자 보내기</a> : <a href="/contact/#photo" className="btn btn-primary"><Icon name="message-square" />사진 견적 안내 보기</a>}
           </div>
           <ol>{QUOTE.map((q) => <li key={q.n}><b className="n">{q.n}</b><span><b className="t">{q.t}</b><span className="s">{q.d}</span></span></li>)}</ol>
         </div>

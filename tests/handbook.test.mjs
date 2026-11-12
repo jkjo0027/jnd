@@ -5,6 +5,20 @@ const read = p => JSON.parse(fs.readFileSync(new URL(p, import.meta.url), 'utf8'
 const { categories, articles } = read('../src/content/handbook.json');
 const ledger = read('../data/registry/publication-ledger.json').records;
 const facts = read('../data/registry/fact-ledger.json');
+const editorial = read('../src/content/handbook-editorial.json');
+
+test('공개 안내에 빠진 상황별 설명이 없고 개정일이 최초 발행일을 덮지 않는다', () => {
+  assert.deepEqual(Object.keys(editorial).sort(), articles.map(a => a.slug).sort());
+  for (const key of ['explanation', 'question']) assert.equal(new Set(Object.values(editorial).map(e => e[key])).size, articles.length);
+  for (const a of articles) {
+    const e = editorial[a.slug];
+    assert.equal(e.comparisons.length, 2, a.slug);
+    assert.notEqual(e.comparisons[0].situation, e.comparisons[1].situation, a.slug);
+    for (const row of e.comparisons) assert.ok(row.situation.trim() && row.nextStep.trim(), a.slug);
+    assert.match(a.publishedAt, /^\d{4}-\d{2}-\d{2}$/);
+    assert.ok(a.publishedAt < a.updatedAt, `${a.slug}: original publication date`);
+  }
+});
 
 test('실무 안내는 고유 질문·본문·경로와 확인된 서비스에 연결된다', () => {
   assert.equal(articles.length, 140);

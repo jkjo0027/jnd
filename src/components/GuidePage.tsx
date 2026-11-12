@@ -99,7 +99,7 @@ export default function GuidePageView({ g, draft = false }: { g: Guide; draft?: 
         <div className="cta-box">
           <p className="q" style={{ padding: 0, background: 'none', fontSize: 'var(--fs-b)' }}>증상을 말씀해 주시면 원인을 먼저 짚어드려요</p>
           <TelLink className="btn btn-primary"><Icon name="phone" size={20} />전화 상담 <RollingPhone h={24} /></TelLink>
-          <Link href="/contact/" className="btn btn-g100">문의 남기기</Link>
+          <Link href="/contact/#inquiry" className="btn btn-g100">문의 남기기</Link>
         </div>
       </main>
       <JsonLd data={faqLd} />

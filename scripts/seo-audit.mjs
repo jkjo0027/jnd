@@ -3,12 +3,13 @@
 // 사용: node scripts/seo-audit.mjs --base http://127.0.0.1:3000 [--out reports/seo-audit.json]
 import fs from 'node:fs';
 import path from 'node:path';
+import { fileURLToPath } from 'node:url';
 const args = process.argv.slice(2); const opt = {};
 for (let i = 0; i < args.length; i++) if (args[i].startsWith('--')) opt[args[i].slice(2)] = args[++i];
 const BASE = (opt.base || 'http://127.0.0.1:3000').replace(/\/$/, '');
 const CANON_HOST = 'https://jndsystem.kr';
 const OUT = opt.out || 'reports/seo-audit.json';
-const ROOT = path.resolve(path.dirname(new URL(import.meta.url).pathname), '..');
+const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const ledger = JSON.parse(fs.readFileSync(path.join(ROOT, 'data/registry/publication-ledger.json'), 'utf8')).records;
 const E = ledger.filter((r) => r.contentStatus === 'PUBLISHED' && r.indexEligibility && r.indexPolicy === 'index').map((r) => r.path);
 const lastmod = JSON.parse(fs.readFileSync(path.join(ROOT, 'data/registry/content-lastmod.json'), 'utf8'));
@@ -105,8 +106,8 @@ fs.mkdirSync(path.join(ROOT, 'data/export'), { recursive: true });
 const esc = (v) => { const s = Array.isArray(v) ? v.join('|') : String(v ?? ''); return /[",\n]/.test(s) ? '"' + s.replace(/"/g, '""') + '"' : s; };
 const cols = ['path', 'status', 'title', 'desc', 'canon', 'h1', 'bodyLen', 'links', 'ldTypes', 'imgs', 'imgNoDims', 'lastmod'];
 fs.writeFileSync(path.join(ROOT, 'data/export/seo-audit.csv'), '\ufeff' + [cols.join(','), ...pages.map((r) => cols.map((c) => esc(r[c])).join(','))].join('\n') + '\n');
-fs.mkdirSync(path.dirname(path.join(ROOT, OUT)), { recursive: true });
-fs.writeFileSync(path.join(ROOT, OUT), JSON.stringify(report, null, 1));
+fs.mkdirSync(path.dirname(path.resolve(ROOT, OUT)), { recursive: true });
+fs.writeFileSync(path.resolve(ROOT, OUT), JSON.stringify(report, null, 1));
 const byType = {}; for (const i of issues) byType[i.type] = (byType[i.type] || 0) + 1;
 console.log(`[seo-audit] eligible ${E.length} sitemap ${smPaths.length} crawled ${pages.length} issues ${issues.length}`, byType);
 if (issues.length) { for (const i of issues.slice(0, 40)) console.log('  -', JSON.stringify(i)); process.exit(1); }

@@ -55,7 +55,7 @@ export default function Hero({ smsPhone }: { smsPhone: string | null }) {
           <div className="cta2">
             {smsPhone ? <a href={'sms:' + smsPhone} className="btn btn-g100"><Icon name="message-square" size={18} />사진으로 견적</a>
               : <Link href="/contact/#photo" className="btn btn-g100"><Icon name="message-square" size={18} />사진으로 견적</Link>}
-            <Link href="/contact/" className="btn btn-g100">문의 남기기</Link>
+            <Link href="/contact/#inquiry" className="btn btn-g100">문의 남기기</Link>
           </div>
         </div>
       </div>

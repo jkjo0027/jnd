@@ -8,7 +8,7 @@ export default function MobileBar() {
   const { tel, holdProps } = usePhones();
   return (
     <div className="mobile-bar">
-      <Link href="/contact/" aria-label="문의 남기기" className="msg"><Icon name="message-square" size={22} /></Link>
+      <Link href="/contact/#inquiry" aria-label="문의 남기기" className="msg"><Icon name="message-square" size={22} /></Link>
       <a href={tel} className="tel" {...holdProps}><Icon name="phone" size={20} />전화 상담 <RollingPhone h={24} /></a>
     </div>
   );

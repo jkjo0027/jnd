@@ -21,6 +21,6 @@ export default function HandbookIndex() {
       <h2>{c.title}</h2><p>{c.introduction}</p>
       <div className="handbook-grid">{handbookArticles.filter(a => a.category === c.id).map(a => <Link className="handbook-card" key={a.slug} href={handbookPath(a.slug)}><h3>{a.title}</h3><p>{a.answer}</p><span>확인 항목 보기 →</span></Link>)}</div>
     </section>)}
-    <div className="handbook-links"><Link href="/guides/">증상별 원인 가이드</Link><Link href="/services/repair/">수리 서비스 안내</Link><Link href="/contact/">상담 방법 확인</Link></div>
+    <div className="handbook-links"><Link href="/guides/">증상별 원인 가이드</Link><Link href="/services/repair/">수리 서비스 안내</Link><Link href="/contact/#inquiry">상담 방법 확인</Link></div>
   </main></PublicShell>;
 }

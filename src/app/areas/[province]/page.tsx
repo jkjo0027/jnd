@@ -79,7 +79,7 @@ export default async function ProvinceHub({ params }: {
         <div className="cta-box" style={{ maxWidth: 760 }}>
           <p className="q">{p.name} 지역 자동문 출장 상담</p>
           <TelLink className="btn btn-primary"><Icon name="phone" size={20}/>전화 상담 <RollingPhone h={24}/></TelLink>
-          <Link href="/contact/" className="btn btn-g100">문의 남기기</Link>
+          <Link href="/contact/#inquiry" className="btn btn-g100">문의 남기기</Link>
         </div>
       </main>
     </PublicShell>);

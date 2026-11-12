@@ -1,7 +1,7 @@
 # Netlify 배포 설정. Next.js 는 Netlify 의 Next 런타임(@netlify/plugin-nextjs, 자동 설치)으로 동작한다.
-# 주의: Netlify 는 서버리스라 var/(운영자 발행 페이지·업로드 사진·문의 백업)가 배포·인스턴스 간에 유지되지 않는다.
-#       공개 사이트·관리자 로그인·미리보기는 동작하지만, 운영자 직접 발행과 사진 업로드를 운영에서 쓰려면
-#       src/lib/server/content.ts·uploads.ts 를 Netlify Blobs 등 영구 저장소 어댑터로 바꿔야 한다(docs/release-and-rollback.md 3-3).
+# 콘텐츠·사진·문의 백업은 사이트 전용 Netlify Blobs에 저장한다. 로컬 var/는 개발 전용이다.
+# 운영 문의는 CONTACT_MODE=live, CONTACT_NOTIFY_PROVIDER=netlify-forms와 Forms 이메일 수신 확인이 필요하다.
+# netlify/functions/purge-inquiries.mjs는 공개 배포에서 정해진 문의 백업 보유기간을 적용한다.
 [build]
   command = "npm run build"
   publish = ".next"
