@@ -2,15 +2,25 @@ import { BRAND, INFO, MAIN_PHONE, SITE_URL, abs } from '@/lib/site';
 import type { Metadata } from 'next';
 import { EXTERNAL_LINKS } from '@/content/external-links';
 import { SVCS } from '@/content/site-data';
+import { searchDescription } from './search-description';
+
+const searchSummaries: Record<string, string> = {
+  '/services/motor/': '자동문 모터·컨트롤러 이상으로 생기는 반복 개폐와 소음의 진단, 설정 초기화·교체 범위를 안내합니다.',
+  '/guides/g20/': '상가 자동문 설치 전 출입구 폭, 전원, 간판·조명 간섭, 인테리어 공정과 스위치 선택을 확인하세요.',
+  '/guides/g22/': '약국 자동문 설치 시 편개형 선택, 감지 범위, 대기시간, 간판 조명과 야간 잠금의 확인 기준을 안내합니다.',
+  '/guides/': '자동문 안 열림·반복 개폐·센서 오작동·소음의 원인과 안전하게 확인할 항목, 전문가 점검이 필요한 신호를 안내합니다.',
+  '/faq/': '자동문 고장 원인, 수리 비용 기준, 출장 지역과 상담 시간, 타사 제품 수리와 설치 후 A/S에 답합니다.',
+};
 
 export function pageMeta(o: { title: string; description: string; path: string; image?: string; noindex?: boolean }): Metadata {
   const url = abs(o.path);
+  const description = searchDescription(searchSummaries[o.path] || o.description);
   return {
-    title: { absolute: o.title }, description: o.description,
+    title: { absolute: o.title }, description,
     alternates: { canonical: url },
     robots: o.noindex ? { index: false, follow: false } : { index: true, follow: true },
-    openGraph: { title: o.title, description: o.description, url, siteName: BRAND, locale: 'ko_KR', type: 'website', images: [{ url: abs(o.image || '/og.png'), width: 1200, height: 630, alt: `${BRAND} 자동문 설치·수리` }] },
-    twitter: { card: 'summary_large_image', title: o.title, description: o.description },
+    openGraph: { title: o.title, description, url, siteName: BRAND, locale: 'ko_KR', type: 'website', images: [{ url: abs(o.image || '/og.png'), width: 1200, height: 630, alt: `${BRAND} 자동문 설치·수리` }] },
+    twitter: { card: 'summary_large_image', title: o.title, description },
   };
 }
 

@@ -12,7 +12,17 @@ const nextConfig: NextConfig = {
   poweredByHeader: false,
   reactStrictMode: true,
   images: { unoptimized: true },
-  async redirects() { return mergeRedirects; },
+  async redirects() {
+    return [
+      {
+        source: '/:path(.*)',
+        has: [{ type: 'host', value: 'jndsystem-kr.netlify.app' }],
+        destination: 'https://jndsystem.kr/:path',
+        permanent: true,
+      },
+      ...mergeRedirects,
+    ];
+  },
   async headers() {
     return [
       {

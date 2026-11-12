@@ -14,7 +14,7 @@ import { cityLink } from '@/lib/links';
 
 export const metadata: Metadata = pageMeta({
   title: '제이앤디시스템 | 평택 자동문 설치·수리 · 서울·경기 출장',
-  description: '평택 본사에서 서울·경기 수도권 자동문 설치·수리. 센서·스위치·컨트롤러 고장 증상별 점검과 부품 교체, 실측부터 1년 무상 A/S까지 6단계 설치. 평일 08:00–18:00 전화 상담.',
+  description: '평택 본사에서 서울·경기 자동문 설치·수리. 센서·스위치·모터 점검과 교체, 신규 설치·1년 무상 A/S를 안내합니다. 평일 전화 상담.',
   path: '/',
 });
 

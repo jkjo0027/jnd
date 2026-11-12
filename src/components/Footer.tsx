@@ -26,6 +26,7 @@ export default function Footer() {
           <Link href="/about/" className="footer-link">업체 소개</Link>
           <Link href="/cases/" className="footer-link">시공사례</Link>
           <Link href="/guides/" className="footer-link">증상 가이드</Link>
+          <Link href="/handbook/" className="footer-link">설치·관리 실무 안내</Link>
           <Link href="/faq/" className="footer-link">자주 묻는 질문</Link>
           <Link href="/contact/#inquiry" className="footer-link">문의 남기기</Link>
         </div>
