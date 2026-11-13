@@ -19,7 +19,7 @@ export function pageMeta(o: { title: string; description: string; path: string; 
   const description = searchDescription(searchSummaries[o.path] || o.description);
   return {
     title: { absolute: title }, description,
-    alternates: { canonical: url },
+    alternates: { canonical: url, types: { 'application/rss+xml': abs('/rss.xml') } },
     robots: o.noindex ? { index: false, follow: false } : { index: true, follow: true },
     openGraph: { title, description, url, siteName: BRAND, locale: 'ko_KR', type: 'website', images: [{ url: abs(o.image || '/og.png'), width: 1200, height: 630, alt: `${BRAND} 자동문 설치·수리` }] },
     twitter: { card: 'summary_large_image', title, description },

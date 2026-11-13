@@ -18,6 +18,7 @@ export const metadata: Metadata = {
     apple: { url: `${SITE_URL}/apple-touch-icon.png`, type: 'image/png', sizes: '180x180' },
   },
   robots: { index: true, follow: true },
+  alternates: { types: { 'application/rss+xml': `${SITE_URL}/rss.xml` } },
   verification: {
     google: process.env.GOOGLE_SITE_VERIFICATION || undefined,
     other: process.env.NAVER_SITE_VERIFICATION ? { 'naver-site-verification': process.env.NAVER_SITE_VERIFICATION } : undefined,
