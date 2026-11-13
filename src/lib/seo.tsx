@@ -3,6 +3,7 @@ import type { Metadata } from 'next';
 import { EXTERNAL_LINKS } from '@/content/external-links';
 import { SVCS } from '@/content/site-data';
 import { searchDescription } from './search-description';
+import { searchTitle } from './search-title';
 
 const searchSummaries: Record<string, string> = {
   '/services/motor/': '자동문 모터·컨트롤러 이상으로 생기는 반복 개폐와 소음의 진단, 설정 초기화·교체 범위를 안내합니다.',
@@ -14,13 +15,14 @@ const searchSummaries: Record<string, string> = {
 
 export function pageMeta(o: { title: string; description: string; path: string; image?: string; noindex?: boolean }): Metadata {
   const url = abs(o.path);
+  const title = searchTitle(o.title, o.path);
   const description = searchDescription(searchSummaries[o.path] || o.description);
   return {
-    title: { absolute: o.title }, description,
+    title: { absolute: title }, description,
     alternates: { canonical: url },
     robots: o.noindex ? { index: false, follow: false } : { index: true, follow: true },
-    openGraph: { title: o.title, description, url, siteName: BRAND, locale: 'ko_KR', type: 'website', images: [{ url: abs(o.image || '/og.png'), width: 1200, height: 630, alt: `${BRAND} 자동문 설치·수리` }] },
-    twitter: { card: 'summary_large_image', title: o.title, description },
+    openGraph: { title, description, url, siteName: BRAND, locale: 'ko_KR', type: 'website', images: [{ url: abs(o.image || '/og.png'), width: 1200, height: 630, alt: `${BRAND} 자동문 설치·수리` }] },
+    twitter: { card: 'summary_large_image', title, description },
   };
 }
 

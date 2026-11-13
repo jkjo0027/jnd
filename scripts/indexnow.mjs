@@ -11,11 +11,19 @@ const args = new Set(process.argv.slice(2));
 const HOST = 'jndsystem.kr';
 const ledger = JSON.parse(fs.readFileSync(path.join(ROOT, 'data/registry/publication-ledger.json'), 'utf8')).records;
 const hashes = JSON.parse(fs.readFileSync(path.join(ROOT, 'data/registry/content-hashes.json'), 'utf8'));
-const hashOf = (p) => (hashes.pages && hashes.pages[p]) || (hashes[p] && (hashes[p].hash || hashes[p])) || null;
+const hashOf = (record) => {
+  const value = hashes.pages?.[record.path] ?? hashes[record.pageId] ?? hashes[record.path];
+  return typeof value === 'string' ? value : value?.hash || null;
+};
 const statePath = path.join(ROOT, 'var/indexnow-state.json');
 const state = fs.existsSync(statePath) ? JSON.parse(fs.readFileSync(statePath, 'utf8')) : { submitted: {} };
 const pub = ledger.filter((r) => r.contentStatus === 'PUBLISHED' && r.indexEligibility && r.indexPolicy === 'index');
-const changed = pub.filter((r) => args.has('--all') || !state.submitted[r.path] || state.submitted[r.path].hash !== hashOf(r.path));
+const missingHashes = pub.filter((r) => !hashOf(r));
+if (missingHashes.length) {
+  console.error('[indexnow] 공개 URL의 본문 해시가 없습니다. content:lastmod를 먼저 실행하세요:', missingHashes.map((r) => r.path));
+  process.exit(2);
+}
+const changed = pub.filter((r) => args.has('--all') || !state.submitted[r.path] || state.submitted[r.path].hash !== hashOf(r));
 // 통합(C)·보류(D) 페이지가 과거에 제출된 적이 있으면 그 URL 도 한 번 더 통지(리디렉션·404 반영)
 const removed = ledger.filter((r) => r.contentStatus !== 'PUBLISHED' && state.submitted[r.path] && !state.submitted[r.path].retired);
 const urls = [...new Set([...changed.map((r) => `https://${HOST}${r.path}`), ...removed.map((r) => `https://${HOST}${r.path}`)])];
@@ -41,7 +49,7 @@ for (let i = 0; i < urls.length; i += 10000) {
   log({ endpoint: 'searchadvisor.naver.com', count: batch.length, status, keyLocation, response: text.slice(0, 200) });
   console.log(`[indexnow] ${batch.length} URL → HTTP ${status} ${text.slice(0, 80)}`);
   if (status === 200 || status === 202) {
-    for (const r of changed) state.submitted[r.path] = { hash: hashOf(r.path), at: new Date().toISOString() };
+    for (const r of changed) state.submitted[r.path] = { hash: hashOf(r), at: new Date().toISOString() };
     for (const r of removed) state.submitted[r.path] = { ...state.submitted[r.path], retired: true, at: new Date().toISOString() };
     fs.writeFileSync(statePath, JSON.stringify(state, null, 1) + '\n');
   } else process.exitCode = 1;
