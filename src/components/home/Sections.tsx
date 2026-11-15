@@ -137,6 +137,60 @@ export function Areas({ number = '06' }: { number?: string }) {
     </section>
   );
 }
+const logoSize: Record<string, [number, number]> = {
+  "emart": [
+    135,
+    77
+  ],
+  "ipark": [
+    160,
+    66
+  ],
+  "iparkmall": [
+    197,
+    45
+  ],
+  "korail-official.jpg": [
+    385,
+    103
+  ],
+  "koroad": [
+    1951,
+    299
+  ],
+  "lg": [
+    147,
+    43
+  ],
+  "raemian-official.svg": [
+    550,
+    303
+  ],
+  "samsung-official.svg": [
+    120,
+    19
+  ],
+  "spc": [
+    251,
+    240
+  ],
+  "starbucks-official.png": [
+    75,
+    75
+  ],
+  "tesla-original.svg": [
+    279,
+    360
+  ],
+  "thehyundai-official.jpg": [
+    1786,
+    649
+  ],
+  "xi": [
+    135,
+    69
+  ]
+};
 export function Clients({ clients, number = '07' }: { clients: typeof CLIENTS; number?: string }) {
   if (!clients.length) return null;
   return (
@@ -146,7 +200,7 @@ export function Clients({ clients, number = '07' }: { clients: typeof CLIENTS; n
           <div><p className="sec-num">{number}</p><h2 className="sec-h2">대표실적 현황</h2></div>
           <p className="sec-lede">대기업 매장과 공공기관, 대단지 아파트 현장에서 자동문을 설치하고 관리해 왔어요.</p>
         </div>
-        <ul className="clients">{clients.map((c) => <li key={c.n}>{c.f ? <img src={`/logos/${c.f.includes('.') ? c.f : c.f + '.png'}`} alt={c.n} title={c.n} loading="lazy" /> : <span className="client-name">{c.n}</span>}</li>)}</ul>
+        <ul className="clients">{clients.map((c) => <li key={c.n}>{c.f ? <img src={`/logos/${c.f.includes('.') ? c.f : c.f + '.png'}`} width={logoSize[c.f]?.[0] ?? logoSize[c.f.replace(/\.png$/, '')]?.[0]} height={logoSize[c.f]?.[1] ?? logoSize[c.f.replace(/\.png$/, '')]?.[1]} alt={c.n} title={c.n} loading="lazy" /> : <span className="client-name">{c.n}</span>}</li>)}</ul>
       </div>
     </section>
   );
@@ -169,7 +223,7 @@ export function FaqTop({ number = '08' }: { number?: string }) {
 export function AboutBand() {
   return (
     <section className="about-band" aria-label="회사 소개">
-      <img src={PHOTO.about} alt={`${BRAND} 자동문 시공 현장`} loading="lazy" />
+      <img src={PHOTO.about} width={285} height={200} alt={`${BRAND} 자동문 시공 현장`} loading="lazy" />
       <div aria-hidden="true" className="shade" />
       <div className="wrap">
         <p className="k">SINCE 2018 · PYEONGTAEK</p>
