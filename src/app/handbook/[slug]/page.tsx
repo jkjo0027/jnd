@@ -6,6 +6,8 @@ import Breadcrumb from '@/components/Breadcrumb';
 import { JsonLd, pageMeta } from '@/lib/seo';
 import { abs, MAIN_PHONE } from '@/lib/site';
 import { handbookArticle, handbookArticles, handbookCategory, handbookPath, handbookEditorial } from '@/content/handbook';
+import { ALL_GUIDES, handbookSlugByGuide } from '@/content/guides';
+import { isPublicPath } from '@/lib/registry';
 import '../handbook.css';
 
 export const dynamicParams = false;
@@ -21,6 +23,7 @@ export default async function HandbookArticle({ params }: { params: Promise<{ sl
   const a = handbookArticle((await params).slug); if (!a) notFound();
   const c = handbookCategory(a.category);
   const detail = handbookEditorial(a.slug);
+  const guide = ALL_GUIDES.find(g => handbookSlugByGuide[g.id] === a.slug && isPublicPath(g.path));
   const siblings = handbookArticles.filter(x => x.category === a.category && x.slug !== a.slug);
   const position = handbookArticles.filter(x => x.category === a.category).findIndex(x => x.slug === a.slug);
   const related = [...siblings.slice(position, position + 3), ...siblings.slice(0, 3)].filter((x, i, ar) => ar.findIndex(y => y.slug === x.slug) === i).slice(0, 3);
@@ -37,7 +40,7 @@ export default async function HandbookArticle({ params }: { params: Promise<{ sl
     <section id="prepare"><h2>담당자에게 전달할 자료</h2><ul className="handbook-checks">{a.handoff.map(x => <li key={x}>{x}</li>)}</ul><p>사진과 메모에서 얼굴·출입 비밀번호·카드 정보는 가려 주세요.</p>
       <div className="handbook-contact"><h3>메모 작성 예시</h3><p>{a.example}</p><h3>상담할 때 확인할 질문</h3><p>{detail.question}</p><a className="btn btn-primary" href={`tel:${MAIN_PHONE.replace(/-/g, '')}`}>전화 상담 {MAIN_PHONE}</a><Link className="btn btn-g100" href="/contact/#inquiry">상담 방법 보기</Link></div>
     </section>
-    <section><h2>함께 확인할 안내</h2><nav aria-label="관련 설치·관리 안내"><div className="handbook-grid">{related.map(x => <Link className="handbook-card" key={x.slug} href={handbookPath(x.slug)}><h3>{x.title}</h3><p>{x.answer}</p></Link>)}</div><div className="handbook-links"><Link href={`/handbook/#${c.id}`}>{c.title} 전체 안내</Link><Link href={servicePaths[c.service]}>{serviceNames[c.service]} 서비스 범위</Link><Link href="/guides/">증상별 원인 가이드</Link></div></nav></section>
+    <section><h2>함께 확인할 안내</h2><nav aria-label="관련 설치·관리 안내"><div className="handbook-grid">{related.map(x => <Link className="handbook-card" key={x.slug} href={handbookPath(x.slug)}><h3>{x.title}</h3><p>{x.answer}</p></Link>)}</div><div className="handbook-links"><Link href={`/handbook/#${c.id}`}>{c.title} 전체 안내</Link><Link href={servicePaths[c.service]}>{serviceNames[c.service]} 서비스 범위</Link>{guide && <Link href={guide.path}>{guide.h1}</Link>}<Link href="/guides/">증상별 원인 가이드</Link></div></nav></section>
     <JsonLd data={{ '@context': 'https://schema.org', '@type': 'Article', headline: a.title, description: a.answer, inLanguage: 'ko-KR', datePublished: a.publishedAt, dateModified: a.updatedAt, mainEntityOfPage: abs(handbookPath(a.slug)), author: { '@type': 'Organization', name: '제이앤디시스템', url: abs('/about/') }, publisher: { '@id': abs('/#org') } }} />
   </main></PublicShell>;
 }

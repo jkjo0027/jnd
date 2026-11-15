@@ -11,7 +11,7 @@ const LM = path.join(ROOT, 'data/registry/content-lastmod.json');
 const HASHES = path.join(ROOT, 'data/registry/content-hashes.json');
 const prev = fs.existsSync(HASHES) ? JSON.parse(fs.readFileSync(HASHES, 'utf8')) : {};
 const lm = fs.existsSync(LM) ? JSON.parse(fs.readFileSync(LM, 'utf8')) : {};
-const today = new Date().toISOString().slice(0, 10);
+const changedAt = new Date().toISOString();
 const args = process.argv.slice(2); const opt = {}; for (let i = 0; i < args.length; i++) if (args[i].startsWith('--')) opt[args[i].slice(2)] = args[++i];
 const BASE = opt.base ? opt.base.replace(/\/$/, '') : null;
 const src = { services: R('src/content/services.ts'), regions: R('src/content/regions.ts'), guides: R('src/content/guides.ts') + R('src/content/guides-more.ts') + R('src/content/guide-details-a.ts') + R('src/content/guide-details-b.ts') + R('src/content/guide-extra.ts'), data: R('src/content/site-data.ts') };
@@ -30,12 +30,17 @@ const renderedContent = (html) => {
 const tpl = (p) => { try { return R(p); } catch { return ''; } };
 const handbook = JSON.parse(R('src/content/handbook.json'));
 const handbookEditorial = JSON.parse(R('src/content/handbook-editorial.json'));
+const guideLinks = new Map(
+  [...src.guides.matchAll(/^  (g\d+): '([a-z0-9-]+)',$/gm)].map(([, id, slug]) => [slug, id])
+);
 const block = (text, idKey, id) => { const i = text.indexOf(`${idKey}: '${id}'`); if (i < 0) return ''; const j = text.indexOf('\n  }),', i); return text.slice(i, j < 0 ? i + 4000 : j); };
 const sourceFor = (r) => {
   if (r.type === 'handbook') {
     const slug = r.path.split('/').filter(Boolean).at(-1);
     const article = handbook.articles.find((a) => a.slug === slug);
-    return JSON.stringify({ article, editorial: handbookEditorial[slug], category: handbook.categories.find((c) => c.id === article?.category) }) + tpl('src/app/handbook/[slug]/page.tsx');
+    const guideId = guideLinks.get(slug);
+    const guide = guideId ? block(src.guides, 'id', guideId) : '';
+    return JSON.stringify({ article, editorial: handbookEditorial[slug], category: handbook.categories.find((c) => c.id === article?.category), guide }) + tpl('src/app/handbook/[slug]/page.tsx');
   }
   if (r.path === '/handbook/') return JSON.stringify(handbook) + tpl('src/app/handbook/page.tsx');
   if (r.type === 'core' && r.pageId === 'C-home') return src.data + tpl('src/app/page.tsx') + tpl('src/components/home/Sections.tsx');
@@ -59,8 +64,8 @@ for (const r of ledger) {
   }
   const h = crypto.createHash('sha256').update(material).digest('hex').slice(0, 16);
   hashes[r.pageId] = h;
-  if (prev[r.pageId] !== h) { lm[r.pageId] = today; changed++; }
+  if (prev[r.pageId] !== h) { lm[r.pageId] = changedAt; changed++; }
 }
 fs.writeFileSync(HASHES, JSON.stringify(hashes, null, 1) + '\n');
 fs.writeFileSync(LM, JSON.stringify(lm, null, 1) + '\n');
-console.log(`[content-lastmod] ${changed} changed → ${today}`);
+console.log(`[content-lastmod] ${changed} changed → ${changedAt}`);

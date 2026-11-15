@@ -4,49 +4,19 @@ import Breadcrumb from '@/components/Breadcrumb';
 import Icon from '@/components/Icon';
 import TelLink from '@/components/TelLink';
 import { RollingPhone } from '@/components/PhoneProvider';
-import { ALL_GUIDES, type Guide } from '@/content/guides';
+import { ALL_GUIDES, handbookSlugByGuide, type Guide } from '@/content/guides';
 import { SERVICES } from '@/content/services';
 import { isPublicPath } from '@/lib/registry';
 import { publicCases } from '@/lib/gate';
 import { handbookArticle, handbookPath } from '@/content/handbook';
 import { JsonLd } from '@/lib/seo';
 
-const followUp: Record<string, string> = {
-  g01: 'fault-vs-mode',
-  g02: 'hold-open',
-  g03: 'time-pattern',
-  g04: 'sensor-identification',
-  g05: 'sound-record',
-  g06: 'repeat-impact',
-  g07: 'elderly-route',
-  g08: 'wireless-range',
-  g09: 'one-button-fails',
-  g10: 'outage-record',
-  g11: 'service-history',
-  g12: 'wheel-tracks',
-  g13: 'bottom-scrape',
-  g14: 'display-message',
-  g15: 'sensor-after-service',
-  g16: 'motor-quote',
-  g17: 'quote-scope',
-  g18: 'opening-measure',
-  g19: 'repair-or-replace',
-  g20: 'work-sequence',
-  g21: 'clinic-reception',
-  g22: 'queue-position',
-  g23: 'office-lobby',
-  g24: 'wheelchair-route',
-  g25: 'two-door-lobby',
-  g26: 'unequal-leaves',
-  g27: 'sliding-space',
-  g28: 'uneven-gap',
-};
 export default function GuidePageView({ g, draft = false }: { g: Guide; draft?: boolean }) {
   const svcs = SERVICES.filter((s) => g.serviceIds.includes(s.id) && isPublicPath(s.path));
   const cases = publicCases().filter((c) => g.caseIds.includes(c.id));
   const rel = ALL_GUIDES.filter((x) => g.relatedGuides.includes(x.id) && (isPublicPath(x.path) || draft));
   const svcOf = (id?: string) => (id ? SERVICES.find((s) => s.id === id && isPublicPath(s.path)) : undefined);
-  const article = handbookArticle(followUp[g.id]);
+  const article = handbookArticle(handbookSlugByGuide[g.id]);
   const questions = g.detail?.faq || [];
   const faqLd = { '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: [{ q: g.question, a: g.answer }, ...questions].map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })) };
   return (

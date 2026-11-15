@@ -124,3 +124,34 @@ import { GUIDE_EXTRA } from './guide-extra';
 const DETAILS = { ...GUIDE_DETAILS_A, ...GUIDE_DETAILS_B };
 export const ALL_GUIDES: Guide[] = [...GUIDES, ...GUIDES_MORE].map((g) => ({ ...g, detail: DETAILS[g.id] ? { ...DETAILS[g.id], paras: [...DETAILS[g.id].paras, ...(GUIDE_EXTRA[g.id] || [])] } : undefined }));
 export const guideById = (id: string) => ALL_GUIDES.find((g) => g.id === id);
+
+export const handbookSlugByGuide: Record<string, string> = {
+  g01: 'fault-vs-mode',
+  g02: 'hold-open',
+  g03: 'time-pattern',
+  g04: 'sensor-identification',
+  g05: 'sound-record',
+  g06: 'repeat-impact',
+  g07: 'elderly-route',
+  g08: 'wireless-range',
+  g09: 'one-button-fails',
+  g10: 'outage-record',
+  g11: 'service-history',
+  g12: 'wheel-tracks',
+  g13: 'bottom-scrape',
+  g14: 'display-message',
+  g15: 'sensor-after-service',
+  g16: 'motor-quote',
+  g17: 'quote-scope',
+  g18: 'opening-measure',
+  g19: 'repair-or-replace',
+  g20: 'work-sequence',
+  g21: 'clinic-reception',
+  g22: 'queue-position',
+  g23: 'office-lobby',
+  g24: 'wheelchair-route',
+  g25: 'two-door-lobby',
+  g26: 'unequal-leaves',
+  g27: 'sliding-space',
+  g28: 'uneven-gap',
+};

@@ -93,8 +93,8 @@ for (const r of held) {
   if (r.qualityClass === 'C' && r.mergeTarget) { const loc = res.location ? (res.location.startsWith('http') ? new URL(res.location).pathname : res.location) : null; if (![301, 308].includes(res.status) || loc !== r.mergeTarget) issues.push({ type: 'merge-redirect', path: r.path, status: res.status, loc, expect: r.mergeTarget }); }
   else if (res.status !== 404) issues.push({ type: 'held-not-404', path: r.path, status: res.status });
 }
-const smLast = new Map([...sm.body.matchAll(/<url>\s*<loc>([^<]+)<\/loc>\s*<lastmod>([^<]+)<\/lastmod>/g)].map((m) => [new URL(m[1]).pathname, m[2].slice(0, 10)]));
-for (const p of smPaths) { const rec = byPath.get(p); const exp = rec && lastmod[rec.pageId]; if (exp && smLast.get(p) !== exp) issues.push({ type: 'sitemap-lastmod', path: p, got: smLast.get(p), expect: exp }); }
+const smLast = new Map([...sm.body.matchAll(/<url>\s*<loc>([^<]+)<\/loc>\s*<lastmod>([^<]+)<\/lastmod>/g)].map((m) => [new URL(m[1]).pathname, m[2]]));
+for (const p of smPaths) { const rec = byPath.get(p); const exp = rec && lastmod[rec.pageId]; if (exp && Date.parse(smLast.get(p)) !== Date.parse(exp)) issues.push({ type: 'sitemap-lastmod', path: p, got: smLast.get(p), expect: exp }); }
 // 404 동작: 미지 경로
 for (const p of ['/areas/gyeonggi/r99/repair/', '/guides/g99/', '/cases/c99/', '/regions/', '/nope/']) { const r = await get(BASE + p); if (r.status !== 404) issues.push({ type: 'expect-404', path: p, status: r.status }); }
 const robots = await get(BASE + '/robots.txt');
