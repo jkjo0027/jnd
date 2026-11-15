@@ -16,6 +16,7 @@ const args = process.argv.slice(2); const opt = {}; for (let i = 0; i < args.len
 const BASE = opt.base ? opt.base.replace(/\/$/, '') : null;
 const src = { services: R('src/content/services.ts'), regions: R('src/content/regions.ts'), guides: R('src/content/guides.ts') + R('src/content/guides-more.ts') + R('src/content/guide-details-a.ts') + R('src/content/guide-details-b.ts') + R('src/content/guide-extra.ts'), data: R('src/content/site-data.ts') };
 const GEN = ['compose.ts', 'blocks-common.ts', 'blocks-repair.ts', 'blocks-install.ts', 'blocks-sensor.ts', 'blocks-motor.ts', 'blocks-glass.ts', 'regions-seoul.ts', 'regions-gyeonggi.ts'].map((f) => R('src/content/gen/' + f)).join('');
+const regionalNotes = R('src/content/gen/visit-notes.ts');
 const mainText = (html) => (html.match(/<main[\s\S]*?<\/main>/i) || [''])[0].replace(/<script[\s\S]*?<\/script>/gi, '').replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim();
 const renderedContent = (html) => {
   const attr = (tag, name) => tag.match(new RegExp(`${name}=["']([^"']*)["']`, 'i'))?.[1] || '';
@@ -39,7 +40,7 @@ const sourceFor = (r) => {
   if (r.path === '/handbook/') return JSON.stringify(handbook) + tpl('src/app/handbook/page.tsx');
   if (r.type === 'core' && r.pageId === 'C-home') return src.data + tpl('src/app/page.tsx') + tpl('src/components/home/Sections.tsx');
   if (r.type === 'core' || r.type === 'part') return block(src.services, 'pageId', r.pageId) + tpl('src/app/services/[id]/page.tsx');
-  if (r.type === 'region-service') return block(src.regions, 'pageId', r.pageId) + GEN + r.pageId + tpl('src/components/RegionPage.tsx');
+  if (r.type === 'region-service') return block(src.regions, 'pageId', r.pageId) + GEN + regionalNotes + r.pageId + tpl('src/components/RegionPage.tsx');
   if (r.type === 'guide') return block(src.guides, 'id', r.pageId.toLowerCase()) + GEN + tpl('src/components/GuidePage.tsx');
   if (r.type === 'case') return block(src.data, 'id', r.pageId.replace('CASE-', '')) + tpl('src/app/cases/[id]/page.tsx');
   if (r.type === 'hub') return tpl(`src/app${r.path}page.tsx`) + (r.path === '/areas/' ? src.data : '');

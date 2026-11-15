@@ -13,8 +13,8 @@ import { FAQ, SVCS } from '@/content/site-data';
 import { isPublicPath, recordByPath } from '@/lib/registry';
 import { publicCases } from '@/lib/gate';
 import { INFO } from '@/lib/site';
-import { TAG_PARAS, SAFETY, GLOSSARY } from '@/content/gen/blocks-common';
-import { SERVICE_BLOCKS, REGIONS, type ServiceId } from '@/content/gen/compose';
+import { SAFETY } from '@/content/gen/blocks-common';
+import { REGIONS, type ServiceId } from '@/content/gen/compose';
 import { regionPath } from '@/lib/links';
 import { JsonLd, serviceJsonLd } from '@/lib/seo';
 import AuthoredPageView from '@/components/AuthoredPage';
@@ -54,19 +54,15 @@ export default async function ServiceDetail({ params }: {
     const cases = publicCases().filter((c) => s.caseIds.includes(c.id));
     const guides = ALL_GUIDES.filter((g) => s.guideIds.includes(g.id) && isPublicPath(g.path));
     const card = SVCS.find((v) => v.id === s.id);
-    const B = SERVICE_BLOCKS[(['repair', 'install', 'sensor', 'motor', 'glass-door'].includes(s.id) ? s.id : s.id === 'switch' ? 'repair' : 'repair') as ServiceId];
-    const tagKeys = ['office', 'commercial', 'apartment', 'villa', 'factory', 'hospital', 'school', 'logistics'] as const;
     // 지역 링크는 전 지역 나열 대신 우선 지역(본사 평택·수원·화성·용인) + 지역 근거가 있는 A 등급 페이지만. 나머지는 광역 허브에서 탐색
     const PRIORITY = ['r53', 'r38', 'r56', 'r48'];
-    const linkSvc: ServiceId = B.id === 'install' ? 'install' : 'repair'; // 지역 센서·모터 페이지는 지역 수리 페이지(센서·모터·컨트롤러 절)로 통합됨
+    const linkSvc: ServiceId = s.id === 'install' ? 'install' : 'repair'; // 지역 센서·모터 페이지는 지역 수리 페이지(센서·모터·컨트롤러 절)로 통합됨
     const regionLinks = REGIONS.filter((r) => PRIORITY.includes(r.rid) || recordByPath(regionPath(r.province, r.rid, linkSvc))?.qualityClass === 'A')
         .sort((a, b) => (PRIORITY.indexOf(a.rid) + 1 || 99) - (PRIORITY.indexOf(b.rid) + 1 || 99))
-        .map((r) => ({ t: linkSvc === B.id ? r.short : `${r.short} 자동문 수리`, href: regionPath(r.province, r.rid, linkSvc) })).filter((x) => isPublicPath(x.href)).slice(0, 8)
+        .map((r) => ({ t: linkSvc === s.id ? r.short : `${r.short} 자동문 수리`, href: regionPath(r.province, r.rid, linkSvc) })).filter((x) => isPublicPath(x.href)).slice(0, 8)
         .concat([{ t: '서울 전체 지역', href: '/areas/seoul/' }, { t: '경기 전체 지역', href: '/areas/gyeonggi/' }].filter((x) => isPublicPath(x.href)));
     const hs = Array.from(s.id).reduce((a, c) => (Math.imul(a, 31) + c.charCodeAt(0)) >>> 0, 7);
-    const genFaq = B.faq.map((f, i) => ({ q: f.q[(hs + i) % f.q.length].replace(/\{r\}/g, '서울·경기'), a: f.a[(hs + i) % f.a.length].replace(/\{r\}/g, '서울·경기') }));
-    const genSyms = B.symptoms.map((y, i) => ({ t: y.t, icon: y.icon, cause: y.cause[(hs + i) % y.cause.length], action: y.action[(hs + i + 1) % y.action.length] }));
-    const faqLd = { '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: [...s.faqIdx.map((i) => FAQ[i]).filter(Boolean).map((f) => ({ q: f.q, a: f.a })), ...genFaq].map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })) };
+    const faqLd = { '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: s.faqIdx.map((i) => FAQ[i]).filter(Boolean).map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })) };
     return (<PublicShell>
       <main className="page-narrow svcd">
         <Breadcrumb items={[{ name: '홈', path: '/' }, { name: '서비스', path: '/services/' }, { name: s.h1, path: s.path }]}/>
@@ -94,13 +90,7 @@ export default async function ServiceDetail({ params }: {
         </div>
         <h2>상담 때 알려주시면 빨라요</h2>
         <ul className="checks">{s.customerInfo.map((it) => <li key={it}><Icon name="check"/>{it}</li>)}</ul>
-        <div className="ev"><b>근거</b>{s.evidence.join(' · ')}</div>
-        <h2>현장 유형별 점검 포인트</h2>
-        <div className="sym-cards">{tagKeys.map((t, i) => <div key={t} className="sym-card"><p className="d" style={{ color: 'var(--g700)', fontSize: 'var(--fs-b)' }}>{TAG_PARAS[t][(hs + i) % TAG_PARAS[t].length].replace(/\{r\}/g, '서울·경기')}</p></div>)}</div>
-        <h2>증상별 원인과 조치 더 보기</h2>
-        <div className="sym-cards">{genSyms.map((y) => <div key={y.t} className="sym-card"><p className="t"><Icon name={y.icon}/>{y.t}</p><p className="d">{y.cause} 조치: {y.action}</p></div>)}</div>
-        <h2>용어 설명</h2>
-        <div className="decide">{GLOSSARY[B.id].map((x) => <div key={x.t}><p className="t">{x.t}</p><p className="d">{x.d}</p></div>)}</div>
+        <div className="ev"><b>취급·서비스 안내</b>{s.evidence.join(' · ')}</div>
         <h2>기다리는 동안 안전하게</h2>
         <p className="lede" style={{ fontSize: 'var(--fs-b)' }}>{SAFETY[hs % SAFETY.length]}</p>
         <h2>{card ? card.t : s.h1} 시공사례</h2>
@@ -119,7 +109,6 @@ export default async function ServiceDetail({ params }: {
             <h2>자주 묻는 질문</h2>
             <div style={{ marginBottom: 40 }}>{s.faqIdx.map((i) => FAQ[i]).filter(Boolean).map((f) => <article key={f.q} className="faq-item"><h3>{f.q}</h3><p>{f.a}</p></article>)}</div>
           </>)}
-        {genFaq.length > 0 && (<><h2>더 자주 묻는 질문</h2><div style={{ marginBottom: 40 }}>{genFaq.map((f) => <article key={f.q} className="faq-item"><h3>{f.q}</h3><p>{f.a}</p></article>)}</div></>)}
         {regionLinks.length > 0 && (<><h2>지역별 {s.h1} 안내</h2><p className="lede" style={{ fontSize: 'var(--fs-b)', marginBottom: 12 }}>평택 본사에서 서울 25개 자치구와 경기 31개 시·군 전역에 출장해요. 지역 페이지에서 현장 특성과 출장 범위를 확인하세요.</p><div className="related">{regionLinks.map((r) => <Link key={r.href} href={r.href}>{r.t}</Link>)}</div></>)}
         <h2>관련 서비스</h2>
         <div className="related">{s.relatedServices.map((id) => serviceById(id)).filter((x) => x && isPublicPath(x.path)).map((x) => <Link key={x!.id} href={x!.path}>{x!.h1}<Icon name="arrow-right" size={14}/></Link>)}</div>

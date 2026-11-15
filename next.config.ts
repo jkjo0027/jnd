@@ -6,6 +6,17 @@ const mergeRedirects = ledger.records
   .filter((r) => r.contentStatus === 'HOLD' && r.qualityClass === 'C' && r.mergeTarget)
   .map((r) => ({ source: r.path, destination: r.mergeTarget as string, permanent: true }));
 
+// Region IDs are unique across provinces. Old URLs using the other province
+// used to serve the same HTML as the published region.
+const provinceRedirects = ledger.records
+  .filter(r => r.type === 'region-service' && r.contentStatus === 'PUBLISHED' && r.indexEligibility)
+  .map(r => ({
+    source: r.path.replace(/^\/areas\/(seoul|gyeonggi)\//, (_, province) =>
+      province === 'seoul' ? '/areas/gyeonggi/' : '/areas/seoul/'),
+    destination: r.path,
+    permanent: true,
+  }));
+
 // 운영 호스트는 https://jndsystem.kr 하나로 고정한다. (src/lib/site.ts)
 const nextConfig: NextConfig = {
   trailingSlash: true,
@@ -21,6 +32,7 @@ const nextConfig: NextConfig = {
         permanent: true,
       },
       ...mergeRedirects,
+      ...provinceRedirects,
     ];
   },
   async headers() {

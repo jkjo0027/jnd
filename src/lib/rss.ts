@@ -22,14 +22,13 @@ export function handbookFeedItems(): FeedItem[] {
     const html = `<article><h1>${xml(a.title)}</h1>${p(a.answer)}`
       + heading('이 상황을 구분하는 방법') + p(detail.explanation)
       + heading('안전한 범위에서 확인할 항목') + list(a.checks, true)
-      + p('확인한 사실과 추측을 나누어 적어 주세요. 자료를 안전하게 확인할 수 없거나 내용이 불분명하면, 직접 장치를 열어 찾는 대신 ‘현장 확인 필요’로 표시해도 됩니다.')
+      + p('보이지 않는 장치는 열지 말고 현장 점검에 맡겨 주세요.')
       + heading('관찰 결과에 따른 다음 단계')
       + `<table><caption>${xml(a.title)} — 상황별 확인과 전달</caption><thead><tr><th>관찰한 상황</th><th>다음 행동</th></tr></thead><tbody>${detail.comparisons.map(r => `<tr><th>${xml(r.situation)}</th><td>${xml(r.nextStep)}</td></tr>`).join('')}</tbody></table>`
       + heading('판단과 다음 단계') + p(a.decision) + `<aside><h3>${xml(category.title)} 안내의 적용 범위</h3>${p(category.introduction)}</aside>`
       + heading('담당자에게 전달할 자료') + list(a.handoff)
-      + p('출입구 위치와 현재 운영 상태를 함께 알려 주세요. 장비가 여러 대면 위치 번호를 붙여 자료가 섞이지 않도록 합니다. 비밀번호·카드 정보·고객 얼굴 등 상담에 필요하지 않은 정보는 제외해 주세요.')
+      + p('사진과 메모에서 얼굴·출입 비밀번호·카드 정보는 가려 주세요.')
       + '<h3>메모 작성 예시</h3>' + p(a.example)
-      + p('위 문장은 기록 방법을 보여주는 예시입니다. 실제 현장에서 확인한 내용에 맞춰 바꾸고, 작업 범위와 일정은 상담 후 확인해 주세요.')
       + '<h3>상담할 때 확인할 질문</h3>' + p(detail.question)
       + `<p><a href="tel:${MAIN_PHONE.replaceAll('-', '')}">전화 상담 ${MAIN_PHONE}</a> · <a href="${abs('/contact/#inquiry')}">상담 방법 보기</a></p></article>`;
     return { path, title: a.title, html, published: a.publishedAt, updated: contentLastmod(record).toISOString() };
