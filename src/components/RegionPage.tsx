@@ -53,7 +53,7 @@ export default function RegionPageView({ g, draft = false }: { g: GeneratedPage;
     : g.region.tags.slice(0, 2).map(tag => buildingGuides[tag][kind]);
   const articles = guideSlugs.map(handbookArticle).filter(a => !!a);
   const questions = hand?.faq || [];
-  const sections = g.sections.filter(s => s.id !== 's-faq' || questions.length);
+  const sections = g.sections.filter(s => (s.id !== 's-faq' || questions.length) && (s.id !== 's-case' || exact.length));
   const faqLd = { '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: questions.map(f => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })) };
   const serviceLd = { '@context': 'https://schema.org', '@type': 'Service', name: g.h1, serviceType: g.label, areaServed: { '@type': 'AdministrativeArea', name: `${provName} ${g.region.name}` }, provider: { '@id': abs('/#org') }, url: abs(g.path), availableChannel: { '@type': 'ServiceChannel', serviceUrl: abs('/contact/'), servicePhone: { '@type': 'ContactPoint', telephone: '+82-' + pinned, availableLanguage: ['ko'] } } };
   return (
@@ -90,7 +90,7 @@ export default function RegionPageView({ g, draft = false }: { g: GeneratedPage;
           <div style={{ minWidth: 0 }}>
             {sections.map((s) => (
               <section key={s.id} id={s.id} className={`rd-sec${s.id === 's-faq' ? ' rd-faq' : ''}`}>
-                <div className="h"><span className="n">{s.n}</span><h2>{s.id === 's-case' && !exact.length ? '시공사례 및 서비스 안내' : s.h2}</h2></div>
+                <div className="h"><span className="n">{s.n}</span><h2>{s.h2}</h2></div>
                 {s.paras?.map((p, i) => <p key={i} className="b">{p}</p>)}
                 {s.id === 's-scope' && (
                   <>
@@ -99,6 +99,7 @@ export default function RegionPageView({ g, draft = false }: { g: GeneratedPage;
                     {hand && hand.siteNotes.length > 0 && <ul className="b">{hand.siteNotes.map((e) => <li key={e}>{e}</li>)}</ul>}
                   </>
                 )}
+                {s.id === 's-service' && !exact.length && <p className="ref-note">{svc && <><Link href={svc.path}>{svc.h1} 작업 절차</Link> · </>}<Link href="/cases/">다른 지역의 시공 사진과 작업 결과</Link></p>}
                 {s.items && <ul className="b">{s.items.map((it) => <li key={it}>{it}</li>)}</ul>}
                 {s.id === 's-sym' && <div className="case-list-sm">{articles.map(a =>
                   <Link key={a.slug} href={handbookPath(a.slug)} className="case-sm"><span className="tx"><strong>{a.title}</strong></span><Icon name="chevron-right" /></Link>
@@ -108,12 +109,12 @@ export default function RegionPageView({ g, draft = false }: { g: GeneratedPage;
                 {s.id === 's-cost' && hand && hand.quoteFactors.length > 0 && <ul className="b">{hand.quoteFactors.map((e) => <li key={e}>{e}</li>)}</ul>}
                 {s.id === 's-case' && (
                   <>
-                    {exact.length === 0 && <p className="ref-note">다른 지역 현장의 사진과 작업 기록은 <Link href="/cases/">전체 시공사례</Link>에서 확인할 수 있어요.</p>}
+                    
                     <div className="case-grid">
                       {exact.map(c => (
                         <Link key={c.id} href={`/cases/${c.id}/`} className="case-card">
                           <span className="th"><img src={c.img} alt={`${c.place} ${c.title}`} loading="lazy" width={800} height={600} className="img-cover" /></span>
-                          <span><span className="k" style={{ display: 'block' }}>{c.place}</span><h3>{c.title}</h3><span className="s" style={{ display: 'block' }}>{c.kind === 'install' ? '설치 요청' : '증상'} · {c.sym}</span>{(g.service === 'sensor' || g.service === 'motor') && <span className="s" style={{display:'block'}}>{c.check} {c.act} {c.res}</span>}</span>
+                          <span><span className="k" style={{ display: 'block' }}>{c.place}</span><h3>{c.title}</h3><span className="s" style={{ display: 'block' }}>{c.kind === 'install' ? '설치 요청' : '증상'} · {c.sym}</span><span className="s" style={{display:'block'}}>{c.res}</span></span>
                         </Link>
                       ))}
                     </div>

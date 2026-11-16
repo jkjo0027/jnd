@@ -42,7 +42,7 @@ const TITLE_FRAMES = [
   '{short} {label} | {dong1}·{dong2} 등 전 지역 | 제이앤디시스템',
   '{name} {label} | 증상별 점검·비용 안내 | 제이앤디시스템',
   '{short} {label} 출장 | {zone1} 현장 점검 | 제이앤디시스템',
-  '{short} {label} | 당일 출장·부품 교체 | 제이앤디시스템',
+  '{short} {label} | 출장 점검과 견적 | 제이앤디시스템',
 ];
 
 export type GenSection = { id: string; n: string; h2: string; paras?: string[]; items?: string[]; steps?: { t: string; d: string }[]; cards?: { t: string; d: string }[]; faq?: { q: string; a: string }[]; symptoms?: { t: string; icon: string; cause: string; action: string }[] };
