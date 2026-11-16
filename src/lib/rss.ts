@@ -1,4 +1,5 @@
 import { handbookArticles, handbookCategory, handbookEditorial, handbookPath } from '@/content/handbook';
+import { caseById } from '@/lib/gate';
 import { parseBody, FIELDS } from '@/lib/content-body';
 import { contentLastmod } from '@/lib/lastmod';
 import { publicRecords, recordByPath } from '@/lib/registry';
@@ -19,6 +20,10 @@ export function handbookFeedItems(): FeedItem[] {
   return handbookArticles.map(a => {
     const category = handbookCategory(a.category), detail = handbookEditorial(a.slug);
     const path = handbookPath(a.slug), record = recordByPath(path)!;
+    const fieldCase = a.fieldCase && caseById(a.fieldCase.id);
+    const caseRecord = fieldCase && a.fieldCase
+      ? heading(`${fieldCase.place} 현장 기록`) + p(a.fieldCase.note) + `<p><a href="${abs(`/cases/${fieldCase.id}/`)}">${xml(fieldCase.title)} 사진과 작업 결과 보기</a></p>`
+      : '';
     const html = `<article><h1>${xml(a.title)}</h1>${p(a.answer)}`
       + heading('이 상황을 구분하는 방법') + p(detail.explanation)
       + heading('안전한 범위에서 확인할 항목') + list(a.checks, true)
@@ -26,6 +31,7 @@ export function handbookFeedItems(): FeedItem[] {
       + heading('관찰 결과에 따른 다음 단계')
       + `<table><caption>${xml(a.title)} — 상황별 확인과 전달</caption><thead><tr><th>관찰한 상황</th><th>다음 행동</th></tr></thead><tbody>${detail.comparisons.map(r => `<tr><th>${xml(r.situation)}</th><td>${xml(r.nextStep)}</td></tr>`).join('')}</tbody></table>`
       + heading('판단과 다음 단계') + p(a.decision) + `<aside><h3>${xml(category.title)} 안내의 적용 범위</h3>${p(category.introduction)}</aside>`
+      + caseRecord
       + heading('담당자에게 전달할 자료') + list(a.handoff)
       + p('사진과 메모에서 얼굴·출입 비밀번호·카드 정보는 가려 주세요.')
       + '<h3>메모 작성 예시</h3>' + p(a.example)
