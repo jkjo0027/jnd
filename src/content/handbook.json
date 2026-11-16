@@ -291,7 +291,8 @@
       "publishedAt": "2026-11-06",
       "relatedSlugs": [
         "quote-scope",
-        "frame-condition"
+        "frame-condition",
+        "tenant-consent"
       ],
       "fieldCase": {
         "id": "c8",
@@ -1002,7 +1003,8 @@
       "publishedAt": "2026-11-06",
       "relatedSlugs": [
         "poster-placement",
-        "plants-near-door"
+        "plants-near-door",
+        "door-sticker-weight"
       ]
     },
     {
@@ -1026,7 +1028,8 @@
       "publishedAt": "2026-11-06",
       "relatedSlugs": [
         "two-door-lobby",
-        "signboard-distance"
+        "signboard-distance",
+        "children-route"
       ]
     },
     {
@@ -1074,7 +1077,8 @@
       "publishedAt": "2026-11-06",
       "relatedSlugs": [
         "sensor-quote",
-        "keypad-response"
+        "keypad-response",
+        "pet-traffic"
       ],
       "fieldCase": {
         "id": "c2",
@@ -1226,7 +1230,8 @@
       "publishedAt": "2026-11-06",
       "relatedSlugs": [
         "direction-difference",
-        "intercom-link"
+        "intercom-link",
+        "button-pressure"
       ],
       "fieldCase": {
         "id": "c1",
@@ -1350,7 +1355,8 @@
       "publishedAt": "2026-11-06",
       "relatedSlugs": [
         "wireless-battery",
-        "receiver-identify"
+        "receiver-identify",
+        "intermittent-log"
       ]
     },
     {
@@ -1450,7 +1456,8 @@
       "publishedAt": "2026-11-06",
       "relatedSlugs": [
         "compatible-parts",
-        "service-history"
+        "service-history",
+        "mode-after-repair"
       ],
       "fieldCase": {
         "id": "c1",
@@ -1526,7 +1533,8 @@
       "publishedAt": "2026-11-06",
       "relatedSlugs": [
         "contractor-entry",
-        "opening-routine"
+        "opening-routine",
+        "power-location"
       ]
     },
     {
@@ -1938,7 +1946,8 @@
       "publishedAt": "2026-11-06",
       "relatedSlugs": [
         "visitor-entry",
-        "one-button-fails"
+        "one-button-fails",
+        "shared-entrance"
       ]
     },
     {
@@ -1986,7 +1995,8 @@
       "publishedAt": "2026-11-06",
       "relatedSlugs": [
         "intercom-link",
-        "exit-request"
+        "exit-request",
+        "button-labels"
       ],
       "fieldCase": {
         "id": "c4",
@@ -2014,7 +2024,8 @@
       "publishedAt": "2026-11-06",
       "relatedSlugs": [
         "timer-setting",
-        "lock-schedule-change"
+        "lock-schedule-change",
+        "office-lobby"
       ]
     },
     {
@@ -2038,7 +2049,8 @@
       "publishedAt": "2026-11-06",
       "relatedSlugs": [
         "card-one-user",
-        "access-service-boundary"
+        "access-service-boundary",
+        "lost-remote"
       ]
     },
     {
@@ -2158,7 +2170,8 @@
       "publishedAt": "2026-11-06",
       "relatedSlugs": [
         "floor-level",
-        "uneven-gap"
+        "uneven-gap",
+        "mat-change"
       ]
     },
     {
@@ -2206,7 +2219,8 @@
       "publishedAt": "2026-11-06",
       "relatedSlugs": [
         "out-of-service-sign",
-        "after-collision"
+        "after-collision",
+        "manual-force"
       ]
     },
     {
@@ -2302,7 +2316,8 @@
       "publishedAt": "2026-11-06",
       "relatedSlugs": [
         "motion-phase",
-        "repeat-impact"
+        "repeat-impact",
+        "wheel-tracks"
       ]
     },
     {
@@ -2326,7 +2341,9 @@
       "publishedAt": "2026-11-06",
       "relatedSlugs": [
         "weather-exposure",
-        "door-vibration"
+        "door-vibration",
+        "air-curtain",
+        "seal-damage"
       ]
     },
     {
@@ -2714,7 +2731,8 @@
       "publishedAt": "2026-11-06",
       "relatedSlugs": [
         "contractor-entry",
-        "handover-shifts"
+        "handover-shifts",
+        "event-crowd"
       ]
     },
     {
@@ -2858,7 +2876,8 @@
       "publishedAt": "2026-11-06",
       "relatedSlugs": [
         "demolition-scope",
-        "quote-revision"
+        "quote-revision",
+        "tax-invoice"
       ],
       "fieldCase": {
         "id": "c6",
@@ -2886,7 +2905,8 @@
       "publishedAt": "2026-11-06",
       "relatedSlugs": [
         "discontinued-model",
-        "warranty-docs"
+        "warranty-docs",
+        "maintenance-budget"
       ],
       "fieldCase": {
         "id": "c1",
@@ -2938,7 +2958,8 @@
       "publishedAt": "2026-11-06",
       "relatedSlugs": [
         "compatible-parts",
-        "repair-or-replace"
+        "repair-or-replace",
+        "spare-parts"
       ]
     },
     {
@@ -3186,7 +3207,8 @@
       "publishedAt": "2026-11-06",
       "relatedSlugs": [
         "floor-level",
-        "accessible-button-request"
+        "accessible-button-request",
+        "clinic-reception"
       ]
     },
     {
@@ -3234,7 +3256,8 @@
       "publishedAt": "2026-11-06",
       "relatedSlugs": [
         "delivery-route",
-        "warehouse-entry"
+        "warehouse-entry",
+        "restaurant-flow"
       ]
     },
     {
@@ -3334,7 +3357,8 @@
       "publishedAt": "2026-11-06",
       "relatedSlugs": [
         "direction-difference",
-        "queue-position"
+        "queue-position",
+        "stroller-route"
       ]
     },
     {
@@ -3505,7 +3529,8 @@
       "publishedAt": "2026-11-06",
       "relatedSlugs": [
         "button-position",
-        "touchless-position"
+        "touchless-position",
+        "elderly-route"
       ]
     }
   ]
