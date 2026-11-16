@@ -8,6 +8,7 @@ import { abs, MAIN_PHONE } from '@/lib/site';
 import { handbookArticle, handbookArticles, handbookCategory, handbookPath, handbookEditorial } from '@/content/handbook';
 import { ALL_GUIDES, handbookSlugByGuide } from '@/content/guides';
 import { isPublicPath } from '@/lib/registry';
+import { caseById } from '@/lib/gate';
 import '../handbook.css';
 
 export const dynamicParams = false;
@@ -24,9 +25,8 @@ export default async function HandbookArticle({ params }: { params: Promise<{ sl
   const c = handbookCategory(a.category);
   const detail = handbookEditorial(a.slug);
   const guide = ALL_GUIDES.find(g => handbookSlugByGuide[g.id] === a.slug && isPublicPath(g.path));
-  const siblings = handbookArticles.filter(x => x.category === a.category && x.slug !== a.slug);
-  const position = handbookArticles.filter(x => x.category === a.category).findIndex(x => x.slug === a.slug);
-  const related = [...siblings.slice(position, position + 3), ...siblings.slice(0, 3)].filter((x, i, ar) => ar.findIndex(y => y.slug === x.slug) === i).slice(0, 3);
+  const related = a.relatedSlugs.map(handbookArticle).filter(x => !!x);
+  const fieldCase = a.fieldCase && caseById(a.fieldCase.id);
   return <PublicShell><main className="page-narrow handbook">
     <Breadcrumb items={[{ name: '홈', path: '/' }, { name: '설치·관리 안내', path: '/handbook/' }, { name: a.title, path: handbookPath(a.slug) }]} />
     <p className="handbook-eyebrow">{c.title}</p><h1>{a.title}</h1>
@@ -37,6 +37,7 @@ export default async function HandbookArticle({ params }: { params: Promise<{ sl
     <section id="checks"><h2>안전한 범위에서 확인할 항목</h2><ol className="handbook-checks">{a.checks.map(x => <li key={x}>{x}</li>)}</ol><p>보이지 않는 장치는 열지 말고 현장 점검에 맡겨 주세요.</p></section>
     <section id="situations"><h2>관찰 결과에 따른 다음 단계</h2><table className="handbook-comparison"><caption>{a.title} — 상황별 확인과 전달</caption><thead><tr><th scope="col">관찰한 상황</th><th scope="col">다음 행동</th></tr></thead><tbody>{detail.comparisons.map(row => <tr key={row.situation}><th scope="row">{row.situation}</th><td>{row.nextStep}</td></tr>)}</tbody></table></section>
     <section id="decision"><h2>판단과 다음 단계</h2><p>{a.decision}</p><aside className="handbook-note"><strong>{c.title} 안내의 적용 범위</strong><p>{c.introduction}</p></aside></section>
+    {fieldCase && a.fieldCase && <section aria-label="공개 시공 기록"><h2>{fieldCase.place} 현장 기록</h2><p>{a.fieldCase.note}</p><Link href={`/cases/${fieldCase.id}/`}>{fieldCase.title} 사진과 작업 결과 보기 →</Link></section>}
     <section id="prepare"><h2>담당자에게 전달할 자료</h2><ul className="handbook-checks">{a.handoff.map(x => <li key={x}>{x}</li>)}</ul><p>사진과 메모에서 얼굴·출입 비밀번호·카드 정보는 가려 주세요.</p>
       <div className="handbook-contact"><h3>메모 작성 예시</h3><p>{a.example}</p><h3>상담할 때 확인할 질문</h3><p>{detail.question}</p><a className="btn btn-primary" href={`tel:${MAIN_PHONE.replace(/-/g, '')}`}>전화 상담 {MAIN_PHONE}</a><Link className="btn btn-g100" href="/contact/#inquiry">상담 방법 보기</Link></div>
     </section>
