@@ -214,6 +214,7 @@ export function FaqTop({ number = '08' }: { number?: string }) {
           <h2 className="t">자주 묻는 질문</h2>
           <p className="lede">출장비, 출장 지역, 수리 가능한 제품을 정리했어요.</p>
           <Link href="/faq/" className="btn btn-primary all">전체 질문 보기<Icon name="arrow-right" /></Link>
+          <p style={{ marginTop: 16 }}><Link href="/handbook/">설치 준비·고장 기록·관리 방법 자세히 보기 →</Link></p>
         </div>
         <div>{FAQ.slice(0, 4).map((f) => <article key={f.q} className="faq-item"><h3>{f.q}</h3><p>{f.a}</p></article>)}</div>
       </div>
