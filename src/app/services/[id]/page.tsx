@@ -12,6 +12,7 @@ import { ALL_GUIDES } from '@/content/guides';
 import { FAQ, SVCS } from '@/content/site-data';
 import { isPublicPath, recordByPath } from '@/lib/registry';
 import { publicCases } from '@/lib/gate';
+import { handbookArticles, handbookCategories, handbookPath } from '@/content/handbook';
 import { INFO } from '@/lib/site';
 import { SAFETY } from '@/content/gen/blocks-common';
 import { REGIONS, type ServiceId } from '@/content/gen/compose';
@@ -53,6 +54,9 @@ export default async function ServiceDetail({ params }: {
         notFound();
     const cases = publicCases().filter((c) => s.caseIds.includes(c.id));
     const guides = ALL_GUIDES.filter((g) => s.guideIds.includes(g.id) && isPublicPath(g.path));
+    const prioritySlugs = new Set(["quote-scope", "sensor-identification", "floor-level", "intermittent-log", "repeat-impact", "elderly-route", "locked-vs-closed", "one-button-fails", "mode-after-repair", "service-history", "motor-quote", "sensor-after-service", "demolition-scope", "sound-record", "bottom-scrape", "office-lobby", "visitor-entry", "switch-renovation", "opening-routine", "asset-register", "repair-or-replace", "sensor-condensation", "opening-measure", "motion-phase", "door-sticker-weight", "accessible-button-request", "access-hours", "switch-replacement-record", "power-label", "contractor-entry", "sensor-quote", "air-curtain", "sliding-space", "after-cleaning", "door-vibration", "children-route", "lost-card", "button-labels", "backup-power", "manual-storage", "afterhours-quote", "decorations", "work-sequence", "after-collision", "frame-loose", "clinic-reception", "access-controller-change", "button-pressure"]);
+    const serviceCategories = handbookCategories.filter(c => c.service === (s.id === 'motor' ? 'repair' : s.id));
+    const preparationGuides = handbookArticles.filter(a => prioritySlugs.has(a.slug) && serviceCategories.some(c => c.id === a.category));
     const card = SVCS.find((v) => v.id === s.id);
     // 지역 링크는 전 지역 나열 대신 우선 지역(본사 평택·수원·화성·용인) + 지역 근거가 있는 A 등급 페이지만. 나머지는 광역 허브에서 탐색
     const PRIORITY = ['r53', 'r38', 'r56', 'r48'];
@@ -105,6 +109,10 @@ export default async function ServiceDetail({ params }: {
             <h2>관련 증상 가이드</h2>
             <div className="sym-cards">{guides.map((g) => <Link key={g.id} href={g.path} className="sym-card" style={{ textDecoration: 'none', color: 'var(--ink)' }}><p className="t">{g.h1}<span style={{ marginLeft: 'auto', fontSize: 'var(--fs-c)', color: 'var(--blue-t)' }}>가이드 →</span></p><p className="d">{g.question} — {g.answer}</p></Link>)}</div>
           </>)}
+        {preparationGuides.length > 0 && <section aria-label="서비스별 상담 준비 안내"><h2>현장 조건에 맞는 상담 준비</h2>
+          <div className="related">{preparationGuides.map(a => <Link key={a.slug} href={handbookPath(a.slug)}>{a.title}</Link>)}</div>
+          <p><Link href="/handbook/">설치·관리 실무 안내 전체 보기 →</Link></p>
+        </section>}
         {s.faqIdx.length > 0 && (<>
             <h2>자주 묻는 질문</h2>
             <div style={{ marginBottom: 40 }}>{s.faqIdx.map((i) => FAQ[i]).filter(Boolean).map((f) => <article key={f.q} className="faq-item"><h3>{f.q}</h3><p>{f.a}</p></article>)}</div>

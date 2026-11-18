@@ -8,6 +8,7 @@ import TelLink from '@/components/TelLink';
 import { RollingPhone } from '@/components/PhoneProvider';
 import { pageMeta } from '@/lib/seo';
 import { publicCases, caseById } from '@/lib/gate';
+import { CASE_DETAILS } from '@/content/case-details';
 import { SVCS } from '@/content/site-data';
 import { SERVICES } from '@/content/services';
 import { isPublicPath } from '@/lib/registry';
@@ -54,6 +55,8 @@ export default async function CaseDetail({ params }: {
             return <AuthoredPageView p={a}/>;
         notFound();
     }
+    const detail = CASE_DETAILS[id];
+    const relatedArticles = (detail?.guides || []).map(handbookArticle).filter(a => !!a);
     const guide = caseNotes[id] && handbookArticle(caseNotes[id].guide);
     const svcCard = SVCS.find((v) => v.id === c.svc);
     const svcPage = SERVICES.find((s) => s.id === c.svc && isPublicPath(s.path));
@@ -66,6 +69,7 @@ export default async function CaseDetail({ params }: {
         <p className="k">{c.place} · {svcCard?.t || c.svcT}</p>
         <h1>{c.title}</h1>
         <div className="photo"><img src={c.img} alt={`${c.place} ${c.title}`} width={800} height={600} className="img-cover"/></div>
+        {detail && <p className="lede" style={{ fontSize: 'var(--fs-c)' }}>{detail.caption}</p>}
         <ol className="steps4">{steps.map((t) => <li key={t.k}><span className="ic"><Icon name={t.icon}/></span><div><p className="kk">{t.n} {t.k}</p><p className="v">{t.v}</p></div></li>)}</ol>
         <h2>현장 정보</h2>
         <dl className="meta">
@@ -75,6 +79,12 @@ export default async function CaseDetail({ params }: {
           <dt>작업 구분</dt><dd>{c.kind === 'repair' ? '수리' : '설치·교체'}</dd>
           {guide && <><dt>관련 안내</dt><dd><Link href={handbookPath(guide.slug)}>{guide.title}</Link></dd></>}
         </dl>
+        {detail && <section aria-label="현장별 작업 상세">
+          <h2>이 현장의 작업 범위</h2><p className="lede" style={{ fontSize: 'var(--fs-b)' }}>{detail.explanation}</p>
+          <dl className="meta">{detail.facts.map(([label, value]) => <div key={label} style={{ display: 'contents' }}><dt>{label}</dt><dd>{value}</dd></div>)}</dl>
+          <h2>비슷한 현장을 상담할 때</h2><p className="lede" style={{ fontSize: 'var(--fs-b)' }}>{detail.preparation}</p>
+          <div className="case-list-sm">{relatedArticles.map(a => <Link className="case-sm" key={a.slug} href={handbookPath(a.slug)}><span className="tx"><strong>{a.title}</strong><span style={{ display: 'block', marginTop: 6 }}>{a.answer}</span></span><Icon name="chevron-right" /></Link>)}</div>
+        </section>}
         <div className="cta-box">
           <p className="q">{c.kind === 'repair' ? '같은 증상으로 고민 중이세요?' : '비슷한 출입구에 자동문 설치를 알아보고 계세요?'}</p>
           <TelLink className="btn btn-primary"><Icon name="phone" size={20}/>전화 상담 <RollingPhone h={24}/></TelLink>
