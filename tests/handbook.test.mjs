@@ -6,6 +6,32 @@ const { categories, articles } = read('../src/content/handbook.json');
 const ledger = read('../data/registry/publication-ledger.json').records;
 const facts = read('../data/registry/fact-ledger.json');
 const editorial = read('../src/content/handbook-editorial.json');
+const consultations = read('../src/content/region-consultation.json');
+
+test('공개 지역의 상담 상황마다 실제 공개 안내와 인계 항목이 연결된다', () => {
+  const publicPaths = new Set(ledger.filter(r => r.contentStatus === 'PUBLISHED' && r.indexEligibility).map(r => r.path));
+  for (const r of ledger.filter(r => publicPaths.has(r.path))) {
+    const match = r.path.match(/^\/areas\/(?:seoul|gyeonggi)\/(r\d+)\/(repair|install)\/$/);
+    if (!match) continue;
+    const context = consultations[match[1]]?.[match[2]];
+    assert.ok(context?.note.trim(), r.path);
+    assert.equal(new Set(context.guides).size, 2, r.path);
+    for (const slug of context.guides) {
+      const article = articles.find(a => a.slug === slug);
+      assert.ok(article?.handoff.length, `${r.path}: missing handoff ${slug}`);
+      assert.ok(publicPaths.has(`/handbook/${slug}/`), `${r.path}: unpublished ${slug}`);
+      if (article.fieldCase) assert.ok(publicPaths.has(`/cases/${article.fieldCase.id}/`));
+    }
+  }
+});
+
+test('운반 소리·바닥 마찰·감지 환경은 건물 태그 대신 실제 상담 주제로 연결된다', () => {
+  assert.deepEqual(consultations.r52.repair.guides, ['sound-record', 'delivery-cart']);
+  assert.deepEqual(consultations.r34.repair.guides, ['after-collision', 'sound-record']);
+  assert.deepEqual(consultations.r40.repair.guides, ['bottom-scrape', 'after-collision']);
+  assert.deepEqual(consultations.r55.repair.guides, ['air-curtain', 'decorations']);
+  assert.deepEqual(consultations.r08.repair.guides, ['sensor-identification', 'sensor-after-service']);
+});
 
 test('공개 안내에 빠진 상황별 설명이 없고 개정일이 최초 발행일을 덮지 않는다', () => {
   assert.deepEqual(Object.keys(editorial).sort(), articles.map(a => a.slug).sort());

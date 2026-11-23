@@ -16,7 +16,7 @@ const args = process.argv.slice(2); const opt = {}; for (let i = 0; i < args.len
 const BASE = opt.base ? opt.base.replace(/\/$/, '') : null;
 const src = { services: R('src/content/services.ts'), regions: R('src/content/regions.ts'), guides: R('src/content/guides.ts') + R('src/content/guides-more.ts') + R('src/content/guide-details-a.ts') + R('src/content/guide-details-b.ts') + R('src/content/guide-extra.ts'), data: R('src/content/site-data.ts') };
 const GEN = ['compose.ts', 'blocks-common.ts', 'blocks-repair.ts', 'blocks-install.ts', 'blocks-sensor.ts', 'blocks-motor.ts', 'blocks-glass.ts', 'regions-seoul.ts', 'regions-gyeonggi.ts'].map((f) => R('src/content/gen/' + f)).join('');
-const regionalNotes = R('src/content/gen/visit-notes.ts');
+const regionalNotes = R('src/content/gen/visit-notes.ts') + R('src/content/region-consultation.json');
 const mainText = (html) => (html.match(/<main[\s\S]*?<\/main>/i) || [''])[0].replace(/<script[\s\S]*?<\/script>/gi, '').replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim();
 const renderedContent = (html) => {
   const attr = (tag, name) => tag.match(new RegExp(`${name}=["']([^"']*)["']`, 'i'))?.[1] || '';
@@ -56,6 +56,8 @@ const hashes = { ...prev };
 // --base 사용 시 실제 본문과 제목·설명·대표 URL을 함께 해시한다. 검색 메타만 변경돼도 재알림할 수 있다.
 for (const r of ledger) {
   if (opt['only-type'] && r.type !== opt['only-type']) continue;
+  // A rendered audit cannot establish a modification date for an unpublished page.
+  if (BASE && (r.contentStatus !== 'PUBLISHED' || !r.indexEligibility)) continue;
   let material = sourceFor(r);
   if (BASE && r.contentStatus === 'PUBLISHED' && r.indexEligibility) {
     const res = await fetch(BASE + r.path, { redirect: 'manual', signal: AbortSignal.timeout(15000) });

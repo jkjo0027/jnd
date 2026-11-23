@@ -13,34 +13,7 @@ import { publicCases } from '@/lib/gate';
 import { JsonLd } from '@/lib/seo';
 import { abs } from '@/lib/site';
 import { handbookArticle, handbookPath } from '@/content/handbook';
-import type { Tag } from '@/content/gen/types';
-
-const buildingGuides: Record<Tag, { install: string; repair: string }> = {
-  office: { install: 'office-lobby', repair: 'access-log-time' },
-  commercial: { install: 'business-hours', repair: 'time-pattern' },
-  apartment: { install: 'shared-entrance', repair: 'intercom-link' },
-  villa: { install: 'visitor-entry', repair: 'exit-request' },
-  factory: { install: 'delivery-route', repair: 'parts-on-floor' },
-  hospital: { install: 'clinic-reception', repair: 'accessible-button-request' },
-  school: { install: 'children-route', repair: 'queue-position' },
-  rural: { install: 'weather-exposure', repair: 'wind-pressure' },
-  tourism: { install: 'event-crowd', repair: 'handover-shifts' },
-  hotel: { install: 'delivery-cart', repair: 'multiple-doors' },
-  newtown: { install: 'work-sequence', repair: 'after-cleaning' },
-  logistics: { install: 'warehouse-entry', repair: 'after-collision' },
-  church: { install: 'elderly-route', repair: 'out-of-service-sign' },
-};
-
-// Follow the specific observation in visitNotes, rather than only the broad building tag.
-const repairFollowup: Record<string, { slugs: string[]; note: string }> = {
-  r49: { slugs: ['multiple-doors', 'service-history'], note: '문이 여러 대인 시설은 층·출입 방향·주변 표지로 고장 문을 특정하고 정상 문과의 차이를 따로 기록해 주세요. 정상 문의 부품을 옮겨 시험하지 말고, 두 문의 모델이 같은지는 미확인으로 남겨도 됩니다.' },
-  r32: { slugs: ['fault-vs-mode', 'delivery-cart'], note: '상하차 중의 개방 고정 상태와 평소 운전 상태를 구분해 전달해 주세요. 현재 모드 표시와 변경한 시점을 적고, 카트 통행 계획은 관리자와 협의합니다. 통행 중 설정을 바꾸어 고장을 재현하지 않습니다.' },
-  r47: { slugs: ['all-cards', 'card-one-user'], note: '세대 문의를 모을 때는 같은 동·같은 출입문인지 먼저 확인해 주세요. 한 사람의 카드만 반응하지 않는 경우와 여러 사용자가 같은 문에서 겪는 경우를 구분하고 카드번호·비밀번호는 보내지 않습니다.' },
-  r29: { slugs: ['after-collision', 'bottom-scrape'], note: '카트 통행 뒤 생긴 흔적은 발생 위치와 발견 시각을 안전한 거리에서 기록해 주세요. 바닥 끌림이나 문 기울어짐이 보이면 억지로 여닫지 말고 현장 관리자에게 알립니다. 통행 직후라는 이유만으로 충돌을 확정하지 않습니다.' },
-  r50: { slugs: ['decorations', 'sensor-identification'], note: '옮긴 입간판·장식물의 이전 위치와 현재 위치를 출입구 사진에 표시해 주세요. 상부 감지센서와 측면 안전센서 중 어느 장치 주변이 달라졌는지 구분하되 센서를 가리거나 감도를 임의로 낮추지 않습니다.' },
-  r06: { slugs: ['two-door-lobby', 'queue-position'], note: '연속된 출입문은 바깥문·안쪽문을 구분하고 대기 좌석과 문의 위치를 간단히 그려 주세요. 사람이 대기하는 동안의 열림과 사람이 없어도 반복되는 동작을 나누어 전달하면 동선 조정과 장비 점검을 함께 상담할 수 있습니다.' },
-  r05: { slugs: ['keypad-response', 'access-service-boundary'], note: '번호 입력의 반응, 잠금 해제음, 문 움직임을 각각 구분해 적어 주세요. 실제 비밀번호는 제외하고 공동현관 관리 담당자와 장비 외부 모델 표시를 준비합니다. 잠금과 자동문 구동 중 어디까지 확인됐는지 상담 때 전달하세요.' },
-};
+import consultationData from '@/content/region-consultation.json';
 
 /** 지역 상세: 고정 지역 키(rNN) 해시로 상담번호 1개 배정 → 헤더·모바일바·본문 CTA 모두 같은 번호 */
 export function pinnedPhone(rid: string) {
@@ -59,13 +32,21 @@ export default function RegionPageView({ g, draft = false }: { g: GeneratedPage;
   const siblings = SERVICE_IDS.filter((s) => s !== g.service).map((s) => ({ s, p: regionPath(g.province, g.rid, s) })).filter((x) => isPublicPath(x.p));
   const dongs = [...new Set([...g.region.dongs, ...(city?.gus.flatMap(x => x.d) || [])])];
   const kind = g.service === 'install' ? 'install' : 'repair';
-  const followup = g.service === 'repair' ? repairFollowup[g.rid] : undefined;
-  const guideSlugs = followup?.slugs ?? (g.service === 'sensor' ? ['sensor-identification', 'sensor-after-service']
-    : g.service === 'motor' ? ['motor-quote', 'repeat-impact']
-    : g.region.tags.slice(0, 2).map(tag => buildingGuides[tag][kind]));
+  const consultation = g.service === 'repair' || g.service === 'install'
+    ? consultationData[g.rid as keyof typeof consultationData]?.[kind]
+    : undefined;
+  const guideSlugs = consultation?.guides ?? (g.service === 'sensor'
+    ? ['sensor-identification', 'sensor-after-service'] : g.service === 'motor'
+      ? ['motor-quote', 'repeat-impact'] : []);
   const articles = guideSlugs.map(handbookArticle).filter(a => !!a);
   const questions = hand?.faq || [];
-  const sections = g.sections.filter(s => (s.id !== 's-faq' || questions.length) && (s.id !== 's-case' || exact.length));
+  const preparation = [...new Set(articles.flatMap(a => a.handoff))];
+  // A handbook's recorded case is evidence of that operation, not a local project.
+  const referenceIds = new Set(articles.flatMap(a => a.fieldCase ? [a.fieldCase.id] : []));
+  const referenceCases = exact.length ? exact : pool.filter(c => referenceIds.has(c.id)).slice(0, 1);
+  const localEvidence = exact.length > 0;
+  const sections = g.sections.filter(s => (s.id !== 's-faq' || questions.length) && (s.id !== 's-case' || referenceCases.length))
+    .map(s => s.id === 's-case' && !localEvidence ? { ...s, h2: '작업 범위를 비교할 다른 지역 사례' } : s);
   const faqLd = { '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: questions.map(f => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })) };
   const serviceLd = { '@context': 'https://schema.org', '@type': 'Service', name: g.h1, serviceType: g.label, areaServed: { '@type': 'AdministrativeArea', name: `${provName} ${g.region.name}` }, provider: { '@id': abs('/#org') }, url: abs(g.path), availableChannel: { '@type': 'ServiceChannel', serviceUrl: abs('/contact/'), servicePhone: { '@type': 'ContactPoint', telephone: '+82-' + pinned, availableLanguage: ['ko'] } } };
   return (
@@ -103,7 +84,9 @@ export default function RegionPageView({ g, draft = false }: { g: GeneratedPage;
             {sections.map((s) => (
               <section key={s.id} id={s.id} className={`rd-sec${s.id === 's-faq' ? ' rd-faq' : ''}`}>
                 <div className="h"><span className="n">{s.n}</span><h2>{s.h2}</h2></div>
-                {s.paras?.map((p, i) => <p key={i} className="b">{p}</p>)}
+                {s.id === 's-service' && consultation
+                  ? <p className="b">{consultation.note}</p>
+                  : s.paras?.map((p, i) => <p key={i} className="b">{p}</p>)}
                 {s.id === 's-scope' && (
                   <>
                     {hand && <p className="b">{hand.lead}</p>}
@@ -113,18 +96,18 @@ export default function RegionPageView({ g, draft = false }: { g: GeneratedPage;
                 )}
                 {s.id === 's-service' && !exact.length && <p className="ref-note">{svc && <><Link href={svc.path}>{svc.h1} 작업 절차</Link> · </>}<Link href="/cases/">다른 지역의 시공 사진과 작업 결과</Link></p>}
                 {s.items && <ul className="b">{s.items.map((it) => <li key={it}>{it}</li>)}</ul>}
-                {s.id === 's-sym' && followup && <p className="b">{followup.note}</p>}
-                {s.id === 's-sym' && <div className="case-list-sm">{articles.map(a =>
+                                {s.id === 's-sym' && <div className="case-list-sm">{articles.map(a =>
                   <Link key={a.slug} href={handbookPath(a.slug)} className="case-sm"><span className="tx"><strong>{a.title}</strong></span><Icon name="chevron-right" /></Link>
                 )}</div>}
                 {s.id === 's-parts' && <div className="related"><Link href="/services/sensor/">감지센서와 안전센서 점검</Link><Link href="/services/motor/">모터·컨트롤러 교체 판단</Link><Link href="/services/switch/">스위치·수신기 점검</Link></div>}
                 {hand?.prepare.length && s.id === 's-cost' && (<><h3 style={{ margin: '24px 0 8px', fontSize: 'var(--fs-b)', fontWeight: 800 }}>상담 때 알려주시면 빨라요</h3><ul className="b">{hand.prepare.map(item => <li key={item}>{item}</li>)}</ul></>)}
+                {s.id === 's-cost' && !hand && preparation.length > 0 && <><h3 style={{ margin: '24px 0 8px', fontSize: 'var(--fs-b)', fontWeight: 800 }}>위 상황을 상담할 때 준비할 자료</h3><ul className="b">{preparation.map(item => <li key={item}>{item}</li>)}</ul><p className="ref-note">외부에서 확인할 수 있는 자료만 준비해 주세요. 장치를 열어야 알 수 있는 정보는 미확인으로 남겨도 됩니다.</p></>}
                 {s.id === 's-cost' && hand && hand.quoteFactors.length > 0 && <ul className="b">{hand.quoteFactors.map((e) => <li key={e}>{e}</li>)}</ul>}
                 {s.id === 's-case' && (
                   <>
-                    
+                    {!localEvidence && <p className="b">아래는 표시된 지역에서 작업한 공개 기록입니다. 사진과 작업 범위를 비교하는 참고 사례이며, {g.region.name} 현장의 원인이나 견적은 현장 확인 후 안내합니다.</p>}
                     <div className="case-grid">
-                      {exact.map(c => (
+                      {referenceCases.map(c => (
                         <Link key={c.id} href={`/cases/${c.id}/`} className="case-card">
                           <span className="th"><img src={c.img} alt={`${c.place} ${c.title}`} loading="lazy" width={800} height={600} className="img-cover" /></span>
                           <span><span className="k" style={{ display: 'block' }}>{c.place}</span><h3>{c.title}</h3><span className="s" style={{ display: 'block' }}>{c.kind === 'install' ? '설치 요청' : '증상'} · {c.sym}</span><span className="s" style={{display:'block'}}>{c.res}</span></span>
