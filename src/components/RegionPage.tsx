@@ -5,7 +5,7 @@ import Icon from '@/components/Icon';
 import { CONSULT_PHONES, INFO } from '@/lib/site';
 import { CITIES, type Case } from '@/content/site-data';
 import { REGION_PAGES } from '@/content/regions';
-import { SERVICE_IDS, SERVICE_BLOCKS, type GeneratedPage } from '@/content/gen/compose';
+import { SERVICE_IDS, SERVICE_BLOCKS, composeRegionPage, type GeneratedPage } from '@/content/gen/compose';
 import { SERVICES } from '@/content/services';
 import { pinIndex, isPublicPath, ops, isPreview } from '@/lib/registry';
 import { regionPath } from '@/lib/links';
@@ -26,10 +26,10 @@ export default function RegionPageView({ g, draft = false }: { g: GeneratedPage;
   const city = CITIES.find((c) => c.regionId === g.rid);
   const pinned = pinnedPhone(g.rid);
   const pool = publicCases();
-  const exact: Case[] = pool.filter((c) => c.regionId === g.rid && (g.service === 'install' ? c.kind === 'install' : g.service === 'repair' ? c.kind === 'repair' : c.svc === g.service));
+  const exact: Case[] = pool.filter((c) => c.regionId === g.rid && (g.service === 'install' ? c.kind === 'install' : g.service === 'repair' ? true : c.svc === g.service));
   const svc = SERVICES.find((s) => s.id === g.service);
   const provName = g.province === 'seoul' ? '서울' : '경기';
-  const siblings = SERVICE_IDS.filter((s) => s !== g.service).map((s) => ({ s, p: regionPath(g.province, g.rid, s) })).filter((x) => isPublicPath(x.p));
+  const siblings = SERVICE_IDS.filter((s) => s !== g.service).map((s) => ({ s, p: regionPath(g.province, g.rid, s) })).filter((x) => x.p.split('#')[0] !== g.path && isPublicPath(x.p.split('#')[0]));
   const dongs = [...new Set([...g.region.dongs, ...(city?.gus.flatMap(x => x.d) || [])])];
   const kind = g.service === 'install' ? 'install' : 'repair';
   const consultation = g.service === 'repair' || g.service === 'install'
@@ -39,14 +39,19 @@ export default function RegionPageView({ g, draft = false }: { g: GeneratedPage;
     ? ['sensor-identification', 'sensor-after-service'] : g.service === 'motor'
       ? ['motor-quote', 'repeat-impact'] : []);
   const articles = guideSlugs.map(handbookArticle).filter(a => !!a);
-  const questions = hand?.faq || [];
+  const installation = g.service === 'repair' ? composeRegionPage(g.rid, 'install') : null;
+  const installNote = installation ? consultationData[g.rid as keyof typeof consultationData]?.install : undefined;
+  const installHand = installation && REGION_PAGES.find(r => r.path === installation.path);
+  const installArticles = (installNote?.guides ?? []).map(handbookArticle).filter(a => !!a);
+  const questions = [...(hand?.faq || []), ...(installHand?.faq || [])].filter((f, i, all) => all.findIndex(x => x.q === f.q) === i);
   const preparation = [...new Set(articles.flatMap(a => a.handoff))];
   // A handbook's recorded case is evidence of that operation, not a local project.
   const referenceIds = new Set(articles.flatMap(a => a.fieldCase ? [a.fieldCase.id] : []));
-  const referenceCases = exact.length ? exact : pool.filter(c => referenceIds.has(c.id)).slice(0, 1);
+  const comparison = pool.filter(c => referenceIds.has(c.id)).slice(0, 1);
+  const referenceCases = [...new Map([...exact, ...comparison].map(c => [c.id, c])).values()];
   const localEvidence = exact.length > 0;
-  const sections = g.sections.filter(s => (s.id !== 's-faq' || questions.length) && (s.id !== 's-case' || referenceCases.length))
-    .map(s => s.id === 's-case' && !localEvidence ? { ...s, h2: '작업 범위를 비교할 다른 지역 사례' } : s);
+  const sections = [...g.sections.slice(0, 3), ...(installation ? [{ id: 'install', n: '03-1', h2: `${g.region.short} 자동문 설치 준비` }] : []), ...g.sections.slice(3)].filter(s => (s.id !== 's-faq' || questions.length) && (s.id !== 's-case' || referenceCases.length))
+    .map(s => s.id === 's-case' ? { ...s, h2: localEvidence ? '이 지역 작업 기록과 비교 사례' : '작업 범위를 비교할 다른 지역 사례' } : s);
   const faqLd = { '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: questions.map(f => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })) };
   const serviceLd = { '@context': 'https://schema.org', '@type': 'Service', name: g.h1, serviceType: g.label, areaServed: { '@type': 'AdministrativeArea', name: `${provName} ${g.region.name}` }, provider: { '@id': abs('/#org') }, url: abs(g.path), availableChannel: { '@type': 'ServiceChannel', serviceUrl: abs('/contact/'), servicePhone: { '@type': 'ContactPoint', telephone: '+82-' + pinned, availableLanguage: ['ko'] } } };
   return (
@@ -84,6 +89,13 @@ export default function RegionPageView({ g, draft = false }: { g: GeneratedPage;
             {sections.map((s) => (
               <section key={s.id} id={s.id} className={`rd-sec${s.id === 's-faq' ? ' rd-faq' : ''}`}>
                 <div className="h"><span className="n">{s.n}</span><h2>{s.h2}</h2></div>
+                {s.id === 'install' && installation && <>
+                  <p className="b">{installation.lead}</p><p className="b">{installNote?.note}</p>
+                  {installHand && <><p className="b">{installHand.lead}</p><ul className="b">{[...installHand.siteNotes, ...installHand.prepare, ...installHand.quoteFactors].map((x, i) => <li key={i}>{x}</li>)}</ul></>}
+                  <div className="case-list-sm">{installArticles.map(a => <Link className="case-sm" key={a.slug} href={handbookPath(a.slug)}><span className="tx"><strong>{a.title}</strong></span><Icon name="chevron-right" /></Link>)}</div>
+                  <h3>설치 상담에 함께 전달할 자료</h3><ul className="b">{[...new Set(installArticles.flatMap(a => a.handoff))].map(x => <li key={x}>{x}</li>)}</ul>
+                  <p className="b">확정 견적은 출입구 실측 후 안내합니다. 기존 문 철거와 바닥 복구, 전원·출입통제 연결의 포함 범위를 확인하세요.</p><Link href="/services/install/">자동문 설치 작업 절차와 범위 보기</Link>
+                </>}
                 {s.id === 's-service' && consultation
                   ? <p className="b">{consultation.note}</p>
                   : s.paras?.map((p, i) => <p key={i} className="b">{p}</p>)}
@@ -110,7 +122,7 @@ export default function RegionPageView({ g, draft = false }: { g: GeneratedPage;
                       {referenceCases.map(c => (
                         <Link key={c.id} href={`/cases/${c.id}/`} className="case-card">
                           <span className="th"><img src={c.img} alt={`${c.place} ${c.title}`} loading="lazy" width={800} height={600} className="img-cover" /></span>
-                          <span><span className="k" style={{ display: 'block' }}>{c.place}</span><h3>{c.title}</h3><span className="s" style={{ display: 'block' }}>{c.kind === 'install' ? '설치 요청' : '증상'} · {c.sym}</span><span className="s" style={{display:'block'}}>{c.res}</span></span>
+                          <span><span className="s" style={{display:'block'}}>{c.regionId === g.rid ? `${g.region.name} 작업 기록` : '다른 지역의 비교 사례'}</span><span className="k" style={{ display: 'block' }}>{c.place}</span><h3>{c.title}</h3><span className="s" style={{ display: 'block' }}>{c.kind === 'install' ? '설치 요청' : '증상'} · {c.sym}</span><span className="s" style={{display:'block'}}>{c.res}</span></span>
                         </Link>
                       ))}
                     </div>

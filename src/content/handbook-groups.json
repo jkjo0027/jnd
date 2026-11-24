@@ -1,0 +1,470 @@
+[
+  {
+    "slug": "opening-measure",
+    "title": "자동문 설치 공간 확인: 개구부·이동 폭·천장·문틀",
+    "summary": "사진으로 보낼 참고 치수와 제작 전 실측 치수를 구분하고, 문짝 이동 공간·높이·바닥·기존 문틀을 한 번에 정리하는 안내입니다. 향후 가구 배치까지 반영해 설치 검토에서 빠지는 조건을 줄입니다.",
+    "topics": [
+      "opening-measure",
+      "sliding-space",
+      "ceiling-space",
+      "floor-level",
+      "frame-condition",
+      "future-layout"
+    ],
+    "reviewedAt": "2026-11-24"
+  },
+  {
+    "slug": "work-sequence",
+    "title": "자동문 설치 공정과 견적 범위: 전원·철거·반입",
+    "summary": "인테리어 담당자와 자동문 담당자가 맡을 일을 구분합니다. 전원 위치, 기존 문 철거와 복구, 장비 반입을 공사 순서에 맞춰 확인해 견적에 빠진 작업을 찾습니다.",
+    "topics": [
+      "work-sequence",
+      "power-location",
+      "demolition-scope",
+      "delivery-route"
+    ],
+    "reviewedAt": "2026-11-24"
+  },
+  {
+    "slug": "tenant-consent",
+    "title": "영업 중 자동문 공사: 임대인 협의와 작업 시간",
+    "summary": "임차 매장의 공사 동의와 영업 중 통행 계획을 함께 준비합니다. 공사 승인 담당자, 이용 가능한 작업 시간, 고객 안내를 정리한 뒤 시공 일정을 협의하세요.",
+    "topics": [
+      "tenant-consent",
+      "business-hours"
+    ],
+    "reviewedAt": "2026-11-24"
+  },
+  {
+    "slug": "weather-exposure",
+    "title": "빗물에 노출되는 출입구의 자동문 설치 검토",
+    "summary": "빗물이 유입되는 위치와 출입구 구조를 기록해 외부 환경에 맞는 설치 범위를 상담합니다. 특정 장치의 방수 성능이나 시공 가능 여부는 사진만으로 확정하지 않습니다.",
+    "topics": [
+      "weather-exposure"
+    ],
+    "reviewedAt": "2026-11-24"
+  },
+  {
+    "slug": "handover-docs",
+    "title": "자동문 설치 완료 후 인수인계 자료",
+    "summary": "설치가 끝난 뒤 운영자가 찾아볼 모델 정보, 사용 안내와 작업 범위를 정리합니다. 설명을 들었다는 사실과 실제 인계받은 자료를 구분해 보관하세요.",
+    "topics": [
+      "handover-docs"
+    ],
+    "reviewedAt": "2026-11-24"
+  },
+  {
+    "slug": "intermittent-log",
+    "title": "간헐적 자동문 고장: 발생·회복·교대 기록",
+    "summary": "가끔 생기는 고장은 방문 시 정상으로 보일 수 있습니다. 처음 발생한 때부터 시간대, 회복 여부, 교대 인계까지 같은 기록으로 남겨 점검자가 조건을 비교하도록 돕습니다.",
+    "topics": [
+      "intermittent-log",
+      "first-event",
+      "time-pattern",
+      "recovery-log",
+      "handover-shifts"
+    ],
+    "reviewedAt": "2026-11-24"
+  },
+  {
+    "slug": "motion-phase",
+    "title": "자동문 고장 영상: 멈춤 구간·방향·소리 비교",
+    "summary": "어느 방향과 구간에서 문제가 생기는지, 다른 문에도 같은 현상이 있는지를 구분합니다. 영상은 안전한 위치에서 확보하고 고객 얼굴과 출입 정보는 가린 뒤 전달하세요.",
+    "topics": [
+      "motion-phase",
+      "sound-record",
+      "direction-difference",
+      "multiple-doors",
+      "video-privacy"
+    ],
+    "reviewedAt": "2026-11-24"
+  },
+  {
+    "slug": "after-collision",
+    "title": "충돌·청소 후 자동문 변화 기록",
+    "summary": "카트 충돌이나 청소 직후 나타난 변화를 이전 상태와 비교합니다. 발생 순서는 진단 단서이며 원인을 확정하는 증거는 아니므로 충돌 흔적·사용 물품·시점을 나눠 전달합니다.",
+    "topics": [
+      "after-collision",
+      "after-cleaning"
+    ],
+    "reviewedAt": "2026-11-24"
+  },
+  {
+    "slug": "fault-vs-mode",
+    "title": "자동문 고장 접수 전 표시등·운전 모드 확인",
+    "summary": "문이 움직이지 않는 상황에서 외부 표시와 모드 변경 기록을 구분합니다. 표시등이 켜졌다는 사실만으로 전원·제어 장치가 정상이라고 판단하지 않도록 접수 내용을 정리합니다.",
+    "topics": [
+      "fault-vs-mode",
+      "indicator-log"
+    ],
+    "reviewedAt": "2026-11-24"
+  },
+  {
+    "slug": "sensor-identification",
+    "title": "자동문 감지센서·안전센서 구분과 수리 후 확인",
+    "summary": "열림 감지와 통과 중 안전 감지의 역할을 구분하고, 수리 후 확인할 동작을 담당자와 합의합니다. 공개된 안전센서 교체 기록과 비교하되 현장별 원인은 점검으로 확인합니다.",
+    "topics": [
+      "sensor-identification",
+      "sensor-after-service"
+    ],
+    "reviewedAt": "2026-11-24"
+  },
+  {
+    "slug": "sensor-dust",
+    "title": "자동문 센서 외관 이상: 먼지·결로·커버 손상",
+    "summary": "센서 외부에 보이는 오염과 물방울, 커버 손상을 구분해 기록합니다. 내부를 열거나 감지 범위를 임의로 바꾸지 않고, 상태와 발생 시점을 점검 담당자에게 전달합니다.",
+    "topics": [
+      "sensor-dust",
+      "sensor-condensation",
+      "sensor-cover-damage"
+    ],
+    "reviewedAt": "2026-11-24"
+  },
+  {
+    "slug": "signboard-distance",
+    "title": "자동문 주변 배치: 입간판·포스터·장식·대기줄",
+    "summary": "출입구 주변 물건과 대기 위치가 바뀐 뒤 생긴 반응을 비교합니다. 센서 종류마다 감지 방식이 다르므로 임의 거리 기준 대신 배치 전후 사진과 실제 반응을 정리합니다.",
+    "topics": [
+      "signboard-distance",
+      "poster-placement",
+      "decorations",
+      "plants-near-door",
+      "queue-position"
+    ],
+    "reviewedAt": "2026-11-24"
+  },
+  {
+    "slug": "sunlight-pattern",
+    "title": "자동문 감지 환경 변화: 햇빛·조명·매트·에어커튼",
+    "summary": "같은 문이 시간대나 시설 변경 뒤 다르게 반응한다면 변화 조건을 나눠 기록합니다. 햇빛과 조명, 바닥 매트와 에어커튼을 각각 비교해 점검할 범위를 좁힙니다.",
+    "topics": [
+      "sunlight-pattern",
+      "lighting-change",
+      "air-curtain",
+      "mat-change"
+    ],
+    "reviewedAt": "2026-11-24"
+  },
+  {
+    "slug": "button-light-only",
+    "title": "자동문 버튼 이상: 표시·입력·복귀 반응 비교",
+    "summary": "버튼의 불빛과 문 동작을 별개로 기록하고, 한 버튼만 고장인지 전체 입력이 안 되는지 구분합니다. 세게 누르거나 눌린 채 걸리는 경우도 함께 정리해 교체 범위를 상담합니다.",
+    "topics": [
+      "button-light-only",
+      "one-button-fails",
+      "button-pressure",
+      "button-stuck"
+    ],
+    "reviewedAt": "2026-11-24"
+  },
+  {
+    "slug": "wireless-battery",
+    "title": "자동문 무선 스위치: 배터리·거리·수신기 확인",
+    "summary": "배터리 규격과 송수신 장치 모델을 먼저 기록하고, 위치에 따른 반응 차이를 구분합니다. 분실 리모컨은 관리 담당자에게 알리며 임의 등록·초기화·교차 연결은 하지 않습니다.",
+    "topics": [
+      "wireless-battery",
+      "wireless-range",
+      "receiver-identify",
+      "lost-remote"
+    ],
+    "reviewedAt": "2026-11-24"
+  },
+  {
+    "slug": "button-position",
+    "title": "자동문 스위치 위치와 사용 안내 정리",
+    "summary": "버튼을 누르는 위치와 이용자 동선을 함께 살펴보고, 안팎 안내 문구와 비접촉 입력 위치를 정리합니다. 위치 변경 가능 여부는 벽체·배선과 장치 모델을 확인한 뒤 결정합니다.",
+    "topics": [
+      "button-position",
+      "button-labels",
+      "touchless-position"
+    ],
+    "reviewedAt": "2026-11-24"
+  },
+  {
+    "slug": "switch-renovation",
+    "title": "자동문 스위치 관리: 청소·공사·교체 기록",
+    "summary": "청소나 벽체 공사에서 장치를 보호할 항목과 교체 후 남길 정보를 연결합니다. 장치에 사용 가능한 세척 방법과 작업 전후 상태를 구분해 다음 담당자에게 인계하세요.",
+    "topics": [
+      "switch-renovation",
+      "button-cleaning",
+      "switch-replacement-record"
+    ],
+    "reviewedAt": "2026-11-24"
+  },
+  {
+    "slug": "outage-record",
+    "title": "자동문 전원 이상·정전: 사용 중지와 점검 준비",
+    "summary": "정전 전후 기록과 반복 차단, 손상된 스위치 또는 빠진 선을 구분합니다. 전기 이상은 반복 재투입이나 내부 확인으로 시험하지 않고 현장 전기 담당자와 자동문 담당자에게 전달합니다.",
+    "topics": [
+      "outage-record",
+      "breaker-repeat",
+      "planned-power-off",
+      "backup-power",
+      "power-switch-damage",
+      "unplugged-cable"
+    ],
+    "reviewedAt": "2026-11-24"
+  },
+  {
+    "slug": "mode-label",
+    "title": "자동문 운전 모드·열림 유지·예약 시간 인계",
+    "summary": "선택기 표시, 열림 유지와 예약 동작을 구분하고 수리 후 현재 설정을 인계합니다. 화면 문구와 실제 동작을 함께 기록해 모드 설정 문제와 고장 점검의 범위를 나눕니다.",
+    "topics": [
+      "mode-label",
+      "hold-open",
+      "timer-setting",
+      "display-message",
+      "mode-after-repair"
+    ],
+    "reviewedAt": "2026-11-24"
+  },
+  {
+    "slug": "closing-routine",
+    "title": "자동문 개점·폐점 확인과 전원 표시",
+    "summary": "개점 전과 폐점 후에 누가 어떤 외부 상태를 확인할지 정리합니다. 문이 닫힌 상태와 잠긴 상태를 혼동하지 않고, 식별되지 않은 전원 스위치는 임의로 조작하지 않습니다.",
+    "topics": [
+      "closing-routine",
+      "opening-routine",
+      "power-label"
+    ],
+    "reviewedAt": "2026-11-24"
+  },
+  {
+    "slug": "keypad-response",
+    "title": "자동문 출입통제 장애: 번호키·카드·퇴실·인터폰",
+    "summary": "특정 카드만 안 되는지 모든 이용자가 안 되는지부터 구분합니다. 번호키, 퇴실 버튼과 인터폰의 반응을 나눠 기록하며 비밀번호·카드 번호는 공개 상담 자료에 포함하지 않습니다.",
+    "topics": [
+      "keypad-response",
+      "card-one-user",
+      "all-cards",
+      "exit-request",
+      "intercom-link"
+    ],
+    "reviewedAt": "2026-11-24"
+  },
+  {
+    "slug": "lock-alignment",
+    "title": "자동문 닫힘과 잠금 상태 구분",
+    "summary": "닫혀 보이는 문이 실제로 잠겼는지와 잠금 부근의 걸림을 구분합니다. 문짝을 힘으로 밀거나 잠금장치를 조정하지 않고 관리자가 확인할 항목을 정리합니다.",
+    "topics": [
+      "lock-alignment",
+      "locked-vs-closed"
+    ],
+    "reviewedAt": "2026-11-24"
+  },
+  {
+    "slug": "access-controller-change",
+    "title": "자동문과 출입통제 연동: 장비 변경과 업무 범위",
+    "summary": "방문객 호출·직원 출입의 요구를 정리하고 장비 변경 때 담당 업체별 작업을 구분합니다. 자동문 구동과 출입 권한 설정을 나눠 협의해 미확인 연동을 전제로 견적하지 않도록 합니다.",
+    "topics": [
+      "access-controller-change",
+      "visitor-entry",
+      "access-service-boundary"
+    ],
+    "reviewedAt": "2026-11-24"
+  },
+  {
+    "slug": "access-hours",
+    "title": "자동문 출입 권한 관리와 변경 이력",
+    "summary": "휴일 출입 시간, 카드 분실, 시각 차이와 임차인 변경을 관리 기록으로 남깁니다. 설정 변경은 권한 있는 담당자가 처리하고 공개 접수에는 민감 정보를 제외한 현상만 전달하세요.",
+    "topics": [
+      "access-hours",
+      "lost-card",
+      "access-log-time",
+      "lock-schedule-change"
+    ],
+    "reviewedAt": "2026-11-24"
+  },
+  {
+    "slug": "bottom-scrape",
+    "title": "자동문 구동 이상: 긁힘·틈·떨림·충격음",
+    "summary": "문짝이 움직이는 동안 생기는 흔적과 소리, 좌우 차이를 구분합니다. 외관만으로 레일·구동부의 원인을 단정하지 않고 이상이 나타나는 구간과 흔적을 점검 자료로 남깁니다.",
+    "topics": [
+      "bottom-scrape",
+      "uneven-gap",
+      "wheel-tracks",
+      "door-vibration",
+      "unequal-leaves",
+      "repeat-impact"
+    ],
+    "reviewedAt": "2026-11-24"
+  },
+  {
+    "slug": "glass-crack",
+    "title": "자동문 유리·프레임·커버 손상과 사용 중지",
+    "summary": "금이 간 유리, 흔들리는 프레임, 들뜬 커버와 떨어진 부품은 이용자 접근부터 통제합니다. 멈춘 문을 밀거나 부품을 끼워 맞추지 않고 손상 위치와 안전 확보 상태를 알려 주세요.",
+    "topics": [
+      "glass-crack",
+      "frame-loose",
+      "top-cover",
+      "parts-on-floor",
+      "manual-force"
+    ],
+    "reviewedAt": "2026-11-24"
+  },
+  {
+    "slug": "wind-pressure",
+    "title": "바람과 마감 손상에 따른 자동문 상태 기록",
+    "summary": "바람이 강할 때의 움직임 변화와 찢어진 고무 마감을 별도로 기록합니다. 외풍을 고장 원인으로 단정하거나 임의로 속도·힘을 조절하지 않고 발생 조건과 마감 상태를 전달합니다.",
+    "topics": [
+      "wind-pressure",
+      "seal-damage"
+    ],
+    "reviewedAt": "2026-11-24"
+  },
+  {
+    "slug": "door-sticker-weight",
+    "title": "자동문 유리 장식·손잡이 추가 전 확인",
+    "summary": "추가할 장식이나 손잡이의 위치와 무게를 기존 문 정보와 함께 확인합니다. 움직이는 유리문에 부착물을 먼저 설치하지 말고 구동과 통행에 미치는 영향을 상담하세요.",
+    "topics": [
+      "door-sticker-weight"
+    ],
+    "reviewedAt": "2026-11-24"
+  },
+  {
+    "slug": "asset-register",
+    "title": "자동문 관리대장: 장비·수리·사진·변경 이력",
+    "summary": "모델과 설명서, 부품별 수리 내역, 정상 사진과 인테리어 변경을 같은 장비 기록에 연결합니다. 담당자가 바뀌어도 이전 상태와 현재 상태를 비교할 수 있도록 보관 위치를 정하세요.",
+    "topics": [
+      "asset-register",
+      "service-history",
+      "manual-storage",
+      "photo-baseline",
+      "renovation-record"
+    ],
+    "reviewedAt": "2026-11-24"
+  },
+  {
+    "slug": "inspection-calendar",
+    "title": "자동문 점검 운영: 역할·일정·청소·기사 방문",
+    "summary": "일상 외관 확인과 전문 점검을 구분하고 시설 사용 조건에 맞춰 일정을 협의합니다. 청소·계절 변화·기사 방문 준비를 운영 담당자의 업무로 연결해 누락을 줄입니다.",
+    "topics": [
+      "inspection-calendar",
+      "checklist-owner",
+      "cleaning-schedule",
+      "seasonal-review",
+      "contractor-entry"
+    ],
+    "reviewedAt": "2026-11-24"
+  },
+  {
+    "slug": "unresolved-items",
+    "title": "자동문 사용 중지와 미해결 점검 항목 관리",
+    "summary": "점검을 받았다는 사실과 문제가 해결됐다는 판단을 구분합니다. 남은 항목의 담당자·다음 확인 일정을 정하고, 사용 중지 안내에는 이용자가 취할 행동을 명확히 적습니다.",
+    "topics": [
+      "unresolved-items",
+      "out-of-service-sign"
+    ],
+    "reviewedAt": "2026-11-24"
+  },
+  {
+    "slug": "maintenance-budget",
+    "title": "자동문 유지관리 예산과 예비 부품 구매",
+    "summary": "반복 점검·수리 비용과 예비 부품을 구분해 예산을 준비합니다. 모델 호환성과 보관 조건이 확인되기 전에는 특정 부품을 미리 사두는 방식으로 비용을 확정하지 마세요.",
+    "topics": [
+      "maintenance-budget",
+      "spare-parts"
+    ],
+    "reviewedAt": "2026-11-24"
+  },
+  {
+    "slug": "quote-photos",
+    "title": "자동문 수리 견적 준비와 작업 범위 비교",
+    "summary": "접수 사진부터 방문 점검비, 작업 시간과 현장 변경 견적까지 한 흐름으로 확인합니다. 같은 총액보다 포함 작업과 제외 작업을 비교하고 추가 비용의 설명 시점을 합의하세요.",
+    "topics": [
+      "quote-photos",
+      "quote-scope",
+      "quote-revision",
+      "site-visit-fee",
+      "afterhours-quote"
+    ],
+    "reviewedAt": "2026-11-24"
+  },
+  {
+    "slug": "repair-or-replace",
+    "title": "자동문 부분 수리·전체 교체와 부품 호환성",
+    "summary": "부분 수리와 구동부·문 전체 교체 견적을 구분합니다. 단종 모델은 기존 장치 정보와 대체 부품의 적용 범위를 확인하고, 확인되지 않은 호환성이나 수명을 전제로 결정하지 않습니다.",
+    "topics": [
+      "repair-or-replace",
+      "compatible-parts",
+      "discontinued-model"
+    ],
+    "reviewedAt": "2026-11-24"
+  },
+  {
+    "slug": "motor-quote",
+    "title": "자동문 모터 견적: 컨트롤러 포함 범위",
+    "summary": "모터와 컨트롤러 중 실제 교체할 부분, 기존 장치와의 연결, 작업 후 확인 범위를 비교합니다. 공개 컨트롤러 교체 사례의 작업 범위와 내 현장 견적을 구분해 읽으세요.",
+    "topics": [
+      "motor-quote"
+    ],
+    "reviewedAt": "2026-11-24"
+  },
+  {
+    "slug": "sensor-quote",
+    "title": "자동문 센서 견적: 종류·수량·위치",
+    "summary": "상부 감지센서와 통로 안전센서의 수량·위치·역할을 구분해 견적을 확인합니다. 같은 센서라는 이름만으로 부품과 작업 범위를 비교하지 않고 기존 장치 정보를 함께 전달합니다.",
+    "topics": [
+      "sensor-quote"
+    ],
+    "reviewedAt": "2026-11-24"
+  },
+  {
+    "slug": "warranty-docs",
+    "title": "자동문 수리 후 인계·보증·재발·정산",
+    "summary": "교체 부품과 작업 내역을 인계받고, 보증 문의나 같은 증상 재발 때 사용할 기록을 남깁니다. 정산 서류와 기술 점검 기록을 구분해 보관하고 무상 처리 여부는 해당 조건을 확인하세요.",
+    "topics": [
+      "warranty-docs",
+      "replaced-parts",
+      "tax-invoice",
+      "repeat-fault-quote"
+    ],
+    "reviewedAt": "2026-11-24"
+  },
+  {
+    "slug": "wheelchair-route",
+    "title": "자동문 이용 편의: 휠체어·유모차·느린 이동·버튼",
+    "summary": "통과 폭만이 아니라 대기·회전·버튼 조작이 불편한 지점을 함께 기록합니다. 이용자의 관찰을 설치 담당자에게 전달하는 자료이며 접근성 기준 충족을 판정하는 안내는 아닙니다.",
+    "topics": [
+      "wheelchair-route",
+      "stroller-route",
+      "elderly-route",
+      "accessible-button-request"
+    ],
+    "reviewedAt": "2026-11-24"
+  },
+  {
+    "slug": "children-route",
+    "title": "자동문 주변 대기와 안전 안내: 어린이·반려동물·행사",
+    "summary": "이용자가 몰리거나 움직임을 예측하기 어려운 상황에서 문 주변의 대기 위치를 먼저 정리합니다. 어린이·반려동물의 통과와 행사 운영을 장치 성능에만 맡기지 않고 현장 안내와 연결합니다.",
+    "topics": [
+      "children-route",
+      "pet-traffic",
+      "event-crowd"
+    ],
+    "reviewedAt": "2026-11-24"
+  },
+  {
+    "slug": "delivery-cart",
+    "title": "배송·고객 동선이 겹치는 자동문 운영",
+    "summary": "카트와 보행자가 같은 출입구를 쓰는 조건을 구분합니다. 식당 배달과 창고 반입의 물품 크기·이동 시간·대기 위치를 정리해 실제 통행에 맞는 운영 방법을 상담하세요.",
+    "topics": [
+      "delivery-cart",
+      "restaurant-flow",
+      "warehouse-entry"
+    ],
+    "reviewedAt": "2026-11-24"
+  },
+  {
+    "slug": "two-door-lobby",
+    "title": "공용 출입구·로비 자동문과 방문객 안내",
+    "summary": "연속된 문과 여러 입주자가 사용하는 출입구에서 관리 주체와 안내 위치를 정합니다. 병원 접수와 사무실 방문객 흐름도 함께 살펴 한 곳의 설정 변경이 다른 이용자에게 미치는 영향을 확인합니다.",
+    "topics": [
+      "two-door-lobby",
+      "shared-entrance",
+      "clinic-reception",
+      "office-lobby"
+    ],
+    "reviewedAt": "2026-11-24"
+  }
+]

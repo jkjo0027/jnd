@@ -30,3 +30,12 @@
 .handbook-comparison tbody tr > * { border-top: 1px solid var(--g200); }
 @media (max-width: 640px) { .handbook-comparison th, .handbook-comparison td { padding: 14px 12px; } }
 @media (max-width: 640px) { .handbook-grid { grid-template-columns: 1fr; } .handbook-card, .handbook-note, .handbook-contact { padding: 18px; } }
+
+.handbook-topic { border-top: 1px solid var(--g200); padding-top: 32px; }
+.handbook-example { border: 1px solid var(--g200); border-radius: 10px; padding: 16px 20px; margin-top: 22px; }
+.handbook-example summary { cursor: pointer; color: var(--blue-t); font-weight: 700; }
+.handbook-evidence { display: grid; gap: 24px; }
+.handbook-evidence article { scroll-margin-top: 110px; border: 1px solid var(--g200); border-radius: 14px; padding: 20px; }
+.handbook-evidence img { display: block; width: 100%; max-width: 560px; height: auto; aspect-ratio: 4/3; object-fit: cover; border-radius: 10px; }
+.handbook-evidence dt { font-weight: 700; color: var(--ink); }
+.handbook-evidence dd { margin: 4px 0 14px; }

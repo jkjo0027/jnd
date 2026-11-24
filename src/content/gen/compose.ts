@@ -16,7 +16,7 @@ export const SERVICE_BLOCKS: Record<string, ServiceBlocks> = { repair: REPAIR, i
 export const SERVICE_IDS = ['repair', 'install', 'sensor', 'motor', 'glass-door'] as const;
 export type ServiceId = (typeof SERVICE_IDS)[number];
 
-/* ── 결정적 변형 선택: 지역·서비스·섹션별로 섞어 같은 서비스의 다른 지역과 문단이 겹칠 확률을 낮춘다 ── */
+/* 기존 특화 서비스의 표시 순서를 유지한다. 변형 자체를 독창성의 근거로 삼지 않는다. */
 const mix = (a: number, b: number, c: number) => {
   let h = 2166136261 ^ (a * 16777619);
   h = Math.imul(h ^ (b + 0x9e3779b9), 16777619);
@@ -90,8 +90,8 @@ export function composeRegionPage(rid: string, service: ServiceId): GeneratedPag
   ];
   return {
     pageId, rid, province: region.province, service, path,
-    h1: `${region.short} ${B.label}`, title: service === 'install' ? `${region.name} 자동문 설치 | 출입구 실측·설치 범위 | 제이앤디시스템` : fill(pick(TITLE_FRAMES, 19), m), description: service === 'install' ? `${region.name} ${B.label}. ${locations} 등 출장 범위와 출입구 실측, 기존 문 철거 범위, 설치 견적 준비를 확인하세요.` : `${region.name} ${B.label}. ${locations} 등 출장 범위와 현장 점검, 부품 교체 판단 및 상담 준비물을 확인하세요.`,
-    lead, region, label: B.label, noun: B.noun, icon: B.icon, aliases, sections, related: B.related,
+    h1: service === 'repair' ? `${region.short} 자동문 수리·설치 상담` : `${region.short} ${B.label}`, title: service === 'repair' ? `${region.name} 자동문 수리·설치 | 출장 범위와 현장 준비 | 제이앤디시스템` : service === 'install' ? `${region.name} 자동문 설치 | 출입구 실측·설치 범위 | 제이앤디시스템` : fill(pick(TITLE_FRAMES, 19), m), description: service === 'repair' ? `${region.name} 자동문 수리·설치 상담. ${locations} 등 출장 범위, 고장 기록과 설치 준비, 공개 시공사례를 한곳에서 확인하세요.` : service === 'install' ? `${region.name} ${B.label}. ${locations} 등 출장 범위와 출입구 실측, 기존 문 철거 범위, 설치 견적 준비를 확인하세요.` : `${region.name} ${B.label}. ${locations} 등 출장 범위와 현장 점검, 부품 교체 판단 및 상담 준비물을 확인하세요.`,
+    lead, region, label: service === 'repair' ? '자동문 수리·설치' : B.label, noun: B.noun, icon: B.icon, aliases, sections, related: B.related,
   };
 }
 

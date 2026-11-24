@@ -3,7 +3,11 @@ import { CITIES, SEOUL_GU_RID, type City } from '@/content/site-data';
 import { allRegionPages } from '@/content/gen/compose';
 
 export const PROVINCE_SLUG: Record<string, 'seoul' | 'gyeonggi' | null> = { 경기: 'gyeonggi', 서울: 'seoul', 인천: null, 충청: null };
-export const regionPath = (province: 'seoul' | 'gyeonggi', rid: string, service = 'repair') => `/areas/${province}/${rid}/${service}/`;
+export const regionPath = (province: 'seoul' | 'gyeonggi', rid: string, service = 'repair') => {
+  const path = `/areas/${province}/${rid}/${service}/`;
+  const target = recordByPath(path)?.mergeTarget;
+  return service === 'install' && target ? `${target}#install` : path;
+};
 
 /** 지역 대표 링크: 공개된 지역 페이지 → 없으면 광역 허브의 앵커 → 없으면 /areas/ */
 export function regionLink(province: 'seoul' | 'gyeonggi' | null, rid: string | null): { href: string; published: boolean } {

@@ -3,7 +3,8 @@
 // 분류 규칙은 근거 기반이며 결정적이다. 재실행해도 같은 결과(수동 override 는 reviewNotes.manual 로 보존).
 import fs from 'node:fs';
 import path from 'node:path';
-const ROOT = path.resolve(path.dirname(new URL(import.meta.url).pathname), '..');
+import { fileURLToPath } from 'node:url';
+const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const LEDGER = path.join(ROOT, 'data/registry/publication-ledger.json');
 const l = JSON.parse(fs.readFileSync(LEDGER, 'utf8'));
 const cases = JSON.parse(fs.readFileSync(path.join(ROOT, 'data/registry/fact-ledger.json'), 'utf8'));
@@ -12,6 +13,11 @@ const REGION_EVIDENCE = cases.regionEvidence; // rid -> { kinds: [...], refs: [.
 const SERVICE_VERIFIED = cases.services;      // serviceId -> { verified, ref }
 let counts = {};
 for (const r of l.records) {
+  // Explicit editorial merges must not be republished by a legacy schema upgrade.
+  if (r.status === 'merged' && r.mergeTarget) {
+    counts[r.qualityClass + '/' + r.contentStatus] = (counts[r.qualityClass + '/' + r.contentStatus] || 0) + 1;
+    continue;
+  }
   const m = r.pageId.match(/^(R\d\d)-(repair|install|sensor|motor|glass-door)$/);
   const g = /^G\d\d$/.test(r.pageId);
   const core = /^C-/.test(r.pageId);

@@ -1,19 +1,25 @@
 import type { NextConfig } from 'next';
 import ledger from './data/registry/publication-ledger.json';
+import handbookGroups from './src/content/handbook-groups.json';
 
 /** 품질 감사에서 통합(C/HOLD) 판정된 지역 센서·모터 URL → 지역 수리 페이지로 영구 리디렉션. D(사실 미확인) 페이지는 리디렉션 없이 404 */
 const mergeRedirects = ledger.records
   .filter((r) => r.contentStatus === 'HOLD' && r.qualityClass === 'C' && r.mergeTarget)
-  .map((r) => ({ source: r.path, destination: r.mergeTarget as string, permanent: true }));
+  .map((r) => ({
+    source: r.path,
+    destination: r.mergeTarget + (r.type === 'handbook' && handbookGroups.some(g => g.topics.includes(r.path.split('/')[2]))
+      ? `#${r.path.split('/')[2]}` : r.type === 'region-service' && r.path.endsWith('/install/') ? '#install' : ''),
+    permanent: true,
+  }));
 
 // Region IDs are unique across provinces. Old URLs using the other province
 // used to serve the same HTML as the published region.
 const provinceRedirects = ledger.records
-  .filter(r => r.type === 'region-service' && r.contentStatus === 'PUBLISHED' && r.indexEligibility)
+  .filter(r => r.type === 'region-service' && ((r.contentStatus === 'PUBLISHED' && r.indexEligibility) || (r.status === 'merged' && r.path.endsWith('/install/'))))
   .map(r => ({
     source: r.path.replace(/^\/areas\/(seoul|gyeonggi)\//, (_, province) =>
       province === 'seoul' ? '/areas/gyeonggi/' : '/areas/seoul/'),
-    destination: r.path,
+    destination: r.status === 'merged' && r.mergeTarget ? `${r.mergeTarget}#install` : r.path,
     permanent: true,
   }));
 
