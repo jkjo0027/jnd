@@ -90,7 +90,7 @@ for (const [p, n] of inbound) if (n === 0 && p !== '/') issues.push({ type: 'orp
 const held = ledger.filter((r) => r.contentStatus !== 'PUBLISHED');
 for (const r of held) {
   const res = await get(BASE + r.path);
-  if (r.qualityClass === 'C' && r.mergeTarget) { const loc = res.location ? (res.location.startsWith('http') ? new URL(res.location).pathname : res.location) : null; if (![301, 308].includes(res.status) || loc !== r.mergeTarget) issues.push({ type: 'merge-redirect', path: r.path, status: res.status, loc, expect: r.mergeTarget }); }
+  if (r.qualityClass === 'C' && r.mergeTarget) { const loc = res.location ? new URL(res.location, BASE).pathname : null; if (![301, 308].includes(res.status) || loc !== r.mergeTarget) issues.push({ type: 'merge-redirect', path: r.path, status: res.status, loc, expect: r.mergeTarget }); }
   else if (res.status !== 404) issues.push({ type: 'held-not-404', path: r.path, status: res.status });
 }
 const smLast = new Map([...sm.body.matchAll(/<url>\s*<loc>([^<]+)<\/loc>\s*<lastmod>([^<]+)<\/lastmod>/g)].map((m) => [new URL(m[1]).pathname, m[2]]));

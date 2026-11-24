@@ -61,10 +61,10 @@ export default async function ServiceDetail({ params }: {
     // 지역 링크는 전 지역 나열 대신 우선 지역(본사 평택·수원·화성·용인) + 지역 근거가 있는 A 등급 페이지만. 나머지는 광역 허브에서 탐색
     const PRIORITY = ['r53', 'r38', 'r56', 'r48'];
     const linkSvc: ServiceId = s.id === 'install' ? 'install' : 'repair'; // 지역 센서·모터 페이지는 지역 수리 페이지(센서·모터·컨트롤러 절)로 통합됨
-    const regionLinks = REGIONS.filter((r) => PRIORITY.includes(r.rid) || recordByPath(regionPath(r.province, r.rid, linkSvc))?.qualityClass === 'A')
+    const regionLinks = REGIONS.filter((r) => PRIORITY.includes(r.rid) || recordByPath(regionPath(r.province, r.rid, linkSvc).split('#')[0])?.qualityClass === 'A')
         .sort((a, b) => (PRIORITY.indexOf(a.rid) + 1 || 99) - (PRIORITY.indexOf(b.rid) + 1 || 99))
-        .map((r) => ({ t: linkSvc === s.id ? r.short : `${r.short} 자동문 수리`, href: regionPath(r.province, r.rid, linkSvc) })).filter((x) => isPublicPath(x.href)).slice(0, 8)
-        .concat([{ t: '서울 전체 지역', href: '/areas/seoul/' }, { t: '경기 전체 지역', href: '/areas/gyeonggi/' }].filter((x) => isPublicPath(x.href)));
+        .map((r) => ({ t: linkSvc === s.id ? r.short : `${r.short} 자동문 수리`, href: regionPath(r.province, r.rid, linkSvc) })).filter((x) => isPublicPath(x.href.split('#')[0])).slice(0, 8)
+        .concat([{ t: '서울 전체 지역', href: '/areas/seoul/' }, { t: '경기 전체 지역', href: '/areas/gyeonggi/' }].filter((x) => isPublicPath(x.href.split('#')[0])));
     const hs = Array.from(s.id).reduce((a, c) => (Math.imul(a, 31) + c.charCodeAt(0)) >>> 0, 7);
     const faqLd = { '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: s.faqIdx.map((i) => FAQ[i]).filter(Boolean).map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })) };
     return (<PublicShell>

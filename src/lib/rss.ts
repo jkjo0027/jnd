@@ -1,4 +1,4 @@
-import { handbookArticles, handbookCategory, handbookEditorial, handbookPath } from '@/content/handbook';
+import { handbookArticles, handbookTopics, handbookCategory, handbookEditorial, handbookPath } from '@/content/handbook';
 import { caseById } from '@/lib/gate';
 import { parseBody, FIELDS } from '@/lib/content-body';
 import { contentLastmod } from '@/lib/lastmod';
@@ -17,12 +17,13 @@ const date = (value: string) => { const d = new Date(value); if (!Number.isFinit
 
 /** Use the same reviewed article data as the public pages, including the complete editorial body. */
 export function handbookFeedItems(): FeedItem[] {
-  return handbookArticles.map(a => {
+  return handbookArticles.map(group => {
+    const path = handbookPath(group.slug), record = recordByPath(path)!;
+    const bodies = handbookTopics(group.slug).map(a => {
     const category = handbookCategory(a.category), detail = handbookEditorial(a.slug);
-    const path = handbookPath(a.slug), record = recordByPath(path)!;
     const fieldCase = a.fieldCase && caseById(a.fieldCase.id);
     const caseRecord = fieldCase && a.fieldCase
-      ? heading(`${fieldCase.place} 현장 기록`) + p(a.fieldCase.note) + `<p><a href="${abs(`/cases/${fieldCase.id}/`)}">${xml(fieldCase.title)} 사진과 작업 결과 보기</a></p>`
+      ? heading(`${fieldCase.place} 현장 기록`) + p(a.fieldCase.note) + `<img src="${abs(fieldCase.img)}" alt="${xml(fieldCase.place + ' — ' + fieldCase.title)}"/>` + p(fieldCase.sym) + p(fieldCase.res) + `<p><a href="${abs(`/cases/${fieldCase.id}/`)}">${xml(fieldCase.title)} 사진과 작업 결과 보기</a></p>`
       : '';
     const html = `<article><h1>${xml(a.title)}</h1>${p(a.answer)}`
       + heading('이 상황을 구분하는 방법') + p(detail.explanation)
@@ -37,7 +38,9 @@ export function handbookFeedItems(): FeedItem[] {
       + '<h3>메모 작성 예시</h3>' + p(a.example)
       + '<h3>상담할 때 확인할 질문</h3>' + p(detail.question)
       + `<p><a href="tel:${MAIN_PHONE.replaceAll('-', '')}">전화 상담 ${MAIN_PHONE}</a> · <a href="${abs('/contact/#inquiry')}">상담 방법 보기</a></p></article>`;
-    return { path, title: a.title, html, published: a.publishedAt, updated: contentLastmod(record).toISOString() };
+    return html;
+    }).join('');
+    return { path, title: group.title, html: `<article><h1>${xml(group.title)}</h1>${p(group.answer)}${bodies}</article>`, published: group.publishedAt, updated: contentLastmod(record).toISOString() };
   });
 }
 

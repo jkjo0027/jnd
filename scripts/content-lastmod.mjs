@@ -29,6 +29,7 @@ const renderedContent = (html) => {
 };
 const tpl = (p) => { try { return R(p); } catch { return ''; } };
 const handbook = JSON.parse(R('src/content/handbook.json'));
+const handbookGroups = JSON.parse(R('src/content/handbook-groups.json'));
 const handbookEditorial = JSON.parse(R('src/content/handbook-editorial.json'));
 const guideLinks = new Map(
   [...src.guides.matchAll(/^  (g\d+): '([a-z0-9-]+)',$/gm)].map(([, id, slug]) => [slug, id])
@@ -40,9 +41,11 @@ const sourceFor = (r) => {
     const article = handbook.articles.find((a) => a.slug === slug);
     const guideId = guideLinks.get(slug);
     const guide = guideId ? block(src.guides, 'id', guideId) : '';
-    return JSON.stringify({ article, editorial: handbookEditorial[slug], category: handbook.categories.find((c) => c.id === article?.category), guide }) + tpl('src/app/handbook/[slug]/page.tsx');
+    const group = handbookGroups.find(g => g.slug === slug);
+    const topics = (group?.topics || [slug]).map(s => ({ article: handbook.articles.find(a => a.slug === s), editorial: handbookEditorial[s] }));
+    return JSON.stringify({ group, topics, article, editorial: handbookEditorial[slug], category: handbook.categories.find((c) => c.id === article?.category), guide }) + tpl('src/app/handbook/[slug]/page.tsx');
   }
-  if (r.path === '/handbook/') return JSON.stringify(handbook) + tpl('src/app/handbook/page.tsx');
+  if (r.path === '/handbook/') return JSON.stringify({ handbook, handbookGroups }) + tpl('src/app/handbook/page.tsx');
   if (r.type === 'core' && r.pageId === 'C-home') return src.data + tpl('src/app/page.tsx') + tpl('src/components/home/Sections.tsx');
   if (r.type === 'core' || r.type === 'part') return block(src.services, 'pageId', r.pageId) + tpl('src/app/services/[id]/page.tsx');
   if (r.type === 'region-service') return block(src.regions, 'pageId', r.pageId) + GEN + regionalNotes + r.pageId + tpl('src/components/RegionPage.tsx');
