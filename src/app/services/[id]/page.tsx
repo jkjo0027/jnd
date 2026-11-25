@@ -35,7 +35,7 @@ export async function generateMetadata({ params }: {
         const a = (await liveByPath(`/services/${id}/`));
         return a ? pageMeta({ title: a.seoTitle || `${a.title} | 제이앤디시스템`, description: a.seoDesc || a.summary, path: a.path }) : {};
     }
-    return pageMeta({ title: s.title, description: s.description, path: s.path });
+    return isPublicPath(s.path) ? pageMeta({ title: s.title, description: s.description, path: s.path }) : {};
 }
 export default async function ServiceDetail({ params }: {
     params: Promise<{
