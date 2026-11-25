@@ -20,6 +20,16 @@ test('관리자: 인증 없는 접근 차단 (페이지 리디렉션, API 401, n
   const pv = await fetch(BASE + '/admin/preview/areas/gyeonggi/r38/repair/', { redirect: 'manual' }); assert.ok([302, 307, 308].includes(pv.status));
   const l = await fetch(BASE + '/admin/login/'); assert.match(l.headers.get('x-robots-tag') || '', /noindex/);
 });
-test('미지 경로·초안 경로는 404', { skip: !up && '서버 미기동' }, async () => {
-  for (const p of ['/areas/gyeonggi/r99/repair/', '/guides/g99/', '/cases/nonexistent/', '/regions/', '/areas/seoul/r01/']) { const r = await fetch(BASE + p); assert.equal(r.status, 404, p); }
+test('미지 경로·비공개 경로는 충돌 없는 noindex 404', { skip: !up && '서버 미기동' }, async () => {
+  for (const p of ['/areas/gyeonggi/r99/repair/', '/guides/g99/', '/cases/nonexistent/', '/regions/', '/areas/seoul/r01/', '/services/glass-door/', '/areas/seoul/r01/glass-door/']) {
+    const res = await fetch(BASE + p);
+    assert.equal(res.status, 404, p);
+    const html = await res.text();
+    const directives = [...html.matchAll(/<meta\b[^>]*\bname=["']robots["'][^>]*>/gi)]
+      .map(([tag]) => tag.match(/\bcontent=["']([^"']*)["']/i)?.[1] || '')
+      .flatMap(value => value.toLowerCase().split(/[\s,]+/));
+    assert.ok(directives.includes('noindex'), p);
+    assert.ok(!directives.includes('index'), p);
+    assert.doesNotMatch(html, /<link\b[^>]*\brel=["']canonical["']/i, p);
+  }
 });

@@ -17,7 +17,6 @@ export const metadata: Metadata = {
     shortcut: { url: `${SITE_URL}/favicon.ico`, type: 'image/x-icon' },
     apple: { url: `${SITE_URL}/apple-touch-icon.png`, type: 'image/png', sizes: '180x180' },
   },
-  robots: { index: true, follow: true },
   alternates: { types: { 'application/rss+xml': `${SITE_URL}/rss.xml` } },
   verification: {
     google: process.env.GOOGLE_SITE_VERIFICATION || undefined,
