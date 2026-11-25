@@ -16,7 +16,7 @@ export async function generateMetadata({ params }: {
     const { gid } = await params;
     const g = guideById(gid);
     if (g)
-        return pageMeta({ title: g.title, description: g.description, path: g.path });
+        return isPublicPath(g.path) ? pageMeta({ title: g.title, description: g.description, path: g.path }) : {};
     const a = (await liveByPath(`/guides/${gid}/`));
     return a ? pageMeta({ title: a.seoTitle || `${a.title} | 제이앤디시스템`, description: a.seoDesc || a.summary, path: a.path }) : {};
 }
