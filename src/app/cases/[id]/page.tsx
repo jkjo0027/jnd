@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
+import { connection } from 'next/server';
 import PublicShell from '@/components/PublicShell';
 import Breadcrumb from '@/components/Breadcrumb';
 import Icon from '@/components/Icon';
@@ -37,6 +38,8 @@ export async function generateMetadata({ params }: {
     const { id } = await params;
     const c = caseById(id);
     if (!c) {
+        // Only administrator-authored pages need the current publication snapshot.
+        await connection();
         const a = (await liveByPath(`/cases/${id}/`));
         return a ? pageMeta({ title: a.seoTitle || `${a.title} | 제이앤디시스템`, description: a.seoDesc || a.summary, path: a.path, image: a.photos[0] ? `/uploads/${a.photos[0].id}-${a.photos[0].sizes[a.photos[0].sizes.length - 1]}.webp` : undefined }) : {};
     }
@@ -50,6 +53,7 @@ export default async function CaseDetail({ params }: {
     const { id } = await params;
     const c = caseById(id);
     if (!c) {
+        await connection();
         const a = (await liveByPath(`/cases/${id}/`));
         if (a)
             return <AuthoredPageView p={a}/>;
@@ -103,5 +107,3 @@ export default async function CaseDetail({ params }: {
       </main>
     </PublicShell>);
 }
-
-export const dynamic = 'force-dynamic';
