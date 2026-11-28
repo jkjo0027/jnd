@@ -1,12 +1,13 @@
 import { handbookArticles, handbookTopics, handbookCategory, handbookEditorial, handbookPath } from '@/content/handbook';
-import { caseById } from '@/lib/gate';
+import { caseById, publicCases } from '@/lib/gate';
+import { CASE_DETAILS } from '@/content/case-details';
 import { parseBody, FIELDS } from '@/lib/content-body';
 import { contentLastmod } from '@/lib/lastmod';
 import { publicRecords, recordByPath } from '@/lib/registry';
 import { BRAND, MAIN_PHONE, SITE_URL, abs } from '@/lib/site';
 import type { AuthoredPage } from '@/lib/server/content';
 
-type FeedItem = { path: string; title: string; html: string; published: string; updated: string };
+type FeedItem = { path: string; title: string; html: string; published: string | null; updated: string };
 export const RSS_PATH = '/rss.xml';
 const xml = (value: string) => value.toWellFormed().replace(/[\u0000-\u0008\u000B\u000C\u000E-\u001F\uFFFE\uFFFF]/g, '').replace(/[&<>"']/g, ch => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&apos;' })[ch]!);
 const cdata = (value: string) => `<![CDATA[${value.replace(/\]\]>/g, ']]]]><![CDATA[>')}]]>`;
@@ -44,6 +45,24 @@ export function handbookFeedItems(): FeedItem[] {
   });
 }
 
+export function caseFeedItems(): FeedItem[] {
+  return publicCases().map(record => {
+    const path = `/cases/${record.id}/`;
+    const page = recordByPath(path)!;
+    const title = `${record.place} · ${record.title}`;
+    const detail = CASE_DETAILS[record.id];
+    const facts = detail ? heading('이 현장의 작업 범위') + p(detail.explanation)
+      + `<dl>${detail.facts.map(([label, value]) => `<dt>${xml(label)}</dt><dd>${xml(value)}</dd>`).join('')}</dl>`
+      + heading('비슷한 현장을 상담할 때') + p(detail.preparation) : '';
+    const html = `<article><h1>${xml(title)}</h1><figure><img src="${xml(abs(record.img))}" alt="${xml(title)}"/>`
+      + (detail ? `<figcaption>${xml(detail.caption)}</figcaption>` : '') + '</figure>'
+      + heading(record.kind === 'repair' ? '증상' : '설치 요청') + p(record.sym)
+      + heading('점검') + p(record.check) + heading('조치') + p(record.act) + heading('결과') + p(record.res)
+      + heading('현장 정보') + p(`${record.city} · ${record.brand} · ${record.svcT}`) + facts + '</article>';
+    return { path, title, html, published: page.publishedAt, updated: contentLastmod(page).toISOString() };
+  });
+}
+
 /** Input is the approved public snapshot, never the editable drafts collection. */
 export function authoredFeedItems(pages: AuthoredPage[]): FeedItem[] {
   const existing = new Set(publicRecords().map(r => r.path));
@@ -62,13 +81,14 @@ export function authoredFeedItems(pages: AuthoredPage[]): FeedItem[] {
 }
 
 export function renderRss(pages: AuthoredPage[] = []): string {
-  const items = [...handbookFeedItems(), ...authoredFeedItems(pages)].sort((a, b) => date(b.updated).getTime() - date(a.updated).getTime() || a.path.localeCompare(b.path));
+  const items = [...handbookFeedItems(), ...caseFeedItems(), ...authoredFeedItems(pages)].sort((a, b) => date(b.updated).getTime() - date(a.updated).getTime() || a.path.localeCompare(b.path));
   const selected: string[] = [], seen = new Set<string>();
   let bytes = 0;
   for (const item of items) {
     if (seen.has(item.path)) continue;
     const url = xml(abs(item.path));
-    const entry = `<item><title>${xml(item.title)}</title><link>${url}</link><guid isPermaLink="true">${url}</guid><pubDate>${date(item.published).toUTCString()}</pubDate><atom:updated>${date(item.updated).toISOString()}</atom:updated><description>${cdata(item.html)}</description><content:encoded>${cdata(item.html)}</content:encoded></item>`;
+    const publicationDate = item.published ? `<pubDate>${date(item.published).toUTCString()}</pubDate>` : '';
+    const entry = `<item><title>${xml(item.title)}</title><link>${url}</link><guid isPermaLink="true">${url}</guid>${publicationDate}<atom:updated>${date(item.updated).toISOString()}</atom:updated><description>${cdata(item.html)}</description><content:encoded>${cdata(item.html)}</content:encoded></item>`;
     const size = Buffer.byteLength(entry, 'utf8');
     // Keep complete bodies and stay comfortably below Naver's 10 MB submission limit.
     if (selected.length >= 200 || bytes + size > 9_000_000) break;
