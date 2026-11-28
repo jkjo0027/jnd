@@ -28,7 +28,8 @@ const publicDetailPaths = ledger.records
   .filter(r => r.contentStatus === 'PUBLISHED' && r.indexEligibility &&
     /^(?:\/areas\/[^/]+\/r\d+\/[^/]+|\/guides\/g\d+|\/cases\/c\d+|\/services\/[^/]+)\/$/.test(r.path))
   .map(r => r.path);
-const requestVariants = ['cookie', 'authorization', 'rsc', 'next-router-state-tree', 'next-router-prefetch', 'next-router-segment-prefetch'];
+const requestVariants = ['authorization', 'rsc', 'next-router-state-tree', 'next-router-prefetch', 'next-router-segment-prefetch'];
+const privateCookies = ['jnd_admin', '__prerender_bypass'];
 
 // 운영 호스트는 https://jndsystem.kr 하나로 고정한다. (src/lib/site.ts)
 const nextConfig: NextConfig = {
@@ -52,10 +53,13 @@ const nextConfig: NextConfig = {
     return [
       ...publicDetailPaths.map(source => ({
         source,
-        missing: requestVariants.map(key => ({ type: 'header' as const, key })),
+        missing: [
+          ...requestVariants.map(key => ({ type: 'header' as const, key })),
+          ...privateCookies.map(key => ({ type: 'cookie' as const, key })),
+        ],
         headers: [
           { key: 'Netlify-CDN-Cache-Control', value: 'public, durable, s-maxage=300' },
-          { key: 'Netlify-Vary', value: `header=${requestVariants.join('|')}` },
+          { key: 'Netlify-Vary', value: `query, header=${requestVariants.join('|')}, cookie=${privateCookies.join('|')}` },
         ],
       })),
       {
