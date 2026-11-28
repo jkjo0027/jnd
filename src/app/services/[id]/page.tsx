@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
+import { connection } from 'next/server';
 import PublicShell from '@/components/PublicShell';
 import Breadcrumb from '@/components/Breadcrumb';
 import Icon from '@/components/Icon';
@@ -32,6 +33,8 @@ export async function generateMetadata({ params }: {
     const { id } = await params;
     const s = serviceById(id);
     if (!s) {
+        // Only administrator-authored pages need the current publication snapshot.
+        await connection();
         const a = (await liveByPath(`/services/${id}/`));
         return a ? pageMeta({ title: a.seoTitle || `${a.title} | 제이앤디시스템`, description: a.seoDesc || a.summary, path: a.path }) : {};
     }
@@ -45,6 +48,7 @@ export default async function ServiceDetail({ params }: {
     const { id } = await params;
     const s = serviceById(id);
     if (!s) {
+        await connection();
         const a = (await liveByPath(`/services/${id}/`));
         if (a)
             return <AuthoredPageView p={a}/>;
@@ -138,5 +142,3 @@ export default async function ServiceDetail({ params }: {
       <JsonLd data={[serviceJsonLd(s), faqLd]}/>
     </PublicShell>);
 }
-
-export const dynamic = 'force-dynamic';
