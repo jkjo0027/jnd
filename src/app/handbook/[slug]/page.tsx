@@ -7,6 +7,8 @@ import { JsonLd, pageMeta } from '@/lib/seo';
 import { abs, MAIN_PHONE } from '@/lib/site';
 import { handbookArticle, handbookArticles, handbookTopics, handbookCategory, handbookPath, handbookEditorial } from '@/content/handbook';
 import { caseById } from '@/lib/gate';
+import { ALL_GUIDES, handbookSlugByGuide } from '@/content/guides';
+import { isPublicPath } from '@/lib/registry';
 import '../handbook.css';
 
 export const dynamicParams = false;
@@ -22,6 +24,7 @@ export default async function HandbookArticle({ params }: { params: Promise<{ sl
   const { slug } = await params;
   const a = handbookArticles.find(a => a.slug === slug); if (!a) notFound();
   const c = handbookCategory(a.category), topics = handbookTopics(slug);
+  const symptomGuides = ALL_GUIDES.filter(g => isPublicPath(g.path));
   const related = [...new Map(topics.flatMap(t => t.relatedSlugs).map(handbookArticle).filter(x => !!x)
     .filter(x => handbookPath(x.slug).split('#')[0] !== handbookPath(slug)).map(x => [handbookPath(x.slug), x])).values()];
   const evidence = [...new Map(topics.flatMap(t => {
@@ -37,11 +40,13 @@ export default async function HandbookArticle({ params }: { params: Promise<{ sl
     <aside className="handbook-note"><h2>이 안내의 적용 범위</h2><p>{c.introduction}</p></aside>
     {topics.map(t => {
       const detail = handbookEditorial(t.slug);
+      const guides = symptomGuides.filter(g => handbookSlugByGuide[g.id] === t.slug);
       return <section id={t.slug} key={t.slug} className="handbook-topic">
         <h2>{t.title}</h2><p>{t.answer}</p><p>{detail.explanation}</p>
         <h3>확인할 항목</h3><ol className="handbook-checks">{t.checks.map(x => <li key={x}>{x}</li>)}</ol>
         <table className="handbook-comparison"><caption>{t.title} — 상황별 다음 행동</caption><thead><tr><th scope="col">관찰한 상황</th><th scope="col">다음 행동</th></tr></thead><tbody>{detail.comparisons.map(row => <tr key={row.situation}><th scope="row">{row.situation}</th><td>{row.nextStep}</td></tr>)}</tbody></table>
         <h3>판단과 전달할 자료</h3><p>{t.decision}</p><ul className="handbook-checks">{t.handoff.map(x => <li key={x}>{x}</li>)}</ul>
+        {guides.map(g => <p key={g.id}><Link href={g.path}>{g.h1} →</Link></p>)}
         {t.fieldCase && caseById(t.fieldCase.id) && <p className="handbook-note">{t.fieldCase.note} <Link href={`#record-${t.fieldCase.id}`}>해당 현장 사진·작업 결과 보기</Link></p>}
         <details className="handbook-example"><summary>이 상황의 접수 메모와 상담 질문</summary><h3>메모 작성 예시</h3><p>{t.example}</p><h3>상담할 때 확인할 질문</h3><p>{detail.question}</p></details>
       </section>;
