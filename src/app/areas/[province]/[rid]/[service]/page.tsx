@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
+import { connection } from 'next/server';
 import RegionPageView from '@/components/RegionPage';
 import { pageMeta } from '@/lib/seo';
 import { allRegionPages, regionPageByPath } from '@/content/gen/compose';
@@ -21,6 +22,8 @@ export async function generateMetadata({ params }: {
     const g = regionPageByPath(`/areas/${province}/${rid}/${service}/`);
     if (g)
         return isPublicPath(g.path) ? pageMeta({ title: g.title, description: g.description, path: g.path }) : {};
+    // Only administrator-authored pages need the current publication snapshot.
+    await connection();
     const a = (await liveByPath(`/areas/${province}/${rid}/${service}/`));
     return a ? pageMeta({ title: a.seoTitle || `${a.title} | 제이앤디시스템`, description: a.seoDesc || a.summary, path: a.path }) : {};
 }
@@ -34,6 +37,7 @@ export default async function RegionRoute({ params }: {
     const { province, rid, service } = await params;
     const g = regionPageByPath(`/areas/${province}/${rid}/${service}/`);
     if (!g) {
+        await connection();
         const a = (await liveByPath(`/areas/${province}/${rid}/${service}/`));
         if (a)
             return <AuthoredPageView p={a}/>;
@@ -43,5 +47,3 @@ export default async function RegionRoute({ params }: {
         notFound();
     return <RegionPageView g={g}/>;
 }
-
-export const dynamic = 'force-dynamic';
