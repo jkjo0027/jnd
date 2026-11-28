@@ -54,6 +54,11 @@ export default async function ServiceDetail({ params }: {
         notFound();
     const cases = publicCases().filter((c) => s.caseIds.includes(c.id));
     const guides = ALL_GUIDES.filter((g) => s.guideIds.includes(g.id) && isPublicPath(g.path));
+    const moreGuides = ALL_GUIDES.filter((g) => {
+        if (s.guideIds.includes(g.id) || !isPublicPath(g.path)) return false;
+        const primaryPublicService = g.serviceIds.map(serviceById).find((service) => service && isPublicPath(service.path));
+        return primaryPublicService?.id === s.id;
+    });
     const prioritySlugs = new Set(["quote-scope", "sensor-identification", "floor-level", "intermittent-log", "repeat-impact", "elderly-route", "locked-vs-closed", "one-button-fails", "mode-after-repair", "service-history", "motor-quote", "sensor-after-service", "demolition-scope", "sound-record", "bottom-scrape", "office-lobby", "visitor-entry", "switch-renovation", "opening-routine", "asset-register", "repair-or-replace", "sensor-condensation", "opening-measure", "motion-phase", "door-sticker-weight", "accessible-button-request", "access-hours", "switch-replacement-record", "power-label", "contractor-entry", "sensor-quote", "air-curtain", "sliding-space", "after-cleaning", "door-vibration", "children-route", "lost-card", "button-labels", "backup-power", "manual-storage", "afterhours-quote", "decorations", "work-sequence", "after-collision", "frame-loose", "clinic-reception", "access-controller-change", "button-pressure"]);
     const serviceCategories = handbookCategories.filter(c => c.service === (s.id === 'motor' ? 'repair' : s.id));
     const preparationGuides = handbookArticles.filter(a => prioritySlugs.has(a.slug) && serviceCategories.some(c => c.id === a.category));
@@ -109,6 +114,10 @@ export default async function ServiceDetail({ params }: {
             <h2>관련 증상 가이드</h2>
             <div className="sym-cards">{guides.map((g) => <Link key={g.id} href={g.path} className="sym-card" style={{ textDecoration: 'none', color: 'var(--ink)' }}><p className="t">{g.h1}<span style={{ marginLeft: 'auto', fontSize: 'var(--fs-c)', color: 'var(--blue-t)' }}>가이드 →</span></p><p className="d">{g.question} — {g.answer}</p></Link>)}</div>
           </>)}
+        {moreGuides.length > 0 && <section>
+          <h2>{s.id === 'install' ? '출입구별 설치 가이드' : '증상별 점검 가이드'}</h2>
+          <div className="related">{moreGuides.map((g) => <Link key={g.id} href={g.path}>{g.h1}<Icon name="arrow-right" size={14} /></Link>)}</div>
+        </section>}
         {preparationGuides.length > 0 && <section aria-label="서비스별 상담 준비 안내"><h2>현장 조건에 맞는 상담 준비</h2>
           <div className="related">{preparationGuides.map(a => <Link key={a.slug} href={handbookPath(a.slug)}>{a.title}</Link>)}</div>
           <p><Link href="/handbook/">설치·관리 실무 안내 전체 보기 →</Link></p>
