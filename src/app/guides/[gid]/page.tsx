@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
+import { connection } from 'next/server';
 import GuidePageView from '@/components/GuidePage';
 import { pageMeta } from '@/lib/seo';
 import { ALL_GUIDES, guideById } from '@/content/guides';
@@ -17,6 +18,8 @@ export async function generateMetadata({ params }: {
     const g = guideById(gid);
     if (g)
         return isPublicPath(g.path) ? pageMeta({ title: g.title, description: g.description, path: g.path }) : {};
+    // Only administrator-authored pages need the current publication snapshot.
+    await connection();
     const a = (await liveByPath(`/guides/${gid}/`));
     return a ? pageMeta({ title: a.seoTitle || `${a.title} | 제이앤디시스템`, description: a.seoDesc || a.summary, path: a.path }) : {};
 }
@@ -28,6 +31,7 @@ export default async function GuideRoute({ params }: {
     const { gid } = await params;
     const g = guideById(gid);
     if (!g) {
+        await connection();
         const a = (await liveByPath(`/guides/${gid}/`));
         if (a)
             return <AuthoredPageView p={a}/>;
@@ -37,5 +41,3 @@ export default async function GuideRoute({ params }: {
         notFound();
     return <GuidePageView g={g}/>;
 }
-
-export const dynamic = 'force-dynamic';
