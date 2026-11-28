@@ -1,6 +1,7 @@
 import { SEOUL } from './regions-seoul';
 import { GYEONGGI } from './regions-gyeonggi';
 import { visitNotes } from './visit-notes';
+import { areaRecords } from '@/content/area-records';
 import { REPAIR } from './blocks-repair';
 import { INSTALL } from './blocks-install';
 import { SENSOR } from './blocks-sensor';
@@ -66,6 +67,13 @@ export function composeRegionPage(rid: string, service: ServiceId): GeneratedPag
   const aliases = aliasesOf(rid).filter((a) => a.kind === 'living-area').map((a) => a.alias);
   const locations = region.dongs.slice(0, 3).join('·');
   const note = visitNotes[rid];
+  const localRecord = service === 'repair' ? areaRecords(rid)[0] : undefined;
+  const firstRepairSentence = note?.repair.split(/(?<=\.)\s/, 1)[0];
+  const repairDescription = localRecord
+    ? `${localRecord.site} 자동문 설치 기록과 ${region.short} 수리 상담 준비를 확인하세요.`
+    : firstRepairSentence
+      ? `${region.short} 자동문 상담. ${firstRepairSentence}`
+      : `${region.name} 자동문 수리·설치 상담. ${locations} 등 출장 범위와 문의 준비를 확인하세요.`;
   const specialtyLead = service === 'sensor'
     ? `${region.name}의 감지센서와 안전센서는 역할이 달라요. 사람이 다가가도 열리지 않는지, 닫히던 문이 다시 열리는지 알려 주세요. 센서의 위치와 증상이 생기는 구간을 함께 확인합니다.`
     : service === 'motor'
@@ -90,7 +98,7 @@ export function composeRegionPage(rid: string, service: ServiceId): GeneratedPag
   ];
   return {
     pageId, rid, province: region.province, service, path,
-    h1: service === 'repair' ? `${region.short} 자동문 수리·설치 상담` : `${region.short} ${B.label}`, title: service === 'repair' ? `${region.name} 자동문 수리·설치 | 출장 범위와 현장 준비 | 제이앤디시스템` : service === 'install' ? `${region.name} 자동문 설치 | 출입구 실측·설치 범위 | 제이앤디시스템` : fill(pick(TITLE_FRAMES, 19), m), description: service === 'repair' ? `${region.name} 자동문 수리·설치 상담. ${locations} 등 출장 범위, 고장 기록과 설치 준비, 공개 시공사례를 한곳에서 확인하세요.` : service === 'install' ? `${region.name} ${B.label}. ${locations} 등 출장 범위와 출입구 실측, 기존 문 철거 범위, 설치 견적 준비를 확인하세요.` : `${region.name} ${B.label}. ${locations} 등 출장 범위와 현장 점검, 부품 교체 판단 및 상담 준비물을 확인하세요.`,
+    h1: service === 'repair' ? `${region.short} 자동문 수리·설치 상담` : `${region.short} ${B.label}`, title: service === 'repair' ? `${region.name} 자동문 수리·설치 | 출장 범위와 현장 준비 | 제이앤디시스템` : service === 'install' ? `${region.name} 자동문 설치 | 출입구 실측·설치 범위 | 제이앤디시스템` : fill(pick(TITLE_FRAMES, 19), m), description: service === 'repair' ? repairDescription : service === 'install' ? `${region.name} ${B.label}. ${locations} 등 출장 범위와 출입구 실측, 기존 문 철거 범위, 설치 견적 준비를 확인하세요.` : `${region.name} ${B.label}. ${locations} 등 출장 범위와 현장 점검, 부품 교체 판단 및 상담 준비물을 확인하세요.`,
     lead, region, label: service === 'repair' ? '자동문 수리·설치' : B.label, noun: B.noun, icon: B.icon, aliases, sections, related: B.related,
   };
 }
