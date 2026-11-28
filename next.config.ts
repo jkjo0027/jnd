@@ -23,6 +23,14 @@ const provinceRedirects = ledger.records
     permanent: true,
   }));
 
+// Reuse anonymous HTML for deployment-owned details. CMS-only pages keep their live responses.
+const publicDetailPaths = ledger.records
+  .filter(r => r.contentStatus === 'PUBLISHED' && r.indexEligibility &&
+    /^(?:\/areas\/[^/]+\/r\d+\/[^/]+|\/guides\/g\d+|\/cases\/c\d+|\/services\/[^/]+)\/$/.test(r.path))
+  .map(r => r.path);
+const requestVariants = ['authorization', 'rsc', 'next-router-state-tree', 'next-router-prefetch', 'next-router-segment-prefetch'];
+const privateCookies = ['jnd_admin', '__prerender_bypass'];
+
 // 운영 호스트는 https://jndsystem.kr 하나로 고정한다. (src/lib/site.ts)
 const nextConfig: NextConfig = {
   trailingSlash: true,
@@ -43,6 +51,17 @@ const nextConfig: NextConfig = {
   },
   async headers() {
     return [
+      ...publicDetailPaths.map(source => ({
+        source,
+        missing: [
+          ...requestVariants.map(key => ({ type: 'header' as const, key })),
+          ...privateCookies.map(key => ({ type: 'cookie' as const, key })),
+        ],
+        headers: [
+          { key: 'Netlify-CDN-Cache-Control', value: 'public, durable, s-maxage=300' },
+          { key: 'Netlify-Vary', value: `query, header=${requestVariants.join('|')}, cookie=${privateCookies.join('|')}` },
+        ],
+      })),
       {
         // 관리자·미리보기·API 는 색인 금지 (robots.txt 차단은 noindex 대용이 아니다)
         source: '/(admin|api|preview)(.*)',
